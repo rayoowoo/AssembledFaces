@@ -15,18 +15,21 @@ export const logoutCurrentUser = () => ({
 
 export const signup = user => dispatch => {
     return SessionAPIUtil.signup(user)
-                        .then( user => dispatch(receiveCurrentUser(user)))
+                        .then( user => dispatch(receiveCurrentUser(user)),
+                        errors => dispatch(receiveSessionErrors(errors)))
 }
 
 export const login = user => dispatch => {
     debugger
     return SessionAPIUtil.login(user)
-                        .then (user => dispatch(receiveCurrentUser(user)))
+                        .then (user => dispatch(receiveCurrentUser(user)),
+                        errors => dispatch(receiveSessionErrors(errors)))
 }
 
 export const logout = () => dispatch => {
     return SessionAPIUtil.logout()
-                        .then (() => dispatch(logout()))
+                        .then (() => dispatch(logout()),
+                        errors => dispatch(receiveSessionErrors(errors)))
 }
 
 export const receiveSessionErrors = errors => ({
