@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import configureStore from './store/store'
 // import * as SessionAPIUtil from './utils/session_api_utils'
+import Root from './components/root'
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -14,5 +15,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.dispatch = store.dispatch;
     // TESTING
 
-    ReactDOM.render(<h1>hi</h1>, root)
+    ReactDOM.render(<Root store={store}/>, root)
 })
