@@ -19,5 +19,23 @@
   },
   "scripts": {
     "start": "webpack --watch --mode=development"
-  }
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayoowoo/facepages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rayoowoo/facepages/issues"
+  },
+  "homepage": "https://github.com/rayoowoo/facepages#readme"
 }
