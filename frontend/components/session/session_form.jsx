@@ -1,5 +1,6 @@
 import React from 'react'
-
+import BirthdayForm from './birthday_form'
+import GenderForm from './gender_form'
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -11,12 +12,12 @@ class SessionForm extends React.Component {
             password: "",
             birth_date: "",
             first_name: "",
-            last_name: ""
+            last_name: "",
+            gender: ""
         }
     }
 
     update(field) {
-        debugger
         return e => {
             this.setState({[field]: e.target.value})
         }
@@ -28,28 +29,46 @@ class SessionForm extends React.Component {
 
     render() {
         const {formType} = this.props;
-        const signupFormElements = formType === "login" ? null : (
-            <>
-                <label>Birth Date:
-                    <input type="date" onChange={this.update("birth_date")} value={this.state.birth_date} />
-                </label>
-                <label>First Name:
-                    <input type="text" onChange={this.update("first_name")} value={this.state.first_name} />
-                </label>
-                <label>Last Name:
-                    <input type="text" onChange={this.update("last_name")} value={this.state.last_name} />
-                </label>
-            </>
-        )
+        let firstLastName = null;
+        let birthdayGender = null;
+        let forgot = (<a href="#">Forgot account?</a>);
+        let email = "";
+        let password = "";
+        if (formType === "signup") {
+            firstLastName = (
+                <>
+                    <input type="text" onChange={this.update("first_name")} value={this.state.first_name} placeholder="First name"/>
+                    <input type="text" onChange={this.update("last_name")} value={this.state.last_name} placeholder="Last name"/>
+                </>
+            );
+            birthdayGender = (
+                <>
+                    {<BirthdayForm />}
+                    {<GenderForm />}
+          
+                    <p>
+                        By clicking Sign Up, you agree to our <a href="">Terms</a>, 
+                        <a href="">Data Policy</a> and <a href="">Cookies Policy</a>.
+                        You may receive SMS Notifications from us and can opt out any time.
+                    </p>
+                </>
+            );
+            forgot = null;
+            email = "Email address";
+            password = "New password"
+        } 
+
         return (
         <form onSubmit={this.handleSubmit}>
-            <label>Email:
-                <input type="text" onChange={this.update("email")} value={this.state.email}/>
+            {firstLastName}
+            <label>Email
+                <input type="text" onChange={this.update("email")} value={this.state.email} placeholder={email}/>
             </label>
-            <label>Password:
-                <input type="password" onChange={this.update("password")} value={this.state.password}/>
+            <label>Password
+                <input type="password" onChange={this.update("password")} value={this.state.password} placeholder={password}/>
+                {forgot}
             </label>
-            {signupFormElements}
+            {birthdayGender}
             <input type="submit" value={formType === "login" ? "Log In" : "Sign Up"}/>
         </form>
         )

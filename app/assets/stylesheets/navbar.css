@@ -1,0 +1,71 @@
+.nav {
+    background: rgb(146, 30, 30);
+    border-bottom: 1px solid rgb(70, 0, 0);
+}
+
+.navbar {
+    display: flex;
+    width: 890px;
+    margin: 0 auto;
+    color: white;
+    height: 75px;
+    justify-content: space-between;
+    font-family: Helvetica, sans-serif;
+    align-items: center;
+}
+
+.navbar form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar img {
+    width: 190px;
+}
+
+.navbar input[type="text"], .navbar input[type="password"] {
+    background-color: white;
+    margin-right: 15px;
+    padding: 3px;
+    border: 1px rgb(70, 0, 0) solid;
+    margin-top: 2px;
+}
+
+.navbar label:first-of-type {
+    margin-top: -15px;
+}
+
+.navbar a {
+    color: rgb(224, 96, 96);
+    margin-top: 4px;
+    font: 11px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+
+}
+
+.navbar label {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+}
+
+.navbar input[type="submit"] {
+    color: white;
+    border: 1px rgb(70, 0, 0) solid;
+    background-color: rgb(189, 62, 62);
+    font-size: 10px;
+    padding: 3px 4px;
+    margin-top: -1px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.navbar input[type="submit"]:hover {
+    background-color: transparent;
+    cursor: pointer;
+}

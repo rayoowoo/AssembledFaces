@@ -1,7 +1,6 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 import Login from '../session/login_form_container'
-import Signup from '../session/signup_form_container'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -10,10 +9,12 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <header>
-                <img src="app/assets/images/logo.png" alt="assembledfaces-logo"/>
-                <Login />
-                <Signup />
+            <header className="nav">
+                <div className="navbar">
+                    <img src="https://fontmeme.com/permalink/190730/63d32f6b2626b181df5c8eb9ec502934.png" alt="assembledfaces-logo"/>
+                    {/* made using fontmeme.com/avengers-font */}
+                    <Login />
+                </div>
             </header>
         )
     }
