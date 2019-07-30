@@ -13,17 +13,18 @@ export const logoutCurrentUser = () => ({
     type: LOGOUT_USER
 })
 
-export const signup = user => {
+export const signup = user => dispatch => {
     return SessionAPIUtil.signup(user)
                         .then( user => dispatch(receiveCurrentUser(user)))
 }
 
-export const login = user => {
+export const login = user => dispatch => {
+    debugger
     return SessionAPIUtil.login(user)
                         .then (user => dispatch(receiveCurrentUser(user)))
 }
 
-export const logout = () => {
+export const logout = () => dispatch => {
     return SessionAPIUtil.logout()
                         .then (() => dispatch(logout()))
 }

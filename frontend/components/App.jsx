@@ -1,8 +1,13 @@
 import React from 'react'
+import NavBar from './nav/navbar'
+import Main from './main'
 
 const App = ({store}) => {
     return (
-        <h1>HI from the App</h1>
+        <>
+            <NavBar />
+            <Main />
+        </>
     )
 }
 
