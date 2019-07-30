@@ -8,11 +8,15 @@ class SessionForm extends React.Component {
         this.update = this.update.bind(this);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            birth_date: "",
+            first_name: "",
+            last_name: ""
         }
     }
 
     update(field) {
+        debugger
         return e => {
             this.setState({[field]: e.target.value})
         }
@@ -24,6 +28,19 @@ class SessionForm extends React.Component {
 
     render() {
         const {formType} = this.props;
+        const signupFormElements = formType === "login" ? null : (
+            <>
+                <label>Birth Date:
+                    <input type="date" onChange={this.update("birth_date")} value={this.state.birth_date} />
+                </label>
+                <label>First Name:
+                    <input type="text" onChange={this.update("first_name")} value={this.state.first_name} />
+                </label>
+                <label>Last Name:
+                    <input type="text" onChange={this.update("last_name")} value={this.state.last_name} />
+                </label>
+            </>
+        )
         return (
         <form onSubmit={this.handleSubmit}>
             <label>Email:
@@ -32,6 +49,7 @@ class SessionForm extends React.Component {
             <label>Password:
                 <input type="password" onChange={this.update("password")} value={this.state.password}/>
             </label>
+            {signupFormElements}
             <input type="submit" value={formType === "login" ? "Log In" : "Sign Up"}/>
         </form>
         )
