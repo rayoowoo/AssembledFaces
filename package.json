@@ -19,7 +19,13 @@
     "webpack-cli": "^3.3.6"
   },
   "scripts": {
-    "start": "webpack --watch --mode=development"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch --mode=development",
+    "postinstall": "webpack"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
