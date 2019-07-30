@@ -5,3 +5,5 @@ const App = ({store}) => {
         <h1>HI from the App</h1>
     )
 }
+
+export default App;

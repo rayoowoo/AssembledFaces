@@ -1,5 +1,5 @@
 {
-  "name": "facepages",
+  "name": "AssembledFaces",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.5.5",
@@ -29,13 +29,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rayoowoo/facepages.git"
+    "url": "git+https://github.com/rayoowoo/AssembledFaces.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rayoowoo/facepages/issues"
+    "url": "https://github.com/rayoowoo/AssembledFaces/issues"
   },
-  "homepage": "https://github.com/rayoowoo/facepages#readme"
+  "homepage": "https://github.com/rayoowoo/AssembledFaces#readme"
 }
