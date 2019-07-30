@@ -25,3 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore javascript bundle files
+/app/assets/javascripts/bundle.js
+/app/assets/javascripts/bundle.js.map
