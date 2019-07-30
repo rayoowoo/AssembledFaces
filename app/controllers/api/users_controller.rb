@@ -7,4 +7,8 @@ class UsersController < ApplicationController
             render json: @user.errors.full_messages, status: 422
         end
     end
+
+    def user_params
+        params.require(:user).permit(:email, :password, :birth_date, :first_name, :last_name)
+    end
 end
