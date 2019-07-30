@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
     def create 
         @user = User.find_by_credentials(
             params[:user][:email],
@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        if !current_user
+            render json: ['no user to logout'], status: 404
+        end
         logout!
     end
 
