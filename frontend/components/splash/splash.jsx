@@ -11,7 +11,7 @@ const Splash = (props) => {
                 <ul>
                     <li><i className="far fa-newspaper"></i><span><strong>See photos and updates</strong> from friends in News Feed.</span></li>
                     <li><i className="far fa-star"></i><span><strong>Share what's new</strong> in your life on your Timeline.</span></li>
-                    <li><i className="fas fa-search"></i><span><strong>Find more</strong> of what you're looking for by asking Heimdall.</span></li>
+                        <li><i className="fas fa-search"></i><span><strong>Find more</strong> of what you're looking for by asking <a href="https://marvelcinematicuniverse.fandom.com/wiki/Heimdall" target="_blank">Heimdall</a>.</span></li>
                 </ul>
             </aside>
             <section className="splash-section">

@@ -33,6 +33,10 @@
     align-items: center;
 }
 
+.splash aside a:default, .splash aside a:visited  {
+   color: rgb(224, 96, 96); 
+}
+
 .splash aside i {
     font-size: 35px;
     color: rgb(224, 96, 96)
@@ -155,6 +159,15 @@
     color: rgb(116, 116, 116);
     display: inline-block;
     width: 80%;
+}
+
+#disclaimer a:default,
+#disclaimer a:visited {
+    color: rgb(224, 96, 96);
+}
+
+#disclaimer a:hover {
+    text-decoration: underline;
 }
 
 .splash-section input[type=submit] {

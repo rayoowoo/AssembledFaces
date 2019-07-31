@@ -39,6 +39,14 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.signup(this.state);
+        this.setState({
+            email: "",
+            password: "",
+            birth_date: "1/1/1901",
+            first_name: "",
+            last_name: "",
+            gender: ""
+        })
     }
 
     demo(e) {
@@ -86,8 +94,8 @@ class SignupForm extends React.Component {
                 <GenderForm update={this.update}/> 
 
                 <p id="disclaimer">
-                    By clicking Sign Up, you agree to our <a href="">Terms</a>,
-                    <a href=""> Data Policy</a> and <a href="">Cookies Policy</a>. You will
+                        By clicking Sign Up, you agree to our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Terms</a>,
+                    <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank"> Data Policy</a> and <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Cookies Policy</a>. You will
                     also be seen by Heimdall from Asgard. Because he sees through the Nine Realms
                     you will always be under his eye. Unless you have the space stone.</p>
                 <input type="submit" value="Sign Up"/>
