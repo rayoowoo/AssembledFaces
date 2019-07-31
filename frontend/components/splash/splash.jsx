@@ -16,7 +16,7 @@ const Splash = (props) => {
             </aside>
             <section className="splash-section">
                 <h1>Sign Up</h1>
-                <p className="signup-quip">Maybe Marvel Studios will give you a movie.</p>
+                    <p className="signup-quip">Maybe Marvel Studios will give you a <a href="https://marvelcinematicuniverse.fandom.com/wiki/Phase_Four" target="_blank">movie</a>.</p> 
                 
                 <Signup />
             </section>    

@@ -15,9 +15,10 @@ class SignupForm extends React.Component {
             last_name: "",
             gender: ""
         }
-        this.validate = this.validate.bind(this);
         this.demo = this.demo.bind(this);
         this.updateBirthday = this.updateBirthday.bind(this);
+        // this.toggleInvalid = this.toggleInvalid.bind(this);
+        this.touch = this.touch.bind(this);
     }
 
     update(field) {
@@ -31,12 +32,8 @@ class SignupForm extends React.Component {
         this.setState({birth_date: birthday})
     }
 
-    validate(e) {
-        e.preventDefault();
-        e.target.classList.add("validate")
-    }
-
     handleSubmit(e) {
+        debugger
         e.preventDefault();
         this.props.signup(this.state);
         this.setState({
@@ -54,39 +51,53 @@ class SignupForm extends React.Component {
         this.props.login({email: "tonystark@gmail.com", password: "tonystark"})
     }
 
+    touch(e) {
+        e.preventDefault();
+        e.target.classList.add("touched");
+    }
+
     render() {
 
         return (
             <>
             <form onSubmit={this.handleSubmit}>
                 <div>
-                    <span className="signup-name"><input  type="text" 
+                    <span className="signup-name"><input className="text-input" type="text" 
                         onClick={this.validate} 
                         onChange={this.update("first_name")} 
                         value={this.state.first_name} 
                         required 
+                        // onInvalid={this.toggleInvalid}
+                        onClick={this.touch}
                         placeholder="First name" /></span>
 
-                    <span className="signup-name"><input  type="text" 
+                        <span className="signup-name"><input className="text-input" type="text" 
                         onClick={this.validate} 
                         onChange={this.update("last_name")}
-                        alue={this.state.last_name} required 
+                        value={this.state.last_name}
+                        required 
+                        // onInvalid={this.toggleInvalid}
+                        onClick={this.touch}
                         placeholder="Last name" /></span>
                 </div>
                 
                 <div>
-                    <input className="signup-main" type="text" 
+                    <input className="signup-main text-input" type="email" 
                         onClick={this.validate}
                         onChange={this.update("email")} 
                         value={this.state.email} 
-                        required 
+                        required
+                        // onInvalid={this.toggleInvalid}
+                        onClick={this.touch}
                         placeholder="Email address"/>
 
-                    <input className="signup-main" type="password" 
-                        onClick={this.validate} 
+                    <input className="signup-main text-input" type="password" 
+                        onClick={this.validate}
                         onChange={this.update("password")}
                         value={this.state.password}
                         required
+                        // onInvalid={this.toggleInvalid}
+                        onClick={this.touch}
                         placeholder="New password"/>
                 </div>
                         

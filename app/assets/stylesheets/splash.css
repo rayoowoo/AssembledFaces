@@ -101,8 +101,7 @@
     width: 100%;
 }
 
-.splash form input[type="text"],
-.splash form input[type="password"] {
+.text-input {
     padding: 5px 5px 5px 10px;
     font-size: 16px;
     border: 1px solid rgb(224, 96, 96);
@@ -110,6 +109,15 @@
     background-color: white;
     margin: 5px 0px;
 }
+
+.text-input.touched:not(:focus):invalid {
+
+    border: 1px solid rgb(70, 0, 0) ;
+
+}
+
+
+
 
 .splash-section h3 {
     color: rgb(116, 116, 116);
@@ -303,3 +311,6 @@
     background-image: linear-gradient( rgb(230, 130, 130), rgb(139, 59, 59));
     cursor: pointer;
 }
+
+/* CSS for SIGNUP FORM VALIDATION */
+
