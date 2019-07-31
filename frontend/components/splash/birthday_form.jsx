@@ -1,11 +1,32 @@
 import React from 'react'
 
-export default (props) => {
-    return (
-        <div className="birthday">
-            <label><h3>Birthday</h3>
-                    {/* <input type="date" onChange={this.update("birth_date")} value={this.state.birth_date} /> */}
-                <select className="month-select" >
+class BirthdayForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.updateBirthday = this.updateBirthday.bind(this);
+        this.state = { month: "", date: "", year: ""};
+    }
+
+    updateBirthday(field) {
+        e => {
+            e.preventDefault();
+            this.setState({[field]: e.target.value})
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        const { month, date, year } = this.state;
+        const birthday = month + "/" + date + "/" + year;
+        if (prevProps.birthDate !== birthday) {
+            this.props.update(this.state)
+        }
+    }
+
+    render() { 
+        return(
+            <div className = "birthday" >
+                <h3>Birthday</h3>
+                <select onClick={this.updateBirthday("month")} className="month-select" >
                     <option value="Jan">Jan</option>
                     <option value="Feb">Feb</option>
                     <option value="Mar">Mar</option>
@@ -20,7 +41,7 @@ export default (props) => {
                     <option value="Dec">Dec</option>
                 </select>
 
-                <select className="date-select" >
+                <select onClick={this.updateBirthday("date")} className="date-select" >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -55,7 +76,7 @@ export default (props) => {
                     <option value="31">31</option>
                 </select>
 
-                <select className="year-select">
+                <select onClick={this.updateBirthday("year")} className="year-select">
                     <option value="1901">1901</option>
                     <option value="1902">1902</option>
                     <option value="1903">1903</option>
@@ -175,10 +196,12 @@ export default (props) => {
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
                     <option value="2018">2018</option>
-                    <option value="2019">2019</option> 
+                    <option value="2019">2019</option>
                 </select>
-            </label>
+            
             <i className="fas fa-question-circle birthday-question"></i>
         </div>
-    )
+    )}
 }
+
+export default BirthdayForm

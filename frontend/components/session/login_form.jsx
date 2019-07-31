@@ -18,7 +18,8 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
-        this.props.processForm(this.state);
+        e.preventDefault();
+        this.props.login(this.state);
     }
 
     render() {
@@ -26,10 +27,10 @@ class LoginForm extends React.Component {
         return (
         <form onSubmit={this.handleSubmit}>
                 <label><span className="baseform">Email</span>
-                <input className="signup-main" type="text" onChange={this.update("email")} value={this.state.email}/>
+                <input type="text" onChange={this.update("email")} value={this.state.email}/>
             </label>
                 <label><span className="baseform">Password</span>
-                <input className="signup-main" type="password" onChange={this.update("password")} value={this.state.password}/>
+                <input type="password" onChange={this.update("password")} value={this.state.password}/>
                 <a href="#">Forgot account?</a>
             </label>
             <input type="submit" value="Log In"/>

@@ -3,13 +3,12 @@ import LoginForm from './login_form'
 import { login } from '../../actions/session_actions'
 
 const msp = state => ({
-    errors: state.errors.session,
-    formType: "login"
+    errors: state.errors.session
 })
 
 
 const mdp = dispatch => ({
-    processForm: user => dispatch(login(user))
+    login: user => dispatch(login(user))
 })
 
 

@@ -67,18 +67,32 @@
     font-weight: 1;
 }
 
+.signup-name {
+    width: 44%;
+    display: inline-block;
+}
+
+.signup-name:last-of-type {
+    margin-left: 25px
+}
+
+.signup-main {
+    width: 95.45%
+}
+
+.signup-name input {
+    width: 100%;
+}
+
+
 .splash form {
     margin-top: 20px;
     width: 100%;
 }
 
-.splash .baseform {
-    display: none;
-}
-
 .splash form input[type="text"],
 .splash form input[type="password"] {
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     font-size: 16px;
     border: 1px solid rgb(224, 96, 96);
     border-radius: 5px;
@@ -105,7 +119,7 @@
     background-color: white;
     margin-right: 0.3px;
     font-family: Helvetica;
-    padding: 4px 6px;
+    padding: 4px 8px;
     font-size: 11px;
     border: 1px solid rgb(224, 96, 96);
 }
@@ -157,5 +171,29 @@
 
 .splash-section input[type=submit]:hover {
     background-image: linear-gradient(rgb(163, 109, 153),rgb(109, 64, 100));
+    cursor: pointer;
+}
+
+/* .validate {
+    border: 2px rgb(240, 29, 197) solid;
+} */
+
+/* input[type="text"]:valid {
+    border: border: 1px solid rgb(224, 96, 96);
+} */
+
+.demo {
+    color: white;
+    padding: 6px 45px;
+    background-image: linear-gradient( rgb(224, 96, 96), rgb(139, 59, 59));
+    border-radius: 4px;
+    font-weight: 800;
+    text-shadow: 0.5px 0.5px rgb(31, 19, 29);
+    border: rgb(31, 19, 29) 1px solid;
+    box-sizing: border-box;
+}
+
+.demo:hover {
+    background-image: linear-gradient( rgb(248, 104, 104), rgb(139, 59, 59));
     cursor: pointer;
 }

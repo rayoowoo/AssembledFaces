@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import configureStore from './store/store'
 // import * as SessionAPIUtil from './utils/session_api_utils'
 import Root from './components/root'
+import {logout} from './actions/session_actions'
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.store = store;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+    window.logout = logout;
     // TESTING
 
     ReactDOM.render(<Root store={store}/>, root)
