@@ -137,8 +137,8 @@ class SignupForm extends React.Component {
                 <p id="disclaimer">
                         By clicking Sign Up, you agree to our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Terms</a>,
                     <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank"> Data Policy</a> and <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Cookies Policy</a>. You will
-                    also be seen by Heimdall from Asgard. Because he sees through the Nine Realms
-                    you will always be under his eye. Unless you have the space stone.</p>
+                            also be seen by Heimdall from Asgard. Because he sees through the Nine Realms
+                    you will always be under his eye. <a href="https://www.youtube.com/watch?v=PYeCiOzIIhQ" target="_blank">Unless you have the reality stone.</a></p>
                 <input type="submit" value="Sign Up"/>
             </form>
             <button className="demo" onClick={this.demo}>Demo Login</button>
