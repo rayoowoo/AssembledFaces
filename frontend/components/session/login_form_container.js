@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import SessionForm from './session_form'
+import LoginForm from './login_form'
 import { login } from '../../actions/session_actions'
 
 const msp = state => ({
@@ -13,4 +13,4 @@ const mdp = dispatch => ({
 })
 
 
-export default connect(msp, mdp)(SessionForm)
+export default connect(msp, mdp)(LoginForm)

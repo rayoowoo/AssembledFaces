@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from './session/signup_form_container'
+import Signup from '../session/signup_form_container'
 
 
 const Splash = (props) => {
