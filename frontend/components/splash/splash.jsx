@@ -16,7 +16,7 @@ const Splash = (props) => {
             </aside>
             <section className="splash-section">
                 <h1>Sign Up</h1>
-                <p>Maybe Marvel Studios will give you a movie.</p>
+                <p className="signup-quip">Maybe Marvel Studios will give you a movie.</p>
                 
                 <Signup />
             </section>    

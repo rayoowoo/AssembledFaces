@@ -4,6 +4,7 @@ class BirthdayForm extends React.Component {
     constructor(props) {
         super(props);
         this.updateBirthday = this.updateBirthday.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.state = { month: "1", date: "1", year: "1901"};
     }
 
@@ -20,6 +21,10 @@ class BirthdayForm extends React.Component {
         if (prevProps.birthDate !== birthday) {
             this.props.updateBirthday(this.state)
         }
+    }
+
+    handleClick(e) {
+        e.preventDefault();
     }
 
     render() { 
@@ -198,8 +203,17 @@ class BirthdayForm extends React.Component {
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
                 </select>
-            
-            <i className="fas fa-question-circle birthday-question"></i>
+
+                <div className="signup-question-container">
+                    
+                    <i className="fas fa-question-circle signup-question"></i>
+                    <span className="signup-question-text"><div className="arrow-right"></div><p><strong>Providing your birthday</strong> helps make sure you get the right 
+                            Facebook experience for your age. If you want to change who 
+                            sees this, go to the About section of your profile. 
+                        For more details, please visit our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Data Policy</a>.</p>
+                    <button onClick={this.handleClick}>Close</button>
+                    </span>
+                </div>
         </div>
     )}
 }

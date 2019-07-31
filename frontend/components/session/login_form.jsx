@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
             </label>
                 <label><span className="baseform">Password</span>
                 <input type="password" onChange={this.update("password")} value={this.state.password}/>
-                <a href="#">Forgot account?</a>
+                <a href="https://www.youtube.com/watch?v=K_8SBYQ4SI0" target="_blank">Forgot account?</a>
             </label>
             <input type="submit" value="Log In"/>
         </form>
