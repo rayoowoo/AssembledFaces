@@ -34,7 +34,7 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state);
+        this.props.signup(this.state).then(
         this.setState({
             email: "",
             password: "",
@@ -42,7 +42,7 @@ class SignupForm extends React.Component {
             first_name: "",
             last_name: "",
             gender: ""
-        })
+        }))
     }
 
     demo(e) {
@@ -132,7 +132,7 @@ class SignupForm extends React.Component {
                 </div>
                         
                 <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>
-                <GenderForm update={this.update}/> 
+                <GenderForm update={this.update} touch={this.touch}/> 
 
                 <p id="disclaimer">
                         By clicking Sign Up, you agree to our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Terms</a>,

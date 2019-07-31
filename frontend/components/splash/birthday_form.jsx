@@ -23,9 +23,6 @@ class BirthdayForm extends React.Component {
         }
     }
 
-    handleClick(e) {
-        e.preventDefault();
-    }
 
     render() { 
         return(

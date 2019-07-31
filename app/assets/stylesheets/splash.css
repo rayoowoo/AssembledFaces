@@ -1,6 +1,6 @@
 .splash {
     background-color: rgb(255, 235, 235);
-    height: 560px;
+    min-height: 560px;
 }
 
 .splash-content {
@@ -8,7 +8,6 @@
     margin: 0 auto;
     display: flex;
     font-family: Open Sans;
-    height: 900px;
 }
 
 .splash a:default,
@@ -19,6 +18,8 @@
 .splash a:hover {
     text-decoration: underline;
 }
+
+/* /////////////////////////////////////////////////////////////////// */
 
 /* CSS for the aside */
 
@@ -54,6 +55,8 @@
     margin-left: 20px;
 }
 
+/* /////////////////////////////////////////////////////////////////// */
+
 /* CSS for the signup form */
 
 .splash-section {
@@ -75,6 +78,8 @@
     font-size: 16px;
     font-weight: 1;
 }
+
+/* /////////////////////////////////////////////////////////////////// */
 
 /* CSS for the NAME PORTION of the signup form */
 
@@ -110,7 +115,7 @@
     padding: 5px 5px 5px 10px;
     font-size: 16px;
     border: 1px solid rgb(224, 96, 96);
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: white;
     margin: 5px 0px;
 }
@@ -142,7 +147,6 @@
 .text-input.check:focus:invalid + div {
     visibility: visible;
 }
-
 
 .error-arrow-right {
     width: 0;
@@ -217,11 +221,6 @@
     left: 313px;
 }
 
-/* ////////////////////////////// */
-/* ////////////////////////////// */
-
-
-
 .splash-section h3 {
     color: rgb(116, 116, 116);
     font-size: 14px;
@@ -229,10 +228,12 @@
     padding-bottom: 5px;
 }
 
+/* /////////////////////////////////////////////////////////////////// */
+
 /* CSS for the BIRTHDAY AND GENDER PORTION of the signup form */
 
 .splash-section .birthday, .gender-form {
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
 }
 
 .gender-form h3 {
@@ -361,6 +362,74 @@
     margin-left: 6px;
 }
 
+#custom-gender-content {
+    margin-top: 15px;
+    display: none;
+    position: relative;
+}
+
+.custom-gender-select {
+    background-color: white;
+    margin-right: 0.2px;
+    font-family: Helvetica;
+    padding: 5px 8px 5px 3px;
+    font-size: 11px;
+    border: 1px solid rgb(224, 96, 96);
+    width: 100%;
+}
+
+#custom-gender-content p {
+    color: rgb(87, 86, 86);
+    font-size: 9px;
+    margin-top: 5px;
+}
+
+
+#custom-gender-content input {
+    width: 96%;
+    margin-bottom: -20px;
+}
+
+#gender-invalid {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(168, 110, 158);
+    border: rgb(117, 81, 111) 1px solid;
+    box-shadow: -0.5px 0px 10px rgb(218, 186, 186);
+    z-index: 2;
+    width: 150px;
+    left: -177px;
+    top: -5px;
+    padding: 10px 5px;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+}
+
+#gender-invalid .error-arrow-right {
+    left: 155px;
+}
+
+#gender-invalid .error-arrow-shadow {
+    left: 160.9px;
+    top: 10px;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid rgb(70, 0, 0);
+}
+
+.custom-gender-select.check:focus:invalid ~ #gender-invalid {
+    visibility: visible;
+}
+
+
+#custom-gender-option:checked ~ #custom-gender-content {
+    display: block;
+}
+
+
+/* /////////////////////////////////////////////////////////////////// */
+
 /* CSS for the DISCLAIMER PORTION of the signup form */
 
 #disclaimer {
@@ -368,6 +437,7 @@
     color: rgb(116, 116, 116);
     display: inline-block;
     width: 85%;
+    margin-top: 5px;
 }
 
 /* CSS for the BUTTONS PORTION of the signup form */
@@ -407,7 +477,8 @@
     text-shadow: 0.5px 0.5px rgb(31, 19, 29);
     border: rgb(31, 19, 29) 1px solid;
     box-sizing: border-box;
-    box-shadow: 0px 0.5px 1px inset rgb(233, 158, 158) ;
+    box-shadow: 0px 0.5px 1px inset rgb(233, 158, 158);
+    margin-bottom: 50px;
 }
 
 .demo:hover {
