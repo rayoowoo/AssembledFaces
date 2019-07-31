@@ -4,11 +4,11 @@ class BirthdayForm extends React.Component {
     constructor(props) {
         super(props);
         this.updateBirthday = this.updateBirthday.bind(this);
-        this.state = { month: "", date: "", year: ""};
+        this.state = { month: "1", date: "1", year: "1901"};
     }
 
     updateBirthday(field) {
-        e => {
+        return e => {
             e.preventDefault();
             this.setState({[field]: e.target.value})
         }
@@ -18,7 +18,7 @@ class BirthdayForm extends React.Component {
         const { month, date, year } = this.state;
         const birthday = month + "/" + date + "/" + year;
         if (prevProps.birthDate !== birthday) {
-            this.props.update(this.state)
+            this.props.updateBirthday(this.state)
         }
     }
 
@@ -26,22 +26,22 @@ class BirthdayForm extends React.Component {
         return(
             <div className = "birthday" >
                 <h3>Birthday</h3>
-                <select onClick={this.updateBirthday("month")} className="month-select" >
-                    <option value="Jan">Jan</option>
-                    <option value="Feb">Feb</option>
-                    <option value="Mar">Mar</option>
-                    <option value="Apr">Apr</option>
-                    <option value="May">May</option>
-                    <option value="Jun">Jun</option>
-                    <option value="Jul">Jul</option>
-                    <option value="Aug">Aug</option>
-                    <option value="Sep">Sep</option>
-                    <option value="Oct">Oct</option>
-                    <option value="Nov">Nov</option>
-                    <option value="Dec">Dec</option>
+                <select onChange={this.updateBirthday("month")} className="month-select" >
+                    <option value="1">Jan</option>
+                    <option value="2">Feb</option>
+                    <option value="3">Mar</option>
+                    <option value="4">Apr</option>
+                    <option value="5">May</option>
+                    <option value="6">Jun</option>
+                    <option value="7">Jul</option>
+                    <option value="8">Aug</option>
+                    <option value="9">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                 </select>
 
-                <select onClick={this.updateBirthday("date")} className="date-select" >
+                <select onChange={this.updateBirthday("date")} className="date-select" >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -76,7 +76,7 @@ class BirthdayForm extends React.Component {
                     <option value="31">31</option>
                 </select>
 
-                <select onClick={this.updateBirthday("year")} className="year-select">
+                <select onChange={this.updateBirthday("year")} className="year-select">
                     <option value="1901">1901</option>
                     <option value="1902">1902</option>
                     <option value="1903">1903</option>

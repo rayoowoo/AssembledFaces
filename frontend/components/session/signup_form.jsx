@@ -10,13 +10,14 @@ class SignupForm extends React.Component {
         this.state = {
             email: "",
             password: "",
-            birth_date: "//",
+            birth_date: "1/1/1901",
             first_name: "",
             last_name: "",
             gender: ""
         }
         this.validate = this.validate.bind(this);
         this.demo = this.demo.bind(this);
+        this.updateBirthday = this.updateBirthday.bind(this);
     }
 
     update(field) {
@@ -31,7 +32,6 @@ class SignupForm extends React.Component {
     }
 
     validate(e) {
-        debugger
         e.preventDefault();
         e.target.classList.add("validate")
     }
@@ -82,7 +82,7 @@ class SignupForm extends React.Component {
                         placeholder="New password"/>
                 </div>
                         
-                <BirthdayForm update={this.updateBirthday} birthDate={this.state.birth_date}/>
+                <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>
                 <GenderForm update={this.update}/> 
 
                 <p id="disclaimer">
