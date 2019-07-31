@@ -165,7 +165,17 @@
     font-size: 11px;
     border: 0.5px rgb(245, 216, 216) solid;
     border-radius: 2px;
-    box-shadow: -0.5px 0px 10px rgb(218, 186, 186) ;
+    box-shadow: -0.5px 0px 10px rgb(218, 186, 186);
+    opacity: 0;
+    transition-property: visibility opacity;
+    transition-duration: 0.2s;
+    transition-delay: 0.2s;
+}
+
+.signup-question-container:hover .signup-question-text,
+.signup-question-text:hover {
+    visibility: visible;
+    opacity: 1;
 }
 
 .arrow-right {
@@ -205,11 +215,6 @@
 
 .signup-question-text button:hover {
     background-color: rgb(114, 23, 23)
-}
-
-.signup-question-container:hover .signup-question-text,
-.signup-question-text:hover {
-    visibility: visible;
 }
 
 .signup-question:hover, .gender-question:hover {
