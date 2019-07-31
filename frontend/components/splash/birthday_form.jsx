@@ -23,6 +23,10 @@ class BirthdayForm extends React.Component {
         }
     }
 
+    handleClick(e) {
+        e.preventDefault();
+    }
+
 
     render() { 
         return(
@@ -201,14 +205,14 @@ class BirthdayForm extends React.Component {
                     <option value="2019">2019</option>
                 </select>
 
-                <div className="signup-question-container">
+                <div onClick={this.handleClick} className="signup-question-container">
                     
                     <i className="fas fa-question-circle signup-question"></i>
                     <span className="signup-question-text"><div className="arrow-right"></div><p><strong>Providing your birthday</strong> helps make sure you get the right 
                             Facebook experience for your age. If you want to change who 
                             sees this, go to the About section of your profile. 
                         For more details, please visit our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Data Policy</a>.</p>
-                    <button onClick={this.handleClick}>Close</button>
+                    <button>Close</button>
                     </span>
                 </div>
         </div>

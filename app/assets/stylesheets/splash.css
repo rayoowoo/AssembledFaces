@@ -470,7 +470,7 @@
 
 .demo {
     color: white;
-    padding: 6px 45px;
+    padding: 6px 44px;
     background-image: linear-gradient( rgb(224, 96, 96), rgb(139, 59, 59));
     border-radius: 4px;
     font-weight: 800;
@@ -486,5 +486,5 @@
     cursor: pointer;
 }
 
-/* CSS for SIGNUP FORM VALIDATION */
+
 
