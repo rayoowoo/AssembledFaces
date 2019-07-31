@@ -5,7 +5,7 @@ import GenderForm from '../splash/gender_form'
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.update = this.update.bind(this);
         this.state = {
             email: "",
@@ -19,6 +19,7 @@ class SignupForm extends React.Component {
         this.updateBirthday = this.updateBirthday.bind(this);
         this.touch = this.touch.bind(this);
         this.clear = this.clear.bind(this);
+        this.nobubble = this.nobubble.bind(this);
     }
 
     update(field) {
@@ -32,18 +33,36 @@ class SignupForm extends React.Component {
         this.setState({birth_date: birthday})
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.signup(this.state).then(
-        this.setState({
-            email: "",
-            password: "",
-            birth_date: "1/1/1901",
-            first_name: "",
-            last_name: "",
-            gender: ""
-        }))
+    handleClick(e) {
+        let stop = false;
+        let firstInvalid = null;
+        const inputs = Object.values(this.refs);
+        inputs.forEach( (input) => {
+            input.classList.add("touched", "checked")
+            if ( !input.checkValidity() ) { 
+                stop = true;
+                firstInvalid = firstInvalid === null ? input : firstInvalid;
+            }
+        })
+        if (stop) {
+            debugger
+            firstInvalid.focus();
+            firstInvalid.click();
+            return 
+        }
+        else {
+            this.props.signup(this.state).then(
+                this.setState({
+                    email: "",
+                    password: "",
+                    birth_date: "1/1/1901",
+                    first_name: "",
+                    last_name: "",
+                    gender: ""
+                }))
+        }
     }
+
 
     demo(e) {
         e.preventDefault();
@@ -63,13 +82,17 @@ class SignupForm extends React.Component {
         e.target.classList.remove("check");
     }
 
+    nobubble(e) {
+        e.preventDefault();
+    }
+
     render() {
 
         return (
             <>
-            <form onSubmit={this.handleSubmit}>
+            <form onInvalid={this.nobubble}>
                 <div>
-                    <span className="signup-name"><input className="text-input" type="text" 
+                    <span className="signup-name"><input ref="input1" className="text-input" type="text" 
                         onClick={this.validate} 
                         onChange={this.update("first_name")} 
                         value={this.state.first_name} 
@@ -85,7 +108,7 @@ class SignupForm extends React.Component {
                             <i className="fas fa-exclamation-circle"></i>
                         </span>
 
-                    <span className="signup-name"><input className="text-input" type="text" 
+                    <span className="signup-name"><input ref="input2" className="text-input" type="text" 
                         onClick={this.validate} 
                         onChange={this.update("last_name")}
                         value={this.state.last_name}
@@ -98,7 +121,7 @@ class SignupForm extends React.Component {
                 </div>
                 
                 <div>
-                    <span className="signup-email-password"><input className="signup-main text-input" type="email" 
+                    <span className="signup-email-password"><input ref="input3" className="signup-main text-input" type="email" 
                         onClick={this.validate}
                         onChange={this.update("email")} 
                         value={this.state.email} 
@@ -114,7 +137,7 @@ class SignupForm extends React.Component {
                             <i className="fas fa-exclamation-circle"></i>
                     </span>
 
-                    <span className="signup-email-password"><input className="signup-main text-input" type="password" 
+                    <span className="signup-email-password"><input ref="input4" className="signup-main text-input" type="password" 
                         onClick={this.validate}
                         onChange={this.update("password")}
                         value={this.state.password}
@@ -139,7 +162,8 @@ class SignupForm extends React.Component {
                     <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank"> Data Policy</a> and <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Cookies Policy</a>. You will
                             also be seen by Heimdall from Asgard. Because he sees through the Nine Realms
                     you will always be under his eye. <a href="https://www.youtube.com/watch?v=PYeCiOzIIhQ" target="_blank">Unless you have the reality stone.</a></p>
-                <input type="submit" value="Sign Up"/>
+
+                <button className="signup-submit-btn" onClick={this.handleClick}>Sign Up</button>
             </form>
             <button className="demo" onClick={this.demo}>Demo Login</button>
             </>
