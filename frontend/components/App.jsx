@@ -1,12 +1,12 @@
 import React from 'react'
 import NavBar from './nav/navbar'
-import Main from './main'
+import Splash from './splash'
 
 const App = ({store}) => {
     return (
         <>
             <NavBar />
-            <Main />
+            <Splash />
         </>
     )
 }

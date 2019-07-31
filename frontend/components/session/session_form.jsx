@@ -36,19 +36,19 @@ class SessionForm extends React.Component {
         let password = "";
         if (formType === "signup") {
             firstLastName = (
-                <>
+                <div className="signup-name">
                     <input type="text" onChange={this.update("first_name")} value={this.state.first_name} placeholder="First name"/>
                     <input type="text" onChange={this.update("last_name")} value={this.state.last_name} placeholder="Last name"/>
-                </>
+                </div>
             );
             birthdayGender = (
                 <>
                     {<BirthdayForm />}
                     {<GenderForm />}
-          
-                    <p>
-                        By clicking Sign Up, you agree to our <a href="">Terms</a>, 
-                        <a href="">Data Policy</a> and <a href="">Cookies Policy</a>.
+                    
+                    <p id="disclaimer">
+                        By clicking Sign Up, you agree to our <a href="">Terms</a>,
+                        <a href=""> Data Policy</a> and <a href="">Cookies Policy</a>.
                         You may receive SMS Notifications from us and can opt out any time.
                     </p>
                 </>
@@ -61,11 +61,11 @@ class SessionForm extends React.Component {
         return (
         <form onSubmit={this.handleSubmit}>
             {firstLastName}
-            <label>Email
-                <input type="text" onChange={this.update("email")} value={this.state.email} placeholder={email}/>
+                <label><span className="baseform">Email</span>
+                <input className="signup-main" type="text" onChange={this.update("email")} value={this.state.email} placeholder={email}/>
             </label>
-            <label>Password
-                <input type="password" onChange={this.update("password")} value={this.state.password} placeholder={password}/>
+                <label><span className="baseform">Password</span>
+                <input className="signup-main" type="password" onChange={this.update("password")} value={this.state.password} placeholder={password}/>
                 {forgot}
             </label>
             {birthdayGender}

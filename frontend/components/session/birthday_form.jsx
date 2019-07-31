@@ -2,7 +2,7 @@ import React from 'react'
 
 export default (props) => {
     return (
-        <div>
+        <div className="birthday">
             <label><h3>Birthday</h3>
                     {/* <input type="date" onChange={this.update("birth_date")} value={this.state.birth_date} /> */}
                 <select className="month-select" >

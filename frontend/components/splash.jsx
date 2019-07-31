@@ -2,7 +2,7 @@ import React from 'react'
 import Signup from './session/signup_form_container'
 
 
-const Main = (props) => {
+const Splash = (props) => {
     return (
     <section className="splash">
         <div className="splash-content">
@@ -14,7 +14,7 @@ const Main = (props) => {
                     <li><i className="fas fa-search"></i><span><strong>Find more</strong> of what you're looking for with AssembledFaces Search.</span></li>
                 </ul>
             </aside>
-            <section>
+            <section className="splash-section">
                 <h1>Sign Up</h1>
                 <p>It's free and always will be.</p>
                 
@@ -25,4 +25,4 @@ const Main = (props) => {
     )
 }
 
-export default Main;
+export default Splash;

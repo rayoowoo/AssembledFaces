@@ -1,11 +1,12 @@
 .nav {
-    background: rgb(146, 30, 30);
+    /* background: rgb(146, 30, 30); */
+    background-image: linear-gradient(rgb(146, 30, 30),rgb(114, 23, 23));
     border-bottom: 1px solid rgb(70, 0, 0);
 }
 
 .navbar {
     display: flex;
-    width: 890px;
+    width: 880px;
     margin: 0 auto;
     color: white;
     height: 75px;
@@ -62,7 +63,7 @@
     padding: 3px 4px;
     margin-top: -1px;
     font-weight: 700;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.25px;
 }
 
 .navbar input[type="submit"]:hover {
