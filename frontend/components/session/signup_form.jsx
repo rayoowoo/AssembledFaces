@@ -18,6 +18,7 @@ class SignupForm extends React.Component {
         this.demo = this.demo.bind(this);
         this.updateBirthday = this.updateBirthday.bind(this);
         this.touch = this.touch.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
     update(field) {
@@ -51,7 +52,15 @@ class SignupForm extends React.Component {
 
     touch(e) {
         e.preventDefault();
+        if (e.target.classList.contains("touched")){
+            e.target.classList.add("check")
+        }
         e.target.classList.add("touched");
+    }
+
+    clear(e) {
+        e.preventDefault();
+        e.target.classList.remove("check");
     }
 
     render() {
@@ -65,6 +74,7 @@ class SignupForm extends React.Component {
                         onChange={this.update("first_name")} 
                         value={this.state.first_name} 
                         required 
+                        onInput={this.clear}
                         onClick={this.touch}
                         placeholder="First name" />
                             <div>
@@ -80,6 +90,7 @@ class SignupForm extends React.Component {
                         onChange={this.update("last_name")}
                         value={this.state.last_name}
                         required 
+                        onInput={this.clear}
                         onClick={this.touch}
                             placeholder="Last name" />
                             <i className="fas fa-exclamation-circle"></i>
@@ -92,6 +103,7 @@ class SignupForm extends React.Component {
                         onChange={this.update("email")} 
                         value={this.state.email} 
                         required
+                        onInput={this.clear}
                         onClick={this.touch}
                         placeholder="Email address"/>
                             <div id="email-invalid">
@@ -107,6 +119,7 @@ class SignupForm extends React.Component {
                         onChange={this.update("password")}
                         value={this.state.password}
                         required
+                        onInput={this.clear}
                         onClick={this.touch}
                         placeholder="New password"/>
                             <div id="password-invalid">

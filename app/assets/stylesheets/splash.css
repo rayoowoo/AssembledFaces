@@ -139,13 +139,10 @@
     border: 1px solid rgb(224, 96, 96);
 }
 
-.text-input.touched:focus:invalid + div {
+.text-input.check:focus:invalid + div {
     visibility: visible;
 }
 
-.text-input.touched:not(:focus):invalid + i {
-    visibility: visible;
-}
 
 .error-arrow-right {
     width: 0;
@@ -199,11 +196,15 @@
 }
 
 .signup-name i, .signup-email-password i {
+    visibility: hidden;
     position: absolute;
     color: rgb(168, 110, 158);
     z-index: 1;
     font-size: 20px;
-    visibility: hidden;
+}
+
+.text-input.touched:not(:focus):invalid ~ i {
+    visibility: visible;
 }
 
 .signup-name i {
