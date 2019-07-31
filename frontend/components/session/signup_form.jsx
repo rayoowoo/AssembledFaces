@@ -17,7 +17,6 @@ class SignupForm extends React.Component {
         }
         this.demo = this.demo.bind(this);
         this.updateBirthday = this.updateBirthday.bind(this);
-        // this.toggleInvalid = this.toggleInvalid.bind(this);
         this.touch = this.touch.bind(this);
     }
 
@@ -33,7 +32,6 @@ class SignupForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         this.props.signup(this.state);
         this.setState({
@@ -67,38 +65,57 @@ class SignupForm extends React.Component {
                         onChange={this.update("first_name")} 
                         value={this.state.first_name} 
                         required 
-                        // onInvalid={this.toggleInvalid}
                         onClick={this.touch}
-                        placeholder="First name" /></span>
+                        placeholder="First name" />
+                            <div>
+                                What's your name?
+                                <div className="error-arrow-right"></div>    
+                                <div className="error-arrow-right error-arrow-shadow"></div>    
+                            </div>
+                            <i className="fas fa-exclamation-circle"></i>
+                        </span>
 
-                        <span className="signup-name"><input className="text-input" type="text" 
+                    <span className="signup-name"><input className="text-input" type="text" 
                         onClick={this.validate} 
                         onChange={this.update("last_name")}
                         value={this.state.last_name}
                         required 
-                        // onInvalid={this.toggleInvalid}
                         onClick={this.touch}
-                        placeholder="Last name" /></span>
+                            placeholder="Last name" />
+                            <i className="fas fa-exclamation-circle"></i>
+                        </span>
                 </div>
                 
                 <div>
-                    <input className="signup-main text-input" type="email" 
+                    <span className="signup-email-password"><input className="signup-main text-input" type="email" 
                         onClick={this.validate}
                         onChange={this.update("email")} 
                         value={this.state.email} 
                         required
-                        // onInvalid={this.toggleInvalid}
                         onClick={this.touch}
                         placeholder="Email address"/>
+                            <div id="email-invalid">
+                                You'll use this when you log in and if you ever need to reset your password.
+                                <div className="error-arrow-right"></div>
+                                <div className="error-arrow-right error-arrow-shadow"></div>
+                            </div>
+                            <i className="fas fa-exclamation-circle"></i>
+                    </span>
 
-                    <input className="signup-main text-input" type="password" 
+                    <span className="signup-email-password"><input className="signup-main text-input" type="password" 
                         onClick={this.validate}
                         onChange={this.update("password")}
                         value={this.state.password}
                         required
-                        // onInvalid={this.toggleInvalid}
                         onClick={this.touch}
                         placeholder="New password"/>
+                            <div id="password-invalid">
+                                {`Enter a password of at least six numbers, letters, and punctuation marks (like ! and &).`}
+                                <div className="error-arrow-right"></div>
+                                <div className="error-arrow-right error-arrow-shadow"></div>
+                            </div>
+                            <i className="fas fa-exclamation-circle"></i>
+                        </span>
                 </div>
                         
                 <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>

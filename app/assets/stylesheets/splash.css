@@ -81,6 +81,7 @@
 .signup-name {
     width: 44%;
     display: inline-block;
+    position: relative;
 }
 
 .signup-name:last-of-type {
@@ -101,6 +102,10 @@
     width: 100%;
 }
 
+.signup-email-password {
+    position: relative;
+}
+
 .text-input {
     padding: 5px 5px 5px 10px;
     font-size: 16px;
@@ -110,12 +115,109 @@
     margin: 5px 0px;
 }
 
-.text-input.touched:not(:focus):invalid {
-
-    border: 1px solid rgb(70, 0, 0) ;
-
+.text-input + div {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(168, 110, 158);
+    border: rgb(117, 81, 111) 1px solid;
+    box-shadow: -0.5px 0px 10px rgb(218, 186, 186);
+    z-index: 2;
+    width: 110px;
+    left: -147px;
+    top: 2px;
+    padding: 11px;
+    font-size: 11px;
+    color: white;
+    text-align: center;
 }
 
+.text-input.touched:not(:focus):invalid {
+    border: 1px solid rgb(70, 0, 0);
+}
+
+.text-input.touched:focus:invalid {
+    border: 1px solid rgb(224, 96, 96);
+}
+
+.text-input.touched:focus:invalid + div {
+    visibility: visible;
+}
+
+.text-input.touched:not(:focus):invalid + i {
+    visibility: visible;
+}
+
+.error-arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid rgb(168, 110, 158);
+    position: absolute;
+    z-index: 2;
+    left: 125px;
+    top: 4px;
+}
+
+.error-arrow-shadow {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid rgb(70, 0, 0);
+    left: 132.9px;
+    top: 11px;
+    z-index: 1;
+}
+
+#email-invalid {
+    top: -8px;
+    left: -310px;
+    width: 270px;
+    text-align: left;
+}
+
+#email-invalid .error-arrow-right {
+    left: 286px;
+}
+
+#email-invalid .error-arrow-shadow {
+    left: 293.9px;
+}
+
+#password-invalid {
+    top: -8px;
+    left: -310px;
+    width: 270px;
+    text-align: left;
+}
+
+#password-invalid .error-arrow-right {
+    left: 286px;
+}
+
+#password-invalid .error-arrow-shadow {
+    left: 293.9px;
+}
+
+.signup-name i, .signup-email-password i {
+    position: absolute;
+    color: rgb(168, 110, 158);
+    z-index: 1;
+    font-size: 20px;
+    visibility: hidden;
+}
+
+.signup-name i {
+    top: 12px;
+    left: 138px;
+}
+
+.signup-email-password i {
+    top: 1px;
+    left: 313px;
+}
+
+/* ////////////////////////////// */
+/* ////////////////////////////// */
 
 
 
