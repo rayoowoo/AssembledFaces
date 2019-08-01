@@ -12,6 +12,8 @@ class BlankLogin extends React.Component {
         this.clear = this.clear.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.update = this.update.bind(this);
+        this.nobubble = this.nobubble.bind(this);
+
     }
 
     update(field) {
@@ -24,7 +26,7 @@ class BlankLogin extends React.Component {
         let stop = false;
         let firstInvalid = null;
         let inputs = Object.values(this.refs);
-
+        debugger
         inputs.forEach((input) => {
             input.classList.add("touched", "checked")
             if (!input.checkValidity()) {
@@ -69,12 +71,14 @@ class BlankLogin extends React.Component {
             <div className="splash-login-container">
                 <button id="blank-login-newacct" onClick={(e) => this.props.history.push("/")} className="demo login-input-btn">Create New Account</button>
                 <h2>Log Into AssembledPages</h2>
-                <form className="splash-login-form">
+                <form onInvalid={this.nobubble} className="splash-login-form">
                     <span className="login-input-container"><input ref="input1" className="text-input login-input" type="email"
                         onChange={this.update("email")}
                         value={this.state.email}
                         required
                         onInput={this.clear}
+                        onClick={this.validate} 
+
                         onClick={this.touch}
                         placeholder="Email address" />
                         <div id="login-email-invalid">
@@ -89,6 +93,8 @@ class BlankLogin extends React.Component {
                         value={this.state.password}
                         required
                         onInput={this.clear}
+                        onClick={this.validate} 
+
                         onClick={this.touch}
                         placeholder="Password" />
                         <div id="login-password-invalid">
@@ -97,7 +103,7 @@ class BlankLogin extends React.Component {
                         </div>
                         <i className="fas fa-exclamation-circle"></i>
 
-                        <button className="demo login-input-btn">Log In</button>
+                        <button onClick={this.handleClick} className="demo login-input-btn">Log In</button>
 
                         <a onClick={(e) => this.props.history.push("/recover")}>Recover Your Account</a>
                     </span>
