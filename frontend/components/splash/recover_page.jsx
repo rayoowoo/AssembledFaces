@@ -8,15 +8,17 @@ class RecoverPage extends React.Component {
             email: ""
         }
         this.handleClick = this.handleClick.bind(this)
+        this.cancel = this.cancel.bind(this);
     }
 
     handleClick(e) {
         e.preventDefault();
-        this.props.signup(this.state).then(
-            this.setState({
-                email: ""
-            }))
-        }
+        alert("sorry, not working yet")
+    }
+
+    cancel(e) {
+        this.props.history.push("/")
+    }
 
     render() {
         return (
@@ -31,7 +33,7 @@ class RecoverPage extends React.Component {
                     </span>
                     
                     <button onClick={this.handleClick} className="demo recover-input-btn-1">Search</button>
-                    <button onClick={this.handleClick} className="demo recover-input-btn-2">Cancel</button>
+                    <button onClick={this.cancel} className="demo recover-input-btn-2">Cancel</button>
 
                 </form>
                     <div className="recover-btns">
