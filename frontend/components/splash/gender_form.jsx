@@ -21,7 +21,10 @@ class GenderForm extends React.Component {
 
     clear(e) {
         e.preventDefault();
-        e.target.classList.remove("check");
+        Object.values(this.refs).slice(0,3).forEach (ref => {
+            ref.classList.remove("check", "touched");
+
+        })
     }
 
     handleBlur(e) {
@@ -38,20 +41,24 @@ class GenderForm extends React.Component {
         return (
             <div className="gender-form">
                 <h3>Gender</h3>
-                    <label>
-                        <input name="gender" type="radio" value="Female" ref="input-5" required onClick={this.props.update("gender")}/>
+                 <label ref="input5" id="gender-error">
+                        <input name="gender" type="radio" value="Female"  required onFocus={this.clear} onClick={this.props.update("gender")}/>
+                            <i className="fas fa-exclamation-circle" ></i>
                         <span>Female</span>
                     </label>
-                    <label>
-                        <input name="gender" type="radio" value="Male" ref="input-6" required onClick={this.props.update("gender")}/>
+                <label ref="input6">
+                    <input name="gender" type="radio" value="Male"  required onFocus={this.clear}  onClick={this.props.update("gender")}/>
                         <span>Male</span>
                     </label>
-                    <label>
-                    <input id="custom-gender-option" name="gender" ref="input-7" required type="radio" onClick={this.props.update("gender")} value="Custom"/>
+                <span>
+                    <label ref="input7">
+                        <input id="custom-gender-option" name="gender" required onFocus={this.clear} type="radio" onClick={this.props.update("gender")} value="Custom" />
                         <span>Custom</span>
+                        </label>
+                        
 
                         <div className="signup-question-container">
-                        <i onMouseOver={this.handleHover} className="fas fa-question-circle signup-question"></i>
+                        <i onMouseOver={this.handleHover} className="fas fa-question-circle signup-question" id="gender-question"></i>
                         <span onClick={this.handleClick} ref="popup" className="signup-question-text"><div className="arrow-right"></div><div className="arrow-right-shadow"></div>
                             <p>You can change who sees your gender on your profile later.
                         Select Custom to choose another gender, or if you'd rather not say.</p>
@@ -80,7 +87,7 @@ class GenderForm extends React.Component {
                         <input type="text" className="text-input" onChange={this.props.update("gender")} placeholder="Enter your gender (optional)" />
                     </section>
 
-                    </label>
+                    </span>
 
                 
             </div>

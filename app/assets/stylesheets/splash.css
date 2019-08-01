@@ -338,8 +338,12 @@
     cursor: pointer;
 }
 
-.signup-question:hover, .gender-question:hover {
+.signup-question:hover{
     cursor: pointer;
+}
+
+#gender-question {
+    margin-left: 10px
 }
 
 .gender-form {
@@ -347,12 +351,13 @@
 }
 
 .splash-section .gender-form label {
-    margin-right: 18px;
+    padding-right: 18px;
     font-size: 18px;
+    padding: 5px;
 }
 
-.gender-form span {
-    margin-left: 4px;
+.gender-form label span {
+    margin-left: 6px;
 }
 
 .gender-form .signup-question-text {
@@ -461,6 +466,29 @@
 
 #custom-gender-option:checked ~ .custom-gender-content {
     display: block;
+}
+
+.gender-form label.touched {
+    border: 1px solid rgb(70, 0, 0);
+    border-radius: 2px;
+}
+
+#gender-error {
+    position: relative;
+}
+
+#gender-error i {
+    visibility: hidden;
+    position: absolute;
+    color: rgb(168, 110, 158);
+    z-index: 1;
+    font-size: 22px;
+    left: 380px;
+    top: 4px;
+}
+
+#gender-error.touched i {
+    visibility: visible;
 }
 
 

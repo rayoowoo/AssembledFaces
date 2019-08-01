@@ -36,16 +36,26 @@ class SignupForm extends React.Component {
     handleClick(e) {
         let stop = false;
         let firstInvalid = null;
-        const inputs = Object.values(this.refs);
+        let inputs = Object.values(this.refs).slice(0, 4);
+        let others = Object.values(this.refs.gender.refs).slice(0,3);
+        debugger
+        Object.values(this.refs.gender.refs).slice(0,3).forEach (other => {
+            if (other.children[0].checkValidity()) {
+                others = [];
+            }
+        })
+        inputs = inputs.concat(others)
         inputs.forEach( (input) => {
             input.classList.add("touched", "checked")
+            if ( input.nodeName !== "INPUT" ) {
+                input = input.children[0];
+            }
             if ( !input.checkValidity() ) { 
                 stop = true;
                 firstInvalid = firstInvalid === null ? input : firstInvalid;
             }
         })
         if (stop) {
-            debugger
             firstInvalid.focus();
             firstInvalid.click();
             return 
@@ -155,7 +165,7 @@ class SignupForm extends React.Component {
                 </div>
                         
                 <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>
-                <GenderForm update={this.update}/> 
+                <GenderForm ref="gender" update={this.update}/> 
 
                 <p id="disclaimer">
                         By clicking Sign Up, you agree to our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Terms</a>,
