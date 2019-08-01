@@ -242,12 +242,12 @@
 }
 
 .gender-form h3 {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .splash-section .birthday select {
     background-color: white;
-    margin-right: 0.3px;
+    margin-right: 0px;
     font-family: Helvetica;
     padding: 7px 15px 7px 7px;
     font-size: 12px;
@@ -334,7 +334,8 @@
 }
 
 .signup-question-text button:hover {
-    background-color: rgb(114, 23, 23)
+    background-color: rgb(114, 23, 23);
+    cursor: pointer;
 }
 
 .signup-question:hover, .gender-question:hover {
@@ -483,7 +484,7 @@
 
 .demo {
     color: white;
-    padding: 8px 49px;
+    padding: 8px 47.5px;
     background-image: linear-gradient( rgb(224, 96, 96), rgb(139, 59, 59));
     border-radius: 4px;
     font-size: 17.5px;
@@ -501,4 +502,28 @@
 }
 
 
+/* /////////////////////////////////////////////// */
+
+/* footer CSS */
+
+.footer {
+    font-family: Helvetica;
+    font-size: 12px;
+    text-align: center;
+     color: rgb(224, 96, 96);
+    padding: 18px 0px;
+    border-bottom: 1px solid rgb(195, 195, 195);
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.citation {
+    font-family: Helvetica;
+    font-size: 10px;
+    text-align: center;
+     color: rgb(126, 126, 126);
+    padding: 12px 0px;
+    width: 1000px;
+    margin: 0 auto;
+}
 

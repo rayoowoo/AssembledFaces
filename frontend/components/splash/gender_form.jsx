@@ -22,15 +22,15 @@ class GenderForm extends React.Component {
             <div className="gender-form">
                 <h3>Gender</h3>
                     <label>
-                        <input name="gender" type="radio" value="Female" required onClick={this.props.update("gender")}/>
+                        <input name="gender" type="radio" value="Female" ref="input-5" required onClick={this.props.update("gender")}/>
                         <span>Female</span>
                     </label>
                     <label>
-                        <input name="gender" type="radio" value="Male" required onClick={this.props.update("gender")}/>
+                        <input name="gender" type="radio" value="Male" ref="input-6" required onClick={this.props.update("gender")}/>
                         <span>Male</span>
                     </label>
                     <label>
-                    <input id="custom-gender-option" name="gender" required type="radio" onClick={this.props.update("gender")} value="Custom"/>
+                    <input id="custom-gender-option" name="gender" ref="input-7" required type="radio" onClick={this.props.update("gender")} value="Custom"/>
                         <span>Custom</span>
 
                         <div className="signup-question-container">
