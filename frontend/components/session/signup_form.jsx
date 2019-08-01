@@ -45,16 +45,34 @@ class SignupForm extends React.Component {
             }
         })
         inputs = inputs.concat(others)
+
+        if (this.refs.gender.refs.customGender.classList.contains("display-block")) {
+            inputs = inputs.concat([this.refs.gender.refs.customGender.children[0]])
+        }
+
         inputs.forEach( (input) => {
+            if (input.nodeName === "SELECT") {
+                if (input.value === "DEFAULT") {
+                    input.classList.add("touched", "checked")
+                    stop = true;
+                    firstInvalid = firstInvalid === null ? input : firstInvalid;
+                    return
+                }
+            }
+
             input.classList.add("touched", "checked")
             if ( input.nodeName !== "INPUT" ) {
                 input = input.children[0];
             }
+            
             if ( !input.checkValidity() ) { 
                 stop = true;
                 firstInvalid = firstInvalid === null ? input : firstInvalid;
             }
         })
+
+   
+
         if (stop) {
             firstInvalid.focus();
             firstInvalid.click();
@@ -72,7 +90,7 @@ class SignupForm extends React.Component {
                 }))
         }
     }
-    
+
     demo(e) {
         e.preventDefault();
         this.props.login({email: "tonystark@gmail.com", password: "tonystark"})
