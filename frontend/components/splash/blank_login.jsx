@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {clearSessionErrors, login} from '../../actions/session_actions'
 
 class BlankLogin extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class BlankLogin extends React.Component {
 
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
         this.props.clearSessionErrors();
     }
 
@@ -32,7 +33,7 @@ class BlankLogin extends React.Component {
         let inputs = Object.values(this.refs);
         debugger
         inputs.forEach((input) => {
-            input.classList.add("touched", "checked")
+            input.classList.add("touched", "checked");
             if (!input.checkValidity()) {
                 stop = true;
                 firstInvalid = firstInvalid === null ? input : firstInvalid;
@@ -44,7 +45,7 @@ class BlankLogin extends React.Component {
             return
         }
         else {
-            this.props.signup(this.state).then(
+            this.props.login(this.state).then(
                 this.setState({
                     email: "",
                     password: "",
@@ -118,7 +119,8 @@ class BlankLogin extends React.Component {
 }
 
 const mdp = dispatch => ({
-    clearSessionErrors: () => dispatch(clearSessionErrors())
+    clearSessionErrors: () => dispatch(clearSessionErrors()),
+    login: user => dispatch(login(user))
 })
 
 
