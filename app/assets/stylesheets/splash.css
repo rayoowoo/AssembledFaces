@@ -205,7 +205,7 @@
 }
 
 .signup-name i, .signup-email-password i {
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
     color: rgb(168, 110, 158);
     z-index: 1;

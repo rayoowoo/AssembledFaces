@@ -23,7 +23,8 @@
 }
 
 .navbar img {
-    width: 190px;
+    width: 210px;
+    margin-top: 10px;
 }
 
 .navbar input[type="text"], .navbar input[type="password"] {

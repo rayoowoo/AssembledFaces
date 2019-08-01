@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         return (
             <header className="nav">
                 <div className="navbar">
-                    <img src="https://fontmeme.com/permalink/190730/63d32f6b2626b181df5c8eb9ec502934.png" alt="assembledfaces-logo"/>
+                    <a href="/"><img src="https://fontmeme.com/permalink/190730/63d32f6b2626b181df5c8eb9ec502934.png" alt="assembledfaces-logo" /></a>
                     {/* made using fontmeme.com/avengers-font */}
                     <Login />
                 </div>
