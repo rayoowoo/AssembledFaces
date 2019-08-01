@@ -8,4 +8,4 @@
 
 User.destroy_all
 
-tony = User.create(email: "tonystark@gmail.com", password:"tonystark", birth_date: "4/17/1965", gender: "Male", first_name: "Tony", last_name:"Stark")
+tony = User.create!(email: "tonystark@gmail.com", password:"tonystark", birth_date: Date.parse("17/4/1965"), gender: "Male", first_name: "Tony", last_name:"Stark", location: "New York", workplace: "Avengers", education: "MIT", current_city: "New York", hometown: "Manhattan", bio: "I am Iron Man.")

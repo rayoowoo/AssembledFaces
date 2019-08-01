@@ -11,6 +11,13 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  gender          :string           not null
+#  location        :string
+#  workplace       :string
+#  education       :string
+#  current_city    :string
+#  hometown        :string
+#  bio             :text
 #
 
 class User < ApplicationRecord
@@ -20,6 +27,20 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
     attr_reader :password
+
+    #authored posts are posts that this user has authored (whether on the user's own or another user's timeline)
+    has_many :authored_posts,
+        foreign_key: :author_id,
+        class_name: :Post
+
+    #timeline posts are all the posts that this user or other users have posted on this user's timeline
+    has_many :timeline_posts,
+        foreign_key: :user_id,
+        class_name: :Post
+
+    has_many :authored_comments,
+        foreign_key: :author_id,
+        class_name: :Comment
 
     def self.find_by_credentials(email, password) 
         user = User.find_by(email: email)

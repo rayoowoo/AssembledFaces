@@ -29,7 +29,7 @@ class SignupForm extends React.Component {
     }
 
     updateBirthday({month, date, year}) {
-        const birthday = month + "/" + date + "/" + year;
+        let birthday =  date + "/" + month + "/" + year;
         this.setState({birth_date: birthday})
     }
 

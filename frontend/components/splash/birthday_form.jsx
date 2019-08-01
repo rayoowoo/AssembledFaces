@@ -18,7 +18,7 @@ class BirthdayForm extends React.Component {
 
     componentDidUpdate(prevProps) {
         const { month, date, year } = this.state;
-        const birthday = month + "/" + date + "/" + year;
+        const birthday = date + "/" + month + "/" + year;
         if (prevProps.birthDate !== birthday) {
             this.props.updateBirthday(this.state)
         }
