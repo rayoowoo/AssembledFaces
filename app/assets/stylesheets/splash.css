@@ -204,7 +204,7 @@
     top: 12.5px;
 }
 
-.signup-name i, .signup-email-password i {
+.signup-name i, .signup-email-password i, .custom-gender-content i {
     visibility: hidden;
     position: absolute;
     color: rgb(168, 110, 158);
@@ -374,9 +374,9 @@
     margin-left: 6px;
 }
 
-#custom-gender-content {
+.custom-gender-content {
     margin-top: 15px;
-    display: none;
+    display: none; 
     position: relative;
 }
 
@@ -390,7 +390,7 @@
     width: 99.5%;
 }
 
-#custom-gender-content p {
+.custom-gender-content p {
     color: rgb(87, 86, 86);
     font-size: 11px;
     margin-top: 5px;
@@ -398,7 +398,7 @@
 }
 
 
-#custom-gender-content input {
+.custom-gender-content input {
     width: 95.5%;
     margin-bottom: -30px;
 }
@@ -421,22 +421,45 @@
 
 #gender-invalid .error-arrow-right {
     left: 155px;
+    top: 6.5px;
 }
 
 #gender-invalid .error-arrow-shadow {
     left: 160.9px;
-    top: 10px;
+    top: 12px;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
     border-left: 9px solid rgb(70, 0, 0);
 }
 
-.custom-gender-select.check:focus:invalid ~ #gender-invalid {
-    visibility: visible;
+.custom-gender-select + i {
+    visibility: hidden;
+    position: absolute;
+    color: rgb(168, 110, 158);
+    z-index: 1;
+    font-size: 20px;
+    left: 90%;
+    top: 4px;
 }
 
 
-#custom-gender-option:checked ~ #custom-gender-content {
+.custom-gender-select.check:focus ~ #gender-invalid {
+    visibility: visible;
+}
+
+.custom-gender-select.touched:not(:focus) + i {
+    visibility: visible;
+}
+
+.custom-gender-select.touched:focus {
+    border: 1px solid rgb(224, 96, 96);
+}
+
+.custom-gender-select.touched:not(:focus) {
+    border: 1px solid rgb(70, 0, 0);
+}
+
+#custom-gender-option:checked ~ .custom-gender-content {
     display: block;
 }
 

@@ -155,7 +155,7 @@ class SignupForm extends React.Component {
                 </div>
                         
                 <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>
-                <GenderForm update={this.update} touch={this.touch}/> 
+                <GenderForm update={this.update}/> 
 
                 <p id="disclaimer">
                         By clicking Sign Up, you agree to our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Terms</a>,
