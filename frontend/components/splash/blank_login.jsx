@@ -70,7 +70,7 @@ class BlankLogin extends React.Component {
         return (
             <div className="splash-login-container">
                 <button id="blank-login-newacct" onClick={(e) => this.props.history.push("/")} className="demo login-input-btn">Create New Account</button>
-                <h2>Log Into AssembledPages</h2>
+                <h2>Log Into AssembledFaces</h2>
                 <form onInvalid={this.nobubble} className="splash-login-form">
                     <span className="login-input-container"><input ref="input1" className="text-input login-input" type="email"
                         onChange={this.update("email")}

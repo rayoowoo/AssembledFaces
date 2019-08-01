@@ -17,24 +17,29 @@ class LoginForm extends React.Component {
         }
     }
 
+    componentWillReceiveProps() {
+        this.props.history.push("/login");
+        this.props.clearSessionErrors();
+    }
+
+
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.email === "" && this.state.password === "") {
             this.props.history.push("/login")
             return
         }
-        if (this.state.email !== "" && this.state.password === "") {
-            this.props.history.push("/recover/nopassword")
-            return
-        }
         if (this.state.email === "" && this.state.password !== "") {
             this.props.history.push("/recover")
             return
         }
-        this.props.login(this.state);
-        this.setState({
-            email: "",
-            password: "",}).catch(errors => this.props.history.push("/login"))
+        this.props.login(this.state).then(() => {
+             this.setState({
+                email: "",
+                password: ""
+            })
+        })
+           
     }
 
 
