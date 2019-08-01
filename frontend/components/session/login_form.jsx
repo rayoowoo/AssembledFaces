@@ -17,9 +17,10 @@ class LoginForm extends React.Component {
         }
     }
 
-    componentWillReceiveProps() {
-        this.props.history.push("/login");
-        this.props.clearSessionErrors();
+    componentDidUpdate() {
+        if (this.props.errors.length !== 0)  {
+            this.props.history.push("/login");
+        }
     }
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
 
 class BlankLogin extends React.Component {
     constructor(props) {
@@ -14,6 +14,10 @@ class BlankLogin extends React.Component {
         this.update = this.update.bind(this);
         this.nobubble = this.nobubble.bind(this);
 
+    }
+
+    componentDidUpdate() {
+        this.props.clearSessionErrors();
     }
 
     update(field) {
@@ -113,4 +117,9 @@ class BlankLogin extends React.Component {
     }
 }
 
-export default BlankLogin
+const mdp = dispatch => ({
+    clearSessionErrors: () => dispatch(clearSessionErrors())
+})
+
+
+export default connect(null, mdp)(BlankLogin)
