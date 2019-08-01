@@ -33,7 +33,6 @@ class GenderForm extends React.Component {
     }
 
     clearPronoun(e) {
-        debugger
         e.preventDefault();
         e.currentTarget.classList.remove("check", "touched")
     }

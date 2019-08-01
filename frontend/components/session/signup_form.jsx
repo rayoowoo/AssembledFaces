@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
         let firstInvalid = null;
         let inputs = Object.values(this.refs).slice(0, 4);
         let others = Object.values(this.refs.gender.refs).slice(0,3);
-        debugger
+        
         Object.values(this.refs.gender.refs).slice(0,3).forEach (other => {
             if (other.children[0].checkValidity()) {
                 others = [];
