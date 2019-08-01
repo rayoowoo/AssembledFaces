@@ -1,0 +1,5 @@
+thanos purple: rgb(109, 64, 100)
+
+font red: rgb(224, 96, 96)
+
+bubble purple: rgb(168, 110, 158);

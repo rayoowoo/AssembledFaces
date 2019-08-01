@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 import Login from '../session/login_form_container'
 
 class NavBar extends React.Component {
@@ -13,7 +13,10 @@ class NavBar extends React.Component {
                 <div className="navbar">
                     <a href="/"><img src="https://fontmeme.com/permalink/190730/63d32f6b2626b181df5c8eb9ec502934.png" alt="assembledfaces-logo" /></a>
                     {/* made using fontmeme.com/avengers-font */}
-                    <Login />
+                    <Switch>
+                        <Route path="/login" render={null}/>
+                        <Route path="/" component={Login}/>
+                    </Switch>
                 </div>
             </header>
         )

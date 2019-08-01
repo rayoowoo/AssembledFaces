@@ -9,6 +9,7 @@ const App = ({store}) => {
             <NavBar />
             {/* <AuthRoute exact path="/" component={Splash} /> */}
             <Splash />
+
         </>
     )
 }

@@ -19,11 +19,24 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if (this.state.email === "" && this.state.password === "") {
+            this.props.history.push("/login")
+            return
+        }
+        if (this.state.email !== "" && this.state.password === "") {
+            this.props.history.push("/recover/nopassword")
+            return
+        }
+        if (this.state.email === "" && this.state.password !== "") {
+            this.props.history.push("/recover")
+            return
+        }
         this.props.login(this.state);
         this.setState({
             email: "",
-            password: "",})
+            password: "",}).catch(errors => this.props.history.push("/login"))
     }
+
 
     render() {
 
@@ -34,7 +47,8 @@ class LoginForm extends React.Component {
             </label>
                 <label><span className="baseform">Password</span>
                 <input type="password" onChange={this.update("password")} value={this.state.password}/>
-                <a href="https://www.youtube.com/watch?v=K_8SBYQ4SI0" target="_blank">Forgot account?</a>
+                    {/* <a href="https://www.youtube.com/watch?v=K_8SBYQ4SI0" target="_blank">Forgot account?</a> */}
+                <a onClick={e => this.props.history.push("/recover")} target="_blank">Forgot account?</a>
             </label>
             <input type="submit" value="Log In"/>
         </form>
