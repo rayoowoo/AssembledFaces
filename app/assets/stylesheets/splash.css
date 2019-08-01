@@ -464,7 +464,7 @@
     border: 1px solid rgb(70, 0, 0);
 }
 
-#custom-gender-option:checked ~ .custom-gender-content {
+.display-block {
     display: block;
 }
 

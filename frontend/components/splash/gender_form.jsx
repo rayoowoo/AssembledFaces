@@ -23,8 +23,12 @@ class GenderForm extends React.Component {
         e.preventDefault();
         Object.values(this.refs).slice(0,3).forEach (ref => {
             ref.classList.remove("check", "touched");
-
         })
+        if (e.target.value === "Custom") {
+            this.refs.customGender.classList.add("display-block")
+        } else {
+            this.refs.customGender.classList.remove("display-block");
+        }
     }
 
     handleBlur(e) {
@@ -67,7 +71,7 @@ class GenderForm extends React.Component {
                         </div>
 
                     {/* THIS IS THE CUSTOM GENDER TOOLTIP */}
-                    <section className="custom-gender-content">
+                    <section ref="customGender" className="custom-gender-content">
                         <select onChange={this.props.update("gender")} onBlur={this.handleBlur} onSelect={this.clear} className="custom-gender-select" >
                             <option selected disabled value="DEFAULT">Select your pronoun</option>
                             <option value="She">She: "Wish her a happy birthday!"</option>
