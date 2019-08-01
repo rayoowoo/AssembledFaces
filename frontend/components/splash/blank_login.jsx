@@ -31,7 +31,6 @@ class BlankLogin extends React.Component {
         let stop = false;
         let firstInvalid = null;
         let inputs = Object.values(this.refs);
-        debugger
         inputs.forEach((input) => {
             input.classList.add("touched", "checked");
             if (!input.checkValidity()) {
