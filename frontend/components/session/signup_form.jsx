@@ -72,8 +72,7 @@ class SignupForm extends React.Component {
                 }))
         }
     }
-
-
+    
     demo(e) {
         e.preventDefault();
         this.props.login({email: "tonystark@gmail.com", password: "tonystark"})

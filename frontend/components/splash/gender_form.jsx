@@ -7,6 +7,7 @@ class GenderForm extends React.Component {
         this.handleHover = this.handleHover.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.clear = this.clear.bind(this);
+        this.clearPronoun = this.clearPronoun.bind(this);
     }
 
     handleClick(e) {
@@ -29,6 +30,12 @@ class GenderForm extends React.Component {
         } else {
             this.refs.customGender.classList.remove("display-block");
         }
+    }
+
+    clearPronoun(e) {
+        debugger
+        e.preventDefault();
+        e.currentTarget.classList.remove("check", "touched")
     }
 
     handleBlur(e) {
@@ -72,7 +79,7 @@ class GenderForm extends React.Component {
 
                     {/* THIS IS THE CUSTOM GENDER TOOLTIP */}
                     <section ref="customGender" className="custom-gender-content">
-                        <select onChange={this.props.update("gender")} onBlur={this.handleBlur} onSelect={this.clear} className="custom-gender-select" >
+                        <select onChange={this.props.update("gender")} onBlur={this.handleBlur} onChange={this.clearPronoun} className="custom-gender-select" >
                             <option selected disabled value="DEFAULT">Select your pronoun</option>
                             <option value="She">She: "Wish her a happy birthday!"</option>
                             <option value="He">He: "Wish him a happy birthday!"</option>
