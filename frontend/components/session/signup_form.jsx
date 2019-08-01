@@ -58,6 +58,7 @@ class SignupForm extends React.Component {
                     firstInvalid = firstInvalid === null ? input : firstInvalid;
                     return
                 }
+                return
             }
 
             input.classList.add("touched", "checked")
