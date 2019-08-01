@@ -209,7 +209,7 @@ class BirthdayForm extends React.Component {
                     
                     <i className="fas fa-question-circle signup-question"></i>
                     <span className="signup-question-text"><div className="arrow-right"></div><p><strong>Providing your birthday</strong> helps make sure you get the right 
-                            Facebook experience for your age. If you want to change who 
+                            AssembledFaces experience for your age. If you want to change who 
                             sees this, go to the About section of your profile. 
                         For more details, please visit our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Data Policy</a>.</p>
                     <button>Close</button>

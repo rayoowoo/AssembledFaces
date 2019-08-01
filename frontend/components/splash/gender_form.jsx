@@ -59,7 +59,7 @@ class GenderForm extends React.Component {
 
 
                         <p>Your pronoun is visible to everyone.</p>
-                        <input type="text" className="text-input" onChange={this.props.update("gender")} placeholder="Gender (optional)" />
+                        <input type="text" className="text-input" onChange={this.props.update("gender")} placeholder="Enter your gender (optional)" />
                     </section>
 
                     </label>

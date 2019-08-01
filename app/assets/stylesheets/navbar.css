@@ -6,10 +6,10 @@
 
 .navbar {
     display: flex;
-    width: 880px;
+    width: 1000px;
     margin: 0 auto;
     color: white;
-    height: 75px;
+    height: 84px;
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;
@@ -29,19 +29,19 @@
 .navbar input[type="text"], .navbar input[type="password"] {
     background-color: white;
     margin-right: 15px;
-    padding: 3px;
+    padding: 4px 10px;
     border: 1px rgb(70, 0, 0) solid;
     margin-top: 2px;
 }
 
 .navbar label:first-of-type {
-    margin-top: -15px;
+    margin-top: -20px;
 }
 
 .navbar a {
     color: rgb(224, 96, 96);
-    margin-top: 4px;
-    font: 11px;
+    margin-top: 6px;
+    font-size: 12px;
 }
 
 .navbar a:hover {
@@ -52,16 +52,16 @@
 .navbar label {
     display: flex;
     flex-direction: column;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .navbar input[type="submit"] {
     color: white;
     border: 1px rgb(70, 0, 0) solid;
     background-color: rgb(189, 62, 62);
-    font-size: 10px;
-    padding: 3px 4px;
-    margin-top: -1px;
+    font-size: 12px;
+    padding: 3px 6px 4px 6px;
+    margin-top: -5px;
     font-weight: 700;
     letter-spacing: 0.25px;
 }

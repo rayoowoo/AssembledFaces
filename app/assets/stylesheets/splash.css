@@ -4,7 +4,7 @@
 }
 
 .splash-content {
-    width: 880px;
+    width: 1000px;
     margin: 0 auto;
     display: flex;
     font-family: Open Sans;
@@ -24,35 +24,36 @@
 /* CSS for the aside */
 
 .splash aside {
-    margin: 50px 0px 0px 0px;
+    margin: 60px 0px 0px 0px;
     flex: 5;
 }
 
 .splash aside h2 {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
-    margin-bottom: 20px;
-    line-height: 1.3;
+    margin-bottom: 18px;
+    line-height: 1.5;
+    width: 87%;
 }
 
 .splash li {
     padding: 20px 0px;
     color: rgb(116, 116, 116);
-    font-size: 13px;
+    font-size: 15px;
     display: flex;
     align-items: center;
 }
 
 .splash aside i {
-    font-size: 35px;
+    font-size: 40px;
     color: rgb(224, 96, 96)
 }
 
 .splash aside li strong {
     font-weight: 600;
     color: black;
-    font-size: 15px;
-    margin-left: 20px;
+    font-size: 17px;
+    margin-left: 25px;
 }
 
 /* /////////////////////////////////////////////////////////////////// */
@@ -60,8 +61,7 @@
 /* CSS for the signup form */
 
 .splash-section {
-    /* margin: 30px; */
-    flex: 3.2;
+    flex: 3.5;
 }
 
 .splash-section {
@@ -70,12 +70,12 @@
 }
 
 .splash-section h1 {
-    font-size: 33px;
+    font-size: 36px;
     font-weight: 600;
 }
 
 .signup-quip {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 1;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .signup-name:last-of-type {
-    margin-left: 25px
+    margin-left: 30px
 }
 
 .signup-main {
@@ -103,7 +103,7 @@
 
 
 .splash form {
-    margin-top: 20px;
+    margin-top: 18px;
     width: 100%;
 }
 
@@ -112,8 +112,8 @@
 }
 
 .text-input {
-    padding: 5px 5px 5px 10px;
-    font-size: 16px;
+    padding: 6px 5px 6px 10px;
+    font-size: 18px;
     border: 1px solid rgb(224, 96, 96);
     border-radius: 3px;
     background-color: white;
@@ -127,13 +127,14 @@
     border: rgb(117, 81, 111) 1px solid;
     box-shadow: -0.5px 0px 10px rgb(218, 186, 186);
     z-index: 2;
-    width: 110px;
-    left: -147px;
+    width: 115px;
+    left: -157px;
     top: 2px;
-    padding: 11px;
-    font-size: 11px;
+    padding: 12px;
+    font-size: 12px;
     color: white;
     text-align: center;
+    border-radius: 2px;
 }
 
 .text-input.touched:not(:focus):invalid {
@@ -156,55 +157,59 @@
     border-left: 15px solid rgb(168, 110, 158);
     position: absolute;
     z-index: 2;
-    left: 125px;
-    top: 4px;
+    left: 135px;
+    top: 8px;
 }
 
 .error-arrow-shadow {
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid rgb(70, 0, 0);
-    left: 132.9px;
-    top: 11px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid rgb(70, 0, 0);
+    left: 140.1px;
+    top: 13px;
     z-index: 1;
 }
 
 #email-invalid {
     top: -8px;
-    left: -310px;
-    width: 270px;
+    left: -350px;
+    width: 310px;
     text-align: left;
 }
 
 #email-invalid .error-arrow-right {
-    left: 286px;
+    left: 330px;
+    top: 4px;
 }
 
 #email-invalid .error-arrow-shadow {
-    left: 293.9px;
+    left: 335px;
+    top: 10px;
 }
 
 #password-invalid {
-    top: -8px;
-    left: -310px;
-    width: 270px;
+    top: -12px;
+    left: -330px;
+    width: 290px;
     text-align: left;
 }
 
 #password-invalid .error-arrow-right {
-    left: 286px;
+    left: 310px;
+    top: 6px;
 }
 
 #password-invalid .error-arrow-shadow {
-    left: 293.9px;
+    left: 315px;
+    top: 12.5px;
 }
 
 .signup-name i, .signup-email-password i {
-    visibility: hidden;
+    visibility: visible;
     position: absolute;
     color: rgb(168, 110, 158);
     z-index: 1;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .text-input.touched:not(:focus):invalid ~ i {
@@ -212,18 +217,18 @@
 }
 
 .signup-name i {
-    top: 12px;
-    left: 138px;
+    top: 27%;
+    left: 93%;
 }
 
 .signup-email-password i {
-    top: 1px;
-    left: 313px;
+    top: -0.5px;
+    left: 93%;
 }
 
 .splash-section h3 {
     color: rgb(116, 116, 116);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     padding-bottom: 5px;
 }
@@ -233,30 +238,33 @@
 /* CSS for the BIRTHDAY AND GENDER PORTION of the signup form */
 
 .splash-section .birthday, .gender-form {
-    margin: 10px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
 }
 
 .gender-form h3 {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .splash-section .birthday select {
     background-color: white;
-    margin-right: 0.2px;
+    margin-right: 0.3px;
     font-family: Helvetica;
-    padding: 4px 8px;
-    font-size: 11px;
+    padding: 7px 15px 7px 7px;
+    font-size: 12px;
     border: 1px solid rgb(224, 96, 96);
 }
 
 .signup-question {
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
-.signup-question,
-.gender-question {
+.signup-question {
     color: rgb(224, 96, 96);
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.gender-form .signup-question {
+    margin-left: 24px;
 }
 
 .signup-question-container {
@@ -274,7 +282,7 @@
     left: -323px;
     top: -15px;
     padding: 10px;
-    font-size: 11px;
+    font-size: 12px;
     border: 0.5px rgb(245, 216, 216) solid;
     border-radius: 2px;
     box-shadow: -0.5px 0px 10px rgb(218, 186, 186);
@@ -307,7 +315,7 @@
 }
 
 .signup-question-text p {
-    padding-bottom: 20px;
+    padding-bottom: 22px;
     border-bottom: 1px rgb(214, 214, 214) solid;
 }
 
@@ -315,14 +323,14 @@
     color: white;
     border: 1px rgb(70, 0, 0) solid;
     background-color: rgb(189, 62, 62);
-    font-size: 10px;
-    padding: 3px 4px;
+    font-size: 12px;
+    padding: 4px 8px;
     margin-top: 10px;
     font-weight: 700;
     letter-spacing: 0.25px;
     position: relative;
-    left: 264px;
-    border-radius: 1px;
+    left: 250px;
+    border-radius: 2px;
 }
 
 .signup-question-text button:hover {
@@ -333,9 +341,13 @@
     cursor: pointer;
 }
 
+.gender-form {
+    margin-top: 15px;
+}
+
 .splash-section .gender-form label {
     margin-right: 18px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .gender-form span {
@@ -352,11 +364,10 @@
 }
 
 .gender-form button {
-    left: 244px;
+    left: 232px;
 }
 
 .splash-section .gender-form input[type=radio] {
-    -webkit-transform: scale(0.85);
     vertical-align: text-top;
     margin-top: 2px;
     margin-left: 6px;
@@ -372,22 +383,23 @@
     background-color: white;
     margin-right: 0.2px;
     font-family: Helvetica;
-    padding: 5px 8px 5px 3px;
-    font-size: 11px;
+    padding: 8px 8px 8px 3px;
+    font-size: 12px;
     border: 1px solid rgb(224, 96, 96);
-    width: 100%;
+    width: 99.5%;
 }
 
 #custom-gender-content p {
     color: rgb(87, 86, 86);
-    font-size: 9px;
+    font-size: 11px;
     margin-top: 5px;
+    margin-bottom: 6px;
 }
 
 
 #custom-gender-content input {
-    width: 96%;
-    margin-bottom: -20px;
+    width: 95.5%;
+    margin-bottom: -30px;
 }
 
 #gender-invalid {
@@ -433,11 +445,11 @@
 /* CSS for the DISCLAIMER PORTION of the signup form */
 
 #disclaimer {
-    font-size: 9px;
+    font-size: 10px;
     color: rgb(116, 116, 116);
     display: inline-block;
     width: 85%;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 /* CSS for the BUTTONS PORTION of the signup form */
@@ -445,9 +457,10 @@
 .signup-submit-btn {
     margin: 20px 0px 10px 0px;
     color: white;
-    padding: 6px 60px;
+    padding: 8px 65px;
     background-image: linear-gradient(rgb(168, 110, 158),rgb(109, 64, 100));
     border-radius: 4px;
+    font-size: 17.5px;
     font-weight: 800;
     text-shadow: 0.5px 0.5px rgb(31, 19, 29);
     border: rgb(31, 19, 29) 1px solid;
@@ -470,9 +483,10 @@
 
 .demo {
     color: white;
-    padding: 6px 44px;
+    padding: 8px 49px;
     background-image: linear-gradient( rgb(224, 96, 96), rgb(139, 59, 59));
     border-radius: 4px;
+    font-size: 17.5px;
     font-weight: 800;
     text-shadow: 0.5px 0.5px rgb(31, 19, 29);
     border: rgb(31, 19, 29) 1px solid;
