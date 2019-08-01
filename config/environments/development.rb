@@ -61,4 +61,7 @@ Rails.application.configure do
 
   # guard livereload
   config.middleware.insert_before Rack::Runtime, Rack::LiveReload
+
+  # config/environments/development.rb
+  config.active_storage.service = :amazon_dev
 end
