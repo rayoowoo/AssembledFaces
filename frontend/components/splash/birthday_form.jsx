@@ -5,6 +5,7 @@ class BirthdayForm extends React.Component {
         super(props);
         this.updateBirthday = this.updateBirthday.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleHover = this.handleHover.bind(this);
         this.state = { month: "1", date: "1", year: "1901"};
     }
 
@@ -25,12 +26,17 @@ class BirthdayForm extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        this.refs.popup.classList.add("close")
     }
 
+    handleHover(e) {
+        e.preventDefault();
+        this.refs.popup.classList.remove("close")
+    }
 
     render() { 
         return(
-            <div className = "birthday" >
+            <div className="birthday" >
                 <h3>Birthday</h3>
                 <select onChange={this.updateBirthday("month")} className="month-select" >
                     <option value="1">Jan</option>
@@ -205,10 +211,10 @@ class BirthdayForm extends React.Component {
                     <option value="2019">2019</option>
                 </select>
 
-                <div onClick={this.handleClick} className="signup-question-container">
+                <div className="signup-question-container">
                     
-                    <i className="fas fa-question-circle signup-question"></i>
-                    <span className="signup-question-text"><div className="arrow-right"></div><p><strong>Providing your birthday</strong> helps make sure you get the right 
+                    <i onMouseOver={this.handleHover} className="fas fa-question-circle signup-question"></i>
+                    <span onClick={this.handleClick} ref="popup" className="signup-question-text"><div className="arrow-right"></div><p><strong>Providing your birthday</strong> helps make sure you get the right 
                             AssembledFaces experience for your age. If you want to change who 
                             sees this, go to the About section of your profile. 
                         For more details, please visit our <a href="https://marvelcinematicuniverse.fandom.com/wiki/Sokovia_Accords" target="_blank">Data Policy</a>.</p>

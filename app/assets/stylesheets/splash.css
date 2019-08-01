@@ -453,8 +453,6 @@
     margin-top: 10px;
 }
 
-/* CSS for the BUTTONS PORTION of the signup form */
-
 .signup-submit-btn {
     margin: 20px 0px 10px 0px;
     color: white;
@@ -499,6 +497,12 @@
 .demo:hover {
     background-image: linear-gradient( rgb(230, 130, 130), rgb(139, 59, 59));
     cursor: pointer;
+}
+
+/* CSS for the (?) ICONS CLOSE BUTTON of the signup form */
+
+.close {
+    display: none;
 }
 
 

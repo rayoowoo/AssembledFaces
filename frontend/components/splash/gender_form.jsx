@@ -4,18 +4,18 @@ class GenderForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.handleHover = this.handleHover.bind(this);
     }
 
     handleClick(e) {
         e.preventDefault();
+        this.refs.popup.classList.add("close")
     }
 
-
-    // handleSelect(e) {
-    //     e.preventDefault();
-    //     this.props.update("gender")(e);
-    //     this.props.touch(e);
-    // }
+    handleHover(e) {
+        e.preventDefault();
+        this.refs.popup.classList.remove("close")
+    }
 
     render() {
         return (
@@ -34,8 +34,8 @@ class GenderForm extends React.Component {
                         <span>Custom</span>
 
                         <div className="signup-question-container">
-                        <i className="fas fa-question-circle signup-question"></i>
-                        <span className="signup-question-text"><div className="arrow-right"></div><div className="arrow-right-shadow"></div>
+                        <i onMouseOver={this.handleHover} className="fas fa-question-circle signup-question"></i>
+                        <span onClick={this.handleClick} ref="popup" className="signup-question-text"><div className="arrow-right"></div><div className="arrow-right-shadow"></div>
                             <p>You can change who sees your gender on your profile later.
                         Select Custom to choose another gender, or if you'd rather not say.</p>
                             <button onClick={this.handleClick}>Close</button>
@@ -44,7 +44,7 @@ class GenderForm extends React.Component {
 
                     <section id="custom-gender-content">
                         <select onChange={this.props.update("gender")} onMouseUp={this.props.touch} className="custom-gender-select" >
-                            <option selected={true} disabled value="">Select your pronoun</option>
+                            <option selected disabled value="">Select your pronoun</option>
                             <option value="She">She: "Wish her a happy birthday!"</option>
                             <option value="He">He: "Wish him a happy birthday!"</option>
                             <option value="They">They: "Wish them a happy birthday!"</option>

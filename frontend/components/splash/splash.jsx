@@ -23,8 +23,8 @@ const Splash = (props) => {
                     </section>    
                 </div>
             </section>
-            <section class="footer">GITHUB       LINKEDIN       EMAIL</section>
-            <section class="citation">Inspired by Facebook and Marvel Studios</section>
+            <section className="footer">GITHUB       LINKEDIN       EMAIL</section>
+            <section className="citation">Inspired by Facebook and Marvel Studios</section>
 
         </>
     )
