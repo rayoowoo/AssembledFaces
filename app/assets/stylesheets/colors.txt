@@ -1,11 +1,23 @@
-thanos purple: rgb(109, 64, 100)
+thanos purple:
+    (109, 64, 100)
 
-font red: rgb(224, 96, 96)
+font red:
+    (224, 96, 96)
 
-darker red:  rgb(136, 54, 54)
+darker red: 
+    (136, 54, 54)
 
-bubble purple: rgb(168, 110, 158);
+darkest red:
+    (70, 0, 0)
 
-gray: rgb(219, 219, 219);
+bubble purple:
+    (168, 110, 158);
 
-dark gray: rgb(114, 114, 114)
+lighter gray:
+    (219, 219, 219);
+
+light gray:
+    (200, 200, 200);
+
+dark gray:
+    (114, 114, 114)

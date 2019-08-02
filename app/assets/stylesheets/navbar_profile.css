@@ -9,7 +9,7 @@
     width: 1000px;
     margin: 0 auto;
     color: white;
-    height: 47px;
+    height: 44px;
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;
@@ -23,7 +23,7 @@
 } */
 
 .profile-icon img {
-    width: 24px;
+    width: 20px;
     margin-top: 5px;
     padding: 0px 3.25px;
     margin-bottom: -5px;
@@ -34,48 +34,116 @@
     border-radius: 3px;
 }
 
+.profile-search form {
+    display: flex;
+    height: 28px;
+}
+
 
 .profile-search input[type="text"] {
     background-color: white;
-    margin-right: 15px;
-    padding: 4px 10px;
-    border: 1px rgb(70, 0, 0) solid;
-    margin-top: 2px;
+    border-top: 1px rgb(70, 0, 0) solid;
+    border-bottom: 1px rgb(70, 0, 0) solid;
+    border-left: 1px rgb(70, 0, 0) solid;
+    width: 400px;
+    border-radius: 2px;
+    font-size: 14px;
+    margin-left: -86px;
+    padding: 0px 0px 2px 5px;
 }
 
-/* .profile-navbar label:first-of-type {
-    margin-top: -20px;
-} */
-
-.profile-navbar a {
-    color: rgb(224, 96, 96);
-    margin-top: 6px;
-    font-size: 12px;
+.profile-search button {
+    color: rgb(136, 54, 54);
+    background-color: rgb(219, 219, 219);
+    border-top: 1px rgb(70, 0, 0) solid;
+    border-bottom: 1px rgb(70, 0, 0) solid;
+    border-right: 1px rgb(70, 0, 0) solid;
+    border-radius: 2px;
+    padding: 1px 17px;
+    font-size: 14px;
+    margin-left: -2px;
 }
 
-.profile-navbar a:hover {
-    text-decoration: underline;
+.profile-search button:hover {
     cursor: pointer;
+    background-color: rgb(200, 200, 200);
 }
 
-.profile-navbar label {
+.profile-nav nav {
     display: flex;
-    flex-direction: column;
-    font-size: 12px;
 }
 
-.profile-navbar input[type="submit"] {
+.profile-icon a:hover {
+    cursor: pointer;
+    background-color: rgb(104, 12, 12);
+}
+
+.profile-nav-links {
     color: white;
-    border: 1px rgb(70, 0, 0) solid;
-    background-color: rgb(189, 62, 62);
     font-size: 12px;
-    padding: 3px 6px 4px 6px;
-    margin-top: -5px;
-    font-weight: 700;
-    letter-spacing: 0.25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
-.profile-navbar input[type="submit"]:hover {
-    background-color: transparent;
+.profile-nav-links div {
+    height: 20px;
+    margin-top: 5px;
+    border-right: 1px solid rgb(98, 0, 0);
+}
+
+.profile-nav-links a {
+    padding: 4px 15px;
+}
+
+.profile-nav-links a:hover {
+    cursor: pointer;
+    background-color: rgb(119, 15, 15);
+    border-radius: 2px;
+}
+
+.profile-nav-icons {
+    border-right: 1px solid rgb(98, 0, 0);
+    padding-right: 5px;
+    padding-left: 5px;
+    height: 20px;
+}
+
+.profile-nav-icons,
+.profile-nav-help {
+    color: rgb(70, 0, 0);
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.profile-nav-icons i,
+.profile-nav-help i {
+    padding: 0px 11px;
+}
+
+.profile-nav-help {
+    margin-left: 5px;
+}
+
+.profile-nav-icons i:hover,
+.profile-nav-help i:hover {
+    color: rgb(37, 1, 1);
     cursor: pointer;
 }
+
+/* edit this later if dropdowns ever come in. it'll become a toggled class rather than a pseudoselector. */
+.profile-nav-icons i:focus,
+.profile-nav-help i:focus {
+    color: rgb(255, 255, 255);
+}
+
+.profile-nav-icons i:focus:hover,
+.profile-nav-help i:focus:hover {
+    color: rgb(255, 255, 255);
+}
+
+
+/* .profile-nav-help {
+
+} */

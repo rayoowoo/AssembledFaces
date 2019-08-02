@@ -15,16 +15,16 @@ class ProfileNavBar extends React.Component {
                     {/* made using fontmeme.com/avengers-font */}
                     <div className="profile-search">
                         <form>
-                            <input type="text"/>
-                            <button>SEARCH</button>
+                            <input type="text" placeholder="Search"/>
+                            <button><i className="fas fa-search"></i></button>
                         </form>
                     </div>
 
                     <nav>
-                        <div className="profile-nav-icons">
-                            <a onClick={e => this.props.history.push(`/user/${this.props.currentUser.id}`)}>Name</a>
-                            <a onClick={e => this.props.history.push("/")}>Home</a>
-                            <a onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} }>Create</a>
+                        <div className="profile-nav-links">
+                            <div><a onClick={e => this.props.history.push(`/user/${this.props.currentUser.id}`)}>Name</a></div>
+                            <div><a onClick={e => this.props.history.push("/")}>Home</a></div>
+                            <div><a onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} }>Create</a></div>
                         </div>
 
 
@@ -33,9 +33,10 @@ class ProfileNavBar extends React.Component {
                             <i className="fas fa-comment"></i>
                             <i className="fas fa-bell"></i>
                         </div>
-
+                    <div className="profile-nav-help">
                         <i className="fas fa-question-circle"></i>
                         <i className="fas fa-caret-down"></i>
+                    </div>
 
                     </nav>
                 </div>

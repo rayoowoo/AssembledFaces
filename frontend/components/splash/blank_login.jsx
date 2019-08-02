@@ -57,11 +57,7 @@ class BlankLogin extends React.Component {
             return
         }
         else {
-            this.props.login(this.state).then(
-                this.setState({
-                    email: "",
-                    password: "",
-                }))
+            this.props.login(this.state)
         }
     }
 
