@@ -2,6 +2,8 @@ thanos purple: rgb(109, 64, 100)
 
 font red: rgb(224, 96, 96)
 
+darker red:  rgb(136, 54, 54)
+
 bubble purple: rgb(168, 110, 158);
 
 gray: rgb(219, 219, 219);

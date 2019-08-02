@@ -18,6 +18,19 @@ class BlankLogin extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.errors.includes("wrong password")) {
+            const passwordField = this.refs.input2;
+            passwordField.classList.add("touched","check")
+            this.setState({email: this.props.errors[1].attempted_email})
+            passwordField.focus();
+            passwordField.click();
+        }
+        if (this.props.errors.includes("email address was not found")) {
+            const emailField = this.refs.input1;
+            emailField.classList.add("touched", "check");
+            emailField.focus();
+            emailField.click();
+        }
         this.props.clearSessionErrors();
     }
 
@@ -116,10 +129,14 @@ class BlankLogin extends React.Component {
     }
 }
 
+const msp = state => ({
+    errors: state.errors.session
+})
+
 const mdp = dispatch => ({
     clearSessionErrors: () => dispatch(clearSessionErrors()),
     login: user => dispatch(login(user))
 })
 
 
-export default connect(null, mdp)(BlankLogin)
+export default connect(msp, mdp)(BlankLogin)

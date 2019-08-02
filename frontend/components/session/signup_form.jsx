@@ -115,7 +115,8 @@ class SignupForm extends React.Component {
     }
 
     render() {
-
+        let emailErrorMessage = "You'll use this when you log in and if you ever need to reset your password.";
+        if (this.state.email !== "") { emailErrorMessage = "Please enter a valid mobile number or email address."} 
         return (
             <>
             <form onInvalid={this.nobubble}>
@@ -157,8 +158,8 @@ class SignupForm extends React.Component {
                         onInput={this.clear}
                         onClick={this.touch}
                         placeholder="Email address"/>
-                            <div id="signup--email-invalid">
-                                You'll use this when you log in and if you ever need to reset your password.
+                            <div id="signup-email-invalid">
+                                {emailErrorMessage}
                                 <div className="error-arrow-right"></div>
                                 <div className="error-arrow-right error-arrow-shadow"></div>
                             </div>
@@ -173,7 +174,7 @@ class SignupForm extends React.Component {
                         onInput={this.clear}
                         onClick={this.touch}
                         placeholder="New password"/>
-                            <div id="signup--password-invalid">
+                            <div id="signup-password-invalid">
                                 {`Enter a password of at least six numbers, letters, and punctuation marks (like ! and &).`}
                                 <div className="error-arrow-right"></div>
                                 <div className="error-arrow-right error-arrow-shadow"></div>

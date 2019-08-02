@@ -28,7 +28,7 @@
     visibility: hidden;
     position: absolute;
     font-size: 20px;
-    color: rgb(168, 110, 158);
+    color: rgb(224, 96, 96);
     top: -42px;
     left: 330px;
 }
@@ -76,7 +76,7 @@
     height: 0;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
-    border-right: 15px solid rgb(168, 110, 158);;
+    border-right: 15px solid rgb(224, 96, 96);;
     position: absolute;
     z-index: 1;
     left: 312px;

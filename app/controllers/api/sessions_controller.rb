@@ -8,7 +8,12 @@ class Api::SessionsController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: ["invalid email or password"], status: 401
+            attempted_user = User.find_by(email: params[:user][:email])
+            if attempted_user
+                render json: ["wrong password", {attempted_email: params[:user][:email]}], status: 401
+            else
+                render json: ["email address was not found"], status: 404
+            end
         end
     end
 
