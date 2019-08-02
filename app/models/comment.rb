@@ -26,5 +26,5 @@ class Comment < ApplicationRecord
         class_name: :Comment,
         dependent: :destroy
 
-    has_one_attached :photo
+    # has_one_attached :photo
 end

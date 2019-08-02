@@ -31,18 +31,20 @@ class User < ApplicationRecord
     #authored posts are posts that this user has authored (whether on the user's own or another user's timeline)
     has_many :authored_posts,
         foreign_key: :author_id,
-        class_name: :Post
+        class_name: :Post,
+        inverse_of: :author
 
     #timeline posts are all the posts that this user or other users have posted on this user's timeline
     has_many :timeline_posts,
         foreign_key: :user_id,
-        class_name: :Post
+        class_name: :Post,
+        inverse_of: :user
 
     has_many :authored_comments,
         foreign_key: :author_id,
         class_name: :Comment
 
-    has_one_attached :photo
+    # has_one_attached :photo
 
     def self.find_by_credentials(email, password) 
         user = User.find_by(email: email)

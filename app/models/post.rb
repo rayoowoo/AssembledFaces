@@ -14,15 +14,17 @@ class Post < ApplicationRecord
     # the author_id belongs to the user who made the post
     belongs_to :author,
         foreign_key: :author_id,
-        class_name: :User
+        class_name: :User,
+        inverse_of: :authored_posts
 
     # the user_id belongs to the user whose timeline this post lives on
     # the user_id and the author_id could be the same if the user posted on his own timeline
     belongs_to :user,
         foreign_key: :user_id,
-        class_name: :User
+        class_name: :User,
+        inverse_of: :timeline_posts
 
     has_many :comments, dependent: :destroy
 
-    has_one_attached :photo
+    # has_one_attached :photo
 end

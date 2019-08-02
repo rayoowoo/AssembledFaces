@@ -13,6 +13,7 @@
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;
+    position: relative;
 }
 
 .splash-navbar form {
@@ -69,5 +70,24 @@
 
 .splash-navbar input[type="submit"]:hover {
     background-color: transparent;
+    cursor: pointer;
+}
+
+#blank-login-newacct {
+    position: absolute;
+    top: 30px;
+    left: 220px;
+    font-size: 12px;
+    background-color: rgb(141, 77, 128);
+    background-image: none;
+    padding: 10px;
+    border: none;
+    box-shadow: none;
+    font-weight: 600;
+    width: 140px;
+}
+
+#blank-login-newacct:hover {
+    background-color: rgb(128, 70, 116);
     cursor: pointer;
 }

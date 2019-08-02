@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import configureStore from './store/store'
-// import * as SessionAPIUtil from './utils/session_api_utils'
 import Root from './components/root'
 import {logout} from './actions/session_actions'
 

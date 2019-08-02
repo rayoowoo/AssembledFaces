@@ -1,6 +1,6 @@
 import React from 'react'
-import ProfilePostForm from './profile_post_form'
-import ProfilePostIndex from './profile_post_index'
+// import ProfilePostForm from './profile_post_form'
+// import ProfilePostIndex from './profile_post_index'
 import {connect} from 'react-redux'
 
 class ProfileTimeline extends React.Component {
@@ -9,8 +9,8 @@ class ProfileTimeline extends React.Component {
         return (
             <div className="profile-timeline">
                 <h1>PROFILE TIMELINE</h1>
-                <ProfilePostForm />
-                <ProfilePostIndex posts={posts}/>
+                {/* <ProfilePostForm />
+                <ProfilePostIndex posts={posts}/> */}
             </div>
         )
     }
