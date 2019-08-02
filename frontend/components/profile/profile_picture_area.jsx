@@ -6,7 +6,6 @@ class ProfilePictureArea extends React.Component {
         return (
             <>
                 <section className="profile-picture-area">
-                    <h1>PROFILE PICTURE AREA</h1>
                     <div className="profile-cover-picture">
                         <h1>cover picture</h1>
                     </div>

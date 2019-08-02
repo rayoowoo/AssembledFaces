@@ -9,16 +9,14 @@ const Main = ({currentUserId}) => {
         const display = currentUserId === null ? (
             <Route path="/" component={Splash} /> 
         ) : (
-            <>
+            <Switch>
                 <Route path="/user/:user_id" component={Profile} />
                 <Route path="/" component={NewsFeed} />
-            </>
+            </Switch>
         )
     return (
         <>
-            <Switch>
-                {display}
-            </Switch>
+            {display}
         </>
     )
 }

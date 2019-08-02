@@ -1,0 +1,25 @@
+.profile {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.profile-picture-area {
+    position: relative;
+}
+
+.profile-cover-picture {
+    height: 312px;
+    width: 100%;
+    background-color: green;
+    border-left: 1px solid rgb(200, 200, 200);
+}
+
+.profile-main-picture {
+    height: 150px;
+    width: 150px;
+    border: 3px solid white;
+    margin-top: -120px;
+    margin-left: 25px;
+    background-color: blue;
+    border-radius: 50%;
+}
