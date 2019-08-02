@@ -6,6 +6,7 @@ import RecoverPage from './recover_page'
 
 
 
+
 const Splash = (props) => {
     return (
         <>

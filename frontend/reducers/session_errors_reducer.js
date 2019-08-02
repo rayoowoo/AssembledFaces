@@ -5,7 +5,9 @@ export default (state = [], action) => {
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
             return Object.values(action.errors.responseJSON)
-        case RECEIVE_CURRENT_USER, CLEAR_SESSION_ERRORS:
+        case RECEIVE_CURRENT_USER:
+            return [];
+        case CLEAR_SESSION_ERRORS:
             return [];
         default:
             return state;;

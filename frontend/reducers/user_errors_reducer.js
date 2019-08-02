@@ -5,7 +5,11 @@ export default (state = [], action) => {
     switch (action.type) {
         case RECEIVE_USER_ERRORS:
             return Object.values(action.errors.responseJSON)
-        case RECEIVE_ALL_USERS, RECEIVE_USER, CLEAR_USER_ERRORS:
+        case RECEIVE_ALL_USERS:
+            return [];
+        case RECEIVE_USER:
+            return [];
+        case CLEAR_USER_ERRORS:
             return [];
         default:
             return state;;

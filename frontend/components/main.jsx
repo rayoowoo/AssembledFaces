@@ -6,13 +6,19 @@ import {Switch, Route} from 'react-router-dom'
 import Profile from './profile/profile'
 
 const Main = ({currentUserId}) => {
+        const display = currentUserId === null ? (
+            <Route path="/" component={Splash} /> 
+        ) : (
+            <>
+                <Route path="/user/:user_id" component={Profile} />
+                <Route path="/" component={NewsFeed} />
+            </>
+        )
     return (
         <>
             <Switch>
-                <Route path="/user/:user_id" render={ (props) => <Profile currentUserId={currentUserId}/> } />
-                <Route path="/" component={currentUserId === null ? Splash : NewsFeed} />
+                {display}
             </Switch>
-            
         </>
     )
 }

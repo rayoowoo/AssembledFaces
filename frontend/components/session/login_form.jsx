@@ -34,12 +34,7 @@ class LoginForm extends React.Component {
             this.props.history.push("/recover")
             return
         }
-        this.props.login(this.state).then(() => {
-             this.setState({
-                email: "",
-                password: ""
-            })
-        })
+        this.props.login(this.state)
            
     }
 

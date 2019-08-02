@@ -1,22 +1,30 @@
 import React from 'react'
 import {Redirect, Route} from 'react-router-dom'
 
-export const AuthRoute = ({component: Component, path, loggedIn, exact}) => (
-    <Route path={path} exact={exact} render={props => (
-        !loggedIn? (
-            <Component {...props} />
-        ) : (
-            <Redirect to="/" />
-        )
-    )}/>
-);
-
-export const ProtectedRoute = ({ component: Component, path, loggedIn, exact }) => (
-    <Route path={path} exact={exact} render={props => (
-        loggedIn ? (
-            <Component {...props} />
-        ) : (
-                <Redirect to="/" />
+export const AuthRoute = ({ path, component: Component, loggedIn, exact }) => {
+    return (
+        <Route exact={exact} path={path} render={(props) => {
+            return (
+                loggedIn ? (
+                    <Redirect to="/" />
+                ) : (
+                        <Component {...props} />
+                    )
             )
-    )} />
-);
+        }} />
+    )
+}
+
+export const ProtectedRoute = ({ path, component: Component, loggedIn, exact }) => {
+    return (
+        <Route exact={exact} path={path} render={(props) => {
+            return (
+                !loggedIn ? (
+                    <Redirect to="/" />
+                ) : (
+                        <Component {...props} />
+                    )
+            )
+        }} />
+    )
+}

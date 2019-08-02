@@ -4,8 +4,14 @@ export default (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_POST_ERRORS:
-            return Object.values(action.errors.responseJSON)
-        case RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST, CLEAR_POST_ERRORS:
+            return Object.values({errors: `PostError: ${action.errors.statusText}`})
+        case RECEIVE_TIMELINE_POSTS:
+            return [];
+        case RECEIVE_ALL_POSTS:
+            return [];
+        case RECEIVE_POST:
+            return [];
+        case CLEAR_POST_ERRORS:
             return [];
         default:
             return state;;
