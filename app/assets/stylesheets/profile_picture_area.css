@@ -23,6 +23,8 @@
     margin-left: 25px;
     background-color: blue;
     border-radius: 50%;
+    position: relative;
+    z-index: 2;
 }
 
 .profile-btn {
@@ -31,10 +33,12 @@
     border: 1px solid rgb(109, 64, 100);
     color: rgb(117, 0, 0);
     position: absolute;
-    padding: 5px 0px;
+    padding: 6px 0px;
     width: 140px;
     font-size: 12px;
     font-weight: 800;
+    z-index: 2;
+    top: 269px;
 }
 
 .profile-btn:hover {
@@ -43,12 +47,29 @@
 }
 
 .profile-btn-friend {
-    top: 265px;
-    left: 740px;
+    left: 745px;
 }
 
 .profile-btn-info {
-    top: 265px;
-    left: 628px;
+    left: 633px;
     width: 100px;
+}
+
+.profile-name {
+    color: white;
+    text-shadow: 0.5px 0.5px 1px rgb(117, 0, 0);
+    font-size: 24px;
+    position: absolute;
+    top: 270px;
+    left: 200px;
+    z-index: 2;
+}
+
+.profile-picture-blur {
+    opacity: 0.3;
+    height: 312px;
+    width: 100%;
+    position: absolute;
+    background-image: linear-gradient(white,rgb(0, 0, 0));
+    z-index: 1;
 }

@@ -6,6 +6,7 @@ class ProfilePictureArea extends React.Component {
         return (
             <>
                 <section className="profile-picture-area">
+                    <div className="profile-picture-blur"></div>
                     <div className="profile-cover-picture">
                         <h1>cover picture</h1>
                     </div>
