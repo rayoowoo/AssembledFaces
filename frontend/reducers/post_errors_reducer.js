@@ -1,4 +1,4 @@
-import { RECEIVE_POST_ERRORS, CLEAR_POST_ERRORS, RECEIVE_CURRENT_USER } from '../actions/post_actions'
+import { RECEIVE_POST_ERRORS, CLEAR_POST_ERRORS, RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST} from '../actions/post_actions'
 
 export default (state = [], action) => {
     Object.freeze(state);
