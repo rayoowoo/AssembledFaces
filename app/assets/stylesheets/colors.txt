@@ -1,23 +1,26 @@
 thanos purple:
-    (109, 64, 100)
+    rgb(109, 64, 100)
+
+darkest purple:
+    rgb(76, 0, 0)
 
 font red:
-    (224, 96, 96)
+    rgb(224, 96, 96)
 
 darker red: 
-    (136, 54, 54)
+    rgb(136, 54, 54)
 
 darkest red:
-    (70, 0, 0)
+    rgb(70, 0, 0)
 
 bubble purple:
-    (168, 110, 158);
+    rgb(168, 110, 158);
 
 lighter gray:
-    (219, 219, 219);
+    rgb(219, 219, 219);
 
 light gray:
-    (200, 200, 200);
+    rgb(200, 200, 200);
 
 dark gray:
-    (114, 114, 114)
+    rgb(114, 114, 114)

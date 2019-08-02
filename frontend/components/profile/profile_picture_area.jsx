@@ -12,9 +12,9 @@ class ProfilePictureArea extends React.Component {
                     <div className="profile-main-picture">
                         <h1>profile pic</h1>
                     </div>
-                    <h1>firstname lastname</h1>
-                    <button>Update Info</button>
-                    <button>Friend Status</button>
+                    <h1 className="profile-name">firstname lastname</h1>
+                    <button onClick={e=> alert("not implemented yet")}className="profile-btn profile-btn-info">Update Info</button>
+                    <button className="profile-btn profile-btn-friend">Friend Status</button>
                 </section>
             </>
 

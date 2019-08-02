@@ -1,6 +1,7 @@
 .profile {
     width: 900px;
     margin: 0 auto;
+    font-family: Helvetica;
 }
 
 .profile-picture-area {
@@ -22,4 +23,32 @@
     margin-left: 25px;
     background-color: blue;
     border-radius: 50%;
+}
+
+.profile-btn {
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid rgb(109, 64, 100);
+    color: rgb(117, 0, 0);
+    position: absolute;
+    padding: 5px 0px;
+    width: 140px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.profile-btn:hover {
+    background-color: rgb(219, 219, 219);
+    cursor: pointer;
+}
+
+.profile-btn-friend {
+    top: 265px;
+    left: 740px;
+}
+
+.profile-btn-info {
+    top: 265px;
+    left: 628px;
+    width: 100px;
 }

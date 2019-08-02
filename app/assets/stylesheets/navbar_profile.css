@@ -75,7 +75,6 @@
 
 .profile-icon a:hover {
     cursor: pointer;
-    background-color: rgb(104, 12, 12);
 }
 
 .profile-nav-links {
@@ -124,6 +123,7 @@
 
 .profile-nav-help {
     margin-left: 5px;
+    position: relative;
 }
 
 .profile-nav-icons i:hover,
@@ -132,18 +132,60 @@
     cursor: pointer;
 }
 
-/* edit this later if dropdowns ever come in. it'll become a toggled class rather than a pseudoselector. */
-.profile-nav-icons i:focus,
-.profile-nav-help i:focus {
-    color: rgb(255, 255, 255);
+.profile-nav-help i:focus,
+.profile-nav-icons i:focus {
+    color: white;
 }
 
-.profile-nav-icons i:focus:hover,
-.profile-nav-help i:focus:hover {
+/* .clicked {
     color: rgb(255, 255, 255);
-}
-
-
-/* .profile-nav-help {
-
 } */
+
+/* edit this later if dropdowns ever come in. it'll become a toggled class rather than a pseudoselector. */
+
+/* .clicked:hover,
+.clicked:hover {
+    color: rgb(255, 255, 255);
+} */
+
+.profile-nav-dropdown {
+    visibility: hidden;
+    z-index: 1;
+    position: absolute;
+    width: 240px;
+    background-color: white;
+    border-radius: 1px;
+    border: 0.5px rgb(245, 216, 216) solid;
+    box-shadow: -0.5px 0px 10px rgb(83, 83, 83);
+    font-size: 12px;
+    padding: 10px 0px;
+    left: -170px;
+    top: 35px;
+}
+
+.arrow-top {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+    position: absolute;
+    z-index: 1;
+    top: -8px;
+    left: 203px;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.profile-nav-logout {
+    padding: 3px 184.1px 3px 10px;
+}
+
+.profile-nav-logout:hover {
+    cursor: pointer;
+    background-color: rgb(136, 54, 54);
+    color: white;
+    border-radius: 1px;
+}
