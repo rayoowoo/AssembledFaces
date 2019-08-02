@@ -1,6 +1,7 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
-import Login from '../session/login_form_container'
+import { connect } from 'react-redux'
+import SplashNavBar from './splash_navbar'
+import ProfileNavBar from './profile_navbar'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -9,18 +10,14 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <header className="nav">
-                <div className="navbar">
-                    <a href="/"><img src="https://fontmeme.com/permalink/190730/63d32f6b2626b181df5c8eb9ec502934.png" alt="assembledfaces-logo" /></a>
-                    {/* made using fontmeme.com/avengers-font */}
-                    <Switch>
-                        <Route path="/login" render={null}/>
-                        <Route path="/" component={Login}/>
-                    </Switch>
-                </div>
-            </header>
+            this.props.currentUserId === null? <SplashNavBar /> : <ProfileNavBar />
         )
     }
 }
 
-export default NavBar
+const msp = state => ({
+    currentUserId: state.session.id
+})
+
+export default connect(msp)(NavBar);
+

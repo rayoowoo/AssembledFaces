@@ -1,10 +1,10 @@
-.nav {
+.splash-nav {
     /* background: rgb(146, 30, 30); */
     background-image: linear-gradient(rgb(146, 30, 30),rgb(114, 23, 23));
     border-bottom: 1px solid rgb(70, 0, 0);
 }
 
-.navbar {
+.splash-navbar {
     display: flex;
     width: 1000px;
     margin: 0 auto;
@@ -15,19 +15,19 @@
     align-items: center;
 }
 
-.navbar form {
+.splash-navbar form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar img {
+.splash-navbar img {
     width: 210px;
     margin-top: 10px;
 }
 
-.navbar input[type="text"], .navbar input[type="password"] {
+.splash-navbar input[type="text"], .splash-navbar input[type="password"] {
     background-color: white;
     margin-right: 15px;
     padding: 4px 10px;
@@ -35,28 +35,28 @@
     margin-top: 2px;
 }
 
-.navbar label:first-of-type {
+.splash-navbar label:first-of-type {
     margin-top: -20px;
 }
 
-.navbar a {
+.splash-navbar a {
     color: rgb(224, 96, 96);
     margin-top: 6px;
     font-size: 12px;
 }
 
-.navbar a:hover {
+.splash-navbar a:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.navbar label {
+.splash-navbar label {
     display: flex;
     flex-direction: column;
     font-size: 12px;
 }
 
-.navbar input[type="submit"] {
+.splash-navbar input[type="submit"] {
     color: white;
     border: 1px rgb(70, 0, 0) solid;
     background-color: rgb(189, 62, 62);
@@ -67,7 +67,7 @@
     letter-spacing: 0.25px;
 }
 
-.navbar input[type="submit"]:hover {
+.splash-navbar input[type="submit"]:hover {
     background-color: transparent;
     cursor: pointer;
 }

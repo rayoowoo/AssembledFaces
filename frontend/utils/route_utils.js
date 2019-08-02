@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Redirect, Route} from 'react-router-dom'
 
 export const AuthRoute = ({component: Component, path, loggedIn, exact}) => (
     <Route path={path} exact={exact} render={props => (

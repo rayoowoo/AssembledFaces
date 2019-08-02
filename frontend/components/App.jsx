@@ -1,14 +1,12 @@
 import React from 'react'
 import NavBar from './nav/navbar'
-import Splash from './splash/splash'
-import {AuthRoute} from '../utils/route_utils'
+import Main from './main'
 
 const App = ({store}) => {
     return (
         <>
             <NavBar />
-            <Splash />
-
+            <Main />
         </>
     )
 }

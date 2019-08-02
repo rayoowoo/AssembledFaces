@@ -59,9 +59,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # guard livereload
-  config.middleware.insert_before Rack::Runtime, Rack::LiveReload
-
   # config/environments/development.rb
   config.active_storage.service = :amazon_dev
 end

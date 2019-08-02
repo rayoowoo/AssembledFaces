@@ -1,0 +1,81 @@
+.profile-nav {
+    /* background: rgb(146, 30, 30); */
+    background-image: linear-gradient(rgb(146, 30, 30),rgb(114, 23, 23));
+    border-bottom: 1px solid rgb(70, 0, 0);
+}
+
+.profile-navbar {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    color: white;
+    height: 47px;
+    justify-content: space-between;
+    font-family: Helvetica, sans-serif;
+    align-items: center;
+}
+
+/* .profile-navbar form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+.profile-icon img {
+    width: 24px;
+    margin-top: 5px;
+    padding: 0px 3.25px;
+    margin-bottom: -5px;
+}
+
+.profile-icon {
+    background-color: white;
+    border-radius: 3px;
+}
+
+
+.profile-search input[type="text"] {
+    background-color: white;
+    margin-right: 15px;
+    padding: 4px 10px;
+    border: 1px rgb(70, 0, 0) solid;
+    margin-top: 2px;
+}
+
+/* .profile-navbar label:first-of-type {
+    margin-top: -20px;
+} */
+
+.profile-navbar a {
+    color: rgb(224, 96, 96);
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.profile-navbar a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-navbar label {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.profile-navbar input[type="submit"] {
+    color: white;
+    border: 1px rgb(70, 0, 0) solid;
+    background-color: rgb(189, 62, 62);
+    font-size: 12px;
+    padding: 3px 6px 4px 6px;
+    margin-top: -5px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+}
+
+.profile-navbar input[type="submit"]:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
