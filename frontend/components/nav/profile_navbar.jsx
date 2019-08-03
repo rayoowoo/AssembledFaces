@@ -22,7 +22,9 @@ class ProfileNavBar extends React.Component {
     }
 
     handleIconClick(e) {
-        this.refs.profilenavdropdown.classList.add("visible")
+        this.refs.profilenavdropdown.classList.add("visible");
+        document.classList.add("display")
+
     }
 
     clear(e) {
@@ -74,6 +76,7 @@ class ProfileNavBar extends React.Component {
 
                     </nav>
                 </div>
+                
             </header>
         )
     }

@@ -1,7 +1,6 @@
 import React from 'react'
 import ProfilePostForm from './profile_post_form_container'
-// import ProfilePostIndex from './profile_post_index'
-import {connect} from 'react-redux'
+import ProfilePostIndex from './profile_post_index'
 
 class ProfileTimeline extends React.Component {
 
@@ -9,18 +8,10 @@ class ProfileTimeline extends React.Component {
         return (
             <div className="profile-timeline">
                 <ProfilePostForm />
-                {/* <ProfilePostIndex posts={posts}/> */}
+                <ProfilePostIndex />
             </div>
         )
     }
 }
 
-const msp = state => ({
-    posts: state.entities.posts
-})
-
-const mdp = dispatch => ({
-    fetchPosts: () => dispatch(fetchPosts())
-})
-
-export default connect(msp, mdp)(ProfileTimeline);
+export default ProfileTimeline

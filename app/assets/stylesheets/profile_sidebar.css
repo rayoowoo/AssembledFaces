@@ -20,7 +20,7 @@
 .profile-sidebar-intro-globe {
     background-color:  rgb(136, 54, 54);
     color: white;
-    padding: 4px 4.9px 5px 4.9px;
+    padding: 4px 4.5px 3.5px 4.9px;
     border-radius: 50%;
     font-size: 13px;
     margin: 8px 10px;
@@ -101,7 +101,11 @@
     padding-left: 10px;
 }
 
-.profiled-sidebar-intro-filled i {
+.profile-sidebar-intro-filled i {
+    color: black;
+}
+
+#profile-sidebar-intro-filled {
     color: black;
 }
 
@@ -124,7 +128,7 @@
 .profile-sidebar-icon {
     background-color: rgb(109, 64, 100);
     color: white;
-    padding: 4px 5px 5px 5px;
+    padding: 4px 5px 3.5px 5px;
     border-radius: 50%;
     font-size: 13px;
     margin: 8px 10px;

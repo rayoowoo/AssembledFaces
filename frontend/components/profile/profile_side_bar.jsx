@@ -3,24 +3,34 @@ import React from 'react'
 class ProfileSideBar extends React.Component {
 
     render() {
-        const { current_city, workplace, education, hometown } = this.props.user;
+        const { bio, current_city, workplace, education, hometown } = this.props.user;
 
+        let biog = (
+            <>
+                <i className="fa fa-comment-alt"></i>
+                <p>Add a short bio to tell people more about yourself.</p>
+                <a onClick={e => alert("not yet implemented")}>Add Bio</a>
+            </>
+        )
         let city = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-home"></i><span>Current City</span></a></li>
         let work = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-briefcase"></i><span>Workplace</span></a></li>
         let school = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-graduation-cap"></i><span>School</span></a></li>
         let home = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-map-marker-alt"></i><span>Hometown</span></a></li>
 
+        if (bio) {
+            biog = <p id="profile-sidebar-intro-filled">{bio}</p>;
+        }
         if (current_city) {
-            city = <li className="profiled-sidebar-intro-filled"><i className="fa fa-home"></i><p>{this.props.user.current_city}</p></li>
+            city = <li className="profile-sidebar-intro-filled"><i className="fa fa-home"></i><p>{current_city}</p></li>
             };
         if (workplace) {
-            work = <li className="profiled-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>{this.props.user.workplace}</p></li>
+            work = <li className="profile-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>{workplace}</p></li>
             };
         if (school) {
-            school = <li className="profiled-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>{this.props.user.education}</p></li>
+            school = <li className="profile-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>{education}</p></li>
             };
         if (hometown) {
-            home = <li className="profiled-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>{this.props.user.hometown}</p></li>
+            home = <li className="profile-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>{hometown}</p></li>
         };
 
 
@@ -36,9 +46,7 @@ class ProfileSideBar extends React.Component {
                         <span>Intro</span>
 
                        <div className="profile-sidebar-intro-bio"> 
-                           <i className="fa fa-comment-alt"></i>
-                            <p>Add a short bio to tell people more about yourself.</p>
-                            <a onClick={e => alert("not yet implemented")}>Add Bio</a>
+                          {biog}
                         </div>
                     </section>
 
