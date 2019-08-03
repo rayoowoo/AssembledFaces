@@ -39,14 +39,16 @@ class ProfileNavBar extends React.Component {
         return (
             <header className="profile-nav">
                 <div className="profile-navbar">
-                    <div className="profile-icon"><a onClick={e => this.props.history.push("/")}><img src="https://fontmeme.com/permalink/190802/dc70627ab06270ffdb933b4333bd4d14.png" alt="assembled-faces-small-logo" /></a></div>
-                    {/* made using fontmeme.com/avengers-font */}
-                    <div className="profile-search">
-                        <form>
-                            <input type="text" placeholder="Search"/>
-                            <button><i className="fas fa-search"></i></button>
-                        </form>
-                    </div>
+                    <section className="profile-navbar-left">
+                        <div className="profile-icon"><a onClick={e => this.props.history.push("/")}><img src="https://fontmeme.com/permalink/190802/dc70627ab06270ffdb933b4333bd4d14.png" alt="assembled-faces-small-logo" /></a></div>
+                        {/* made using fontmeme.com/avengers-font */}
+                        <div className="profile-search">
+                            <form>
+                                <input type="text" placeholder="Search" />
+                                <button><i className="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </section>
 
                     <nav>
                         <div className="profile-nav-links">

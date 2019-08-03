@@ -1,28 +1,16 @@
-#timeline {
-    flex: 3;
-    background-color: white;
-    height: 3000px;
-    margin-top: 15px;
-    border: 1px solid rgb(219, 219, 219)
-}
-
 .profile-main {
     display: flex;
+    margin-top: 15px;
 }
 
 .profile-sidebar {
     flex: 2;
     height: 100%;
-    margin-top: 15px;
     margin-right: 15px;
     position: sticky;
     top: -100px;
 }
 
-.sticky-hold {
-    height: 50px;
-    color: transparent;
-}
 
 .profile-sidebar-intro {
     background-color: white;
@@ -73,7 +61,6 @@
 }
 
 .profile-sidebar-intro-bio-content {
-    color:  rgb(199, 199, 199);
     margin-top: 20px;
     margin-left: 13px;
     padding-bottom: 20px;
@@ -84,31 +71,19 @@
 }
 
 .profile-sidebar-intro-bio-content i {
+    color:  rgb(199, 199, 199);
     font-size: 16px;
-}
-
-.fa-home + span {
-    margin-left: 6px;
-}
-
-.fa-briefcase + span {
-    margin-left: 12px;
-}
-
-.fa-graduation-cap + span {
-    margin-left: 8px;
-}
-
-.fa-map-marker-alt + span {
-    margin-left: 12.5px;
-}
-
-.fa-map-marker-alt {
-    margin-left: 2.5px
+    width: 15px;
 }
 
 .profile-sidebar-intro-bio-content a {
     font-size: 12px;
+    color:  rgb(199, 199, 199);
+}
+
+.profile-sidebar-intro-bio-content span {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .profile-sidebar-intro-bio-content a:hover {
@@ -117,6 +92,17 @@
 
 .profile-sidebar-intro-bio-content a:hover span {
     text-decoration: underline;
+}
+
+.profile-sidebar-intro-bio-content p {
+    color: black;
+    font-size: 12px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.profiled-sidebar-intro-filled i {
+    color: black;
 }
 
 .profile-sidebar-photos,
@@ -153,7 +139,7 @@
 .profile-sidebar-add,
 .profile-sidebar footer a {
     font-size: 12px;
-    color: rgb(224, 96, 96)
+    color: rgb(136, 54, 54)
 }
 
 .profile-sidebar-link:hover, .profile-sidebar-add:hover,
@@ -171,13 +157,13 @@
 .profile-sidebar-gallery {
     display: flex;
     flex-wrap: wrap;
-    padding: 2px;
+    padding: 5px;
     margin: 0 auto;
 }
 
 .replace {
-    width: 113.7px;
-    height: 113.7px;
+    width: 105px;
+    height: 105px;
     display: block;
     background-color: black;
     border: 1px solid white;

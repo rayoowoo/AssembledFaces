@@ -10,10 +10,12 @@
 
 .profile-navbar {
     display: flex;
-    width: 1000px;
+    min-width: 880px;
+    max-width: 1000px;
+    padding: 0px 10px;
     margin: 0 auto;
     color: white;
-    height: 44px;
+    height: 43px;
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;
@@ -26,16 +28,27 @@
     align-items: center;
 } */
 
+.profile-navbar-left {
+    display: flex;
+}
+
 .profile-icon img {
-    width: 20px;
-    margin-top: 5px;
+    width: 25px;
+    height: 25px;
     padding: 0px 3.25px;
-    margin-bottom: -5px;
+    position: relative;
+    top: 7px;
+    left: -2px;
 }
 
 .profile-icon {
     background-color: white;
     border-radius: 3px;
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 28px;
+    height: 28px;
 }
 
 .profile-search form {
@@ -52,7 +65,6 @@
     width: 400px;
     border-radius: 2px;
     font-size: 14px;
-    margin-left: -55px;
     padding: 0px 0px 2px 5px;
 }
 
@@ -88,7 +100,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 270px;
 }
 
 .profile-nav-links div {
@@ -158,14 +169,14 @@
     visibility: hidden;
     z-index: 1;
     position: absolute;
-    width: 240px;
+    width: 245px;
     background-color: white;
     border-radius: 1px;
     border: 0.5px rgb(245, 216, 216) solid;
     box-shadow: -0.5px 0px 10px rgb(83, 83, 83);
     font-size: 12px;
     padding: 10px 0px;
-    left: -170px;
+    left: -175px;
     top: 35px;
 }
 
@@ -178,7 +189,7 @@
     position: absolute;
     z-index: 1;
     top: -8px;
-    left: 203px;
+    left: 208px;
 }
 
 .visible {

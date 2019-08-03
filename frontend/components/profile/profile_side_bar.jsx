@@ -3,6 +3,29 @@ import React from 'react'
 class ProfileSideBar extends React.Component {
 
     render() {
+        const { current_city, workplace, education, hometown } = this.props.user;
+
+        let city = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-home"></i><span>Current City</span></a></li>
+        let work = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-briefcase"></i><span>Workplace</span></a></li>
+        let school = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-graduation-cap"></i><span>School</span></a></li>
+        let home = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-map-marker-alt"></i><span>Hometown</span></a></li>
+
+        if (current_city) {
+            city = <li className="profiled-sidebar-intro-filled"><i className="fa fa-home"></i><p>{this.props.user.current_city}</p></li>
+            };
+        if (workplace) {
+            work = <li className="profiled-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>{this.props.user.workplace}</p></li>
+            };
+        if (school) {
+            school = <li className="profiled-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>{this.props.user.education}</p></li>
+            };
+        if (hometown) {
+            home = <li className="profiled-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>{this.props.user.hometown}</p></li>
+        };
+
+
+
+
         return (
             <aside className="profile-sidebar">
                 <section className="profile-sidebar-intro">
@@ -20,10 +43,10 @@ class ProfileSideBar extends React.Component {
                     </section>
 
                     <ul className="profile-sidebar-intro-bio-content">
-                        <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-home"></i> <span>Current City</span></a></li>
-                        <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-briefcase"></i><span>Workplace</span></a></li>
-                        <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-graduation-cap"></i><span>School</span></a></li>
-                        <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-map-marker-alt"></i><span>Hometown</span></a></li>
+                        {city}
+                        {work}
+                        {school}
+                        {home}
                     </ul>
 
                 </section>
@@ -92,7 +115,6 @@ class ProfileSideBar extends React.Component {
                     <section ><a href="https://github.com/rayoowoo/AssembledFaces" target="_blank">GITHUB</a><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/" target="_blank">LINKEDIN</a><a href="#" target="_blank">EMAIL</a></section>
                     <p >Made by Ruiyu Wu. Inspired by Facebook and Marvel Studios.</p>
                 </footer>
-                <div className="sticky-hold"></div>
             </aside>
         )
     }

@@ -2,11 +2,11 @@
     background-color: rgb(255, 235, 235);
     padding: 1px 0 0 0;
     min-height: 150vh;
-    margin: 43px auto 0 auto;
+    margin: 42px auto 0 auto;
 }
 
 .profile-content {
-    width: 900px;
+    width: 850px;
     margin: 0 auto;
     font-family: Helvetica;
 }
@@ -19,20 +19,37 @@
 .profile-cover-picture {
     height: 312px;
     width: 100%;
-    background-color: green;
     border-left: 1px solid rgb(200, 200, 200);
+    overflow: hidden;
+}
+
+.profile-cover-picture img {
+    width: 100%;
 }
 
 .profile-main-picture {
-    height: 150px;
-    width: 150px;
-    border: 3px solid white;
+    height: 156px;
+    width: 156px;
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200, 0.5);
     margin-top: -135px;
-    margin-left: 25px;
-    background-color: blue;
+    margin-left: 15px;
     border-radius: 50%;
     position: relative;
     z-index: 2;
+    padding: 3px 3px 5px 3px;
+}
+
+.profile-main-picture div {
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgb(200, 200, 200, 0.5);
+    overflow: hidden;
+}
+
+.profile-main-picture img {
+    height: 100%;
+    margin-left: -50%;
 }
 
 .profile-btn {
@@ -55,11 +72,11 @@
 }
 
 .profile-btn-friend {
-    left: 745px;
+    left: 685px;
 }
 
 .profile-btn-info {
-    left: 633px;
+    left: 573px;
     width: 100px;
 }
 
@@ -75,7 +92,7 @@
 
 .profile-picture-blur {
     opacity: 0.3;
-    height: 312;
+    height: 312px;
     width: 100%;
     position: absolute;
     background-image: linear-gradient(white,rgb(0, 0, 0));

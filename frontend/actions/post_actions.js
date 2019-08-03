@@ -32,7 +32,7 @@ export const receivePostErrors = errors => ({
     errors
 })
 
-export const fetchTimelinePosts = (userId) => dispatch => {
+export const fetchTimelinePosts = userId => dispatch => {
     return POSTUtil.fetchTimelinePosts(userId)
         .then(posts => dispatch(receiveTimelinePosts(posts)),
         errors => dispatch(receivePostErrors(errors)))
@@ -50,8 +50,8 @@ export const fetchPost = (userId, postId) => dispatch => {
         errors => dispatch(receivePostErrors(errors)))
 };
 
-export const createPost = (userId, post) => dispatch => {
-    return POSTUtil.createPost(userId, post)
+export const createPost = post => dispatch => {
+    return POSTUtil.createPost(post)
         .then( post => dispatch(receivePost(post)),
         errors => dispatch(receivePostErrors(errors)))
 }
@@ -62,8 +62,8 @@ export const updatePost = post => dispatch => {
         errors => dispatch(receivePostErrors(errors)))
 }
 
-export const deletePost = postId => dispatch => {
-    return POSTUtil.deletePost(postId)
+export const deletePost = post => dispatch => {
+    return POSTUtil.deletePost(post)
         .then(post => dispatch(removePost(post)),
         errors => dispatch(receivePostErrors(errors)))
 }

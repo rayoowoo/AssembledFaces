@@ -16,7 +16,7 @@
 
  /* CSS Reset */
 
- body, h1, h2, h3, p, li, ul, ol, nav, section, header, footer, strong, div, span, aside, a, button, form, input {
+ body, h1, h2, h3, p, li, ul, ol, nav, section, header, footer, strong, div, span, aside, a, button, form, input, textarea {
     margin: 0;
     padding: 0;
     border: 0;

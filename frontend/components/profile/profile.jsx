@@ -2,7 +2,7 @@ import React from 'react'
 import ProfilePictureArea from './profile_picture_area'
 import ProfileNav from './profile_nav'
 import ProfileSideBar from './profile_side_bar'
-// import ProfileTimeline from './profile_timeline'
+import ProfileTimeline from './profile_timeline'
 import {connect} from 'react-redux'
 
 
@@ -17,10 +17,7 @@ class Profile extends React.Component {
                     <ProfileNav user={user}/>
                     <div className="profile-main">
                         <ProfileSideBar user={user}/>
-                    {/* <ProfileTimeline user={user}/> */}
-                        <div id="timeline">
-                            <h1>TIMELINE GOES HERE</h1>
-                        </div>
+                    <ProfileTimeline user={user}/>
                     </div>
                 </div>
             </section>

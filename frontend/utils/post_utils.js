@@ -19,10 +19,10 @@ export const fetchPost = (userId, postId) => {
     })
 }
 
-export const createPost = (userId, post) => {
+export const createPost = post => {
     return $.ajax({
         method: "POST",
-        url: `api/users/${userId}/posts`,
+        url: `api/users/${post.user_id}/posts`,
         data: {post}
     })
 }
