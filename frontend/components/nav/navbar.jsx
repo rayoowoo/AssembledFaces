@@ -10,7 +10,9 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            this.props.currentUserId === null? <SplashNavBar /> : <ProfileNavBar />
+            <div className="navbar">
+                {this.props.currentUserId === null? <SplashNavBar /> : <ProfileNavBar />}
+            </div>
         )
     }
 }

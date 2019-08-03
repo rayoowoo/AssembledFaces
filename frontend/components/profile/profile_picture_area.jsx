@@ -2,7 +2,12 @@ import React from 'react'
 
 class ProfilePictureArea extends React.Component {
 
+    componenDidMount() {
+        this.refs.main.scrollTop += 100;
+    }
+
     render() {
+
         return (
             <>
                 <section className="profile-picture-area">
@@ -10,7 +15,7 @@ class ProfilePictureArea extends React.Component {
                     <div className="profile-cover-picture">
                         <h1>cover picture</h1>
                     </div>
-                    <div className="profile-main-picture">
+                    <div className="profile-main-picture" ref="main">
                         <h1>profile pic</h1>
                     </div>
                     <h1 className="profile-name">firstname lastname</h1>

@@ -18,7 +18,7 @@ const Splash = (props) => {
                 </Switch>
             </section >
             <section className="footer"><a href="https://github.com/rayoowoo/AssembledFaces" target="_blank">GITHUB</a><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/" target="_blank">LINKEDIN</a><a href="#" target="_blank">EMAIL</a></section>
-            <section className="citation">Inspired by Facebook and Marvel Studios</section>
+            <section className="citation">Made by Ruiyu Wu. Inspired by Facebook and Marvel Studios.</section>
         </>
     )
 }

@@ -1,15 +1,18 @@
 .splash-nav {
-    /* background: rgb(146, 30, 30); */
     background-image: linear-gradient(rgb(146, 30, 30),rgb(114, 23, 23));
     border-bottom: 1px solid rgb(70, 0, 0);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .splash-navbar {
     display: flex;
     width: 1000px;
     margin: 0 auto;
-    color: white;
     height: 84px;
+    color: white;
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;

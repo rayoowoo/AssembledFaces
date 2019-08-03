@@ -9,12 +9,20 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <div className="profile">
-                <ProfilePictureArea />
-                <ProfileNav />
-                <ProfileSideBar />
-                {/* <ProfileTimeline /> */}
-            </div>
+            <section className="profile">
+                <div className="profile-content">
+                    <ProfilePictureArea />
+                    <ProfileNav />
+                    <div className="profile-main">
+                        <ProfileSideBar />
+                    {/* <ProfileTimeline /> */}
+                        <div id="timeline">
+                            <h1>TIMELINE GOES HERE</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
         )
     }
 }

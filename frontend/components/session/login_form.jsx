@@ -26,10 +26,6 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.email === "" && this.state.password === "") {
-            this.props.history.push("/login")
-            return
-        }
         if (this.state.email === "" && this.state.password !== "") {
             this.props.history.push("/recover")
             return

@@ -1,4 +1,11 @@
 .profile {
+    background-color: rgb(255, 235, 235);
+    padding: 1px 0 0 0;
+    min-height: 150vh;
+    margin: 43px auto 0 auto;
+}
+
+.profile-content {
     width: 900px;
     margin: 0 auto;
     font-family: Helvetica;
@@ -6,6 +13,7 @@
 
 .profile-picture-area {
     position: relative;
+    height: 312px;
 }
 
 .profile-cover-picture {
@@ -19,7 +27,7 @@
     height: 150px;
     width: 150px;
     border: 3px solid white;
-    margin-top: -120px;
+    margin-top: -135px;
     margin-left: 25px;
     background-color: blue;
     border-radius: 50%;
@@ -67,7 +75,7 @@
 
 .profile-picture-blur {
     opacity: 0.3;
-    height: 312px;
+    height: 312;
     width: 100%;
     position: absolute;
     background-image: linear-gradient(white,rgb(0, 0, 0));

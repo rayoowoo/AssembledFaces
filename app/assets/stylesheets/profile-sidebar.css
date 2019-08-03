@@ -1,0 +1,209 @@
+#timeline {
+    flex: 3;
+    background-color: white;
+    height: 3000px;
+    margin-top: 15px;
+    border: 1px solid rgb(219, 219, 219)
+}
+
+.profile-main {
+    display: flex;
+}
+
+.profile-sidebar {
+    flex: 2;
+    height: 100%;
+    margin-top: 15px;
+    margin-right: 15px;
+    position: sticky;
+    top: -100px;
+}
+
+.sticky-hold {
+    height: 50px;
+    color: transparent;
+}
+
+.profile-sidebar-content {
+
+}
+
+.profile-sidebar-intro {
+    background-color: white;
+    border: 1px solid rgb(219, 219, 219)
+}
+
+.profile-sidebar-intro-globe {
+    background-color:  rgb(136, 54, 54);
+    color: white;
+    padding: 4px 4.9px 5px 4.9px;
+    border-radius: 50%;
+    font-size: 13px;
+    margin: 8px 10px;
+    display: inline-block;
+}
+
+.profile-sidebar-intro-bio {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding-bottom: 15px;
+    margin: 0px 10px;
+}
+
+.profile-sidebar-intro-bio p {
+    text-align: center;
+    font-size: 12px;
+    color: rgb(114, 114, 114);
+    padding: 5px;
+}
+
+.profile-sidebar-intro-bio a {
+    text-align: center;
+    font-size: 12px;
+    color: rgb(224, 96, 96);
+}
+
+.profile-sidebar-intro-bio a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-sidebar-intro-bio a:default,
+.profile-sidebar-intro-bio a:visited {
+    color: rgb(224, 96, 96);
+}
+
+.profile-sidebar-intro-bio-content {
+    color:  rgb(199, 199, 199);
+    margin-top: 20px;
+    margin-left: 13px;
+    padding-bottom: 20px;
+}
+
+.profile-sidebar-intro-bio-content li {
+    margin: 10px 0px;
+}
+
+.profile-sidebar-intro-bio-content i {
+    font-size: 16px;
+}
+
+.fa-home + span {
+    margin-left: 6px;
+}
+
+.fa-briefcase + span {
+    margin-left: 12px;
+}
+
+.fa-graduation-cap + span {
+    margin-left: 8px;
+}
+
+.fa-map-marker-alt + span {
+    margin-left: 12.5px;
+}
+
+.fa-map-marker-alt {
+    margin-left: 2.5px
+}
+
+.profile-sidebar-intro-bio-content a {
+    font-size: 12px;
+}
+
+.profile-sidebar-intro-bio-content a:hover {
+    cursor: pointer;
+}
+
+.profile-sidebar-intro-bio-content a:hover span {
+    text-decoration: underline;
+}
+
+.profile-sidebar-photos,
+.profile-sidebar-friends,
+.profile-sidebar footer {
+    background-color: white;
+    border: 1px solid rgb(219, 219, 219);
+    margin-top: 10px;
+}
+
+.profile-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.profile-sidebar-icon {
+    background-color: rgb(109, 64, 100);
+    color: white;
+    padding: 4px 5px 5px 5px;
+    border-radius: 50%;
+    font-size: 13px;
+    margin: 8px 10px;
+    display: inline-block;
+}
+
+.profile-sidebar-friends span {
+    padding: 4.5px 4px;
+    font-size: 12px;
+}
+
+.profile-sidebar-add,
+.profile-sidebar footer a {
+    font-size: 12px;
+    color: rgb(224, 96, 96)
+}
+
+.profile-sidebar-link:hover, .profile-sidebar-add:hover,
+.profile-sidebar footer a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-sidebar-link:default,
+.profile-sidebar-link:visited {
+    color: black;
+}
+
+
+.profile-sidebar-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    margin: 0 auto;
+}
+
+.replace {
+    width: 113.7px;
+    height: 113.7px;
+    display: block;
+    background-color: black;
+    border: 1px solid white;
+}
+
+.profile-sidebar footer {
+    padding: 10px;
+}
+
+.profile-sidebar footer section {
+    margin: 0 auto 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-sidebar footer a {
+    font-size: 14px;
+    margin: 0px 10px;
+}
+
+.profile-sidebar footer p {
+    font-size: 10px;
+    color: rgb(70, 70, 70);
+    text-align: center;
+}
