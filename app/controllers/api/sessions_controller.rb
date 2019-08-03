@@ -9,7 +9,6 @@ class Api::SessionsController < ApplicationController
             render :show
         else
             attempted_user = User.find_by(email: params[:user][:email])
-            debugger
             if attempted_user
                 render json: ["wrong password", {attempted_email: params[:user][:email]}], status: 401
             else

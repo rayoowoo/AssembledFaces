@@ -3,19 +3,21 @@ import ProfilePictureArea from './profile_picture_area'
 import ProfileNav from './profile_nav'
 import ProfileSideBar from './profile_side_bar'
 // import ProfileTimeline from './profile_timeline'
+import {connect} from 'react-redux'
 
 
 class Profile extends React.Component {
 
     render() {
+        const { user } = this.props;
         return (
             <section className="profile">
                 <div className="profile-content">
-                    <ProfilePictureArea />
-                    <ProfileNav />
+                    <ProfilePictureArea user={user}/>
+                    <ProfileNav user={user}/>
                     <div className="profile-main">
-                        <ProfileSideBar />
-                    {/* <ProfileTimeline /> */}
+                        <ProfileSideBar user={user}/>
+                    {/* <ProfileTimeline user={user}/> */}
                         <div id="timeline">
                             <h1>TIMELINE GOES HERE</h1>
                         </div>
@@ -27,4 +29,12 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+const msp = (state, ownProps) => {
+    return {
+        user: state.entities.users[ownProps.match.params.userId] || {}
+    }
+}
+
+export default connect(msp)(Profile);
+
+//  user={props.location.match.params.userId}

@@ -26,7 +26,7 @@ class BlankLogin extends React.Component {
             passwordField.click();
         }
         if (this.props.errors.includes("email address was not found")) {
-            debugger
+            
             const emailField = this.refs.input1;
             emailField.classList.add("touched", "check");
             emailField.focus();

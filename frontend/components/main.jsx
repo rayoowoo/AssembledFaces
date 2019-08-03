@@ -10,7 +10,7 @@ const Main = ({currentUserId}) => {
             <Route path="/" component={Splash} /> 
         ) : (
             <Switch>
-                <Route path="/user/:user_id" component={Profile} />
+                <Route path="/user/:userId" component={Profile} />
                 <Route path="/" component={NewsFeed} />
             </Switch>
         )

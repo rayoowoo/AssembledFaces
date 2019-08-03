@@ -52,7 +52,7 @@
     width: 400px;
     border-radius: 2px;
     font-size: 14px;
-    margin-left: -136px;
+    margin-left: -55px;
     padding: 0px 0px 2px 5px;
 }
 
@@ -87,6 +87,8 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    width: 270px;
 }
 
 .profile-nav-links div {
