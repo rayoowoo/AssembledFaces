@@ -9,6 +9,8 @@ end
 @posts.each do |post|
     json.extract! post, :comments
     json.authors do 
-        json.set! post.author_id, post.author
+        json.set! post.author_id do
+            json.partial! 'api/users/user', user: post.author
+        end
     end
 end

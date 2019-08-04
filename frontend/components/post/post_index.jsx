@@ -27,7 +27,7 @@ class PostIndex extends React.Component {
             time = created_at.time;
         }
 
-     
+        debugger
         return (
             <section className="postindex">
                 <h1>Posts</h1>           
@@ -39,6 +39,7 @@ class PostIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+    debugger
     return {
         user: state.entities.users[ownProps.userId] || {}
     }
