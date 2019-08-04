@@ -7,6 +7,8 @@
 #  author_id         :integer          not null
 #  post_id           :integer          not null
 #  parent_comment_id :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 
 class Comment < ApplicationRecord 

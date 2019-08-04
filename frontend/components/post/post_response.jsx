@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import CommentForm from '../comment/comment_form'
 
 class PostResponse extends React.Component {
     constructor(props) {
@@ -25,17 +25,13 @@ class PostResponse extends React.Component {
                     <p><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
-                    {/* <CommentIndex />
-                    <CommentForm/> */}
+                    {/* <CommentIndex /> */}
+                    <CommentForm/>
                 </div>
 
             </section>
         )
     }
 }
-
-// const mdp = dispatch => ({
-//     fetchComments: 
-// }) no comments frontend routes yet
 
 export default PostResponse;

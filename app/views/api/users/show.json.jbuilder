@@ -14,6 +14,10 @@ end
 
 json.comments do 
     @user.timeline_posts.each do |post|
-        json.extract! post, :comments
+        post.comments.each do |comment|
+            json.set! comment.id do 
+                json.partial! 'api/comments/comment', comment: comment
+            end
+        end
     end
 end

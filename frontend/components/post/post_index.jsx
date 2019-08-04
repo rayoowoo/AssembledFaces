@@ -16,7 +16,7 @@ class PostIndex extends React.Component {
     render() {
         let date, time, allPosts = null;
         if (this.props.posts.length !== 0){ 
-            allPosts = this.props.posts.map(post => {
+            allPosts = this.props.posts.reverse().map(post => {
                 return <PostItem post={post} key={`post-${post.id}`} />
             })
         }
@@ -27,7 +27,6 @@ class PostIndex extends React.Component {
             time = created_at.time;
         }
 
-        debugger
         return (
             <section className="postindex">
                 <h1>Posts</h1>           
@@ -41,7 +40,6 @@ class PostIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    debugger
     return {
         user: state.entities.users[ownProps.userId] || {}
     }
