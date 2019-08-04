@@ -111,7 +111,7 @@
 
 .profile-sidebar-intro-filled strong:hover {
     cursor: pointer;
-    text-transform: underline;
+    text-decoration: underline;
 }
 
 #profile-sidebar-intro-filled {

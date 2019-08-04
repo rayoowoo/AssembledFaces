@@ -44,7 +44,7 @@ class PostItem extends React.Component {
                         {/* Image sourced from: https://www.instagram.com/p/Bw9nt8mnMGb/ */}
                         </div> 
              
-                <Route path="/users/:userId" render={(props) => <PostResponse postId={this.props.post} currentUserId={this.props.currentUserId}/>} />
+                <PostResponse postId={this.props.post} currentUserId={this.props.currentUserId}/>
             </section>
         )
     }

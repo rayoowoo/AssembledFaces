@@ -1,0 +1,66 @@
+.post-response {
+    padding: 8px 12px 12px 12px;
+}
+
+.post-feedback {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(114, 114, 114);
+    font-size: 13px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+
+}
+
+.post-feedback p span {
+    border-radius: 50%;
+    background-image: linear-gradient(rgb(224, 96, 96), rgb(136, 54, 54));
+    padding: 3px 4.5px 4px 4.5px;
+    color: white;
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.post-feedback p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.post-icons {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    margin: 0px -12px;
+    color: rgb(114, 114, 114);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+}
+
+.post-icons p {
+    padding: 7px 0px;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-right: 7px;
+}
+
+.post-icons p:last-of-type {
+    margin-right: 0px;
+}
+
+.post-icons i {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.post-icons p:hover {
+    /* color: rgb(136, 54, 54); */
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+
+.selected {
+    color: rgb(224, 96, 96);
+}

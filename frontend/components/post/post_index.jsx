@@ -32,7 +32,9 @@ class PostIndex extends React.Component {
             <section className="postindex">
                 <h1>Posts</h1>           
                 {allPosts}
-                <div>JOINED ASSEMBLED PAGES {date} at {time}</div>
+                {/* make the next two into actual posts. they're special post items. */}
+                <div>JOINED ASSEMBLED PAGES {date} at {time}</div> 
+                <div>Born on {this.props.user.birth_date}</div>
             </section>
         )
     }
