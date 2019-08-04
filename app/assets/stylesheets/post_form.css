@@ -65,7 +65,7 @@ li.postform-selected span, .postform-selected i {
 }
 
 .postinput textarea {
-    padding: 5px 15px 10px 15px;
+    padding: 5px 15px 15px 15px;
     font-size: 14px;
     overflow-wrap: vertical;
     flex: 1;
@@ -96,7 +96,6 @@ li.postform-selected span, .postform-selected i {
     display: flex;
     width: 100%;
     justify-content: flex-start;
-    margin-bottom: 5px;
 }
 
 .postinput-buttons {
