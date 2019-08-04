@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
 import {logout, signup} from './actions/session_actions'
-import * as hi from './actions/user_actions'
+// import * as hi from './actions/comment_actions'
+import * as COMMENTUtil from './utils/comment_utils'
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -28,19 +29,9 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.dispatch = store.dispatch;
     window.logout = logout;
     window.signup = signup;
-    window.updateUser = hi.updateUser;
-    window.test = {email: "steve@gmail.com", 
-                    password: "steverogers", 
-                    birth_date: new Date("7/4/1918"), 
-                    gender: "Male", 
-                    first_name: "Steve", 
-                    last_name: "Rogers", 
-                    location: "New York", 
-                    workplace: "Avengers", 
-                    education: "West Point", 
-                    current_city: "New York", 
-                    hometown: "Brooklyn", 
-                    bio: "I am Steve Rogers."}
+    window.deleteComment = COMMENTUtil.deleteComment;
+    window.test = {id: 7, body: "Rumlow wish he did.", author_id: 39, post_id: 20}
+
      
     // TESTING
 

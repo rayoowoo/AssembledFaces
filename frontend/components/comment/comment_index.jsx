@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 
 class CommentIndex extends React.Component {
@@ -7,8 +8,11 @@ class CommentIndex extends React.Component {
     }
 
     render() {
+
         return (
-            <h1></h1>
+           <>
+                <h1>COMMEnts</h1>
+           </>
         )
     }
 }

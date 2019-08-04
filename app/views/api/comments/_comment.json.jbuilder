@@ -1,4 +1,4 @@
-json.extract! comment, :id, :author_id, :post_id, :parent_comment_id
+json.extract! comment, :id, :author_id, :post_id, :parent_comment_id, :body
 # json.photoUrl url_for(@comment.photo)
 
 if comment.created_at.strftime('%-B,%-d,%-Y') == (Time.now - 1.day).strftime('%-B,%-d,%-Y')
