@@ -6,12 +6,10 @@ import {connect} from 'react-redux'
 class PostIndex extends React.Component {
     
     componentDidMount() {
-        debugger
         this.props.fetchTimelinePosts(this.props.userId);
     }
 
     componentDidUpdate(prevProps) {
-        debugger
         if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchTimelinePosts(this.props.userId);}
     }
 
@@ -24,7 +22,6 @@ class PostIndex extends React.Component {
         }
 
         if (Object.keys(this.props.user).length !== 0) {
-            debugger
             const { created_at } = this.props.user;
             date = created_at.date;
             time = created_at.time;
@@ -42,7 +39,6 @@ class PostIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    debugger 
     return {
         user: state.entities.users[ownProps.userId] || {}
     }

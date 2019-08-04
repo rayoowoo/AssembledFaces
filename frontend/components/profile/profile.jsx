@@ -27,7 +27,6 @@ class Profile extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    debugger
     return {
         user: state.entities.users[ownProps.match.params.userId] || {}
     }

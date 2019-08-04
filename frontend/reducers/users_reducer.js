@@ -9,7 +9,6 @@ export default (state = {}, action) => {
     let newUser;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            debugger
             newUser = { [action.res.user.id]: action.res.user }
             return merge({}, state, newUser);
         case RECEIVE_USER:

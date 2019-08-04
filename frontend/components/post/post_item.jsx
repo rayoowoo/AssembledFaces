@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchPost, deletePost} from '../../actions/post_actions'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter, Route} from 'react-router-dom'
+import PostResponse from './post_response'
 
 
 class PostItem extends React.Component {
@@ -42,9 +43,8 @@ class PostItem extends React.Component {
                         <img src="https://i.ytimg.com/vi/bPTZ43nM688/maxresdefault.jpg" alt=""/>
                         {/* Image sourced from: https://www.instagram.com/p/Bw9nt8mnMGb/ */}
                         </div> 
-                    {/* the picture will probably have some negative margins to be flush with the container */}
              
-                {/* <PostResponses /> */ }
+                <Route path="/users/:userId" render={(props) => <PostResponse postId={this.props.post} currentUserId={this.props.currentUserId}/>} />
             </section>
         )
     }
