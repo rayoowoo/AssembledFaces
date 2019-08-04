@@ -1,5 +1,6 @@
 import React from 'react'
 import PostItem from './post_item'
+import {connect} from 'react-redux'
 
 
 class PostIndex extends React.Component {
@@ -15,20 +16,36 @@ class PostIndex extends React.Component {
     }
 
     render() {
-        let allPosts = null;
+        let date, time, allPosts = null;
         if (this.props.posts.length !== 0){ 
             allPosts = this.props.posts.map(post => {
                 return <PostItem post={post} key={`post-${post.id}`} />
             })
         }
+
+        if (Object.keys(this.props.user).length !== 0) {
+            debugger
+            const { created_at } = this.props.user;
+            date = created_at.date;
+            time = created_at.time;
+        }
+
      
         return (
             <section className="postindex">
                 <h1>Posts</h1>           
                 {allPosts}
+                <div>JOINED ASSEMBLED PAGES {date} at {time}</div>
             </section>
         )
     }
 }
 
-export default PostIndex;
+const msp = (state, ownProps) => {
+    debugger 
+    return {
+        user: state.entities.users[ownProps.userId] || {}
+    }
+}
+
+export default connect(msp)(PostIndex);
