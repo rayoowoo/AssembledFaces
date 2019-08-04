@@ -5,11 +5,13 @@ export default (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_TIMELINE_POSTS:
-            return merge({}, action.posts);
+            debugger
+            return merge({}, action.res.posts);
         case RECEIVE_ALL_POSTS:
-            return merge({}, action.posts);
+            return merge({}, action.res.posts);
         case RECEIVE_POST:
-            return merge({},state, action.post)
+            debugger
+            return merge({},state, action.res.post)
         case REMOVE_POST:
             const newState = merge({}, state);
             delete newState[action.post.id]

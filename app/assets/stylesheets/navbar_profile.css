@@ -15,7 +15,7 @@
     padding: 0px 10px;
     margin: 0 auto;
     color: white;
-    height: 43px;
+    height: 42px;
     justify-content: space-between;
     font-family: Helvetica, sans-serif;
     align-items: center;
@@ -47,8 +47,9 @@
     margin-right: 10px;
     position: relative;
     overflow: hidden;
-    width: 28px;
-    height: 28px;
+    width: 26.5px;
+    height: 26.5px;
+    overflow: hidden;
 }
 
 .profile-search form {

@@ -12,7 +12,7 @@ class Api::PostsController < ApplicationController
     end
 
     def show
-        @post = User.find(params[:author_id]).authored_posts.find(params[:id]).includes(:comments)
+        @post = User.find(params[:user_id]).timeline_posts.find(params[:id]) #.includes(:comments) MUST ADD THIS LATER
         render :show
     end
 

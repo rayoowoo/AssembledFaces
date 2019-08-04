@@ -7,19 +7,19 @@ export const CLEAR_POST_ERRORS = "CLEAR_POST_ERRORS";
 import * as POSTUtil from '../utils/post_utils'
 
 
-export const receiveTimelinePosts = posts => ({
+export const receiveTimelinePosts = res => ({
     type: RECEIVE_TIMELINE_POSTS,
-    posts
+    res
 })
 
-export const receiveAllPosts = posts => ({
+export const receiveAllPosts = res => ({
     type: RECEIVE_ALL_POSTS,
-    posts
+    res
 })
 
-export const receivePost = post => ({
+export const receivePost = res => ({
     type: RECEIVE_POST,
-    post
+    res
 })
 
 export const removePost = post => ({
@@ -34,31 +34,31 @@ export const receivePostErrors = errors => ({
 
 export const fetchTimelinePosts = userId => dispatch => {
     return POSTUtil.fetchTimelinePosts(userId)
-        .then(posts => dispatch(receiveTimelinePosts(posts)),
+        .then(res => dispatch(receiveTimelinePosts(res)),
         errors => dispatch(receivePostErrors(errors)))
 };
 
 export const fetchAllPosts = () => dispatch => {
     return POSTUtil.fetchAllPosts()
-        .then(posts => dispatch(receiveAllPosts(posts)),
+        .then(res => dispatch(receiveAllPosts(res)),
         errors => dispatch(receivePostErrors(errors)))
 };
 
 export const fetchPost = (userId, postId) => dispatch => {
     return POSTUtil.fetchPost(userId, postId)
-        .then(post => dispatch(receivePost(post)),
+        .then(res => dispatch(receivePost(res)),
         errors => dispatch(receivePostErrors(errors)))
 };
 
 export const createPost = post => dispatch => {
     return POSTUtil.createPost(post)
-        .then( post => dispatch(receivePost(post)),
+        .then( res => dispatch(receivePost(res)),
         errors => dispatch(receivePostErrors(errors)))
 }
 
 export const updatePost = post => dispatch => {
     return POSTUtil.updatePost(post)
-        .then(post => dispatch(receivePost(post)),
+        .then(res => dispatch(receivePost(res)),
         errors => dispatch(receivePostErrors(errors)))
 }
 

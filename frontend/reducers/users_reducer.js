@@ -1,5 +1,7 @@
 import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
 import {RECEIVE_USER, RECEIVE_ALL_USERS } from '../actions/user_actions'
+import { RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST } from '../actions/post_actions'
+
 import {merge} from 'lodash';
 
 export default (state = {}, action) => {
@@ -14,6 +16,14 @@ export default (state = {}, action) => {
             return merge({}, state, newUser);
         case RECEIVE_ALL_USERS:
             return merge({}, action.users)
+        case RECEIVE_TIMELINE_POSTS:
+            debugger
+            return merge({}, state, action.res.authors)
+        case RECEIVE_ALL_POSTS:
+            return merge({}, state, action.res.authors)
+        case RECEIVE_POST:
+            return merge({}, state, action.res.author)
+
         default:
             return state;
     }

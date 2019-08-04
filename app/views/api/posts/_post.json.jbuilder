@@ -1,4 +1,4 @@
-json.extract! post, :id, :body, :author_id, :user_id, :comments
+json.extract! post, :id, :body, :author_id, :user_id
 
 if post.created_at.strftime('%-B,%-d,%-Y') == (Time.now - 1.day).strftime('%-B,%-d,%-Y')
     json.created_at({date: 'Yesterday',
@@ -17,3 +17,5 @@ end
 # if post.photo.attached? 
 #     json.photoUrl url_for(post.photo)
 # end
+
+
