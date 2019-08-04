@@ -1,5 +1,6 @@
 import React from 'react'
 import CommentForm from '../comment/comment_form'
+import CommentIndex from '../comment/comment_index'
 
 class PostResponse extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class PostResponse extends React.Component {
                     <p><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
-                    {/* <CommentIndex /> */}
+                    <CommentIndex />
                     <CommentForm/>
                 </div>
 
