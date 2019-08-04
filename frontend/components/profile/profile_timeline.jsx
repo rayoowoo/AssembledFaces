@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfilePostForm from './profile_post_form_container'
-import ProfilePostIndex from './profile_post_index'
+import ProfilePostIndex from './profile_post_index_container'
+import {Route} from 'react-router-dom'
 
 class ProfileTimeline extends React.Component {
 
@@ -8,7 +9,7 @@ class ProfileTimeline extends React.Component {
         return (
             <div className="profile-timeline">
                 <ProfilePostForm />
-                <ProfilePostIndex />
+                <Route path="/user/:userId" component={ProfilePostIndex} />
             </div>
         )
     }

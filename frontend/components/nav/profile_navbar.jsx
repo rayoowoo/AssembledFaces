@@ -23,8 +23,7 @@ class ProfileNavBar extends React.Component {
 
     handleIconClick(e) {
         this.refs.profilenavdropdown.classList.add("visible");
-        document.classList.add("display")
-
+        this.refs.fakemodal.classList.add("display");
     }
 
     clear(e) {
@@ -35,6 +34,12 @@ class ProfileNavBar extends React.Component {
         e.preventDefault();
         this.props.logout();
         this.props.history.push("/");
+    }
+
+    clearFocus(e) {
+        e.preventDefault();
+        this.refs.fakemodal.classList.remove("display");
+        this.refs.profilenavdropdown.classList.remove("visible");
     }
 
     render() {
@@ -76,7 +81,8 @@ class ProfileNavBar extends React.Component {
 
                     </nav>
                 </div>
-                
+                <div id="fakemodal" onClick={this.clearFocus.bind(this)} ref="fakemodal"></div>
+
             </header>
         )
     }

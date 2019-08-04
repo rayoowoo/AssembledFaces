@@ -194,6 +194,7 @@
 
 .visible {
     visibility: visible;
+    z-index: 200;
 }
 
 .profile-nav-logout {
@@ -205,4 +206,8 @@
     background-color: rgb(136, 54, 54);
     color: white;
     border-radius: 1px;
+}
+
+#fakemodal.display {
+    background: transparent;
 }

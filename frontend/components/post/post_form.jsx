@@ -13,6 +13,10 @@ class PostForm extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({user_id: parseInt(this.props.match.params.userId)})
+    }
+
     assignSelect(e) {
         e.preventDefault();
         Object.values(this.refs).forEach( ref => {
@@ -52,6 +56,12 @@ class PostForm extends React.Component {
     }
 
     render() {
+        let submit;
+        if (this.state.body === "") {
+            submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
+        } else {
+            submit = <input className="postform-submit" type="submit" value="Post" />
+        }
         return (
             <>
 
@@ -82,7 +92,7 @@ class PostForm extends React.Component {
                         </section>
 
                         <div className="postform-submit-container">
-                            <input className="postform-submit disabled-btn" type="submit" value="Post"/>
+                            {submit}
                         </div>
                     </form>
                 </section>

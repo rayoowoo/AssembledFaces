@@ -105,6 +105,15 @@
     color: black;
 }
 
+.profile-sidebar-intro-filled strong {
+    color: rgb(136, 54, 54)
+}
+
+.profile-sidebar-intro-filled strong:hover {
+    cursor: pointer;
+    text-transform: underline;
+}
+
 #profile-sidebar-intro-filled {
     color: black;
 }

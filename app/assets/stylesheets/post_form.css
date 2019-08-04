@@ -6,14 +6,14 @@
 
 .postform-container {
     position: relative;
-    height: 160px;
+    /* height: 160px; */
     width: 100%;
 }
 
 .postform {
     border: 1px solid rgb(219, 219, 219);
     background-color: white;
-    position: absolute;
+    position: relative;
     width: inherit;
 }
 
@@ -101,10 +101,14 @@ li.postform-selected span, .postform-selected i {
     background-color: rgb(234, 234, 234);
     border-radius: 20px;
     color: rgb(42, 42, 42);
-    padding: 5px 15px 5px 10px;
-    margin: 10px;
+    padding: 7px 10px;
+    margin: 10px 3px;
     display: flex;
     align-items: center;
+}
+
+.postinput-buttons:first-of-type {
+    margin-left: 0px;
 }
 
 .postinput-buttons:hover {
@@ -129,16 +133,16 @@ li.postform-selected span, .postform-selected i {
     background-color: rgb(109, 64, 100);
     border-radius: 2px;
     padding: 7px;
-
+    color: white;
     width: 100%;
     font-size: 11px;
     font-weight: 800;
 }
 
 .postform-submit-container {
-    margin: -5px -10px;
+    margin: -5px -11px;
     border: 10px solid rgb(235, 235, 235);
-    display: block;
+    display: none;
     border-bottom-left-radius: 1px;
     border-bottom-right-radius: 1px;
 }
@@ -149,6 +153,11 @@ li.postform-selected span, .postform-selected i {
 
 .postform-submit:hover {
     cursor: pointer;
+}
+
+.postform-submit:disabled {
+    background-color: rgb(122, 104, 119);
+    cursor: default;
 }
 
 .focused {
@@ -162,11 +171,11 @@ li.postform-selected span, .postform-selected i {
 
 
 #x-btn {
-    font-size: 24px;
+    font-size: 22px;
     z-index: 106;
-    top: 1px;
-    right: 2px;
-    color: rgb(114, 114, 114);
+    top: 2px;
+    right: 3px;
+    color: rgb(200, 200, 200);
     padding-bottom: 5px;
     position: absolute;
     text-align: center;
@@ -174,7 +183,6 @@ li.postform-selected span, .postform-selected i {
     display: none;
     box-sizing: border-box;
 }
-
 
 #x-btn.focused {
     display: block;

@@ -21,16 +21,16 @@ class ProfileSideBar extends React.Component {
             biog = <p id="profile-sidebar-intro-filled">{bio}</p>;
         }
         if (current_city) {
-            city = <li className="profile-sidebar-intro-filled"><i className="fa fa-home"></i><p>{current_city}</p></li>
+            city = <li className="profile-sidebar-intro-filled"><i className="fa fa-home"></i><p>Currently in <strong>{current_city}</strong></p></li>
             };
         if (workplace) {
-            work = <li className="profile-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>{workplace}</p></li>
+            work = <li className="profile-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>Work at <strong>{workplace}</strong></p></li>
             };
         if (school) {
-            school = <li className="profile-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>{education}</p></li>
+            school = <li className="profile-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>Went to <strong>{education}</strong></p></li>
             };
         if (hometown) {
-            home = <li className="profile-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>{hometown}</p></li>
+            home = <li className="profile-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>From <strong>{hometown}</strong></p></li>
         };
 
 

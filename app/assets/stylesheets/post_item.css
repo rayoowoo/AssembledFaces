@@ -1,0 +1,75 @@
+.postindex {
+    margin-top: 20px;
+}
+
+.postindex h1 {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(82, 82, 82)
+}
+
+.postitem {
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 2px;
+    background-color: white;
+    margin: 10px 0px;
+
+}
+
+.post-content-picture {
+    margin-right: 10px;
+    margin-top: 0px;
+}
+
+.postitem-top {
+    padding: 15px 15px 0px 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.post-content-author {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 3px 0px 0px 0px;
+}
+
+.post-content-author a {
+    color: rgb(136, 54, 54)
+}
+
+.post-content-author a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.post-content-time,
+.post-content-city  {
+    font-size: 13px;
+    color: rgb(82, 82, 82);
+    display: inline-block;
+}
+
+.post-content-time:hover,
+.post-content-city:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dot {
+    font-size: 12px;
+    color: rgb(168, 168, 168);
+}
+
+.post-content-body {
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.post-content-picture {
+    overflow: hidden;
+}
+
+.post-content-body-picture img {
+    width: 100%;
+}

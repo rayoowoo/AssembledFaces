@@ -2,9 +2,9 @@ import React from 'react'
 
 class ProfilePictureArea extends React.Component {
 
-    componenDidMount() {
-        this.refs.main.scrollTop += 100;
-    }
+    // componenDidMount() {
+    //     this.refs.jump.scrollIntoView();
+    // }
 
     render() {
         const {user} = this.props;
