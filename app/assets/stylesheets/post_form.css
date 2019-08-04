@@ -72,6 +72,10 @@ li.postform-selected span, .postform-selected i {
     resize: none;
 }
 
+.postinput textarea:hover {
+    cursor: text;
+}
+
 .post-picture {
     height: 40px;
     width: 40px;
@@ -130,10 +134,11 @@ li.postform-selected span, .postform-selected i {
 
 .postform-submit {
     border: 1px solid rgb(168, 110, 158);
-    background-color: rgb(109, 64, 100);
+    background-color: rgb(107, 7, 87);
     border-radius: 2px;
     padding: 7px;
     color: white;
+    text-shadow: 0.1px 0.1px 0.1px black;
     width: 100%;
     font-size: 11px;
     font-weight: 800;
@@ -156,7 +161,7 @@ li.postform-selected span, .postform-selected i {
 }
 
 .postform-submit:disabled {
-    background-color: rgb(122, 104, 119);
+    background-color: rgb(109, 64, 100);
     cursor: default;
 }
 

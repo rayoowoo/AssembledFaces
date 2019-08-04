@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchPost} from '../../actions/post_actions'
+import {fetchPost, deletePost} from '../../actions/post_actions'
 import {Link, withRouter} from 'react-router-dom'
 
 
@@ -9,13 +9,19 @@ class PostItem extends React.Component {
         super(props)
     }
 
+
     render() {
+        
         const {date, time} = this.props.post.created_at;
-        debugger
+        let btn = null;
+        if (this.props.author.id === this.props.currentUserId) {
+            btn = <button onClick={e => this.props.deletePost(this.props.post.id)} className="post-delete-btn"><i className="fa fa-trash"></i></button>
+        }
         return (
             <section className="postitem">
+                
+                    {btn}
                 <section className="postitem-top">
-                    
                     
                     <div className="post-content-picture post-picture">
                         <img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" />
@@ -45,14 +51,15 @@ class PostItem extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    debugger
     return ({
-        author: state.entities.users[ownProps.post.author_id] || {}
+        author: state.entities.users[ownProps.post.author_id] || {},
+        currentUserId : state.session.id
     })
 }
 
 const mdp = dispatch => ({
-    fetchPost: (userId, postId) => dispatch(fetchPost(userId, postId))
+    fetchPost: (userId, postId) => dispatch(fetchPost(userId, postId)),
+    deletePost: postId => dispatch(deletePost(postId))
 })
 
 export default withRouter(connect(msp, mdp)(PostItem));

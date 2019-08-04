@@ -5,7 +5,13 @@ import PostItem from './post_item'
 class PostIndex extends React.Component {
     
     componentDidMount() {
+        debugger
         this.props.fetchTimelinePosts(this.props.userId);
+    }
+
+    componentDidUpdate(prevProps) {
+        debugger
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchTimelinePosts(this.props.userId);}
     }
 
     render() {

@@ -6,7 +6,9 @@ end
 
 
 json.author do 
-    json.set! @post.author_id, @post.author
+    json.set! @post.author_id do
+        json.partial! 'api/users/user'
+    end
 end
 
 json.extract! @post, :comments

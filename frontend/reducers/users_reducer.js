@@ -9,15 +9,14 @@ export default (state = {}, action) => {
     let newUser;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            newUser = { [action.user.id]: action.user }
+            newUser = { [action.res.user.id]: action.res.user }
             return merge({}, state, newUser);
         case RECEIVE_USER:
-            newUser = { [action.user.id]: action.user}
+            newUser = { [action.res.user.id]: action.res.user}
             return merge({}, state, newUser);
         case RECEIVE_ALL_USERS:
-            return merge({}, action.users)
+            return merge({}, action.res.users)
         case RECEIVE_TIMELINE_POSTS:
-            debugger
             return merge({}, state, action.res.authors)
         case RECEIVE_ALL_POSTS:
             return merge({}, state, action.res.authors)

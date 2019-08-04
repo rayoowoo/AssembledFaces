@@ -5,14 +5,14 @@ export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 import * as USERUtil from '../utils/user_utils'
 
 
-export const receiveAllUsers = users => ({
+export const receiveAllUsers = res => ({
     type: RECEIVE_ALL_USERS,
-    users
+    res
 })
 
-export const receiveUser = user => ({
+export const receiveUser = res => ({
     type: RECEIVE_USER,
-    user
+    res
 })
 
 export const receiveUserErrors = errors => ({
@@ -22,19 +22,19 @@ export const receiveUserErrors = errors => ({
 
 export const fetchAllUsers = () => dispatch => {
     return USERUtil.fetchAllUsers()
-        .then(users => dispatch(receiveAllUsers(users)),
+        .then(res => dispatch(receiveAllUsers(res)),
             errors => dispatch(receiveUserErrors(errors)))
 };
 
 export const fetchUser = id => dispatch => {
     return USERUtil.fetchUser(id)
-        .then(user => dispatch(receiveUser(user)),
+        .then(res => dispatch(receiveUser(res)),
             errors => dispatch(receiveUserErrors(errors)))
 };
 
 export const updateUser = user => dispatch => {
     return USERUtil.updateUser(user)
-        .then(user => dispatch(receiveUser(user)),
+        .then(res => dispatch(receiveUser(res)),
             errors => dispatch(receiveUserErrors(errors)))
 }
 
