@@ -60,3 +60,52 @@
     color: black;
     cursor: pointer;
 }
+
+.comment-item {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.comment-content-main {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    border-radius: 20px;
+    background-color: rgb(236, 236, 236);
+    padding: 10px;
+} 
+
+.comment-content-author {
+    font-weight: bold;
+    margin-right: 5px;
+    color: rgb(136, 54, 54);
+}
+
+.comment-content-author:visited,
+.comment-content-author:default {
+    color: rgb(136, 54, 54);
+}
+
+.comment-content-author:hover,
+.comment-response-links:hover  {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.comment-response {
+    font-size: 11.5px;
+    margin-left: 10px;
+    color: rgb(110, 110, 110);
+}
+
+.comment-response-links {
+    color: rgb(136, 54, 54);
+}

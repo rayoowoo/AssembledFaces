@@ -26,8 +26,8 @@ class PostResponse extends React.Component {
                     <p><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
-                    <CommentIndex />
-                    <CommentForm/>
+                    <CommentIndex postId={this.props.postId} currentUserId={this.props.currentUserId}/>
+                    <CommentForm postId={this.props.postId} currentUserId={this.props.currentUserId}/>
                 </div>
 
             </section>
