@@ -38,3 +38,8 @@ tony.cover_photo.attach(io: photo3, filename: 'ironman-logo.jpg')
 photo4 = open('https://s3.amazonaws.com/assembled-faces-seed/captain-america-logo.jpg')
 steve.cover_photo.attach(io: photo4, filename: 'captain-america-logo.jpg')
 # FROM http://getwallpapers.com/image/65180
+
+postphoto1 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman-post.jpg')
+post2.photo.attach(io: postphoto1, filename: 'ironman-post.jpg')
+
+# FROM {/* Image sourced from: https://www.instagram.com/p/Bw9nt8mnMGb/ */}

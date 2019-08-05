@@ -7,7 +7,7 @@ end
 
 json.author do 
     json.set! @post.author_id do
-        json.partial! 'api/users/user'
+        json.partial! 'api/users/user', user: @post.author
     end
 end
 

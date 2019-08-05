@@ -72,6 +72,11 @@ li.postform-selected span, .postform-selected i {
     resize: none;
 }
 
+.postform.focused textarea {
+    padding-bottom: 5px;
+    height: 42px;
+}
+
 .postinput textarea:hover {
     cursor: text;
 }
@@ -84,11 +89,35 @@ li.postform-selected span, .postform-selected i {
     z-index: 2;
     overflow: hidden;
     margin-top: -5px;
+    background-image: url('default.png');
+    background-position: center; 
+    background-size: 35px 40px;
 }
 
 .post-picture img {
     height: 100%;
     margin: auto;
+}
+
+.postform-img-preview {
+    display: none;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.postform-img-preview.photo-display {
+    display: block;
+}
+
+.postform-img-preview img {
+    width: 100%;
+    margin: auto;
+}
+
+.photo-upload {
+    display: none;
 }
 
 .postinput-buttons-container {

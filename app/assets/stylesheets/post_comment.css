@@ -12,6 +12,9 @@
     z-index: 2;
     overflow: hidden;
     margin-right: 10px;
+    background-image: url('default.png');
+    background-position: center; 
+    background-size: 35px 40px;
 }
 
 .comment-picture img {

@@ -50,8 +50,9 @@ export const fetchPost = (userId, postId) => dispatch => {
         errors => dispatch(receivePostErrors(errors)))
 };
 
-export const createPost = post => dispatch => {
-    return POSTUtil.createPost(post)
+// createPost needs to be able to accept a photo
+export const createPost = (userId, formData) => dispatch => {
+    return POSTUtil.createPost(userId, formData)
         .then( res => dispatch(receivePost(res)),
         errors => dispatch(receivePostErrors(errors)))
 }

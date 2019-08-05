@@ -19,11 +19,14 @@ export const fetchPost = (userId, postId) => {
     })
 }
 
-export const createPost = post => {
+export const createPost = (userId, formData) => {
+    debugger
     return $.ajax({
         method: "POST",
-        url: `api/users/${post.user_id}/posts`,
-        data: {post}
+        url: `api/users/${userId}/posts`,
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 

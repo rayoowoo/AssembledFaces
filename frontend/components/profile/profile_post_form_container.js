@@ -8,7 +8,7 @@ const msp = state => ({
 })
 
 const mdp = dispatch => ({
-    createPost: post => dispatch(createPost(post))
+    createPost: (userId, formData) => dispatch(createPost(userId, formData))
 })
 
 export default withRouter(connect(msp, mdp)(PostForm));

@@ -21,6 +21,7 @@ class PostItem extends React.Component {
 
         const photo = this.props.author.photoUrl ? <img src={this.props.author.photoUrl} alt="" /> : null
 
+        const postPhoto = this.props.post.photoUrl ? <img src={this.props.post.photoUrl} alt="" /> : null
         return (
             <section className="postitem">
                 
@@ -43,8 +44,8 @@ class PostItem extends React.Component {
                     
                     <p className="post-content-body">{this.props.post.body}</p>
                     <div className="post-content-body-picture">
-                        <img src="https://i.ytimg.com/vi/bPTZ43nM688/maxresdefault.jpg" alt=""/>
-                        {/* Image sourced from: https://www.instagram.com/p/Bw9nt8mnMGb/ */}
+                        {postPhoto}
+                        
                         </div> 
              
                 <PostResponse postId={this.props.post.id} currentUserId={this.props.currentUserId}/>

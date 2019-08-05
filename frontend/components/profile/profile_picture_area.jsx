@@ -8,7 +8,7 @@ class ProfilePictureArea extends React.Component {
 
     render() {
         const {user} = this.props;
-        const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : <img src="./default.png" alt="" />
+        const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
         const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null
         return (
             <>

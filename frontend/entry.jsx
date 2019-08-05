@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
 import {logout, signup} from './actions/session_actions'
-// import * as hi from './actions/comment_actions'
-import * as COMMENTUtil from './utils/comment_utils'
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.dispatch = store.dispatch;
     window.logout = logout;
     window.signup = signup;
-    window.deleteComment = COMMENTUtil.deleteComment;
     window.test = {id: 7, body: "Rumlow wish he did.", author_id: 39, post_id: 20}
 
      
