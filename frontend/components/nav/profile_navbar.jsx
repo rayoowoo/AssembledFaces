@@ -43,6 +43,10 @@ class ProfileNavBar extends React.Component {
     }
 
     render() {
+        const navPic = <div className="comment-picture" id="nav-picture">
+            <img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" />
+            {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
+        </div>
         return (
             <header className="profile-nav">
                 <div className="profile-navbar">
@@ -59,9 +63,10 @@ class ProfileNavBar extends React.Component {
 
                     <nav>
                         <div className="profile-nav-links">
-                            <div id="profile-nav-name-btn"><a  onClick={this.handleLinkClick("name")}>{this.props.currentUser.first_name}</a></div>
-                            <div><a onClick={this.handleLinkClick("home")}>Home</a></div>
-                            <div><a onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} }>Create</a></div>
+                            
+                            <div id="profile-nav-name-btn"><a onClick={this.handleLinkClick("name")}> {navPic} <span>{this.props.currentUser.first_name}</span></a></div>
+                            <section id="profile-nav-home"><a onClick={this.handleLinkClick("home")}>Home</a></section>
+                            <section><a onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} }>Create</a></section>
                         </div>
 
 

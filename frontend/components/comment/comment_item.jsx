@@ -27,11 +27,11 @@ class CommentItem extends React.Component {
                     </div>
                  
                     <section className="comment-response">
-                        <span className="comment-response-links">Like</span>
+                        <p className="comment-response-links">Like</p>
                         <span className="dot">  ·  </span>
-                        <span className="comment-response-links">Reply</span>
+                        <p className="comment-response-links">Reply</p>
                         <span className="dot">  ·  </span>
-                        <span>{created_at.date}</span>
+                        <p>{created_at.date}</p>
                     </section>
                 </section>
                 {children}

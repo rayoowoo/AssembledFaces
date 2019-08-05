@@ -94,8 +94,12 @@
     color: rgb(136, 54, 54);
 }
 
+.comment-response p {
+    display: inline-block;
+}
+
 .comment-content-author:hover,
-.comment-response-links:hover  {
+.comment-response p:hover  {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -108,4 +112,10 @@
 
 .comment-response-links {
     color: rgb(136, 54, 54);
+}
+
+.child-comments {
+    display: block;
+    position: relative;
+    border: 2px solid green;
 }

@@ -27,7 +27,8 @@ class CommentIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    if (!ownProps.child) {
+    debugger
+    if (ownProps.comments === undefined) {
         return {
             comments: Object.values(state.entities.comments) || []
         }

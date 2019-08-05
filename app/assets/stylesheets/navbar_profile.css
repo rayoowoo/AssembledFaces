@@ -88,6 +88,7 @@
 
 .profile-nav nav {
     display: flex;
+    align-items: center;
 }
 
 .profile-icon a:hover {
@@ -103,20 +104,42 @@
     justify-content: flex-end;
 }
 
-.profile-nav-links div {
-    height: 20px;
-    margin-top: 5px;
+.profile-nav-links section {
     border-right: 1px solid rgb(98, 0, 0);
+    padding: 2px 0px;
 }
 
 .profile-nav-links a {
-    padding: 4px 14px;
+    padding: 8px 14px;
+}
+
+#profile-nav-home {
+    border-left: 1px solid rgb(98, 0, 0);
 }
 
 .profile-nav-links a:hover {
     cursor: pointer;
     background-color: rgb(119, 15, 15);
     border-radius: 2px;
+}
+
+#nav-picture {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}
+
+#profile-nav-name-btn a{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 4px 14px 4px 4px;
+}
+
+#profile-nav-name-btn {
+    margin-top: 0px;
+
+
 }
 
 .profile-nav-icons {
@@ -131,7 +154,6 @@
     color: rgb(70, 0, 0);
     font-size: 21px;
     font-weight: bold;
-    margin-top: 3px;
 }
 
 .profile-nav-icons i,
