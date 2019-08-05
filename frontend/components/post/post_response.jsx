@@ -13,6 +13,13 @@ class PostResponse extends React.Component {
         e.target.classList.toggle("selected");
     }
 
+    clickComment(e) {
+        e.preventDefault();
+        debugger
+        this.refs.commentform.childNodes[0].childNodes[1].focus()
+        this.refs.commentform.childNodes[0].childNodes[1].click()
+    }
+
     render() {
         return (
             <section className="post-response">
@@ -20,14 +27,14 @@ class PostResponse extends React.Component {
                     <p><span><i className="fas fa-thumbs-up"></i></span>Steve Rogers</p>
                     <p>1 Comment</p>
                 </div>
-                <div onClick={this.selectOption.bind(this)} className="post-icons">
-                    <p><i className="fas fa-thumbs-up"></i>Like</p>
-                    <p><i className="fas fa-comment"></i>Comment</p>
+                <div className="post-icons">
+                    <p onClick={this.selectOption.bind(this)} ><i className="fas fa-thumbs-up"></i>Like</p>
+                    <p onClick={this.clickComment.bind(this)}><i className="fas fa-comment"></i>Comment</p>
                     <p><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
                     <CommentIndex postId={this.props.postId} currentUserId={this.props.currentUserId}/>
-                    <CommentForm postId={this.props.postId} currentUserId={this.props.currentUserId}/>
+                    <div ref="commentform"><CommentForm postId={this.props.postId} currentUserId={this.props.currentUserId}/></div>
                 </div>
 
             </section>

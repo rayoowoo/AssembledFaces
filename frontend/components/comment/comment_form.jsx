@@ -29,12 +29,10 @@ class CommentForm extends React.Component {
                 return
             }
         };
-        debugger
         this.setState({ body: e.target.value })
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         this.props.createComment(this.props.postId, this.state);
         this.setState({ body: "" })
@@ -57,7 +55,7 @@ class CommentForm extends React.Component {
                         <img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" />
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
-                <textarea onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
+                <textarea ref="commentforminput" onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
 
                 <span className="commentinput-buttons-container">
                     <i className="far fa-smile"></i>
