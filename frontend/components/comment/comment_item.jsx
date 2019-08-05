@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link, withRouter, Route } from 'react-router-dom'
-import CommentIndex from './comment_index'
+import CommentIndexChildren from './comment_index_children'
 
 
 
@@ -11,9 +11,14 @@ class CommentItem extends React.Component {
     }
 
     render() {
-        const children = this.props.childComments.length > 0 ? <div className="child-comments"><CommentIndex child={true} comments={this.props.childComments} /></div> : null;
+        const children = this.props.childComments.length > 0 ? <div className="child-comments"><CommentIndexChildren parentCommentId={this.props.comment.id} childComments={this.props.childComments} /></div> : null;
         const {comment: {body, created_at}, author} = this.props;
+        debugger
+        const reply = this.props.childComments.length > 0 ? (<><p className="comment-response-links">Reply</p>
+            <span className="dot">  ·  </span></>) : null
+
         return (
+            <>
             <section className="comment-item">
                 <div className="comment-picture">
                     <img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" />
@@ -28,14 +33,14 @@ class CommentItem extends React.Component {
                     <section className="comment-response">
                         <p className="comment-response-links">Like</p>
                         <span className="dot">  ·  </span>
-                        <p className="comment-response-links">Reply</p>
-                        <span className="dot">  ·  </span>
+                        {reply}
                         <p>{created_at.date}</p>
                     </section>
                 </section>
-                {children}
+               
             </section>
-            
+             {children}
+             </>
         )
     }
 }

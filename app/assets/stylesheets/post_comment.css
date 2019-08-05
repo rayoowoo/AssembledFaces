@@ -117,5 +117,5 @@
 .child-comments {
     display: block;
     position: relative;
-    border: 2px solid green;
+    margin-left: 20px;
 }

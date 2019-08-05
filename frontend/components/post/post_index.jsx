@@ -27,7 +27,6 @@ class PostIndex extends React.Component {
             date = created_at.date;
             time = created_at.time;
         }
-        debugger
 
         return (
             <section className="postindex">
