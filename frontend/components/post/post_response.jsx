@@ -15,7 +15,6 @@ class PostResponse extends React.Component {
 
     clickComment(e) {
         e.preventDefault();
-        debugger
         this.refs.commentform.childNodes[0].childNodes[1].focus()
         this.refs.commentform.childNodes[0].childNodes[1].click()
     }

@@ -9,5 +9,9 @@ if user.cover_photo.attached?
     json.coverUrl url_for(user.cover_photo)
 end
 
+if user.photos.attached?
+    json.photoUrls user.photos.map { |file| url_for(file) }
+end
+
 json.created_at({date: user.created_at.strftime('%-B %-d, %Y'),
         time: user.created_at.strftime('%-I:%M%p')})

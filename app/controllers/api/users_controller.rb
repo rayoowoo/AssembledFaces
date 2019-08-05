@@ -10,12 +10,12 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.with_attached_photos.find(params[:id])
+        @user = User.with_attached_cover_photo.with_attached_profile_photo.with_attached_photos.find(params[:id])
         render :show
     end
 
     def index
-        @users = User.with_attached_photos.all
+        @users = User.with_attached_profile_photo.all
         render :index
     end
 
@@ -30,6 +30,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:email, :password, :birth_date, :first_name, :last_name, :gender, :hometown, :current_city, :workplace, :education, :location, :profile_photo)
+        params.require(:user).permit(:email, :password, :birth_date, :first_name, :last_name, :gender, :hometown, :current_city, :workplace, :education, :location, :profile_photo, :cover_photo, photos: [])
     end
 end

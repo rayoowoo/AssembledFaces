@@ -83,8 +83,14 @@
     overflow: hidden;
 }
 
+.post-content-body-picture {
+    max-height: 280px;
+    overflow: hidden;
+}
+
 .post-content-body-picture img {
     width: 100%;
+    margin: auto;
 }
 
 .post-special-content {

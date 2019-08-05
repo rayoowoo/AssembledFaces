@@ -202,6 +202,11 @@ li.postform-selected span, .postform-selected i {
     font-weight: 200;
 }
 
+.focused-with-preview textarea {
+    font-size: 14px;
+    font-weight: 200;
+}
+
 
 #x-btn {
     font-size: 22px;

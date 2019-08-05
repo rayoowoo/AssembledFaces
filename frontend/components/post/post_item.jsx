@@ -12,7 +12,6 @@ class PostItem extends React.Component {
 
 
     render() {
-        
         const {date, time} = this.props.post.created_at;
         let btn = null;
         if (this.props.author.id === this.props.currentUserId) {

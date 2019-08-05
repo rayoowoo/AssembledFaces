@@ -13,7 +13,7 @@ export default (state = {}, action) => {
             return merge({},state, action.res.post)
         case REMOVE_POST:
             const newState = merge({}, state);
-            delete newState[action.post.id]
+            delete newState[action.res.post.id]
             return newState;
         case RECEIVE_USER:
             return merge({}, state, action.res.posts);            

@@ -41,5 +41,20 @@ steve.cover_photo.attach(io: photo4, filename: 'captain-america-logo.jpg')
 
 postphoto1 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman-post.jpg')
 post2.photo.attach(io: postphoto1, filename: 'ironman-post.jpg')
-
 # FROM {/* Image sourced from: https://www.instagram.com/p/Bw9nt8mnMGb/ */}
+
+photo5 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman1.jpg')
+tony.photos.attach(io: photo5, filename:"ironman1.jpg")
+# https://am22.akamaized.net/tms/cnt/uploads/2019/08/Iron-Man-3-Is-the-One-of-the-Best-Explorations-of-the-Emotional-Turmoil-of-Being-a-Hero-1200x675.jpg
+
+photo6 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman2.jpg')
+tony.photos.attach(io: photo6, filename:"ironman2.jpg")
+# https://7lwy5tgst9-flywheel.netdna-ssl.com/wp-content/uploads/2018/01/Iron-Man.jpg
+
+photo7 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman3.png')
+tony.photos.attach(io: photo7, filename:"ironman3.png")
+# https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/07/Screen-Shot-2017-07-03-at-11.30.38.png
+
+photo8 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman4.jpg')
+tony.photos.attach(io: photo8, filename:"ironman4.jpg")
+# https://e3.365dm.com/19/04/768x432/skynews-avengers-endgame-marvel_4649149.jpg?20190424150753

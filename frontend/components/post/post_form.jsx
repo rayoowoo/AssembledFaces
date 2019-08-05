@@ -49,6 +49,9 @@ class PostForm extends React.Component {
         this.refs.postformText.classList.add("focused");
         this.refs.x.classList.add("focused");
         this.refs.fakemodal.classList.add("display");
+        if (this.state.photoUrl) {
+            this.refs.photoPreview.classList.add("photo-display")
+        }
     }
 
     clearFocus(e) {
@@ -56,6 +59,7 @@ class PostForm extends React.Component {
         this.refs.postformText.classList.remove("focused");
         this.refs.x.classList.remove("focused");
         this.refs.fakemodal.classList.remove("display");
+        this.refs.photoPreview.classList.remove("photo-display")
     }
 
 
@@ -67,16 +71,10 @@ class PostForm extends React.Component {
             formData.append('post[user_id]', this.state.user_id)
             formData.append('post[author_id]', this.state.author_id)
             formData.append('post[photo]', this.state.photo)
-            // const formData = {
-            //     body: this.state.body,
-            //     user_id: parseInt(this.props.match.params.userId),
-            //     author_id: this.props.currentUser.id,
-            //     photo: this.state.photo
-            // }
-            debugger
             this.props.createPost(this.state.user_id, formData);
             this.setState({body: "", photo: null})
             this.refs.photoPreview.classList.remove("photo-display");
+            this.clearFocus(e);
             this.try = false;
         } else {
             this.try = true;
@@ -87,6 +85,7 @@ class PostForm extends React.Component {
         e.stopPropagation();
         // this.refs.photoUpload.focus();
         this.refs.photoUpload.click();
+        this.focusForm(e);
         this.refs.photoPreview.classList.add("photo-display");
     }
 
@@ -103,7 +102,6 @@ class PostForm extends React.Component {
     }
 
     handleFile(e) {
-        debugger
         e.preventDefault();
         e.stopPropagation();
         const file = e.currentTarget.files[0];
@@ -119,7 +117,7 @@ class PostForm extends React.Component {
     render() {
         let submit;
         // eventually this will account for is there's a picture attached
-        if (this.state.body === "") {
+        if (this.state.body === "" && this.state.photoUrl === "") {
             submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
         } else {
             submit = <input className="postform-submit" type="submit" value="Post" />

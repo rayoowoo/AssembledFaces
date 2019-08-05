@@ -22,9 +22,9 @@ export const receivePost = res => ({
     res
 })
 
-export const removePost = post => ({
+export const removePost = res => ({
     type: REMOVE_POST,
-    post
+    res
 })
 
 export const receivePostErrors = errors => ({

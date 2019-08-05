@@ -11,4 +11,10 @@ json.author do
     end
 end
 
-json.extract! @post, :comments
+json.comments do 
+    @post.comments.each do |comment|
+        json.set! comment.id do 
+            json.partial! 'api/comments/comment', comment: comment
+        end
+    end
+end

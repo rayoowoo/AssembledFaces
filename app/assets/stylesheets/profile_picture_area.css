@@ -21,10 +21,43 @@
     width: 100%;
     border-left: 1px solid rgb(200, 200, 200);
     overflow: hidden;
+    position: relative;
 }
 
 .profile-cover-picture img {
     width: 100%;
+}
+
+.profile-cover-picture-update {
+    position: absolute;
+    display: none;
+    top: 28px;
+    left: 20px;
+    border: 1.5px solid white;
+    background-color: black;
+    opacity: 0.7;
+    box-shadow: 1px 1px 2px black;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 10px;
+    border-radius: 2px;
+}
+
+.profile-cover-picture-update:hover {
+    cursor: pointer;
+}
+
+.profile-cover-picture-update i {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.profile-picture-blur:hover + .profile-cover-picture .profile-cover-picture-update,
+.profile-cover-picture-update:hover {
+    display: block;
+    z-index: 2;
+
 }
 
 .profile-main-picture {
@@ -38,18 +71,46 @@
     position: relative;
     z-index: 2;
     padding: 3px 3px 5px 3px;
+    overflow: hidden;
 }
 
 .profile-main-picture div {
     height: 100%;
     border-radius: 50%;
     border: 1px solid rgb(200, 200, 200);
-    overflow: hidden;
 }
 
 .profile-main-picture img {
     height: 100%;
     margin: auto;
+}
+
+.profile-main-picture section {
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-main-picture-update {
+    position: absolute;
+    display: none;
+    background-color: black;
+    opacity: 0.8;
+    box-shadow: 1px 1px 2px black;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 30px 100px 40px 100px;
+    border-radius: 2px;
+    top: 70px;
+    left: -37px;
+}
+
+.profile-main-picture:hover .profile-main-picture-update {
+    display: block;
+}
+
+.profile-main-picture-update:hover {
+    cursor: pointer;
 }
 
 .profile-btn {

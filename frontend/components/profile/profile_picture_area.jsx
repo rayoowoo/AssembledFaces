@@ -16,11 +16,13 @@ class ProfilePictureArea extends React.Component {
                     <div className="profile-picture-blur">
                     </div>
                     <div className="profile-cover-picture">
+                        <button className="profile-cover-picture-update"><i className="fa fa-camera"></i>Update Cover Photo</button>
                         {cover}
                     {/*  */}
                     </div>
                     <div className="profile-main-picture" ref="main">
                         <div>
+                            <button className="profile-main-picture-update"><i className="fa fa-camera"></i><p>Update</p></button>
                             {photo}
                         </div>
                    
