@@ -16,11 +16,13 @@ class CommentItem extends React.Component {
         const reply = Boolean(this.props.comment.parent_comment_id) === false ? (<><p className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
+        const photo = this.props.author.photoUrl ? <img src={this.props.author.photoUrl} alt="" /> : null
+
         return (
             <>
             <section className="comment-item">
                 <div className="comment-picture">
-                        <Link to={`/user/${this.props.comment.author_id}`}><img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" /></Link>
+                        <Link to={`/user/${this.props.comment.author_id}`}>{photo}</Link>
                     {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                 </div>
                 <section className="comment-content" >

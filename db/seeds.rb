@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 User.destroy_all
 Post.destroy_all
 
@@ -20,3 +22,19 @@ post4 = Post.create!(body: "I'm sorry, Tony. If I see a situation pointed south,
 
 comment1 = Comment.create!(body: "No you don't.", author_id: tony.id, post_id: post4.id)
 comments2 = Comment.create!(body: "You're right. I don't.", author_id: steve.id, post_id: post4.id, parent_comment_id: comment1.id)
+
+photo1 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman-tank-scene.jpg')
+tony.profile_photo.attach(io: photo1, filename: 'ironman-tank-scene.jpg')
+# FROM https://www.inverse.com/article/55449-avengers-endgame-iron-man-death-tony-stark-final-line-was-added-at-the-last-minute. All rights to go Marvel Studios.
+
+photo2 = open('https://s3.amazonaws.com/assembled-faces-seed/captain-america.jpg')
+steve.profile_photo.attach(io: photo2, filename: 'captain-america.jpg')
+# FROM https://boygeniusreport.files.wordpress.com/2014/04/captain-america.jpg?quality=98&strip=all
+
+photo3 = open('https://s3.amazonaws.com/assembled-faces-seed/Iron-Man-logo.jpg')
+tony.cover_photo.attach(io: photo3, filename: 'ironman-logo.jpg')
+#  FROM 1000logos.net / iron - man - logo.All rights go to Marvel Studios.
+
+photo4 = open('https://s3.amazonaws.com/assembled-faces-seed/captain-america-logo.jpg')
+steve.cover_photo.attach(io: photo4, filename: 'captain-america-logo.jpg')
+# FROM http://getwallpapers.com/image/65180

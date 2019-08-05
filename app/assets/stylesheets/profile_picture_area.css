@@ -49,7 +49,7 @@
 
 .profile-main-picture img {
     height: 100%;
-    margin-left: -50%;
+    margin: auto;
 }
 
 .profile-btn {

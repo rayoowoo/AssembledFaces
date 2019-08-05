@@ -64,6 +64,9 @@ class PostForm extends React.Component {
         } else {
             submit = <input className="postform-submit" type="submit" value="Post" />
         }
+        const { currentUser } = this.props;
+        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
+
         return (
             <>
 
@@ -81,7 +84,7 @@ class PostForm extends React.Component {
                     <form onSubmit={this.handleSubmit.bind(this)} className="postinput">
                         <section className="postinput-top">
                             <div className="post-picture">
-                                    <Link to={`/user/${this.props.currentUser.id}`}><img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" /></Link>
+                                    <Link to={`/user/${this.props.currentUser.id}`}>{photo}</Link>
                                 {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                             </div>
                             <textarea onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={`What's on your mind?`} value={this.state.body}></textarea>

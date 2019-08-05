@@ -18,6 +18,9 @@ class PostItem extends React.Component {
         if (this.props.author.id === this.props.currentUserId) {
             btn = <button onClick={e => this.props.deletePost(this.props.post.id)} className="post-delete-btn"><i className="fa fa-trash"></i></button>
         }
+
+        const photo = this.props.author.photoUrl ? <img src={this.props.author.photoUrl} alt="" /> : null
+
         return (
             <section className="postitem">
                 
@@ -25,7 +28,7 @@ class PostItem extends React.Component {
                 <section className="postitem-top">
                     
                     <div className="post-content-picture post-picture">
-                        <Link to={`/user/${this.props.author.id}`}><img src={`https://fsmedia.imgix.net/32/97/14/c9/033f/4ac9/a023/bbdc07fe72a0/avengers-endgame-iron-man-death-scene.png?rect=0%2C0%2C972%2C487&auto=format%2Ccompress&w=650`} alt="" /></Link>
+                        <Link to={`/user/${this.props.author.id}`}>{photo}</Link>
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
                     <div className="post-content">
