@@ -58,6 +58,7 @@ class PostForm extends React.Component {
 
     render() {
         let submit;
+        // eventually this will account for is there's a picture attached
         if (this.state.body === "") {
             submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
         } else {

@@ -14,7 +14,7 @@ class CommentItem extends React.Component {
         const children = this.props.childComments.length > 0 ? <div className="child-comments"><CommentIndexChildren parentCommentId={this.props.comment.id} childComments={this.props.childComments} /></div> : null;
         const {comment: {body, created_at}, author} = this.props;
         debugger
-        const reply = this.props.childComments.length > 0 ? (<><p className="comment-response-links">Reply</p>
+        const reply = Boolean(this.props.comment.parent_comment_id) === false ? (<><p className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
         return (

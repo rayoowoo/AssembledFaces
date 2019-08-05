@@ -22,7 +22,8 @@ export default (state = {}, action) => {
     case RECEIVE_USER:
         return merge({}, state, action.res.comments)
     case RECEIVE_COMMENT:
-        return merge({}, state, action.res.comments)
+        debugger
+        return merge({}, state, action.comment)
     case REMOVE_COMMENT:
         newState = merge({}, state);
         delete newState[Object.keys(action.res)]

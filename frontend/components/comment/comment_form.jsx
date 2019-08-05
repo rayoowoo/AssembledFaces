@@ -1,38 +1,56 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {createComment} from '../../actions/comment_actions'
 
 class CommentForm extends React.Component {
     constructor(props) {
         super(props)
         this.assignSelect = this.assignSelect.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handlSubmit = this.handleSubmit.bind(this);
         this.state = {
             body: "",
-            // post_id: parseInt(this.props.match.params.userId),
-            // author_id: this.props.currentUser.id
+            post_id: this.props.postId,
+            author_id: this.props.currentUserId
         }
     }
 
     assignSelect(e) {
-        // e.preventDefault();
-        // Object.values(this.refs).forEach(ref => {
-        //     ref.classList.remove("postform-selected");
-        // })
-        // e.currentTarget.classList.add("postform-selected")
+        e.preventDefault();
     }
 
     handleChange(e) {
         e.preventDefault();
+        if (e.target.value.slice(-1) === "\n") { 
+            if (e.target.value.length > 1) {
+                this.refs.submit.click();
+                return
+            } else {
+                return
+            }
+        };
+        debugger
         this.setState({ body: e.target.value })
-        // this.refs.btn.classList.add("disabled-btn")
     }
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
-        this.props.createPost(this.state);
+        this.props.createComment(this.props.postId, this.state);
         this.setState({ body: "" })
     }
 
+
+
     render() {
+        let submit;
+        // eventually this will account for is there's a picture attached
+        if (this.state.body === "") {
+            submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
+        } else {
+            submit = <input ref="submit" className="postform-submit" type="submit" value="Post" />
+        }
+
         return (
             <form onSubmit={this.handleSubmit.bind(this)} className="commentinput">
                     <div className="comment-picture">
@@ -47,13 +65,17 @@ class CommentForm extends React.Component {
                     <i className="far fa-file-video"></i>
                     <i className="far fa-sticky-note"></i>
                 </span>
-                {/* 
-                <div className="postform-submit-container">
+                
+                <div className="postform-submit-container" id="comment-submit-container">
                     {submit}
-                </div> */}
+                </div>
             </form>
         )
     }
 }
 
-export default CommentForm
+const mdp = dispatch => ({
+    createComment: (postId, comment) => { return dispatch(createComment(postId, comment))}
+})
+
+export default connect(null, mdp)(CommentForm);

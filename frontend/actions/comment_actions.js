@@ -1,6 +1,6 @@
 export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 export const CLEAR_COMMENT_ERRORS = 'CLEAR_COMMENT_ERRORS';
-export const RECEIVE_COMMENT = 'UPDATE_COMMENT';
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 import * as COMMENTUtil from '../utils/comment_utils'
 
@@ -21,7 +21,7 @@ export const updateComment = comment => dispatch => {
 }
 
 export const createComment = (postId, comment) => dispatch => {
-    return COMMENTUtil.createComment(comment)
+    return COMMENTUtil.createComment(postId, comment)
                     .then(comment => dispatch(receiveComment(comment)),
                     errors => dispatch(receiveCommentErrors(errors)))
 }
