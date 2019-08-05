@@ -86,3 +86,10 @@
 .post-content-body-picture img {
     width: 100%;
 }
+
+.post-special-content {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+}

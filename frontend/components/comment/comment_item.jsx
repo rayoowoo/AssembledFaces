@@ -11,7 +11,6 @@ class CommentItem extends React.Component {
     }
 
     render() {
-        debugger
         const children = this.props.childComments.length > 0 ? <div className="child-comments"><CommentIndex child={true} comments={this.props.childComments} /></div> : null;
         const {comment: {body, created_at}, author} = this.props;
         return (

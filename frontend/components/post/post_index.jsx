@@ -1,6 +1,7 @@
 import React from 'react'
 import PostItem from './post_item'
 import {connect} from 'react-redux'
+import PostItemSpecial from './post_item_special'
 
 
 class PostIndex extends React.Component {
@@ -26,14 +27,15 @@ class PostIndex extends React.Component {
             date = created_at.date;
             time = created_at.time;
         }
+        debugger
 
         return (
             <section className="postindex">
                 <h1>Posts</h1>           
                 {allPosts}
                 {/* make the next two into actual posts. they're special post items. */}
-                <div>JOINED ASSEMBLED PAGES {date} at {time}</div> 
-                <div>Born on {this.props.user.birth_date}</div>
+                <PostItemSpecial user={this.props.user} date={date} time={time}/>
+                <PostItemSpecial user={this.props.user}/>
             </section>
         )
     }
