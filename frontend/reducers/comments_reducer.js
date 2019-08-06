@@ -14,10 +14,12 @@ export default (state = {}, action) => {
     case RECEIVE_POST:
         return merge({}, state, action.res.comments)
     case REMOVE_POST:
-        newState = merge({},state);
-        Object.keys(action.res.comments).forEach (key => {
-            delete newState[key];
-        })
+        newState = merge({}, state);
+        if (Boolean(action.res.comments) === true) {
+            Object.keys(action.res.comments).forEach(key => {
+                delete newState[key];
+            })
+        }
         return newState;
     case RECEIVE_USER:
         return merge({}, state, action.res.comments)
@@ -25,7 +27,7 @@ export default (state = {}, action) => {
         return merge({}, state, action.comment)
     case REMOVE_COMMENT:
         newState = merge({}, state);
-        delete newState[Object.keys(action.res)]
+        delete newState[Object.keys(action.comment)[0]]
         return newState;
     default:
         return state;

@@ -37,9 +37,9 @@ export const updatePost = post => {
     })
 }
 
-export const deletePost = postId => {
+export const deletePost = post => {
     return $.ajax({
         method: "DELETE",
-        url: `api/posts/${postId}`
+        url: `api/posts/${post.id}`
     })
 }

@@ -22,7 +22,7 @@ class Api::CommentsController < ApplicationController
     def destroy
         @comment = current_user.authored_comments.find(params[:id])
         # not sure what to do here yet...
-        if @comment.try(:destroy)
+        if @comment.destroy
             render :show
         else
             render json: @comment.errors.full_messages, status: 422

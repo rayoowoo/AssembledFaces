@@ -7,6 +7,7 @@ import PostItemSpecial from './post_item_special'
 class PostIndex extends React.Component {
     
     componentDidMount() {
+        
         this.props.fetchTimelinePosts(this.props.userId);
     }
 

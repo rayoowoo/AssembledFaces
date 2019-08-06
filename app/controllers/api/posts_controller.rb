@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
     
     def index
         if params.include?(:user_id)
-            @posts = User.find(params[:user_id]).timeline_posts.with_attached_photo.includes(:comments, :author) # this would be for the timeline, where only the timeline posts are needed. 
+            @posts = User.find(params[:user_id]).timeline_posts.includes(:comments, :author) # this would be for the timeline, where only the timeline posts are needed. 
         else
             @posts = Post.all.includes(:comments, :author) # right now this will be all the posts, but once friends are implemented, this will be just posts of or by friends. 
             # this would be for the news feed, where post not limited to the user's timeline posts are needed.
@@ -12,12 +12,13 @@ class Api::PostsController < ApplicationController
     end
 
     def show
-        @post = User.find(params[:user_id]).timeline_posts.find(params[:id]).includes(:comments, :author)
+        @post = Post.includes(:comments, :author).find(params[:id])
         render :show
     end
 
     def create
         @post = Post.new(post_params)
+
         if @post.save
             render :show
         else
@@ -47,6 +48,8 @@ class Api::PostsController < ApplicationController
     private
     
     def post_params
-        params.require(:post).permit(:body, :author_id, :user_id, :photo)
+        common_params = [:body, :author_id, :user_id]
+        common_params << :photo if params[:post][:photo] != "null"
+        params.require(:post).permit(*common_params)
     end
 end

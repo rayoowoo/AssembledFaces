@@ -27,8 +27,10 @@ export const createComment = (postId, comment) => dispatch => {
 }
 
 export const deleteComment = comment => dispatch => {
-    return COMMENTUtil.removeComment(comment.id)
-                    .then(comment => dispatch(deleteComment(comment)),
+    return COMMENTUtil.deleteComment(comment.id)
+                    .then(deletedComment => {
+                        dispatch(removeComment(deletedComment))
+                    },
                     errors => dispatch(receiveCommentErrors(errors)))
 }
 
@@ -40,5 +42,3 @@ export const receiveCommentErrors = errors => ({
 export const clearCommentErrors = () => ({
     type: CLEAR_COMMENT_ERRORS
 })
-
-

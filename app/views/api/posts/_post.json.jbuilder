@@ -14,8 +14,6 @@ else
         time: post.created_at.strftime('%-I:%M%p')})
 end
 
-if post.photo.attached? 
+if post.photo.attached?
     json.photoUrl url_for(post.photo)
 end
-
-

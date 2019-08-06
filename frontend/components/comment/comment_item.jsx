@@ -53,7 +53,7 @@ class CommentItem extends React.Component {
         if (author.id === currentUser.id) {
             btns =
                 <>
-                    <button onClick={e => this.props.deleteComment(this.comment)} className="comment-delete-btn"><i className="fa fa-trash"></i></button>
+                    <button onClick={e => this.props.deleteComment(comment)} className="comment-delete-btn"><i className="fa fa-trash"></i></button>
                     <button onClick={this.editComment.bind(this)} className="comment-delete-btn comment-edit-btn"><i className="fa fa-pen"></i></button>
                 </>
         }
