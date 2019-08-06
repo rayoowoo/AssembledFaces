@@ -13,14 +13,19 @@ Post.destroy_all
 
 tony = User.create!(email: "tonystark@gmail.com", password:"tonystark", birth_date: Date.parse("17/4/1965"), gender: "Male", first_name: "Tony", last_name:"Stark", location: "New York", workplace: "Avengers", education: "MIT", current_city: "New York", hometown: "Manhattan", bio: "I am Iron Man.")
 steve = User.create!(email: "steverogers@gmail.com", password: "steverogers", birth_date: Date.parse("4/7/1918"), gender: "Male", first_name: "Steve", last_name: "Rogers", location: "New York", workplace: "Avengers", education: "West Point", current_city: "New York", hometown: "Brooklyn", bio: "I can do this all day.")
+natasha = User.create!(email: "natasharomanoff@gmail.com", password: "blackwidow", birth_date: Date.parse("17/2/1975"), gender: "Female", first_name: "Natasha", last_name: "Romanoff", location: "New York", workplace: "Avengers", education: "Red Room", current_city: "New York", hometown: "Volgograd, Soviet Union", bio: "I'm always picking up after you boys.")
 
-friendship1 = Friendship.create!(requested_id: tony.id, requester_id: steve.id)
+friendship1 = Friendship.create!(requested_id: tony.id, requester_id: steve.id, status: "accepted")
+friendship2 = Friendship.create!(requested_id: natasha.id, requester_id: steve.id, status: "accepted" )
 
 post1 = Post.create!(body: "Jarvis... sometimes you gotta run before you walk.", author_id: tony.id, user_id: tony.id)
 post2 = Post.create!(body: "You can take away my house, all my tricks and toys. One thing you can’t take away? I am Iron Man.", author_id: tony.id, user_id: tony.id)
 
 post3 = Post.create!(body: "Before we get started, does anyone want to get out?", author_id: steve.id, user_id: steve.id)
 post4 = Post.create!(body: "I'm sorry, Tony. If I see a situation pointed south, I can't ignore it. Sometimes I wish I could.", author_id: steve.id, user_id: tony.id)
+
+post5 = Post.create!(body: "It was quite the buzz around here, finding you in the ice. I thought Coulson was gonna swoon.", author_id: natasha.id, user_id: steve.id)
+post6 = Post.create!(body: "I'm always picking up after you boys.", author_id: natasha.id, user_id: natasha.id)
 
 comment1 = Comment.create!(body: "No you don't.", author_id: tony.id, post_id: post4.id)
 comments2 = Comment.create!(body: "You're right. I don't.", author_id: steve.id, post_id: post4.id, parent_comment_id: comment1.id)
@@ -60,3 +65,12 @@ tony.photos.attach(io: photo7, filename:"ironman3.png")
 photo8 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman4.jpg')
 tony.photos.attach(io: photo8, filename:"ironman4.jpg")
 # https://e3.365dm.com/19/04/768x432/skynews-avengers-endgame-marvel_4649149.jpg?20190424150753
+
+photo9 = open('https://s3.amazonaws.com/assembled-faces-seed/black-widow.jpg')
+natasha.profile_photo.attach(io: photo9, filename: 'black-widow.jpg')
+# https://d3c1jucybpy4ua.cloudfront.net/data/62251/big_picture/black-widow.jpg?1554199500
+
+photo10 = open('https://s3.amazonaws.com/assembled-faces-seed/blackwidow-logo.jpg')
+natasha.cover_photo.attach(io: photo10, filename: 'blackwidow-logo.jpg')
+# https://i.pinimg.com/originals/35/0f/33/350f3313608d16d13989dd78c06c2a08.jpg
+

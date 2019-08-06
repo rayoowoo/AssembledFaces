@@ -24,7 +24,6 @@ export default (state = {}, action) => {
             return merge({}, state, action.res.authors)
         case RECEIVE_POST:
             return merge({}, state, action.res.author)
-
         default:
             return state;
     }

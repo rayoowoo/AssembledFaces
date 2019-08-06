@@ -58,6 +58,14 @@ class CommentItem extends React.Component {
                 </>
         }
 
+        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id ? (<section className="comment-response">
+            <p className="comment-response-links">Like</p>
+            {btns}
+            <span className="dot">  ·  </span>
+            {reply}
+            <p>{created_at.date}</p>
+        </section>) : null
+
         return (
             <>
             <section className="comment-item">
@@ -81,13 +89,7 @@ class CommentItem extends React.Component {
                         
 
                     </form>
-                    <section className="comment-response">
-                        <p className="comment-response-links">Like</p>
-                        {btns}
-                        <span className="dot">  ·  </span>
-                        {reply}
-                        <p>{created_at.date}</p>
-                    </section>
+                    {response}
                 </section>
                
             </section>

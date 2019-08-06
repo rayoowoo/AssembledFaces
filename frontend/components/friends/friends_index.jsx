@@ -1,19 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../../actions/user_actions'
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 class FriendIndex extends React.Component {
 
-    componentDidMount() {
-        this.props.fetchUser(this.props.user.id)
+    goToFriend(friend) {
+        return e => {
+            e.preventDefault();
+            this.props.history.push(`/user/${friend.id}`)
+        }
     }
 
     render() {
-        const { friends = [] } = this.props; 
-        const allFriends = friends[0] !== undefined ? friends.reverse().slice(0, 9).map( friend => {
-            return <Link to={`/user/${friend.id}`} key={`friend-${friend.id}`}><div className="profile-sidebar-friends-index"><img src={friend.photoUrl} alt="" /></div></Link>
-        }) : null
+        const { friends } = this.props; 
+        const allFriends = friends === undefined || friends[0] === undefined ? null : friends.reverse().slice(0, 9).map(friend => {
+            return <div onClick={this.goToFriend(friend).bind(this)} key={`friend-${friend.id}`} className="profile-sidebar-friends-index"><img src={friend.photoUrl} alt="" /></div>
+        })
 
         return (
             <>
@@ -24,14 +27,18 @@ class FriendIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    const friends = ownProps.user.friend_ids.map( id => {
-        return state.entities.users[id]
-    })
-    return { friends }
+    if (ownProps.user.friend_ids !== undefined) {
+        return {
+            friends: ownProps.user.friend_ids.map(id => state.entities.users[id])
+        } 
+    } else {
+        return {}
+    }
+    
 }
 
 const mdp = dispatch => ({
     fetchUser: id => dispatch(fetchUser(id))
 })
 
-export default connect(msp, mdp)(FriendIndex)
+export default withRouter(connect(msp, mdp)(FriendIndex));

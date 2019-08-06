@@ -19,3 +19,10 @@ export const updateUser = user => {
         data: { user }
     })
 }
+// export const fetchFriends = userId => {
+//     return $.ajax({
+//         method: "GET",
+//         url: 'api/users',
+//         data: { userId }
+//     })
+// }

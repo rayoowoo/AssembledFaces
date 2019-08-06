@@ -2,7 +2,7 @@ export const createFriendship = friendship => {
     return $.ajax({
         type: "POST",
         url: "api/friendships",
-        friendship
+        data: {friendship}
     })
 }
 
@@ -10,7 +10,7 @@ export const approveFriendship = friendship => {
     return $.ajax({
         type: "PATCH",
         url: `api/friendships/${friendship.id}`,
-        friendship
+        data: {friendship}
     })
 }
 

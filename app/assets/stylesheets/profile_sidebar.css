@@ -230,3 +230,7 @@
     height: 100%;
     margin: auto;
 }
+
+.profile-sidebar-friends-index:hover {
+    cursor: pointer;
+}

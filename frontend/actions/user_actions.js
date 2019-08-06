@@ -15,10 +15,20 @@ export const receiveUser = res => ({
     res
 })
 
+export const receiveFriends = res => ({
+    type: RECEIVE_FRIENDS,
+    res
+})
+
 export const receiveUserErrors = errors => ({
     type: RECEIVE_USER_ERRORS,
     errors
 })
+
+// export const fetchFriends = userId => dispatch => {
+//     return USERUtil.fetchFriends(userId)
+//                     .then(res => dispatch(receiveFriends(res)))
+// }
 
 export const fetchAllUsers = () => dispatch => {
     return USERUtil.fetchAllUsers()

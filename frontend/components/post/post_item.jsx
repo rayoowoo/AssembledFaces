@@ -64,6 +64,8 @@ class PostItem extends React.Component {
                 </Link></p>
         )
 
+        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id  ?  (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
+
 
         return (
             <section className="postitem">
@@ -99,7 +101,7 @@ class PostItem extends React.Component {
                         
                         </div> 
              
-                <PostResponse postId={post.id} currentUserId={currentUser.id}/>
+                {response}
             </section>
         )
     }
