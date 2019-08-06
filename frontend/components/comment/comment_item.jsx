@@ -28,7 +28,6 @@ class CommentItem extends React.Component {
     }
 
     update(e) {
-        debugger
         if (e.target.value.slice(-1) === "\n") {
             if (e.target.value.length > 1) {
                 this.refs.submit.click();

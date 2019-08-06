@@ -13,7 +13,6 @@ class PostItem extends React.Component {
 
     editPost(e) {
         e.preventDefault();
-        debugger
         this.refs.postBody.classList.toggle("post-display");
         this.refs.postForm.classList.toggle("post-display");
     }
