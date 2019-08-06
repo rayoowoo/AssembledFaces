@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [:update, :destroy]
+
+    resources :friendships, only: [:create, :destroy, :update]
   
   end
 
