@@ -9,7 +9,6 @@ function Modal({component, closeModal}) {
     if (!component) {
         return null;
     }
-    debugger
     let modal;
     switch (component) {
         case 'profilePicture':
