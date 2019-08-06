@@ -3,7 +3,7 @@ import React from 'react'
 class ProfileSideBar extends React.Component {
 
     render() {
-        const { bio, current_city, workplace, education, hometown, photoUrls } = this.props.user;
+        const { bio, current_city, workplace, education, hometown, photoUrls =[]} = this.props.user;
 
         let biog = (
             <>
@@ -71,7 +71,7 @@ class ProfileSideBar extends React.Component {
                             </span> <a className="profile-sidebar-link">Photos</a>
                         </div>
 
-                        <a className="profile-sidebar-add">Add Photo</a>
+                        <a onClick={this.handleFile} className="profile-sidebar-add">Add Photo</a>
                        
                     </div>
                     

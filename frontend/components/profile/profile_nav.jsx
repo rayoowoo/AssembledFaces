@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class ProfileNav extends React.Component {
 
@@ -9,8 +10,8 @@ class ProfileNav extends React.Component {
                 <div className="profile-page-nav-space"></div>
                 <div className="profile-page-nav-space"></div>
                 <div className="profile-page-nav-links">
-                    <a onClick={e => alert("not implemented yet")}>Timeline  <i className="fas fa-caret-down"></i></a>
-                    <a onClick={e => alert("not implemented yet")}>About</a>
+                    <a onClick={e => this.props.history.push(`/user/${this.props.user.id}`)}>Timeline  <i className="fas fa-caret-down"></i></a>
+                    <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/about`)}>About</a>
                     <a onClick={e => alert("not implemented yet")}>Friends <strong>3,000</strong></a>
                     <a onClick={e => alert("not implemented yet")}>Photos</a>
                     <a onClick={e => alert("not implemented yet")}><i className="fas fa-lock"></i>Archive</a>
@@ -22,4 +23,4 @@ class ProfileNav extends React.Component {
     }
 }
 
-export default ProfileNav;
+export default withRouter(ProfileNav);

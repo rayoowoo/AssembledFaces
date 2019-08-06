@@ -1,0 +1,121 @@
+.profile-about {
+    border: 1px solid rgb(200, 200, 200);
+    width: 100%;
+}
+
+.profile-about-main {
+    display: flex;
+    background-color: white;
+        height: 800px;
+}
+
+.profile-about span {
+    display: block;
+    padding: 17px 15px;
+    font-size: 20px;
+    background-color: rgb(231, 231, 231);
+    color: rgb(59, 59, 59);
+    font-weight: 800;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.profile-about span i {
+    margin-right: 10px;
+    color:  rgb(128, 128, 128);
+}
+
+
+.profile-about-menu {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border-right: 1px solid rgb(200, 200, 200);
+    color: rgb(143, 143, 143);
+    padding-top: 10px;
+}
+
+.profile-about-menu li {
+    padding: 5px 17px;
+    margin: 10px 0px;
+    font-size: 14px;
+}
+
+.profile-about-menu li:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.profile-about-selected {
+    padding: 5px 14px !important;
+    color: black;
+    border-left: 3px solid rgb(70, 0, 0);
+    font-weight: bold;
+}
+
+.profile-about-content {
+    flex: 5;
+    color: rgb(70, 70, 70);
+    font-size: 14px;
+    padding: 0px 100px 25px 20px;
+}
+
+.profile-about-content section {
+    display: none;
+}
+
+.profile-about-content p {
+    display: block;
+    padding: 25px 0px 30px 0px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.profile-about-content p:last-of-type {
+    border-bottom: 0px;
+}
+
+.profile-about-content p strong {
+    color: rgb(136, 54, 54);
+}
+
+.profile-about-content p strong:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+section.profile-about-display {
+    display: block;
+}
+
+.profile-about-content form {
+    padding: 15px 0px 30px 0px;
+}
+
+.profile-about-content form label {
+    font-size: 13px;
+    font-weight: 900;
+    color: rgb(151, 151, 151);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    width: 420px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 15px 0px 10px 0px;
+    padding-bottom: 5px;
+}
+
+.profile-about-content form input,
+.profile-about-content form textarea {
+    background-color: rgb(238, 238, 238);
+    border-radius: 2px;
+    padding: 10px;
+    font-size: 12px;
+    width: 400px;
+}
+
+.profile-about-content form textarea {
+    resize: none;
+}
+
+.profile-about-content button {
+    font-size: 12px;
+    width: 400px;
+}

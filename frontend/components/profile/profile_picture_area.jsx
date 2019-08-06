@@ -1,10 +1,16 @@
 import React from 'react'
 
 class ProfilePictureArea extends React.Component {
-
+    constructor(props) {
+        super(props)
+    }
     // componenDidMount() {
     //     this.refs.jump.scrollIntoView();
     // }
+
+    updatePicture(field) {
+
+    }
 
     render() {
         const {user} = this.props;
@@ -16,13 +22,13 @@ class ProfilePictureArea extends React.Component {
                     <div className="profile-picture-blur">
                     </div>
                     <div className="profile-cover-picture">
-                        <button className="profile-cover-picture-update"><i className="fa fa-camera"></i>Update Cover Photo</button>
+                        <button onClick={this.props.openCover} className="profile-cover-picture-update"><i className="fa fa-camera"></i>Update Cover Photo</button>
                         {cover}
                     {/*  */}
                     </div>
                     <div className="profile-main-picture" ref="main">
                         <div>
-                            <button className="profile-main-picture-update"><i className="fa fa-camera"></i><p>Update</p></button>
+                            <button onClick={this.props.openProfile} className="profile-main-picture-update"><i className="fa fa-camera"></i><p>Update</p></button>
                             {photo}
                         </div>
                    
