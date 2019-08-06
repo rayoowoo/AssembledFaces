@@ -1,4 +1,5 @@
 import React from 'react'
+import FriendIndex from '../friends/friends_index'
 
 class ProfileSideBar extends React.Component {
 
@@ -98,17 +99,7 @@ class ProfileSideBar extends React.Component {
 
 
                     <section className="profile-sidebar-gallery">
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
-
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
-
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
-                        <div className="replace">_</div>
+                        <FriendIndex user={this.props.user}/>
                     </section>
                 </section>
 

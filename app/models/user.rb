@@ -61,12 +61,12 @@ class User < ApplicationRecord
     # friends that this user has requested
     has_many :requested_friends,
         through: :sent_friend_requests,
-        source: :requested_id
+        source: :requested
 
     # friends that this user has received requests from
     has_many :received_friends,
         through: :received_friend_requests,
-        source: :requester_id
+        source: :requester
 
     def self.find_by_credentials(email, password) 
         user = User.find_by(email: email)

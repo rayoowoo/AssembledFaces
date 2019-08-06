@@ -216,3 +216,17 @@
     color: rgb(70, 70, 70);
     text-align: center;
 }
+
+.profile-sidebar-friends-index {
+    width: 105px;
+    height: 105px;
+    display: block;
+    background-color: black;
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+.profile-sidebar-friends-index img {
+    height: 100%;
+    margin: auto;
+}

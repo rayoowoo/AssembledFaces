@@ -15,3 +15,8 @@ end
 
 json.created_at({date: user.created_at.strftime('%-B %-d, %Y'),
         time: user.created_at.strftime('%-I:%M%p')})
+
+json.friend_ids do
+    json.array! user.requested_friend_ids
+    json.array! user.received_friend_ids
+end

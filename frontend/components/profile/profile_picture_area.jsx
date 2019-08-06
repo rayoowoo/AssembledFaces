@@ -1,16 +1,14 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 class ProfilePictureArea extends React.Component {
     constructor(props) {
         super(props)
     }
-    // componenDidMount() {
-    //     this.refs.jump.scrollIntoView();
+
+    // updatePicture(field) {
+
     // }
-
-    updatePicture(field) {
-
-    }
 
     render() {
         const {user} = this.props;
@@ -43,6 +41,10 @@ class ProfilePictureArea extends React.Component {
         )
     }
 }
+
+const mdp = dispatch => ({
+    
+})
 
 export default ProfilePictureArea;
 
