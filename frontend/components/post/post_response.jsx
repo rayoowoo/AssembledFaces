@@ -5,6 +5,10 @@ import CommentIndex from '../comment/comment_index'
 class PostResponse extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            commentCount: 0
+        }
+        this.updateCount = this.updateCount.bind(this);
     }
 
     selectOption(e) {
@@ -19,12 +23,26 @@ class PostResponse extends React.Component {
         this.refs.commentform.childNodes[0].childNodes[1].click()
     }
 
+    updateCount(count) {
+        this.setState({commentCount: count})
+    }
+
     render() {
+        let commentCounter = null;
+        switch (this.state.commentCount) {
+            case 0:
+                break;
+            case 1:
+                commentCounter = "1 Comment";
+            default:
+                commentCounter = `${this.state.commentCount} comments`;
+
+        }
         return (
             <section className="post-response">
                 <div className="post-feedback">
                     <p><span><i className="fas fa-thumbs-up"></i></span>Steve Rogers</p>
-                    <p>1 Comment</p>
+                    <p>{commentCounter}</p>
                 </div>
                 <div className="post-icons">
                     <p onClick={this.selectOption.bind(this)} ><i className="fas fa-thumbs-up"></i>Like</p>
@@ -32,7 +50,7 @@ class PostResponse extends React.Component {
                     <p><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
-                    <CommentIndex postId={this.props.postId} currentUserId={this.props.currentUserId}/>
+                    <CommentIndex postId={this.props.postId} updateCount={this.updateCount} currentUserId={this.props.currentUserId}/>
                     <div ref="commentform"><CommentForm postId={this.props.postId} currentUserId={this.props.currentUserId}/></div>
                 </div>
 

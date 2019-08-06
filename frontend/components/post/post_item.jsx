@@ -1,38 +1,83 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchPost, deletePost} from '../../actions/post_actions'
+import {fetchPost, deletePost, updatePost} from '../../actions/post_actions'
 import {Link, withRouter, Route} from 'react-router-dom'
 import PostResponse from './post_response'
 
 
 class PostItem extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = this.props.post;
+    }
+
+    editPost(e) {
+        e.preventDefault();
+        debugger
+        this.refs.postBody.classList.toggle("post-display");
+        this.refs.postForm.classList.toggle("post-display");
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.updatePost(this.state);
+        this.editPost(e);
+    }
+
+    update(e) {
+        this.setState({body: e.target.value})
     }
 
 
     render() {
         const {date, time} = this.props.post.created_at;
-        let btn = null;
-        if (this.props.author.id === this.props.currentUserId) {
-            btn = <button onClick={e => this.props.deletePost(this.props.post.id)} className="post-delete-btn"><i className="fa fa-trash"></i></button>
+        const {post, author, user, currentUser} = this.props;
+
+        // the delete button and the edit button
+        let btns = null;
+        if (author.id === currentUser.id) {
+            btns = 
+            <>
+                <button onClick={e => this.props.deletePost(post)} className="post-delete-btn"><i className="fa fa-trash"></i></button>
+                <button onClick={this.editPost.bind(this)} className="post-delete-btn post-edit-btn"><i className="fa fa-pen"></i></button>
+            </>
         }
 
-        const photo = this.props.author.photoUrl ? <img src={this.props.author.photoUrl} alt="" /> : null
+        // the icon of the profile picture of the post author
+        const photo = author.photoUrl ? <img src={author.photoUrl} alt="" /> : null
 
-        const postPhoto = this.props.post.photoUrl ? <img src={this.props.post.photoUrl} alt="" /> : null
+        // the photo of the actual post
+        const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="" /> : null
+
+        // Steve Rogers ▶ Tony Stark
+        const authoruser = post.author_id !== post.user_id  ? (
+            <p className="post-content-author">
+                    <Link to={`/user/${post.author_id}`} user={author} >
+                        {author.first_name} {author.last_name}
+                    </Link><i className="fas fa-caret-right"></i><Link to={`/user/${user.id}`} user={user} >
+                        {user.first_name} {user.last_name}
+                    </Link></p>
+
+        ) : (
+            <p className="post-content-author">
+                <Link to={`/user/${post.author_id}`} user={author} >
+                    {author.first_name} {author.last_name}
+                </Link></p>
+        )
+
+
         return (
             <section className="postitem">
                 
-                    {btn}
+                    {btns}
                 <section className="postitem-top">
                     
                     <div className="post-content-picture post-picture">
-                        <Link to={`/user/${this.props.author.id}`}>{photo}</Link>
+                        <Link to={`/user/${author.id}`}>{photo}</Link>
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
                     <div className="post-content">
-                        <p className="post-content-author"><Link to={`/user/${this.props.post.author_id}`} user={this.props.author} >{this.props.author.first_name} {this.props.author.last_name}</Link></p>
+                        {authoruser}
                         <p className="post-content-time">{date} at {time}</p>
                         <span className="dot">  ·  </span>
                         <p className="post-content-city">{this.props.author.current_city}</p>
@@ -41,13 +86,21 @@ class PostItem extends React.Component {
                 </section>
 
                     
-                    <p className="post-content-body">{this.props.post.body}</p>
+                    <p ref="postBody" className="post-display post-content-body">{post.body}</p>
+                    <form ref="postForm" onSubmit={this.handleSubmit.bind(this)} className="post-edit-form">
+                        <textarea onChange={this.update.bind(this)} value={this.state.body}></textarea>
+                        <section className="post-edit-form-btns">
+                            <div className="signup-submit-btn">Cancel</div>
+                            <button className="signup-submit-btn">Done Editing</button>    
+                        </section>
+                        
+                    </form>
                     <div className="post-content-body-picture">
                         {postPhoto}
                         
                         </div> 
              
-                <PostResponse postId={this.props.post.id} currentUserId={this.props.currentUserId}/>
+                <PostResponse postId={post.id} currentUserId={currentUser.id}/>
             </section>
         )
     }
@@ -56,13 +109,14 @@ class PostItem extends React.Component {
 const msp = (state, ownProps) => {
     return ({
         author: state.entities.users[ownProps.post.author_id] || {},
-        currentUserId : state.session.id
+        currentUser : state.entities.users[state.session.id]
     })
 }
 
 const mdp = dispatch => ({
     fetchPost: (userId, postId) => dispatch(fetchPost(userId, postId)),
-    deletePost: postId => dispatch(deletePost(postId))
+    deletePost: postId => dispatch(deletePost(postId)),
+    updatePost: post => dispatch(updatePost(post))
 })
 
 export default withRouter(connect(msp, mdp)(PostItem));

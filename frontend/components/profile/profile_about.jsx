@@ -42,7 +42,12 @@ class ProfileAbout extends React.Component {
     }
 
     render() {
-        const {workplace, education, current_city, hometown, birth_date, created_at} = this.props.user
+        const {id, workplace, education, current_city, hometown, birth_date, created_at} = this.props.user;
+
+        let editbtn = null;
+        if (id === this.props.currentUserId) {
+            editbtn = <li ref="edit" onClick={this.assignSelect.bind(this)} >Edit</li>
+        }
         return (
             <div className="profile-about">
                 <span><i className="fas fa-user"></i>About</span>
@@ -50,8 +55,8 @@ class ProfileAbout extends React.Component {
                     <ul className="profile-about-menu">
                         <li ref="overview" onClick={this.assignSelect.bind(this)} className="profile-about-selected">Overview</li>
                         <li ref="work" onClick={this.assignSelect.bind(this)} >Work and Education</li>
-                        <li ref="places" onClick={this.assignSelect.bind(this)} >Places You've Lived</li>
-                        <li ref="edit" onClick={this.assignSelect.bind(this)} >Edit</li>
+                        <li ref="places" onClick={this.assignSelect.bind(this)} >Places You've Lived</li>\
+                        {editbtn}
                     </ul>
                     <div className="profile-about-content">
                         <section ref="overview2" className="profile-about-overview profile-about-display">
@@ -98,8 +103,12 @@ class ProfileAbout extends React.Component {
     }
 }
 
+const msp = state => ({
+    currentUserId: state.session.id
+})
+
 const mdp = dispatch => ({
     updateUser: user => dispatch(updateUser(user))
 })
 
-export default connect(null, mdp)(ProfileAbout)
+export default connect(msp, mdp)(ProfileAbout)

@@ -18,7 +18,7 @@ class PostIndex extends React.Component {
         let date, time, allPosts = null;
         if (this.props.posts.length !== 0){ 
             allPosts = this.props.posts.reverse().map(post => {
-                return <PostItem post={post} key={`post-${post.id}`} />
+                return <PostItem post={post} user={this.props.user} key={`post-${post.id}`} />
             })
         }
 

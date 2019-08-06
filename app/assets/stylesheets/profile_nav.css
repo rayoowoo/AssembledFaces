@@ -8,7 +8,7 @@
 
 .profile-page-nav-links {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .profile-page-nav-links a {

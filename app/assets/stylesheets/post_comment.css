@@ -111,6 +111,11 @@
     font-size: 11.5px;
     margin-left: 10px;
     color: rgb(110, 110, 110);
+    position: relative;
+}
+
+.comment-body {
+    display: none;
 }
 
 .comment-response-links {
@@ -121,4 +126,58 @@
     display: block;
     position: relative;
     margin-left: 20px;
+}
+
+.comment-delete-btn {
+    position: absolute;
+    top: -25px;
+    right: -40px;
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+    display: none;
+}
+
+.comment-delete-btn:hover {
+    color: rgb(136, 54, 54);
+    cursor: pointer;
+}
+
+.comment-edit-btn {
+    right: -20px;
+}
+
+.comment-item:hover .comment-delete-btn,
+.comment-item:hover .comment-edit-btn {
+    display: block;
+}
+
+.comment-edit-form {
+    display: none;
+    width: 100%;
+}
+
+.comment-edit-form textarea {
+    padding: 10px 0px 0px 15px;
+    font-size: 12.5px;
+    resize: none;
+    border-radius: 16px;
+    border: rgb(185, 185, 185) 1px solid;
+    background-color: rgb(246, 246, 246);
+    box-sizing: border-box;
+    position: relative;
+    min-height: 35px;
+    height: 35px;
+    width: 100%;
+}
+
+div.comment-display {
+    display: flex;
+}
+
+form.comment-display {
+    display: block;
+}
+
+.comment-edit-form section {
+    display: none;
 }

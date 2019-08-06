@@ -29,6 +29,10 @@
     cursor: pointer;
 }
 
+.post-edit-btn {
+    right: 40px;
+}
+
 .post-content-picture {
     margin-right: 10px;
     margin-top: 0px;
@@ -77,6 +81,8 @@
 .post-content-body {
     font-size: 14px;
     padding: 10px 15px;
+    line-height: 1.3;
+    display: none;
 }
 
 .post-content-picture {
@@ -97,5 +103,69 @@
     font-size: 16px;
     text-align: center;
     margin-bottom: 20px;
+    display: block;
+}
+
+.fa-caret-right {
+    margin: 0px 8px;
+    color: gray;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.post-edit-form {
+    display: none;
+    font-size: 14px;
+    line-height: 1.3;
+    border: 1px solid lightgray;
+    margin: 9px 14px;
+}
+
+.post-edit-form textarea {
+    resize: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+.post-edit-form button {
+    font-size: 12px;
+    padding: 3px 2px;
+    margin-top: 0px;
+    width: 90px;
+    display: inline-block;
+    border-radius: 1px;
+}
+
+.post-edit-form-btns {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(238, 238, 238);
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.post-edit-form div {
+    font-size: 12px;
+    padding: 3px 2px;
+    margin-top: 0px;
+    background-image: none;
+    color: rgb(71, 71, 71);
+    text-shadow: none;
+    border: 1px solid gray;
+    width: 90px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+    background-color: transparent;
+    border-radius: 1px;
+}
+
+.post-edit-form div:hover {
+    background-color: rgb(197, 197, 197);
+    background-image: none;
+}
+
+p.post-display,
+form.post-display {
     display: block;
 }

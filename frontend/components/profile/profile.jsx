@@ -17,7 +17,7 @@ class Profile extends React.Component {
             <section className="profile">
                 <div className="profile-content">
                     <ProfilePictureArea closeModal={this.props.closeModal} openProfile={this.props.openProfile} openCover={this.props.openCover} user={user}/>
-                    <ProfileNav user={user}/>
+                    <ProfileNav user={user} currentUserId={this.props.currentUserId}/>
                     <div className="profile-main">
                     <Route exact path="/user/:userId" render={props => <ProfileSideBar closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
                     <Switch>
@@ -35,7 +35,8 @@ class Profile extends React.Component {
 
 const msp = (state, ownProps) => {
     return {
-        user: state.entities.users[ownProps.match.params.userId] || {}
+        user: state.entities.users[ownProps.match.params.userId] || {},
+        currentUserId: state.session.id
     }
 }
 
