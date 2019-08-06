@@ -12,7 +12,6 @@ export default (state = {}, action) => {
         case RECEIVE_POST:
             return merge({},state, action.res.post)
         case REMOVE_POST:
-            debugger
             const newState = merge({}, state);
             delete newState[Object.values(action.res.post)[0].id]
             return newState;
