@@ -14,7 +14,7 @@ class FriendIndex extends React.Component {
 
     render() {
         const { friends } = this.props; 
-        const allFriends = friends === undefined || friends[0] === undefined ? null : friends.reverse().slice(0, 9).map(friend => {
+        const allFriends = friends === undefined || friends.some(friend => friend === undefined) ? null : friends.reverse().slice(0, 9).map(friend => {
             return <div onClick={this.goToFriend(friend).bind(this)} key={`friend-${friend.id}`} className="profile-sidebar-friends-index"><img src={friend.photoUrl} alt="" /></div>
         })
 

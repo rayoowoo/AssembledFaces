@@ -52,7 +52,7 @@ class Profile extends React.Component {
 const msp = (state, ownProps) => {
     return {
         user: state.entities.users[ownProps.match.params.userId] || {},
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id] || {}
     }
 }
 
@@ -63,7 +63,6 @@ const mdp = dispatch => {
         openCover: () => dispatch(openModal("coverPicture")),
         openAdd: () => dispatch(openModal("addPicture")),
         fetchUser: userId => dispatch(fetchUser(userId))
-
     }
 }
 

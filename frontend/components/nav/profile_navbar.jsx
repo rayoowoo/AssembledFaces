@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logout} from '../../actions/session_actions'
+import {fetchUser} from '../../actions/user_actions'
 
 class ProfileNavBar extends React.Component {
     constructor(props) {
@@ -43,8 +44,8 @@ class ProfileNavBar extends React.Component {
     }
 
     render() {
-        const {currentUser} = this.props;
-        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
+        const {currentUser = {}} = this.props;
+        const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="" /> : null
 
         const navPic = <div className="comment-picture" id="nav-picture">
             {photo}
@@ -98,11 +99,12 @@ class ProfileNavBar extends React.Component {
 }
 
 const msp = state => ({
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id] || {}
 })
 
 const mdp = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    fetchUser: userId => dispatch(fetchUser(userId))
 })
 
 
