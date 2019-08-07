@@ -4,10 +4,9 @@ import {RECEIVE_CURRENT_USER} from '../actions/session_actions'
 
 export default (state = {}, action) => {
     Object.freeze(state);
-    debugger
     switch (action.type) {
         case RECEIVE_FRIENDSHIP:
-            return Object.assign({}, action.res.friendships);
+            return Object.assign({}, action.friendship);
         case REMOVE_FRIENDSHIP:
             return {};
         case RECEIVE_USER:

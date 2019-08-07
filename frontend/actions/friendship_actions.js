@@ -11,21 +11,21 @@ export const receiveFriendship = friendship => ({
 })
 
 export const removeFriendship = friendship => ({
-    type: REMOVE_FRIENDSHIP_ERRORS,
+    type: REMOVE_FRIENDSHIP,
     friendship
 })
 
-export const createFriendship = friendship => {
+export const createFriendship = friendship => dispatch => {
     return FRIENDSHIPUtils.createFriendship(friendship).then(res => dispatch(receiveFriendship(res)), 
     errors => dispatch(receiveFriendshipErrors(errors)))
 }
 
-export const approveFriendship = friendship => {
-    return FRIENDSHIPUtils.updateFriendship(friendship).then(res => dispatch(receiveFriendship(res)),
+export const approveFriendship = friendship => dispatch => {
+    return FRIENDSHIPUtils.approveFriendship(friendship).then(res => dispatch(receiveFriendship(res)),
         errors => dispatch(receiveFriendshipErrors(errors)))
 }
 
-export const deleteFriendship = friendship => {
+export const deleteFriendship = friendship => dispatch => {
     return FRIENDSHIPUtils.deleteFriendship(friendship).then(res => dispatch(removeFriendship(res)),
         errors => dispatch(receiveFriendshipErrors(errors)))
 }

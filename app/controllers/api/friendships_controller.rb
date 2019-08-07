@@ -1,8 +1,11 @@
 class Api::FriendshipsController < ApplicationController 
     def create
         @friendship = Friendship.new(friendship_params)
-        # render json: ["Pending Request"]
-        render :show
+        if @friendship.save
+            render :show
+        else
+            render json: @friendship.errors.full_messages, status: 422
+        end
     end
 
     def update

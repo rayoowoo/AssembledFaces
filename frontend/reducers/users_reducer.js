@@ -7,6 +7,8 @@ import {merge} from 'lodash';
 
 export default (state = {}, action) => {
     Object.freeze(state);
+    debugger
+
     let newUser, friends;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
@@ -20,7 +22,7 @@ export default (state = {}, action) => {
         case RECEIVE_ALL_USERS:
             return merge({}, action.res.users);
         case RECEIVE_FRIENDSHIP:
-            return merge({}, state, action.res.requested, action.res.requester)
+            return merge({}, state, action.friendship.requested, action.friendship.requester)
         case RECEIVE_TIMELINE_POSTS:
             return merge({}, state, action.res.authors)
         case RECEIVE_ALL_POSTS:

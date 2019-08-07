@@ -1,19 +1,39 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import {createFriendship} from '../../actions/friendship_actions'
+import {createFriendship, approveFriendship, deleteFriendship} from '../../actions/friendship_actions'
 import {withRouter} from 'react-router-dom'
+import {fetchUser} from '../../actions/user_actions'
 
 class ProfilePictureArea extends React.Component {
     constructor(props) {
         super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchUser(this.props.user.id)
+    }
+
     // updatePicture(field) {
 
     // }
 
-    friendship(e) {
-        e.preventDefault();
+    friendship(field, friendshipToSubmit) {
+        return e => {
+            e.preventDefault();
+            debugger
+            switch (field) {
+                case "Unfriend":
+                    this.props.deleteFriendship(friendshipToSubmit.id);
+                case "Cancel Request":
+                    this.props.deleteFriendship(friendshipToSubmit.id);
+                case "Approve Request":
+                    this.props.approveFriendship(friendshipToSubmit);
+                case "Friend Request":
+                    this.props.createFriendship(friendshipToSubmit);
+                default:
+                    return;
+            }
+        }
         // createFriendship({requester_id: this.props.currentUser.id, requested_id: this.props.user.id})
     }
 
@@ -23,13 +43,35 @@ class ProfilePictureArea extends React.Component {
     }
 
     render() {
-        const {user} = this.props;
+        const {user, currentUser, friendships} = this.props;
+
+        debugger
+        
+        let friendStatus = "Friend Request";
+        let friendshipToSubmit = {requester_id: currentUser.id, requested_id: user.id};
+
+        friendships.forEach(friendship => {
+            if (friendship.status === "accepted" && (friendship.requester_id === currentUser.id || friendship.requested_id === currentUser.id)) {
+                friendStatus = "Unfriend";
+                friendshipToSubmit = friendship;
+            } 
+            if (friendship.status === "pending" && friendship.requester_id === currentUser.id) {
+                friendStatus = "Cancel Request";
+                friendshipToSubmit = friendship;
+            }
+            if (friendship.status === "pending" && friendship.requested_id === currentUser.id) {
+                friendStatus = "Approve Request";
+                friendshipToSubmit = { requester_id: currentUser.id, requested_id: user.id, status: "accepted" };
+            }
+        });
+            
+
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
         const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null
         const btns = user.id === this.props.currentUser.id ? ( 
             <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
             ) :  (
-            <button onClick={this.friendship.bind(this)} className="profile-btn profile-btn-friend">Friend Status</button>
+            <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendStatus}</button>
             )
 
         let coverUpdate, profileUpdate;
@@ -68,11 +110,53 @@ class ProfilePictureArea extends React.Component {
 }
 
 const msp = state => ({
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id] || {},
+    friendships: Object.values(state.entities.friendships) || []
 })
 
-export default withRouter(connect(msp)(ProfilePictureArea));
+const mdp = dispatch => ({
+    createFriendship: friendship => dispatch(createFriendship(friendship)),
+    approveFriendship: friendship => dispatch(approveFriendship(friendship)),
+    deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
+    fetchUser: userId => dispatch(fetchUser(userId))
+})
+
+export default withRouter(connect(msp, mdp)(ProfilePictureArea));
 
 // pictures FROM https://www.inverse.com/article/55449-avengers-endgame-iron-man-death-tony-stark-final-line-was-added-at-the-last-minute. All rights to go Marvel Studios.
 // FROM 1000logos.net / iron - man - logo.All rights go to Marvel Studios.
 
+// const { friends, friendships = [] } = this.props; 
+// const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
+//     return friendship.requester_id === this.props.user.id ? friendship.requested_id : friendship.requester_id;
+// })
+// const allFriends = friends === undefined || friends.some(friend => friend === undefined) ? null :
+//     friends.filter(friend => acceptedFriendships.includes(friend.id))
+//         .reverse()
+//         .slice(0, 9)
+//         .map(friend => {
+//             return <div onClick={this.goToFriend(friend).bind(this)}
+//                 key={`friend-${friend.id}`}
+//                 className="profile-sidebar-friends-index">
+//                 <img src={friend.photoUrl} alt="" />
+//             </div>
+//         })
+// 
+
+// const msp = (state, ownProps) => {
+//     if (ownProps.user.friend_ids !== undefined) {
+//         return {
+//             friends: ownProps.user.friend_ids.map(id => state.entities.users[id]),
+//             
+//         }
+//     } else {
+//         return {}
+//     }
+
+// }
+
+// const mdp = dispatch => ({
+//     fetchUser: id => dispatch(fetchUser(id))
+// })
+
+// export default withRouter(connect(msp, mdp)(FriendIndex));

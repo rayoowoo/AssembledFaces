@@ -13,16 +13,16 @@ class FriendIndex extends React.Component {
     }
 
     componentWillMount() {
+        debugger
         this.props.fetchUser(this.props.user.id)
     }
 
     render() {
-        const { friends, friendships = [] } = this.props; 
         debugger
+        const { friends, friendships = [] } = this.props; 
         const acceptedFriendships = friendships.filter ( friendship => friendship.status === "accepted").map( friendship => {
             return friendship.requester_id === this.props.user.id ? friendship.requested_id : friendship.requester_id;
         })
-        debugger
         const allFriends = friends === undefined || friends.some(friend => friend === undefined) ? null : 
             friends.filter(friend => acceptedFriendships.includes(friend.id))
                     .reverse()
@@ -44,6 +44,7 @@ class FriendIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+    debugger
     if (ownProps.user.friend_ids !== undefined) {
         return {
             friends: ownProps.user.friend_ids.map(id => state.entities.users[id]),
