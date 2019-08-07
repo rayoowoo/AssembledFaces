@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import {closeModal, openModal} from '../../actions/modal_actions'
 import {Switch, Route, withRouter} from 'react-router-dom'
 import {fetchUser} from '../../actions/user_actions'
+import { arrayEqual } from '../../utils/array_utils'
+
 
 
 class Profile extends React.Component {
@@ -24,9 +26,19 @@ class Profile extends React.Component {
     }
 
     render() {
-        const { user, currentUser } = this.props;
+        const { user, currentUser, friendships } = this.props;
         const userId = parseInt(this.props.match.params.userId);
-        const page = currentUser.id === userId || currentUser.friend_ids.includes(userId) ? (
+
+        const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
+            if (friendship.requested_id === user.id) {
+                return friendship.requester_id;
+            } if (friendship.requester_id === user.id) {
+                return friendship.requested_id;
+            }
+        })
+
+        
+        const page = currentUser.id === userId || acceptedFriendships.includes(currentUser.id) ? (
             <>
                 <div className="profile-main">
                     <Route exact path="/user/:userId" render={props => <ProfileSideBar closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
@@ -58,7 +70,8 @@ class Profile extends React.Component {
 const msp = (state, ownProps) => {
     return {
         user: state.entities.users[ownProps.match.params.userId] || {},
-        currentUser: state.entities.users[state.session.id] || {}
+        currentUser: state.entities.users[state.session.id] || {},
+        friendships: Object.values(state.entities.friendships) || []
     }
 }
 

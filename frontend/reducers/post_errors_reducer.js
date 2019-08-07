@@ -1,4 +1,5 @@
 import { RECEIVE_POST_ERRORS, CLEAR_POST_ERRORS, REMOVE_POST, RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST} from '../actions/post_actions'
+import { LOGOUT_USER } from '../actions/session_actions'
 
 export default (state = [], action) => {
     Object.freeze(state);
@@ -14,6 +15,8 @@ export default (state = [], action) => {
         case REMOVE_POST:
             return [];
         case CLEAR_POST_ERRORS:
+            return [];
+        case LOGOUT_USER:
             return [];
         default:
             return state;;

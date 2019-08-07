@@ -3,30 +3,29 @@ import {connect} from 'react-redux'
 import {createFriendship, approveFriendship, deleteFriendship} from '../../actions/friendship_actions'
 import {withRouter} from 'react-router-dom'
 import {fetchUser} from '../../actions/user_actions'
+import {merge} from 'lodash';
 
 class ProfilePictureArea extends React.Component {
     constructor(props) {
         super(props)
     }
 
-    componentDidUpdate(prevProps) {
-        if (Boolean(this.props.user) === false) {
-            this.props.fetchUser(this.props.match.params.userId)
-        }
-    }
-
-    friendship(field, friendshipToSubmit) {
+    friendship(friendStatus, friendshipToSubmit) {
         return e => {
             e.preventDefault();
-            switch (field) {
+            switch (friendStatus) {
                 case "Unfriend":
                     this.props.deleteFriendship(friendshipToSubmit.id);
+                    break
                 case "Cancel Request":
                     this.props.deleteFriendship(friendshipToSubmit.id);
+                    break
                 case "Approve Request":
-                    this.props.approveFriendship(friendshipToSubmit);
-                case "Friend Request":
-                    this.props.createFriendship(friendshipToSubmit);
+                    this.props.approveFriendship(merge(friendshipToSubmit, {status: "accepted"}));
+                    break
+                case "Add Friend":
+                    this.props.createFriendship({ requester_id: currentUser.id, requested_id: user.id });
+                    break
                 default:
                     return;
             }
@@ -39,26 +38,35 @@ class ProfilePictureArea extends React.Component {
     }
 
     render() {
-        const {user = {}, currentUser, friendships} = this.props;
+        const {user = {}, currentUser = {}, friendships} = this.props;
+        let targetFriendship = null;
+        let friendshipToSubmit = null;
+        let friendStatus = null;
         
-        let friendStatus = "Friend Request";
-        let friendshipToSubmit = {requester_id: currentUser.id, requested_id: user.id};
-
+        // friendships are of the user whose profile page we are currently viewing. currentUser is the one logged in. 
         friendships.forEach(friendship => {
-            if (friendship.status === "accepted" && (friendship.requester_id === currentUser.id || friendship.requested_id === currentUser.id)) {
+            if (friendship.requester_id === currentUser.id || friendship.requested_id === currentUser.id) {
+                targetFriendship = friendship;
+            }
+        })
+
+        if (targetFriendship === null) {
+            friendStatus = "Add Friend";
+        } else {
+            const { requester_id } = targetFriendship;
+            if (targetFriendship.status === "accepted") {
                 friendStatus = "Unfriend";
-                friendshipToSubmit = friendship;
-            } 
-            if (friendship.status === "pending" && friendship.requester_id === currentUser.id) {
-                friendStatus = "Cancel Request";
-                friendshipToSubmit = friendship;
+                friendshipToSubmit = targetFriendship;
+            } else {
+                if (requester_id === currentUser.id) {
+                    friendStatus = "Cancel Request";
+                    friendshipToSubmit = targetFriendship;
+                } else {
+                    friendStatus = "Approve Request";
+                    friendshipToSubmit = targetFriendship;
+                }
             }
-            if (friendship.status === "pending" && friendship.requested_id === currentUser.id) {
-                friendStatus = "Approve Request";
-                friendshipToSubmit = { requester_id: currentUser.id, requested_id: user.id, status: "accepted" };
-            }
-        });
-            
+        }
 
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
         const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null

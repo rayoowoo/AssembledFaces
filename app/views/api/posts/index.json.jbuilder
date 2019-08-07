@@ -15,10 +15,6 @@ end
             end
         end
     end
-    
-
-
-
 
     json.authors do 
         json.set! post.author_id do
@@ -26,4 +22,3 @@ end
         end
     end
 end
-

@@ -19,7 +19,7 @@ class Friendship < ApplicationRecord
     def ensure_unique_ids
         if requested_id == requester_id
             errors[:base] << "You cannot friend request your"
-        elsif Friendship.where("(requested_id = #{requested_id} AND requester_id = #{requester_id}) OR (requested_id = #{requester_id} AND requester_id = #{requested_id})").exists?
+        elsif Friendship.where("(requested_id = #{requested_id} AND requester_id = #{requester_id}) OR (requested_id = #{requester_id} AND requester_id = #{requested_id})").exists? && status == "pending"
             errors[:base] << "You cannot request the same person twice."
         end
     end

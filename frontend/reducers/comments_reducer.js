@@ -1,6 +1,7 @@
 import { RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST } from '../actions/post_actions'
 import { RECEIVE_USER } from '../actions/user_actions'
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions'
+import { LOGOUT_USER } from '../actions/session_actions'
 import {merge} from 'lodash';
 
 export default (state = {}, action) => {
@@ -29,6 +30,8 @@ export default (state = {}, action) => {
         newState = merge({}, state);
         delete newState[Object.keys(action.comment)[0]]
         return newState;
+    case LOGOUT_USER:
+        return {};
     default:
         return state;
     }

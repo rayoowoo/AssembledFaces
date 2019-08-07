@@ -1,4 +1,6 @@
-import { RECEIVE_USER_ERRORS, CLEAR_USER_ERRORS, RECEIVE_ALL_USERS, RECEIVE_USER } from '../actions/user_actions'
+import { RECEIVE_USER_ERRORS, CLEAR_USER_ERRORS, RECEIVE_ALL_USERS, RECEIVE_USER } from '../actions/user_actions';
+import { LOGOUT_USER } from '../actions/session_actions'
+
 
 export default (state = [], action) => {
     Object.freeze(state);
@@ -10,6 +12,8 @@ export default (state = [], action) => {
         case RECEIVE_USER:
             return [];
         case CLEAR_USER_ERRORS:
+            return [];
+        case LOGOUT_USER:
             return [];
         default:
             return state;;

@@ -5,14 +5,17 @@ export const CLEAR_FRIENDSHIP_ERRORS = 'CLEAR_FRIENDSHIP_ERRORS'
 export const RECEIVE_FRIENDSHIP = 'RECEIVE_FRIENDSHIP'
 export const REMOVE_FRIENDSHIP = 'REMOVE_FRIENDSHIP'
 
-export const receiveFriendship = friendship => ({
-    type: RECEIVE_FRIENDSHIP,
-    friendship
-})
+export const receiveFriendship = res => {
+     
+    return {
+        type: RECEIVE_FRIENDSHIP,
+        res
+    }
+}
 
-export const removeFriendship = friendship => ({
+export const removeFriendship = res => ({
     type: REMOVE_FRIENDSHIP,
-    friendship
+    res
 })
 
 export const createFriendship = friendship => dispatch => {

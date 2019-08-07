@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.includes(:requested_friends, :received_friends).find(params[:id])
+        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.includes(:requested_friends, :received_friends).find(params[:id])
         render :show
     end
 
@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(params[:id])
+        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.find(params[:id])
         if @user.update_attributes(user_params)
             render :show
         else
