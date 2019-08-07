@@ -36,8 +36,9 @@ class ProfilePictureArea extends React.Component {
         if (user.id === this.props.currentUser.id) {
             coverUpdate = <button onClick={this.props.openCover} className="profile-cover-picture-update"><i className="fa fa-camera"></i>Update Cover Photo</button>
             profileUpdate = <button onClick={this.props.openProfile} className="profile-main-picture-update"><i className="fa fa-camera"></i><p>Update</p></button>
-
         }
+
+
         
         return (
             <>
@@ -74,3 +75,4 @@ export default withRouter(connect(msp)(ProfilePictureArea));
 
 // pictures FROM https://www.inverse.com/article/55449-avengers-endgame-iron-man-death-tony-stark-final-line-was-added-at-the-last-minute. All rights to go Marvel Studios.
 // FROM 1000logos.net / iron - man - logo.All rights go to Marvel Studios.
+

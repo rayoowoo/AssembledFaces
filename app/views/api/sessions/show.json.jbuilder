@@ -14,3 +14,13 @@ json.friends do
         end
     end
 end
+
+json.friendships do 
+    @user.sent_friend_requests.each do |request|
+        json.partial! 'api/friendships/friendship', friendship: request
+    end
+
+    @user.received_friend_requests.each do |request|
+        json.partial! 'api/friendships/friendship', friendship: request
+    end
+end
