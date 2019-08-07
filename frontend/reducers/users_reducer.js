@@ -7,7 +7,6 @@ import {merge} from 'lodash';
 
 export default (state = {}, action) => {
     Object.freeze(state);
-    debugger
 
     let newUser, friends;
     switch (action.type) {

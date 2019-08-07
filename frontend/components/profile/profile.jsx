@@ -17,6 +17,12 @@ class Profile extends React.Component {
         this.props.fetchUser(this.props.match.params.userId)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.fetchUser(this.props.match.params.userId)
+        }
+    }
+
     render() {
         const { user, currentUser } = this.props;
         const userId = parseInt(this.props.match.params.userId);
@@ -39,7 +45,7 @@ class Profile extends React.Component {
         return (
             <section className="profile">
                 <div className="profile-content">
-                    <ProfilePictureArea closeModal={this.props.closeModal} openProfile={this.props.openProfile} openCover={this.props.openCover} user={user}/>
+                    <ProfilePictureArea closeModal={this.props.closeModal} openProfile={this.props.openProfile} openCover={this.props.openCover}/>
                     <ProfileNav user={user} currentUserId={this.props.currentUser.id}/>
                     {page}
                 </div>

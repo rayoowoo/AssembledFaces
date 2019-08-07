@@ -9,18 +9,15 @@ class ProfilePictureArea extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        this.props.fetchUser(this.props.user.id)
+    componentDidUpdate(prevProps) {
+        if (Boolean(this.props.user) === false) {
+            this.props.fetchUser(this.props.match.params.userId)
+        }
     }
-
-    // updatePicture(field) {
-
-    // }
 
     friendship(field, friendshipToSubmit) {
         return e => {
             e.preventDefault();
-            debugger
             switch (field) {
                 case "Unfriend":
                     this.props.deleteFriendship(friendshipToSubmit.id);
@@ -34,7 +31,6 @@ class ProfilePictureArea extends React.Component {
                     return;
             }
         }
-        // createFriendship({requester_id: this.props.currentUser.id, requested_id: this.props.user.id})
     }
 
     goToUpdate(e) {
@@ -43,9 +39,7 @@ class ProfilePictureArea extends React.Component {
     }
 
     render() {
-        const {user, currentUser, friendships} = this.props;
-
-        debugger
+        const {user = {}, currentUser, friendships} = this.props;
         
         let friendStatus = "Friend Request";
         let friendshipToSubmit = {requester_id: currentUser.id, requested_id: user.id};
@@ -109,9 +103,10 @@ class ProfilePictureArea extends React.Component {
     }
 }
 
-const msp = state => ({
+const msp = (state, ownProps) => ({
     currentUser: state.entities.users[state.session.id] || {},
-    friendships: Object.values(state.entities.friendships) || []
+    friendships: Object.values(state.entities.friendships) || [],
+    user: state.entities.users[ownProps.match.params.userId]
 })
 
 const mdp = dispatch => ({

@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../../actions/user_actions'
 import {withRouter} from 'react-router-dom'
+import {arrayEqual} from '../../utils/array_utils'
 
 class FriendIndex extends React.Component {
 
@@ -12,13 +13,7 @@ class FriendIndex extends React.Component {
         }
     }
 
-    componentWillMount() {
-        debugger
-        this.props.fetchUser(this.props.user.id)
-    }
-
     render() {
-        debugger
         const { friends, friendships = [] } = this.props; 
         const acceptedFriendships = friendships.filter ( friendship => friendship.status === "accepted").map( friendship => {
             return friendship.requester_id === this.props.user.id ? friendship.requested_id : friendship.requester_id;
@@ -44,7 +39,6 @@ class FriendIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    debugger
     if (ownProps.user.friend_ids !== undefined) {
         return {
             friends: ownProps.user.friend_ids.map(id => state.entities.users[id]),
