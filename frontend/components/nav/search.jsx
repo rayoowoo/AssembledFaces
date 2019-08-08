@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import {fetchAllUsers} from '../../actions/user_actions'
+import SearchResults from './search_results'
 
 class Search extends React.Component {
     constructor(props) {
@@ -14,7 +15,11 @@ class Search extends React.Component {
     search(e) {
         e.preventDefault();
         this.setState({ search: e.target.value });
-        this.debounce(this.props.fetchAllUsers, 1000)(e.target.value)
+        this.debounce(this.props.fetchAllUsers, 500)(e.target.value)
+    }
+
+    clear(e) {
+        this.setState({search: ""})
     }
     
 
@@ -25,16 +30,29 @@ class Search extends React.Component {
             test = setTimeout(() => func(...args), interval);
         }
     }
+
+    focus(e) {
+        e.target.classList.add("search-focused")
+    }
+
+    blur(e) {
+        debugger
+        e.target.classList.remove("search-focused")
+    }
  
     render() {
+        const { users = [] } = this.props;
         return (
-            <input type="text" onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
+            <>
+                <input type="text" className="search" onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
+                <SearchResults users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search}/>
+            </>
         )
     }
 }
 
 const msp = state => ({
-    users: state.entities.users
+    users: Object.values(state.entities.users)
 })
 
 const mdp = dispatch => ({

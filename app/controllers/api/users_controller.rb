@@ -30,9 +30,9 @@ class Api::UsersController < ApplicationController
     end
 
     def search
-        debugger
         @users = User.with_attached_profile_photo.where("LOWER(users.first_name) LIKE LOWER('%#{params[:string]}%') OR LOWER(users.last_name) LIKE LOWER('%#{params[:string]}%')")
         render :index
+
     end
 
     def user_params

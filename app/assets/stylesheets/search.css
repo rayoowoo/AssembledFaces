@@ -1,0 +1,33 @@
+.profile-search {
+    position: relative;
+}
+
+.search-results {
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    border: 1px solid lightgray;
+    box-shadow: 0px 1px 5px rgba(136, 54, 54, 0.5)
+}
+
+.search-results span {
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.search-results span:hover {
+    background-color: rgb(255, 225, 225);
+    cursor: pointer;
+}
+
+.search-focused + .search-results-index {
+    display: block;
+}
+
+.search-results-index {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 99.45%;
+}
