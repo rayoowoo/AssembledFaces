@@ -56,7 +56,10 @@ class ProfilePictureArea extends React.Component {
             friendBtn = <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
         } else {
             if (targetFriendship === null) {
-                friendBtn = <button onClick={this.friendship("Add Friend").bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-user-plus"></i> Add Friend</button>;
+                friendBtn = <div>
+                    <button disabled className="profile-btn profile-btn-dropdown" id="do-you-know">Do you know {user.first_name}?</button>
+                    <button onClick={this.friendship("Add Friend").bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-user-plus"></i> Add Friend</button>;                    
+                    </div>
                 } else {
                 friendshipToSubmit = targetFriendship;
                 const { requester_id } = targetFriendship;

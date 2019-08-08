@@ -161,3 +161,12 @@
     background-image: linear-gradient(white,rgb(0, 0, 0));
     z-index: 1;
 }
+#do-you-know {
+    width: 150px;
+    left: 523px;
+}
+
+#do-you-know:hover {
+    cursor: default;
+    background-color: white;
+}
