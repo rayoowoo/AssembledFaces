@@ -36,7 +36,7 @@ class NewsFeed extends React.Component {
 
                         <section className="newsfeed-aside-links"><a href="https://github.com/rayoowoo/AssembledFaces"><i className="fab fa-github"></i><span>GITHUB</span></a></section>
                         <section className="newsfeed-aside-links"><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/"><i className="fab fa-linkedin-in"></i><span>LINKEDIN</span></a></section>
-                        <section className="newsfeed-aside-links"><a href=""><i className="fas fa-envelope"></i><span>EMAIL</span></a></section>
+                        <section className="newsfeed-aside-links newsfeed-email"><i className="fas fa-envelope"></i><span>EMAIL</span><p>ruiyuwu1998@gmail.com</p></section>
                     </aside>
                     <section className="newsfeed-main">
                         <NewsFeedPostForm />

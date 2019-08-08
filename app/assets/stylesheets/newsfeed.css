@@ -80,7 +80,7 @@
     margin-left: -20%;
 }
 
-.newsfeed-aside-top span {
+.newsfeed-aside-top span, p {
     font-size: 12px;
     font-weight: 400;
 }
@@ -89,4 +89,24 @@
     position: sticky;
     top: 57px;
     height: 100%;
+}
+
+.newsfeed-email p {
+    display: none;
+}
+
+.newsfeed-email:hover p {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+.newsfeed-email:hover span {
+    display: none;
+}
+
+.newsfeed-email {
+    display: flex;
+    align-items: center;
+
 }
