@@ -23,6 +23,7 @@ class Profile extends React.Component {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.fetchUser(this.props.match.params.userId)
         }
+        window.scrollTo(0, 155);
     }
 
     render() {

@@ -16,8 +16,9 @@ class ProfileNav extends React.Component {
         }
 
         const { friendships } = this.props;
-
-        
+        const number = friendships.filter( friendship => {
+            return (friendship.requested_id === this.props.user.id || friendship.requester_id === this.props.user.id) && friendship.status === "accepted"
+        }).length      
 
         return (
             <nav className="profile-page-nav">
@@ -26,7 +27,7 @@ class ProfileNav extends React.Component {
                 <div className="profile-page-nav-links">
                     <a onClick={e => this.props.history.push(`/user/${this.props.user.id}`)}>Timeline {caret}</a>
                     <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/about`)}>About</a>
-                    <a onClick={e => alert("not implemented yet")}>Friends <strong>3,000</strong></a>
+                    <a onClick={e => alert("not implemented yet")}>Friends <strong>{number}</strong></a>
                     <a onClick={e => alert("not implemented yet")}>Photos</a>
                     {archive}
                     <a onClick={e => alert("not implemented yet")}>More <i className="fas fa-caret-down"></i></a>
