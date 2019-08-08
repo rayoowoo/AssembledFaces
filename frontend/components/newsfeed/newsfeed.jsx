@@ -9,7 +9,8 @@ import {fetchUser} from '../../actions/user_actions'
 class NewsFeed extends React.Component {
     
     componentDidMount() {
-        this.props.fetchUser(this.props.currentUserId)
+        this.props.fetchUser(this.props.currentUserId);
+        window.scrollTo(0, 0);
     }
 
     profile(e) {
