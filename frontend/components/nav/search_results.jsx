@@ -18,6 +18,7 @@ class SearchResults extends React.Component {
     render() {
         const { users = [], search = "" } = this.props;
         const people = users
+            .slice(0, 9)
             .filter(user => {
                 return user.first_name.toLowerCase().includes(search.toLowerCase()) || user.last_name.toLowerCase().includes(search.toLowerCase())
             })
@@ -25,7 +26,7 @@ class SearchResults extends React.Component {
                 return <div>
                     <span key={`result-${user.id}`} onClick={this.handleClick(user.id).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
                 </div>
-            })  
+            })
        
         
         const results = people.length === 0 || search === "" ? null : <div className="search-results">{people}</div>

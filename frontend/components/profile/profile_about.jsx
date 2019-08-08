@@ -44,6 +44,12 @@ class ProfileAbout extends React.Component {
     render() {
         const {id, workplace, education, current_city, hometown, birth_date, created_at} = this.props.user;
 
+        const fullDate = birth_date.split("-").map( el => parseInt(el))
+        const year = fullDate[0]
+        const month = ["January", "February", "March", "Aprl", "May", "June", "July", "August", "September", "October", "November", "December"][fullDate[1]];
+        const date = fullDate[2];
+        const birthDate = month + " " + date.toString() + ", " + year.toString();
+
         let editbtn = null;
         if (id === this.props.currentUserId) {
             editbtn = <li ref="edit" onClick={this.assignSelect.bind(this)} >Edit</li>
@@ -55,7 +61,7 @@ class ProfileAbout extends React.Component {
                     <ul className="profile-about-menu">
                         <li ref="overview" onClick={this.assignSelect.bind(this)} className="profile-about-selected">Overview</li>
                         <li ref="work" onClick={this.assignSelect.bind(this)} >Work and Education</li>
-                        <li ref="places" onClick={this.assignSelect.bind(this)} >Places You've Lived</li>\
+                        <li ref="places" onClick={this.assignSelect.bind(this)} >Places You've Lived</li>
                         {editbtn}
                     </ul>
                     <div className="profile-about-content">
@@ -63,7 +69,7 @@ class ProfileAbout extends React.Component {
                             <p>Joined AssembledFaces on <strong>{created_at.date}</strong></p>
                             <p>Studied at <strong>{education}</strong></p>
                             <p>Lives in <strong>{current_city}</strong></p>
-                            <p>Born on <strong>{birth_date}</strong></p>
+                            <p>Born on <strong>{birthDate}</strong></p>
                         </section>
                         <section ref="work2">
                             <p>Currently works at <strong>{workplace}</strong></p>

@@ -32,7 +32,7 @@ class PostForm extends React.Component {
 
     assignPhotoSelect(e) {
         this.assignSelect(e);
-        this.upload.bind(this)(e)
+        this.upload.bind(this)(e);
     }
 
     handleChange(e) {
@@ -72,7 +72,7 @@ class PostForm extends React.Component {
             formData.append('post[author_id]', this.state.author_id)
             formData.append('post[photo]', this.state.photo)
             this.props.createPost(this.state.user_id, formData);
-            this.setState({body: "", photo: null})
+            this.setState({body: "", photo: null, photoUrl: ""})
             this.refs.photoPreview.classList.remove("photo-display");
             this.clearFocus(e);
             this.try = false;

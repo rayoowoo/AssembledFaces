@@ -32,7 +32,8 @@ class Search extends React.Component {
     }
 
     focus(e) {
-        e.target.classList.add("search-focused")
+        e.target.classList.add("search-focused");
+        this.props.toggleSearchBtn();
     }
 
     blur(e) {
@@ -43,7 +44,7 @@ class Search extends React.Component {
         const { users = [] } = this.props;
         return (
             <>
-                <input type="text" className="search" onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
+                <input type="text" className="search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
                 <SearchResults users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search}/>
             </>
         )

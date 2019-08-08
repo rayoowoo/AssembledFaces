@@ -10,9 +10,19 @@ class PostItemSpecial extends React.Component {
 
     render() {
         const { user = {}, date } = this.props;
-        const content = Boolean(date) ? 
-        <p className="post-content-body post-special-content">Joined AssembledFaces on {date}.</p> : 
-            <p className="post-content-body post-special-content">Born on {user.birth_date}</p>
+        
+        let content;
+
+        if (Boolean(date)) {
+            content = <p className="post-content-body post-special-content">Joined AssembledFaces on {date}.</p>
+        } else {
+            const fullDate = user.birth_date.split("-").map(el => parseInt(el))
+            const year = fullDate[0]
+            const month = ["January", "February", "March", "Aprl", "May", "June", "July", "August", "September", "October", "November", "December"][fullDate[1]];
+            const date = fullDate[2];
+            const birthDate = month + " " + date.toString() + ", " + year.toString();
+            content = <p className="post-content-body post-special-content">Born on {birthDate}.</p>
+        }
 
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
 

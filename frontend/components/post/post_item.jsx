@@ -9,12 +9,16 @@ class PostItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.post;
+        this.oldBody = this.props.post.body;
     }
 
     editPost(e) {
         e.preventDefault();
         this.refs.postBody.classList.toggle("post-display");
         this.refs.postForm.classList.toggle("post-display");
+        if (e.target.innerHTML === "Cancel") {
+            this.setState( {body: this.oldBody} )
+        }
     }
 
     handleSubmit(e) {
@@ -100,7 +104,7 @@ class PostItem extends React.Component {
                     <form ref="postForm" onSubmit={this.handleSubmit.bind(this)} className="post-edit-form">
                         <textarea onChange={this.update.bind(this)} value={this.state.body}></textarea>
                         <section className="post-edit-form-btns">
-                            <div className="signup-submit-btn">Cancel</div>
+                            <div onClick={this.editPost.bind(this)} className="signup-submit-btn">Cancel</div>
                             <button className="signup-submit-btn">Done Editing</button>    
                         </section>
                         

@@ -45,6 +45,10 @@ class ProfileNavBar extends React.Component {
         this.refs.profilenavdropdown.classList.remove("visible");
     }
 
+    toggleSearchBtn() {
+        this.refs.search.classList.toggle("searched");
+    }
+
     render() {
         const {currentUser = {}} = this.props;
         const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="" /> : null
@@ -62,8 +66,8 @@ class ProfileNavBar extends React.Component {
                         {/* made using fontmeme.com/avengers-font */}
                         <div className="profile-search">
                             <form>
-                                <Search />
-                                <button><i className="fas fa-search"></i></button>
+                                <Search toggleSearchBtn={this.toggleSearchBtn.bind(this)}/>
+                                <button ref="search"><i className="fas fa-search"></i></button>
                             </form>
                         </div>
                     </section>

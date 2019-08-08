@@ -13,18 +13,41 @@ class CommentItem extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
         this.state = this.props.comment;
+        this.oldBody = this.props.comment.body;
+        // this.turnOn = this.turnOn.bind(this);
+        // this.turnOff = this.turnOff.bind(this);
+        this.toggle = true;
     }
 
     editComment(e) {
         e.preventDefault();
-        this.refs.commentBody.classList.toggle("comment-display");
-        this.refs.commentForm.classList.toggle("comment-display");
+        this.toggle = true;
+        this.refs.commentBody.classList.remove("comment-display");
+        this.refs.commentForm.classList.add("comment-display");
+        document.addEventListener("mousedown", e => {
+            e.stopPropagation();
+            if (this.toggle === true) {
+                if (e.target.name !== "comment-edit-form-textarea" && e.target.name !== "comment-body") {
+                    this.refs.commentBody.classList.add("comment-display");
+                    this.refs.commentForm.classList.remove("comment-display");
+                    this.setState( {body: this.oldBody})
+                    this.toggle = false;
+                }
+            }
+          
+        })
     }
 
     handleSubmit(e) {
         e.preventDefault();
         this.props.updateComment(this.state);
+        this.refs.commentBody.classList.toggle("comment-display");
+        this.refs.commentForm.classList.toggle("comment-display");
+    }
+
+    clear(e) {
         this.editComment(e);
+        this.setState({ body: this.oldBody })
     }
 
     update(e) {
@@ -73,15 +96,15 @@ class CommentItem extends React.Component {
                         <Link to={`/user/${comment.author_id}`}>{photo}</Link>
                     {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                 </div>
-                <section  className="comment-content" >
-                    <div ref="commentBody" className="comment-content-main comment-body comment-display">
-                        <p className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.first_name} {author.last_name}</Link></p>
-                        <p>{body}</p>
+                <section name="comment-body" className="comment-content" >
+                    <div ref="commentBody" name="comment-body" className="comment-content-main comment-body comment-display">
+                        <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.first_name} {author.last_name}</Link></p>
+                        <p name="comment-body" >{body}</p>
                     </div>
 
                     <form ref="commentForm" onSubmit={this.handleSubmit.bind(this)} className="comment-edit-form">
 
-                        <textarea onChange={this.update.bind(this)} value={this.state.body}></textarea>
+                        <textarea onChange={this.update.bind(this)} name="comment-edit-form-textarea" value={this.state.body}></textarea>
                         <section>
                             <div ref="cancel"></div>
                             <button ref="submit"></button>

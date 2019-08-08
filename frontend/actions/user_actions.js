@@ -26,9 +26,11 @@ export const receiveUserErrors = errors => ({
 })
 
 export const fetchAllUsers = string => dispatch => {
-    return USERUtil.fetchAllUsers(string)
-        .then(res => dispatch(receiveAllUsers(res)),
-            errors => dispatch(receiveUserErrors(errors)))
+    if (string !== "") {
+            return USERUtil.fetchAllUsers(string)
+            .then(res => dispatch(receiveAllUsers(res)),
+                errors => dispatch(receiveUserErrors(errors)))
+    }
 };
 
 export const fetchUser = id => dispatch => {

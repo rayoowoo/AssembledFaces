@@ -42,6 +42,8 @@ class ProfilePictureArea extends React.Component {
         let targetFriendship = null;
         let friendshipToSubmit = null;
         let friendStatus = null;
+        let friendIcon = null;
+        let friendBtn = null;
         
         // friendships are of the user whose profile page we are currently viewing. currentUser is the one logged in. 
         friendships.forEach(friendship => {
@@ -52,17 +54,21 @@ class ProfilePictureArea extends React.Component {
 
         if (targetFriendship === null) {
             friendStatus = "Add Friend";
+            friendBtn = <><i className="fas fa-user-plus"></i> {friendStatus}</>
         } else {
             const { requester_id } = targetFriendship;
             if (targetFriendship.status === "accepted") {
-                friendStatus = "Unfriend";
+                friendStatus = "Friends";
                 friendshipToSubmit = targetFriendship;
+                friendBtn = <><i className="fas fa-check"></i>  {friendStatus}</>
             } else {
                 if (requester_id === currentUser.id) {
                     friendStatus = "Cancel Request";
+                    friendBtn = <><i className="fas fa-remove"></i>  {friendStatus}</>
                     friendshipToSubmit = targetFriendship;
                 } else {
                     friendStatus = "Approve Request";
+                    friendBtn = <><i className="fas fa-check-circle"></i>  {friendStatus}</>
                     friendshipToSubmit = targetFriendship;
                 }
             }
@@ -73,7 +79,7 @@ class ProfilePictureArea extends React.Component {
         const btns = user.id === this.props.currentUser.id ? ( 
             <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
             ) :  (
-            <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendStatus}</button>
+            <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
             )
 
         let coverUpdate, profileUpdate;
