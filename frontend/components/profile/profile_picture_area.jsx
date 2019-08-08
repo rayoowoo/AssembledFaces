@@ -17,10 +17,13 @@ class ProfilePictureArea extends React.Component {
                 case "Unfriend":
                     this.props.deleteFriendship(friendshipToSubmit.id);
                     break
+                case "Reject Request":
+                    this.props.deleteFriendship(friendshipToSubmit.id);
+                    break
                 case "Cancel Request":
                     this.props.deleteFriendship(friendshipToSubmit.id);
                     break
-                case "Approve Request":
+                case "Accept Request":
                     this.props.approveFriendship(merge(friendshipToSubmit, {status: "accepted"}));
                     break
                 case "Add Friend":
@@ -41,7 +44,6 @@ class ProfilePictureArea extends React.Component {
         const {user = {}, currentUser = {}, friendships} = this.props;
         let targetFriendship = null;
         let friendshipToSubmit = null;
-        let friendStatus = null;
         let friendBtn = null;
         
         // friendships are of the user whose profile page we are currently viewing. currentUser is the one logged in. 
@@ -50,62 +52,36 @@ class ProfilePictureArea extends React.Component {
                 targetFriendship = friendship;
             }
         })
-
-        if (targetFriendship === null) {
-            friendStatus = "Add Friend";
-            friendBtn = <><i className="fas fa-user-plus"></i> {friendStatus}</>
+        if (user.id === currentUser.id) {
+            friendBtn = <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
         } else {
-            const { requester_id } = targetFriendship;
-            if (targetFriendship.status === "accepted") {
-                friendStatus = "Friend";
-                friendshipToSubmit = targetFriendship;
-                friendBtn = <><i className="fas fa-check"></i>  {friendStatus}</>
-            } else {
-                if (requester_id === currentUser.id) {
-                    friendStatus = "Cancel Request";
-                    friendBtn = <><i className="fas fa-remove"></i>  {friendStatus}</>
-                    friendshipToSubmit = targetFriendship;
+            if (targetFriendship === null) {
+                friendBtn = <button onClick={this.friendship("Add Friend").bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-user-plus"></i> Add Friend</button>;
                 } else {
-                    friendStatus = "Approve Request";
-                    friendBtn = <><i className="fas fa-check-circle"></i>  {friendStatus}</>
-                    friendshipToSubmit = targetFriendship;
+                friendshipToSubmit = targetFriendship;
+                const { requester_id } = targetFriendship;
+                if (targetFriendship.status === "accepted") {
+                    friendBtn = <div>
+                        <button onClick={e => e.preventDefault()} className="profile-btn profile-btn-friend"><i className="fas fa-check"></i> Friend <i className="fas fa-caret-down"></i></button>{/* this button needs to display the next one upon click */}
+                        <button onClick={this.friendship("Unfriend", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-dropdown"><i className="fas fa-remove"></i>Unfriend</button>
+                    </div>
+                        } else {
+                    if (requester_id === currentUser.id) {
+                        friendBtn =  <button onClick={this.friendship("Cancel Request", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-remove"></i> Cancel Request</button>
+                    } else {
+                        friendBtn = (<div>
+                            <button onClick={this.friendship("Accept Request", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-check-circle"></i> Accept Request</button> {/* this button needs to display the next one upon click */}
+                            <a onClick={this.friendship("Reject Request", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-dropdown">Reject Request</a>
+                        </div>)
+                    }
                 }
             }
         }
 
+
+
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
         const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null
-        // const btns = user.id === this.props.currentUser.id ? ( 
-        //     <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
-        //     ) :  (
-        //     <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
-        //     )
-
-        let btns;
-        if (user.id === currentUser.id) {
-            btns = <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
-        } else {
-            if (friendStatus === "Friend") {
-                btns = <>
-                    <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
-                    <a onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">Unfriend</a>
-
-                </>
-            }
-            if (friendStatus === "Approve Request") {
-                btns = <>
-                    <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
-                    <a onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">Unfriend</a>
-                </>
-            } else {
-                btns = <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
-            }
-        }
-
-
-
-
-
 
         let coverUpdate, profileUpdate;
         if (user.id === this.props.currentUser.id) {
@@ -132,7 +108,7 @@ class ProfilePictureArea extends React.Component {
                         </div>
                     </div>
                     <h1 className="profile-name">{user.first_name} {user.last_name}</h1>
-                    {btns}
+                    {friendBtn}
                 </section>
             </>
 

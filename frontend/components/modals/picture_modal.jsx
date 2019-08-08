@@ -61,7 +61,6 @@ class PicModal extends React.Component {
     }
 
     render() {
-        debugger
         let type;
         switch(this.props.type) {
             case "Profile":

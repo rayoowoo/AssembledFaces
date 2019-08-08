@@ -13,7 +13,6 @@ class PostForm extends React.Component {
         let id;
         if ( location.pathname === "/") {id = currentUser.id }
         else { id = parseInt(this.props.match.params.userId)  }
-        debugger
         this.state = {
             body: "",
             user_id: id,
@@ -73,7 +72,6 @@ class PostForm extends React.Component {
 
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('post[body]', this.state.body)

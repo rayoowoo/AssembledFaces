@@ -40,16 +40,16 @@ class Profile extends React.Component {
         
         const page = currentUser.id === userId || acceptedFriendships.includes(currentUser.id) ? (
             <>
-                <div className="profile-main">
-                    <Route exact path="/user/:userId" render={props => <ProfileSideBar closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
+ 
                     <Switch>
                         <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
                         <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
                     </Switch>
-                </div>
+  
             </>
         ) : (
-            null
+            <div className="profile-empty">
+            </div>
         )
 
 
@@ -59,7 +59,10 @@ class Profile extends React.Component {
                 <div className="profile-content">
                     <ProfilePictureArea closeModal={this.props.closeModal} openProfile={this.props.openProfile} openCover={this.props.openCover}/>
                     <ProfileNav user={user} currentUserId={this.props.currentUser.id}/>
+                    <div className="profile-main">
+                        <Route exact path="/user/:userId" render={props => <ProfileSideBar closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
                     {page}
+                    </div>
                 </div>
             </section>
           

@@ -126,6 +126,7 @@
     font-weight: 800;
     z-index: 2;
     top: 269px;
+    text-align: center;
 }
 
 .profile-btn:hover {
@@ -137,9 +138,9 @@
     left: 685px;
 }
 
-.profile-btn-info {
-    left: 573px;
-    width: 100px;
+.profile-btn-dropdown {
+    left: 533px;
+    width: 140px;
 }
 
 .profile-name {

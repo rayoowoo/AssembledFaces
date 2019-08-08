@@ -25,8 +25,8 @@ class SearchResults extends React.Component {
                 return user.first_name.toLowerCase().includes(search.toLowerCase()) || user.last_name.toLowerCase().includes(search.toLowerCase())
             })
             .map(user => {
-                return <div>
-                    <span key={`result-${user.id}`} onClick={this.handleClick(user.id).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
+                return <div key={`result-${user.id}`}>
+                    <span onClick={this.handleClick(user.id).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
                 </div>
             })
         }

@@ -234,3 +234,7 @@
 .profile-sidebar-friends-index:hover {
     cursor: pointer;
 }
+
+.profile-empty {
+    flex: 3;
+}

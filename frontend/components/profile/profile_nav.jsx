@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
 
 class ProfileNav extends React.Component {
 
@@ -13,6 +14,11 @@ class ProfileNav extends React.Component {
             archive = <a onClick={e => alert("not implemented yet")}><i className="fas fa-lock"></i>Archive</a>
             filler = <><div className="profile-page-nav-space"></div><div className="profile-page-nav-space"></div></>
         }
+
+        const { friendships } = this.props;
+
+        
+
         return (
             <nav className="profile-page-nav">
                 <div className="profile-page-nav-space"></div>
@@ -32,4 +38,8 @@ class ProfileNav extends React.Component {
     }
 }
 
-export default withRouter(ProfileNav);
+const msp = state => ({
+    friendships: Object.values(state.entities.friendships)
+})
+
+export default withRouter(connect(msp)(ProfileNav));
