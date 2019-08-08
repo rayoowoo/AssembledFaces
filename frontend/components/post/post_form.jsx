@@ -9,10 +9,14 @@ class PostForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.clickTextarea = this.clickTextarea.bind(this);
 
-        const { currentUser = {} } = this.props;
+        const { location, currentUser = {} } = this.props;
+        let id;
+        if ( location.pathname === "/") {id = currentUser.id }
+        else { id = parseInt(this.props.match.params.userId)  }
+        debugger
         this.state = {
             body: "",
-            user_id: parseInt(this.props.match.params.userId),
+            user_id: id,
             author_id: currentUser.id,
             photo: null,
             photoUrl: ""
@@ -20,6 +24,10 @@ class PostForm extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.location.pathname === "/") {
+            this.setState({user_id: this.props.currentUser.id})
+            return
+        }
         this.setState({user_id: parseInt(this.props.match.params.userId)})
     }
 
@@ -65,6 +73,7 @@ class PostForm extends React.Component {
 
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
         const formData = new FormData();
         formData.append('post[body]', this.state.body)
