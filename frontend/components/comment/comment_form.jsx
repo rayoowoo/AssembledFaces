@@ -8,10 +8,13 @@ class CommentForm extends React.Component {
         this.assignSelect = this.assignSelect.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handlSubmit = this.handleSubmit.bind(this);
+
+        const parent = this.props.child ? this.props.commentId : null;
         this.state = {
             body: "",
             post_id: this.props.postId,
-            author_id: this.props.currentUserId
+            author_id: this.props.currentUserId,
+            parent_comment_id: parent
         }
     }
 
@@ -50,15 +53,17 @@ class CommentForm extends React.Component {
             submit = <input ref="submit" className="postform-submit" type="submit" value="Post" />
         }
 
+        const idName = this.props.child ? "child-comment-input" : ""
+
         return (
-            <form onSubmit={this.handleSubmit.bind(this)} className="commentinput">
+            <form onSubmit={this.handleSubmit.bind(this)} id={idName} className="commentinput">
                     <div className="comment-picture">
                         {photo}
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
                 <textarea ref="commentforminput" onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
 
-                <span className="commentinput-buttons-container">
+                <span className="commentinput-buttons-container" id="child-comment-input-btns">
                     <i className="far fa-smile"></i>
                     <i className="fas fa-camera"></i>
                     <i className="far fa-file-video"></i>

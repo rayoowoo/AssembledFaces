@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 import CommentIndexChildren from './comment_index_children'
 import {deleteComment, updateComment} from '../../actions/comment_actions'
+import CommentForm from './comment_form'
 
 
 
@@ -62,12 +63,17 @@ class CommentItem extends React.Component {
         this.setState({ body: e.target.value })
     }
 
+    openForm(e) {
+        e.preventDefault();
+        this.refs.childForm.classList.toggle("comment-form-display")
+    }
+
 
     render() {
-        const {childComments, comment, author, currentUser} = this.props;
+        const {childComments, comment, author, currentUser, child} = this.props;
         const children = childComments.length > 0 ? <div className="child-comments"><CommentIndexChildren parentCommentId={comment.id} childComments={childComments} /></div> : null;
         const {comment: {body, created_at} } = this.props;
-        const reply = Boolean(comment.parent_comment_id) === false ? (<><p className="comment-response-links">Reply</p>
+        const reply = Boolean(comment.parent_comment_id) === false ? (<><p onClick={this.openForm.bind(this)} className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
         const photo = author.photoUrl ? <img src={author.photoUrl} alt="" /> : null
@@ -81,42 +87,49 @@ class CommentItem extends React.Component {
                 </>
         }
 
-        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id ? (<section className="comment-response">
+        const childForm = child ? null : <CommentForm child={true} postId={comment.post_id} commentId={comment.id} updateCount={this.updateCount} currentUserId={currentUser.id}/>;
+
+        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id ? 
+        (<section className="comment-response">
             <p className="comment-response-links">Like</p>
             {btns}
             <span className="dot">  ·  </span>
             {reply}
             <p>{created_at.date}</p>
-        </section>) : null
+        </section>
+        ) : null
 
         return (
             <>
-            <section className="comment-item">
-                <div className="comment-picture">
-                        <Link to={`/user/${comment.author_id}`}>{photo}</Link>
-                    {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
-                </div>
-                <section name="comment-body" className="comment-content" >
-                    <div ref="commentBody" name="comment-body" className="comment-content-main comment-body comment-display">
-                        <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.first_name} {author.last_name}</Link></p>
-                        <p name="comment-body" >{body}</p>
-                    </div>
+    
+                <div className="comment" >
+                    <section className="comment-item">
+                        <div className="comment-picture">
+                                <Link to={`/user/${comment.author_id}`}>{photo}</Link>
+                            {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
+                        </div>
+                        <section name="comment-body" className="comment-content" >
+                            <div ref="commentBody" name="comment-body" className="comment-content-main comment-body comment-display">
+                                <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.first_name} {author.last_name}</Link></p>
+                                <p name="comment-body" >{body}</p>
+                            </div>
 
-                    <form ref="commentForm" onSubmit={this.handleSubmit.bind(this)} className="comment-edit-form">
+                            <form ref="commentForm" onSubmit={this.handleSubmit.bind(this)} className="comment-edit-form">
 
-                        <textarea onChange={this.update.bind(this)} name="comment-edit-form-textarea" value={this.state.body}></textarea>
-                        <section>
-                            <div ref="cancel"></div>
-                            <button ref="submit"></button>
+                                <textarea onChange={this.update.bind(this)} name="comment-edit-form-textarea" value={this.state.body}></textarea>
+                                <section>
+                                    <div ref="cancel"></div>
+                                    <button ref="submit"></button>
+                                </section>
+                                
+
+                            </form>
+                            {response}
                         </section>
-                        
-
-                    </form>
-                    {response}
-                </section>
-               
-            </section>
-             {children}
+                    </section>
+                    <div id="childForm" ref="childForm">{childForm}</div>
+                    </div>
+                {children}
              </>
         )
     }

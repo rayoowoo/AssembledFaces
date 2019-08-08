@@ -51,7 +51,7 @@ class PostResponse extends React.Component {
                 </div>
                 <div className="post-comments">
                     <CommentIndex postId={this.props.postId} updateCount={this.updateCount} currentUserId={this.props.currentUserId}/>
-                    <div ref="commentform"><CommentForm postId={this.props.postId} currentUserId={this.props.currentUserId}/></div>
+                    <div ref="commentform"><CommentForm child={false} postId={this.props.postId} currentUserId={this.props.currentUserId}/></div>
                 </div>
 
             </section>
