@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -126,6 +126,18 @@ class PostForm extends React.Component {
         const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
 
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt=""/> : null
+
+        const otherHeaders = this.props.location.pathname === "/" ? null : (
+            <>
+                <li ref="header2" onClick={this.assignPhotoSelect.bind(this)}><span><i className="fa fa-camera"></i>Photo/Video</span></li>
+                <li ref="header3" onClick={this.assignSelect} ><span><i className="fa fa-video"></i>Live Video</span></li>
+                <li ref="header4" onClick={this.assignSelect} ><span ><i className="fa fa-flag"></i>Life Event</span></li>
+            </>
+        )
+
+        const placeholder = this.props.location.pathname === "/" ? `What's on your mind, ${currentUser.first_name}?` : "What's on your mind?";
+
+
         return (
             <>
 
@@ -133,10 +145,8 @@ class PostForm extends React.Component {
             <section className="postform-container">
                 <section ref="postformText" className="postform">
                     <ul className="postform-headers">
-                        <li ref="header1" onClick={e => {this.assignSelect(e); this.clickTextarea(e)}} className="postform-selected"><span><i className="fa fa-pencil-alt"></i>Create Post</span></li>
-                        <li ref="header2" onClick={this.assignPhotoSelect.bind(this)}><span><i className="fa fa-camera"></i>Photo/Video</span></li>
-                        <li ref="header3" onClick={this.assignSelect} ><span><i className="fa fa-video"></i>Live Video</span></li>
-                        <li ref="header4" onClick={this.assignSelect} ><span id="postform-headers-last"><i className="fa fa-flag"></i>Life Event</span></li>
+                        <li ref="header1" onClick={e => { this.assignSelect(e); this.clickTextarea(e) }} className="postform-selected"><span id="postform-headers-first" ><i className="fa fa-pencil-alt"></i>Create Post</span></li>
+                        {otherHeaders}
                     </ul>
                 
                         
@@ -146,7 +156,7 @@ class PostForm extends React.Component {
                                     <Link to={`/user/${this.props.currentUser.id}`}>{photo}</Link>
                                 {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                             </div>
-                            <textarea ref="postTextarea" onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={`What's on your mind?`} value={this.state.body}></textarea>
+                            <textarea ref="postTextarea" onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={placeholder} value={this.state.body}></textarea>
                         </section>
 
                             <div ref="photoPreview" className="postform-img-preview">{preview}</div>
@@ -172,4 +182,4 @@ class PostForm extends React.Component {
     }
 }
 
-export default PostForm
+export default withRouter(PostForm);

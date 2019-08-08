@@ -64,8 +64,7 @@ class PostItem extends React.Component {
                 </Link></p>
         )
 
-        // const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id  ?  (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
-
+        // only show the response section if the current user is a friend of the post author
         const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
             if (friendship.requester_id === this.props.author.id){
                 return friendship.requested_id;
@@ -77,7 +76,6 @@ class PostItem extends React.Component {
         })
 
         const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
-        debugger 
 
         return (
             <section className="postitem">
@@ -123,7 +121,7 @@ const msp = (state, ownProps) => {
     return ({
         author: state.entities.users[ownProps.post.author_id] || {},
         currentUser : state.entities.users[state.session.id],
-        friendships: Object.values(state.entities.friendships)
+        user: state.entities.users[ownProps.post.user_id] || {}
     })
 }
 

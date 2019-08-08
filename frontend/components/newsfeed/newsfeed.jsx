@@ -1,12 +1,16 @@
 import React from 'react'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import NewsFeedPostForm from '../post/post_form_container'
 import NewsFeedPostIndex from './newsfeed_post_index_container'
+import {fetchUser} from '../../actions/user_actions'
 
 
 class NewsFeed extends React.Component {
     
+    componentDidMount() {
+        this.props.fetchUser(this.props.currentUser.id)
+    }
 
     profile(e) {
         e.preventDefault();
@@ -30,9 +34,9 @@ class NewsFeed extends React.Component {
                             <span>{currentUser.first_name} {currentUser.last_name}</span>
                         </section>
 
-                        <section className="newsfeed-aside-links"><a href="https://github.com/rayoowoo/AssembledFaces"><i class="fab fa-github"></i><span>GITHUB</span></a></section>
-                        <section className="newsfeed-aside-links"><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/"><i class="fab fa-linkedin-in"></i><span>LINKEDIN</span></a></section>
-                        <section className="newsfeed-aside-links"><a href=""><i class="fas fa-envelope"></i><span>EMAIL</span></a></section>
+                        <section className="newsfeed-aside-links"><a href="https://github.com/rayoowoo/AssembledFaces"><i className="fab fa-github"></i><span>GITHUB</span></a></section>
+                        <section className="newsfeed-aside-links"><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/"><i className="fab fa-linkedin-in"></i><span>LINKEDIN</span></a></section>
+                        <section className="newsfeed-aside-links"><a href=""><i className="fas fa-envelope"></i><span>EMAIL</span></a></section>
                     </aside>
                     <section className="newsfeed-main">
                         <NewsFeedPostForm />
@@ -51,4 +55,8 @@ const msp = state => ({
     currentUser: state.entities.users[state.session.id]
 })
 
-export default withRouter(connect(msp)(NewsFeed))
+const mdp = dispatch => ({
+    fetchUser: userId => dispatch(fetchUser(userId))
+})
+
+export default withRouter(connect(msp, mdp)(NewsFeed))

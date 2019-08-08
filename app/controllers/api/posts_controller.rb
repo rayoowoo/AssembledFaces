@@ -5,7 +5,8 @@ class Api::PostsController < ApplicationController
         if params.include?(:user_id)
             @posts = User.find(params[:user_id]).timeline_posts.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # this would be for the timeline, where only the timeline posts are needed. 
         else
-            @posts = Post.with_attached_photo.all.includes(:comments, :author) # right now this will be all the posts, but once friends are implemented, this will be just posts of or by friends. 
+            debugger
+            @posts = Post.with_attached_photo.all.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # right now this will be all the posts, but once friends are implemented, this will be just posts of or by friends. 
             # this would be for the news feed, where post not limited to the user's timeline posts are needed.
         end
         render :index 

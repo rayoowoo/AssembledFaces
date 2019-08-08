@@ -7,7 +7,6 @@ import PostItemSpecial from './post_item_special'
 class PostIndex extends React.Component {
     
     componentDidMount() {
-        
         this.props.fetchPosts(this.props.userId);
     }
 
@@ -19,7 +18,7 @@ class PostIndex extends React.Component {
         let date, time, allPosts = null;
         if (this.props.posts.length !== 0){ 
             allPosts = this.props.posts.reverse().map(post => {
-                return <PostItem post={post} user={this.props.user} key={`post-${post.id}`} />
+                return <PostItem post={post} friendships={this.props.friendships} key={`post-${post.id}`} />
             })
         }
 
@@ -29,13 +28,26 @@ class PostIndex extends React.Component {
             time = created_at.time;
         }
 
+        // const postsHeader = this.props.location.pathname === "/" ? null : "Posts"
+
+        let postsHeader, specials;
+
+        if (this.props.location.pathname !== "/") {
+            postsHeader = "Posts";
+            specials = (
+                <>
+                    <PostItemSpecial user={this.props.user} date={date} time={time} />
+                    <PostItemSpecial user={this.props.user} />
+                </>
+            )
+        }
+
         return (
             <section className="postindex">
-                <h1>Posts</h1>           
+                <h1>{postsHeader}</h1>           
                 {allPosts}
                 {/* make the next two into actual posts. they're special post items. */}
-                <PostItemSpecial user={this.props.user} date={date} time={time}/>
-                <PostItemSpecial user={this.props.user}/>
+                {specials}
             </section>
         )
     }
@@ -43,7 +55,8 @@ class PostIndex extends React.Component {
 
 const msp = (state, ownProps) => {
     return {
-        user: state.entities.users[ownProps.userId] || {}
+        user: state.entities.users[ownProps.userId] || {},
+        friendships: Object.values(state.entities.friendships) || []
     }
 }
 

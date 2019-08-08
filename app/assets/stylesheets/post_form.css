@@ -36,12 +36,13 @@
 
 .postform-headers span {
     display: inline-block;
-    border-right: rgb(219, 219, 219) 1px solid;
-    padding-right: 10px;
+    border-left: rgb(219, 219, 219) 1px solid;
+    padding-left: 10px;
 }
 
-#postform-headers-last {
-    border-right: 0px;
+#postform-headers-first {
+    border-left: 0px;
+    padding-left: 0px;
 }
 
 .postform-headers i {
