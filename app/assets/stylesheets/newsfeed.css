@@ -84,3 +84,9 @@
     font-size: 12px;
     font-weight: 400;
 }
+
+.newsfeed-aside {
+    position: sticky;
+    top: 57px;
+    height: 100%;
+}
