@@ -8,7 +8,7 @@ const msp = state => ({
 })
 
 const mdp = dispatch => ({
-    fetchPosts: () => dispatch(fetchAllPosts())
+    fetchPosts: (id) => dispatch(fetchAllPosts(id))
 })
 
 export default withRouter(connect(msp, mdp)(PostIndex));

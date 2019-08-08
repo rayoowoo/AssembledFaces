@@ -5,10 +5,10 @@ export const fetchTimelinePosts = userId => {
     })
 }
 
-export const fetchAllPosts = () => {
+export const fetchAllPosts = id => {
     return $.ajax({
-        method: "GET",
-        url: "api/posts"
+        method: "POST",
+        url: `api/posts/${id}`
     })
 }
 

@@ -2,14 +2,77 @@ class Api::PostsController < ApplicationController
     before_action :ensure_logged_in
     
     def index
-        if params.include?(:user_id)
-            @posts = User.find(params[:user_id]).timeline_posts.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # this would be for the timeline, where only the timeline posts are needed. 
-        else
-            debugger
-            @posts = Post.with_attached_photo.all.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # right now this will be all the posts, but once friends are implemented, this will be just posts of or by friends. 
-            # this would be for the news feed, where post not limited to the user's timeline posts are needed.
-        end
+        @posts = User.find(params[:user_id]).timeline_posts.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # this would be for the timeline, where only the timeline posts are needed. 
         render :index 
+    end
+
+    def feed
+        # this is posts made by the current user or friends, including posts made by friends on non-friend's walls.
+
+        # @posts = Post.where("author_id = #{params[:id]} OR author_id in (
+        #                                         SELECT 
+        #                                             friendships.requested_id
+        #                                         FROM 
+        #                                             users 
+        #                                         JOIN 
+        #                                             friendships on users.id = friendships.requester_id
+        #                                         WHERE 
+        #                                             users.id = #{params[:id]} AND friendships.status = 'accepted'
+        #                                         UNION
+        #                                         SELECT 
+        #                                             friendships.requester_id
+        #                                         FROM 
+        #                                             users 
+        #                                         JOIN 
+        #                                             friendships on users.id = friendships.requested_id 
+        #                                         WHERE 
+        #                                             users.id = #{params[:id]} AND friendships.status = 'accepted')" )
+        #               .includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob])
+
+        # this is just basically all the friends' timeline posts plus the current user's timeline posts (minus the ones made by nonfriends).
+        @posts = Post.where("author_id = #{params[:id]} OR user_id = #{params[:id]}
+                                OR (   user_id in (
+                                    SELECT 
+                                            friendships.requested_id
+                                        FROM 
+                                            users 
+                                        JOIN 
+                                            friendships on users.id = friendships.requester_id
+                                        WHERE 
+                                            users.id = #{params[:id]} AND friendships.status = 'accepted'
+                                        UNION
+                                        SELECT 
+                                            friendships.requester_id
+                                        FROM 
+                                            users 
+                                        JOIN 
+                                            friendships on users.id = friendships.requested_id 
+                                        WHERE 
+                                            users.id = #{params[:id]} AND friendships.status = 'accepted'
+                                )  AND  author_id in (
+                                    SELECT 
+                                            friendships.requested_id
+                                        FROM 
+                                            users 
+                                        JOIN 
+                                            friendships on users.id = friendships.requester_id
+                                        WHERE 
+                                            users.id = #{params[:id]} AND friendships.status = 'accepted'
+                                        UNION
+                                        SELECT 
+                                            friendships.requester_id
+                                        FROM 
+                                            users 
+                                        JOIN 
+                                            friendships on users.id = friendships.requested_id 
+                                        WHERE 
+                                            users.id = #{params[:id]} AND friendships.status = 'accepted'
+                                ) )
+                                            " )
+                .includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob])        
+
+
+        render :index
     end
 
     def show
@@ -46,7 +109,7 @@ class Api::PostsController < ApplicationController
         end
     end
 
-    private
+    # private
     
     def post_params
         common_params = [:body, :author_id, :user_id]

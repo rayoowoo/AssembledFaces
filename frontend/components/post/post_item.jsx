@@ -49,6 +49,7 @@ class PostItem extends React.Component {
         const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="" /> : null
 
         // Steve Rogers ▶ Tony Stark
+        debugger
         const authoruser = post.author_id !== post.user_id  ? (
             <p className="post-content-author">
                     <Link to={`/user/${post.author_id}`} user={author} >
@@ -72,7 +73,6 @@ class PostItem extends React.Component {
             if (friendship.requested_id === this.props.author.id) {
                 return friendship.requester_id;
             }
-                
         })
 
         const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null

@@ -2,13 +2,19 @@ import React from 'react'
 import PostItem from './post_item'
 import {connect} from 'react-redux'
 import PostItemSpecial from './post_item_special'
+import {withRouter} from 'react-router-dom'
 
 
 class PostIndex extends React.Component {
     
     componentDidMount() {
-        this.props.fetchPosts(this.props.userId);
+        if (this.props.user === undefined) {
+            this.props.fetchPosts(this.props.userId);
+            return
+        }
+        this.props.fetchPosts(this.props.user.id);
     }
+
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchPosts(this.props.userId);}
@@ -16,19 +22,19 @@ class PostIndex extends React.Component {
 
     render() {
         let date, time, allPosts = null;
+        const {user = {} } = this.props;
         if (this.props.posts.length !== 0){ 
             allPosts = this.props.posts.reverse().map(post => {
                 return <PostItem post={post} friendships={this.props.friendships} key={`post-${post.id}`} />
             })
         }
 
-        if (Object.keys(this.props.user).length !== 0) {
-            const { created_at } = this.props.user;
+        if (Object.keys(user).length !== 0) {
+            const { created_at = {} } = this.props.user;
             date = created_at.date;
             time = created_at.time;
         }
 
-        // const postsHeader = this.props.location.pathname === "/" ? null : "Posts"
 
         let postsHeader, specials;
 
@@ -36,8 +42,8 @@ class PostIndex extends React.Component {
             postsHeader = "Posts";
             specials = (
                 <>
-                    <PostItemSpecial user={this.props.user} date={date} time={time} />
-                    <PostItemSpecial user={this.props.user} />
+                    <PostItemSpecial user={user} date={date} time={time} />
+                    <PostItemSpecial user={user} />
                 </>
             )
         }
@@ -46,7 +52,6 @@ class PostIndex extends React.Component {
             <section className="postindex">
                 <h1>{postsHeader}</h1>           
                 {allPosts}
-                {/* make the next two into actual posts. they're special post items. */}
                 {specials}
             </section>
         )
@@ -54,10 +59,15 @@ class PostIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+    if (ownProps.user === undefined) {
+        return {
+            friendships: Object.values(state.entities.friendships) || [],
+            user: state.entities.users[ownProps.userId]
+        }
+    }
     return {
-        user: state.entities.users[ownProps.userId] || {},
         friendships: Object.values(state.entities.friendships) || []
     }
 }
 
-export default connect(msp)(PostIndex);
+export default withRouter(connect(msp)(PostIndex));

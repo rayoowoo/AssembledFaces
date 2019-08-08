@@ -20,7 +20,7 @@ class NewsFeed extends React.Component {
     render() {
         const {currentUser} = this.props;
         const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
-
+        
         return (
             <div className="newsfeed">
                 <div className="newsfeed-content">
@@ -40,7 +40,7 @@ class NewsFeed extends React.Component {
                     </aside>
                     <section className="newsfeed-main">
                         <NewsFeedPostForm />
-                        <NewsFeedPostIndex />
+                        <NewsFeedPostIndex user={currentUser}/>
                     </section>
                     <div className="empty">
                         <div> </div>

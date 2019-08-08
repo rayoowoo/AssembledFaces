@@ -38,8 +38,8 @@ export const fetchTimelinePosts = userId => dispatch => {
         errors => dispatch(receivePostErrors(errors)))
 };
 
-export const fetchAllPosts = () => dispatch => {
-    return POSTUtil.fetchAllPosts()
+export const fetchAllPosts = id => dispatch => {
+    return POSTUtil.fetchAllPosts(id)
         .then(res => dispatch(receiveAllPosts(res)),
         errors => dispatch(receivePostErrors(errors)))
 };

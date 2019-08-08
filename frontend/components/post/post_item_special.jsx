@@ -9,10 +9,10 @@ class PostItemSpecial extends React.Component {
 
 
     render() {
-        const { user = {} } = this.props;
-        const content = Boolean(this.props.date) ? 
-        <p className="post-content-body post-special-content">Joined AssembledFaces on {this.props.date}.</p> : 
-            <p className="post-content-body post-special-content">Born on {this.props.user.birth_date}</p>
+        const { user = {}, date } = this.props;
+        const content = Boolean(date) ? 
+        <p className="post-content-body post-special-content">Joined AssembledFaces on {date}.</p> : 
+            <p className="post-content-body post-special-content">Born on {user.birth_date}</p>
 
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
 

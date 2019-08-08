@@ -1,7 +1,10 @@
-export const fetchAllUsers = () => {
+export const fetchAllUsers = string => {
     return $.ajax({
-        method: "GET",
-        url: "api/users"
+        method: "POST",
+        url: "api/users",
+        data: {
+            string
+        }
     })
 }
 
@@ -19,10 +22,3 @@ export const updateUser = user => {
         data: { user }
     })
 }
-// export const fetchFriends = userId => {
-//     return $.ajax({
-//         method: "GET",
-//         url: 'api/users',
-//         data: { userId }
-//     })
-// }
