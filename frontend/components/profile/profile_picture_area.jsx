@@ -42,7 +42,6 @@ class ProfilePictureArea extends React.Component {
         let targetFriendship = null;
         let friendshipToSubmit = null;
         let friendStatus = null;
-        let friendIcon = null;
         let friendBtn = null;
         
         // friendships are of the user whose profile page we are currently viewing. currentUser is the one logged in. 
@@ -58,7 +57,7 @@ class ProfilePictureArea extends React.Component {
         } else {
             const { requester_id } = targetFriendship;
             if (targetFriendship.status === "accepted") {
-                friendStatus = "Friends";
+                friendStatus = "Friend";
                 friendshipToSubmit = targetFriendship;
                 friendBtn = <><i className="fas fa-check"></i>  {friendStatus}</>
             } else {
@@ -76,11 +75,37 @@ class ProfilePictureArea extends React.Component {
 
         const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
         const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null
-        const btns = user.id === this.props.currentUser.id ? ( 
-            <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
-            ) :  (
-            <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
-            )
+        // const btns = user.id === this.props.currentUser.id ? ( 
+        //     <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
+        //     ) :  (
+        //     <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
+        //     )
+
+        let btns;
+        if (user.id === currentUser.id) {
+            btns = <button onClick={this.goToUpdate.bind(this)} className="profile-btn profile-btn-friend">Update Info</button>
+        } else {
+            if (friendStatus === "Friend") {
+                btns = <>
+                    <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
+                    <a onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">Unfriend</a>
+
+                </>
+            }
+            if (friendStatus === "Approve Request") {
+                btns = <>
+                    <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
+                    <a onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">Unfriend</a>
+                </>
+            } else {
+                btns = <button onClick={this.friendship(friendStatus, friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend">{friendBtn}</button>
+            }
+        }
+
+
+
+
+
 
         let coverUpdate, profileUpdate;
         if (user.id === this.props.currentUser.id) {
@@ -105,8 +130,6 @@ class ProfilePictureArea extends React.Component {
                             {profileUpdate}
                             {photo}
                         </div>
-                   
-
                     </div>
                     <h1 className="profile-name">{user.first_name} {user.last_name}</h1>
                     {btns}
@@ -134,38 +157,3 @@ export default withRouter(connect(msp, mdp)(ProfilePictureArea));
 
 // pictures FROM https://www.inverse.com/article/55449-avengers-endgame-iron-man-death-tony-stark-final-line-was-added-at-the-last-minute. All rights to go Marvel Studios.
 // FROM 1000logos.net / iron - man - logo.All rights go to Marvel Studios.
-
-// const { friends, friendships = [] } = this.props; 
-// const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
-//     return friendship.requester_id === this.props.user.id ? friendship.requested_id : friendship.requester_id;
-// })
-// const allFriends = friends === undefined || friends.some(friend => friend === undefined) ? null :
-//     friends.filter(friend => acceptedFriendships.includes(friend.id))
-//         .reverse()
-//         .slice(0, 9)
-//         .map(friend => {
-//             return <div onClick={this.goToFriend(friend).bind(this)}
-//                 key={`friend-${friend.id}`}
-//                 className="profile-sidebar-friends-index">
-//                 <img src={friend.photoUrl} alt="" />
-//             </div>
-//         })
-// 
-
-// const msp = (state, ownProps) => {
-//     if (ownProps.user.friend_ids !== undefined) {
-//         return {
-//             friends: ownProps.user.friend_ids.map(id => state.entities.users[id]),
-//             
-//         }
-//     } else {
-//         return {}
-//     }
-
-// }
-
-// const mdp = dispatch => ({
-//     fetchUser: id => dispatch(fetchUser(id))
-// })
-
-// export default withRouter(connect(msp, mdp)(FriendIndex));

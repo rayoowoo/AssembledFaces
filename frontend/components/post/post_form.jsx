@@ -8,10 +8,12 @@ class PostForm extends React.Component {
         this.focusForm = this.focusForm.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.clickTextarea = this.clickTextarea.bind(this);
+
+        const { currentUser = {} } = this.props;
         this.state = {
             body: "",
             user_id: parseInt(this.props.match.params.userId),
-            author_id: this.props.currentUser.id,
+            author_id: currentUser.id,
             photo: null,
             photoUrl: ""
         }
@@ -118,7 +120,7 @@ class PostForm extends React.Component {
         } else {
             submit = <input className="postform-submit" type="submit" value="Post" />
         }
-        const { currentUser } = this.props;
+        const { currentUser = {} } = this.props;
         const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
 
         const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt=""/> : null
@@ -149,7 +151,7 @@ class PostForm extends React.Component {
                     <form onSubmit={this.handleSubmit.bind(this)} className="postinput">
                         <section className="postinput-top">
                             <div className="post-picture">
-                                    <Link to={`/user/${this.props.currentUser.id}`}>{photo}</Link>
+                                    <Link to={`/user/${currentUser.id}`}>{photo}</Link>
                                 {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                             </div>
                             <textarea ref="postTextarea" onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={placeholder} value={this.state.body}></textarea>

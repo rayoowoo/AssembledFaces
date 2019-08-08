@@ -9,7 +9,7 @@ import {fetchUser} from '../../actions/user_actions'
 class NewsFeed extends React.Component {
     
     componentDidMount() {
-        this.props.fetchUser(this.props.currentUser.id)
+        this.props.fetchUser(this.props.currentUserId)
     }
 
     profile(e) {
@@ -18,7 +18,7 @@ class NewsFeed extends React.Component {
     }
 
     render() {
-        const {currentUser} = this.props;
+        const {currentUser = {}} = this.props;
         const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
         
         return (
@@ -52,6 +52,7 @@ class NewsFeed extends React.Component {
 }
 
 const msp = state => ({
+    currentUserId: state.session.id,
     currentUser: state.entities.users[state.session.id]
 })
 

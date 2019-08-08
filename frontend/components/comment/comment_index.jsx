@@ -16,7 +16,7 @@ class CommentIndex extends React.Component {
     }
 
     render() {
-        const { comments } = this.props;
+        const { comments = {} } = this.props;
         const allComments = comments.map( comment => {
                 if (comment.parent_comment_id === null) {
                 const childComments = comments.filter( child => child.parent_comment_id === comment.id)

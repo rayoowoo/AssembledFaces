@@ -13,7 +13,8 @@ export default (state = {}, action) => {
     let newUser, friends;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            newUser = {[action.res.user.id]: action.res.user}
+            debugger
+            newUser = {[action.res.user.id]: action.res.user};
             friends = merge({}, action.res.friends)
             return merge({}, state, newUser, friends);
         case RECEIVE_USER:

@@ -8,7 +8,7 @@ class CommentIndexChildren extends React.Component {
     }
 
     render() {
-        const { childComments } = this.props;
+        const { childComments = {} } = this.props;
         const allComments = childComments.map(comment => {
             if (comment.parent_comment_id === this.props.parentCommentId) {
                 return <CommentItem key={`comment-${comment.id}`} comment={comment} childComments={[]} />
