@@ -29,6 +29,11 @@ class Api::UsersController < ApplicationController
 
     end
 
+    def search
+        @users = User.where("users.first_name LIKE '%#{params[:string]}%' OR users.last_name LIKE '%#{params[:string]}%'")
+        render :index
+    end
+
     def user_params
         params.require(:user).permit(:email, :password, :birth_date, :first_name, :last_name, :gender, :hometown, :current_city, :workplace, :education, :location, :profile_photo, :cover_photo, photos: [])
     end
