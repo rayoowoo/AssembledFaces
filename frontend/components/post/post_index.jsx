@@ -24,7 +24,17 @@ class PostIndex extends React.Component {
         let date, time, allPosts = null;
         const {user = {} } = this.props;
         if (this.props.posts.length !== 0){ 
-            allPosts = this.props.posts.reverse().map(post => {
+            allPosts = this.props.posts
+            .sort( (a,b) => {
+                if (a.id < b.id) {
+                    return 1;
+                } if (a.id === b.id ) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            })            
+            .map(post => {
                 return <PostItem post={post} friendships={this.props.friendships} key={`post-${post.id}`} />
             })
         }

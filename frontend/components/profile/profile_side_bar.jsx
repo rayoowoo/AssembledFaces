@@ -33,10 +33,11 @@ class ProfileSideBar extends React.Component {
         if (hometown) {
             home = <li className="profile-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>From <strong>{hometown}</strong></p></li>
         };
-
-        const photos = photoUrls.reverse().slice(0, 9).map( (photourl, idx) => {
-            return <div key={`photo-${idx}`} className="profile-sidebar-photos-index"><img src={photourl} alt=""/></div>
-        })
+        const photos = photoUrls
+                                // .reverse()
+                                .slice(0, 9).map( (photourl, idx) => {
+                                    return <div key={`photo-${idx}`} className="profile-sidebar-photos-index"><img src={photourl} alt=""/></div>
+                                })
 
 
 

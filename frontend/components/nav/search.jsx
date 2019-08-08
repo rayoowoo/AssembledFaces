@@ -36,7 +36,6 @@ class Search extends React.Component {
     }
 
     blur(e) {
-        debugger
         e.target.classList.remove("search-focused")
     }
  

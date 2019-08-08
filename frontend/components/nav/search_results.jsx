@@ -9,7 +9,6 @@ class SearchResults extends React.Component {
     handleClick(id) {
         return e => {
             e.preventDefault();
-            debugger
             this.props.history.push(`/user/${id}`);
             this.props.blur(e);
             this.props.clear(e);
