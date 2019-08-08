@@ -15,7 +15,6 @@ class PostForm extends React.Component {
             photo: null,
             photoUrl: ""
         }
-        this.try = false;
     }
 
     componentDidMount() {
@@ -65,21 +64,17 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.try) {
-            const formData = new FormData();
-            formData.append('post[body]', this.state.body)
-            formData.append('post[user_id]', this.state.user_id)
-            formData.append('post[author_id]', this.state.author_id)
-            formData.append('post[photo]', this.state.photo)
-            this.props.createPost(this.state.user_id, formData);
-            this.setState({body: "", photo: null, photoUrl: ""})
-            this.refs.photoPreview.classList.remove("photo-display");
-            this.clearFocus(e);
-            this.try = false;
-        } else {
-            this.try = true;
-        }
+        const formData = new FormData();
+        formData.append('post[body]', this.state.body)
+        formData.append('post[user_id]', this.state.user_id)
+        formData.append('post[author_id]', this.state.author_id)
+        formData.append('post[photo]', this.state.photo)
+        this.props.createPost(this.state.user_id, formData);
+        this.setState({body: "", photo: null, photoUrl: ""})
+        this.refs.photoPreview.classList.remove("photo-display");
+        this.clearFocus(e);
     }
+
 
     upload(e) {
         e.stopPropagation();
@@ -92,6 +87,7 @@ class PostForm extends React.Component {
     handleCancel(e) {
         if (this.refs.photoUpload.checkValidity() === false) {
             e.target.value.classList.remove("postform-selected")
+            this.setState({ body: "", photo: null, photoUrl: "" })
         }
     }
 

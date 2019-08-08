@@ -1,24 +1,22 @@
 import React from 'react';
 import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
-import ProfilePicModal from './modals/profile_picture_modal'
-import CoverPicModal from './modals/cover_picture_modal'
-import AddPictureModal from './modals/add_picture_modal'
+import PicModal from './modals/picture_modal'
 
 function Modal({component, closeModal}) {
     if (!component) {
         return null;
     }
-    let modal;
+    let type;
     switch (component) {
         case 'profilePicture':
-            modal = <ProfilePicModal />
+            type= "Profile" 
             break
         case 'coverPicture':
-            modal = <CoverPicModal />
+            type= "Cover"
             break
         case 'addPicture':
-            modal = <AddPictureModal />
+            type= "" 
             break
         default:
             return null;
@@ -27,7 +25,7 @@ function Modal({component, closeModal}) {
     return (
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
-                {modal}
+                <PicModal closeModal={closeModal} type={type} />
             </div>
         </div>
     )

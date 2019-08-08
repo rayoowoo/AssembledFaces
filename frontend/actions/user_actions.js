@@ -39,8 +39,8 @@ export const fetchUser = id => dispatch => {
             errors => dispatch(receiveUserErrors(errors)))
 };
 
-export const updateUser = user => dispatch => {
-    return USERUtil.updateUser(user)
+export const updateUser = (userId, formData) => dispatch => {
+    return USERUtil.updateUser(userId, formData)
         .then(res => dispatch(receiveUser(res)),
             errors => dispatch(receiveUserErrors(errors)))
 }
