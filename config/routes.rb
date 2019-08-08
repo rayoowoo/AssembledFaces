@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   post '/api/posts/:id', to: 'api/posts#feed', defaults: {format: :json}
-  post '/api/users/:string' to: 'api/users/#search', defaults: {format: :json}
+  post '/api/users/:string', to: 'api/users#search', defaults: {format: :json}
 
   root to: 'static_pages#root'
  

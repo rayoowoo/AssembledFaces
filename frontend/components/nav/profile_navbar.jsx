@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logout} from '../../actions/session_actions'
 import {fetchUser, fetchAllUsers} from '../../actions/user_actions'
+import Search from './search'
 
 class ProfileNavBar extends React.Component {
     constructor(props) {
@@ -11,25 +12,8 @@ class ProfileNavBar extends React.Component {
         this.handleIconClick = this.handleIconClick.bind(this);
         this.clear = this.clear.bind(this);
         this.logout = this.logout.bind(this);
-        this.state = {
-            search: ""
-        }
-        this.debounce = this.debounce.bind(this);
     }
 
-    search(e) {
-        e.preventDefault();
-        this.setState({search: e.target.value});
-
-    }
-
-    debounce(func, interval) {
-        let test;
-        return (...args) => {
-            clearTimeout(test);
-            test = setTimeout(() => func(...args), interval);
-        }
-    }
 
     handleLinkClick(field) {
         return e => {
@@ -78,7 +62,7 @@ class ProfileNavBar extends React.Component {
                         {/* made using fontmeme.com/avengers-font */}
                         <div className="profile-search">
                             <form>
-                                <input type="text" onChange={this.search.bind(this)} placeholder="Search" value={this.state.search}/>
+                                <Search />
                                 <button><i className="fas fa-search"></i></button>
                             </form>
                         </div>
@@ -123,7 +107,6 @@ const msp = state => ({
 const mdp = dispatch => ({
     logout: () => dispatch(logout()),
     fetchUser: userId => dispatch(fetchUser(userId)),
-    fetchAllUsers: (string) => dispatch(fetchAllUsers(string))
 })
 
 

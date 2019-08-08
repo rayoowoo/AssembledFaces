@@ -25,13 +25,8 @@ export const receiveUserErrors = errors => ({
     errors
 })
 
-// export const fetchFriends = userId => dispatch => {
-//     return USERUtil.fetchFriends(userId)
-//                     .then(res => dispatch(receiveFriends(res)))
-// }
-
-export const fetchAllUsers = () => dispatch => {
-    return USERUtil.fetchAllUsers()
+export const fetchAllUsers = string => dispatch => {
+    return USERUtil.fetchAllUsers(string)
         .then(res => dispatch(receiveAllUsers(res)),
             errors => dispatch(receiveUserErrors(errors)))
 };

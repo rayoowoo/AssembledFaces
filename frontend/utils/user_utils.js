@@ -1,10 +1,7 @@
 export const fetchAllUsers = string => {
     return $.ajax({
         method: "POST",
-        url: "api/users",
-        data: {
-            string
-        }
+        url: `api/users/${string}`
     })
 }
 

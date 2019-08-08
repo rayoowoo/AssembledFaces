@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.logout = logout;
-    window.signup = signup;
-    window.test = {id: 7, body: "Rumlow wish he did.", author_id: 39, post_id: 20}
 
      
     // TESTING

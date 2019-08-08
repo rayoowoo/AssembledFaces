@@ -21,7 +21,7 @@ export default (state = {}, action) => {
             friends = merge({}, action.res.friends)
             return merge({}, state, newUser, friends);
         case RECEIVE_ALL_USERS:
-            return merge({}, action.res.users);
+            return merge({}, state, action.res.users);
         case RECEIVE_FRIENDSHIP:
             return merge({}, state, action.res.requested, action.res.requester)
         case RECEIVE_TIMELINE_POSTS:
