@@ -24,7 +24,7 @@ class ProfilePictureArea extends React.Component {
                     this.props.approveFriendship(merge(friendshipToSubmit, {status: "accepted"}));
                     break
                 case "Add Friend":
-                    this.props.createFriendship({ requester_id: currentUser.id, requested_id: user.id });
+                    this.props.createFriendship({ requester_id: this.props.currentUser.id, requested_id: this.props.user.id });
                     break
                 default:
                     return;

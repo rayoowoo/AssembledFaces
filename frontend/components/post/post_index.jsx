@@ -8,11 +8,11 @@ class PostIndex extends React.Component {
     
     componentDidMount() {
         
-        this.props.fetchTimelinePosts(this.props.userId);
+        this.props.fetchPosts(this.props.userId);
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchTimelinePosts(this.props.userId);}
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchPosts(this.props.userId);}
     }
 
     render() {

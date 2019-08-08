@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
 }
 
 const mdp = dispatch => ({
-    fetchTimelinePosts: (userId) => dispatch(fetchTimelinePosts(userId))
+    fetchPosts: (userId) => dispatch(fetchTimelinePosts(userId))
 })
 
 

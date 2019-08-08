@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilePostForm from './profile_post_form_container'
+import ProfilePostForm from '../post/post_form_container'
 import ProfilePostIndex from './profile_post_index_container'
 import {Route} from 'react-router-dom'
 

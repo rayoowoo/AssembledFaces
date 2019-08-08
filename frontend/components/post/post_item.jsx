@@ -30,7 +30,7 @@ class PostItem extends React.Component {
 
     render() {
         const {date, time} = this.props.post.created_at;
-        const {post, author, user, currentUser} = this.props;
+        const {post, author, user, currentUser, friendships = []} = this.props;
 
         // the delete button and the edit button
         let btns = null;
@@ -64,8 +64,20 @@ class PostItem extends React.Component {
                 </Link></p>
         )
 
-        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id  ?  (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
+        // const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id  ?  (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
 
+        const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
+            if (friendship.requester_id === this.props.author.id){
+                return friendship.requested_id;
+            } 
+            if (friendship.requested_id === this.props.author.id) {
+                return friendship.requester_id;
+            }
+                
+        })
+
+        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
+        debugger 
 
         return (
             <section className="postitem">
@@ -110,7 +122,8 @@ class PostItem extends React.Component {
 const msp = (state, ownProps) => {
     return ({
         author: state.entities.users[ownProps.post.author_id] || {},
-        currentUser : state.entities.users[state.session.id]
+        currentUser : state.entities.users[state.session.id],
+        friendships: Object.values(state.entities.friendships)
     })
 }
 
