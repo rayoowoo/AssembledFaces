@@ -21,3 +21,10 @@ export const updateUser = (userId, formData) => {
         processData: false
     })
 }
+
+export const fetchUsersIndex = () => {
+    return $.ajax({
+        method: "GET",
+        url: "api/users/all"
+    })
+}

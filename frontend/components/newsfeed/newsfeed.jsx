@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import NewsFeedPostForm from '../post/post_form_container'
 import NewsFeedPostIndex from './newsfeed_post_index_container'
 import {fetchUser} from '../../actions/user_actions'
+import UserIndex from './users_index'
 
 
 class NewsFeed extends React.Component {
@@ -42,6 +43,7 @@ class NewsFeed extends React.Component {
                     <section className="newsfeed-main">
                         <NewsFeedPostForm />
                         <NewsFeedPostIndex user={currentUser}/>
+                        <Route exact path="/users/all" component={UsersIndex} />
                     </section>
                     <div className="empty">
                         <div> </div>

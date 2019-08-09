@@ -25,6 +25,12 @@ export const receiveUserErrors = errors => ({
     errors
 })
 
+export const fetchUsersIndex = () => dispatch => {
+    return USERUtil.fetchUsersIndex()
+                .then(res => dispatch(receiveAllUsers(res))),
+                errors => dispatch(receiveUserErrors(errors))
+}
+
 export const fetchAllUsers = string => dispatch => {
     if (string !== "") {
             return USERUtil.fetchAllUsers(string)
