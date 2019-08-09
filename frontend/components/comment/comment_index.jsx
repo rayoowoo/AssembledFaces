@@ -14,6 +14,12 @@ class CommentIndex extends React.Component {
     componentDidMount() {
         this.props.updateCount(this.props.comments.length)
     }
+    
+    componentDidUpdate(prevProps) {
+        if (prevProps.comments.length !== this.props.comments.length) {
+            this.props.updateCount(this.props.comments.length)
+        }
+    }
 
     render() {
         const { comments = {} } = this.props;

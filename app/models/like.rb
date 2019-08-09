@@ -5,8 +5,9 @@ class Like < ApplicationRecord
 
     private
 
-    def self.ensure_unique_like
-        if Like.where("user_id = #{user_id} AND likeable_id = #{likeable_id} AND likeable_type = #{likeable_type}").exists?
+    def ensure_unique_like
+        
+        if Like.where("user_id = #{user_id} AND likeable_id = #{likeable_id} AND likeable_type = '#{likeable_type}'").exists?
             errors[:base] << "You cannot like the same item twice."
         end
     end

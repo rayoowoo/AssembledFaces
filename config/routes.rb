@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:update, :destroy]
 
     resources :friendships, only: [:create, :destroy, :update]
+
+    resources :likes, only: [:create, :destroy]
   end
 
   post '/api/posts/:id', to: 'api/posts#feed', defaults: {format: :json}

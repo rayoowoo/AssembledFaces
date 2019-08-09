@@ -1,6 +1,7 @@
 class Api::LikesController < ApplicationController 
     def create 
         @like = Like.new(like_params)
+        
         if @like.save
             render :show
         else
@@ -11,6 +12,7 @@ class Api::LikesController < ApplicationController
 
     def destroy
         @like = Like.find(params[:id])
+        
         if @like 
             @like.destroy
             render :show
