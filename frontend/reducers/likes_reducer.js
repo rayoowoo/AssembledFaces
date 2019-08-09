@@ -12,7 +12,6 @@ export default (state = {}, action) => {
         case RECEIVE_LIKE:
             return merge({}, state, action.res.like);
         case REMOVE_LIKE:
-            debugger
             newState = merge({}, state);
             delete newState[Object.values(action.res.like)[0].id];
             return newState;
