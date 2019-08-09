@@ -1,6 +1,5 @@
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions'
-import { RECEIVE_USER } from '../actions/user_actions'
-import { RECEIVE_CURRENT_USER, LOGOUT_USER } from '../actions/session_actions'
+import { LOGOUT_USER } from '../actions/session_actions'
 import { RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST, REMOVE_POST } from '../actions/post_actions'
 import { merge } from 'lodash'
 
@@ -15,10 +14,6 @@ export default (state = {}, action) => {
             newState = merge({}, state);
             delete newState[Object.values(action.res.like)[0].id];
             return newState;
-        case RECEIVE_USER:
-            return merge({}, action.res.likes)
-        case RECEIVE_CURRENT_USER:
-            return merge({}, action.res.likes)
         case RECEIVE_TIMELINE_POSTS:
             return merge({}, action.res.likes)
         case RECEIVE_ALL_POSTS:
