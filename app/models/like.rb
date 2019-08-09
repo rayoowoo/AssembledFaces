@@ -12,7 +12,6 @@ class Like < ApplicationRecord
     end
 
     belongs_to :user
-
     belongs_to :likeable, polymorphic: true
 
 
