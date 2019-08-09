@@ -72,7 +72,7 @@ const msp = (state, ownProps) => {
     if (ownProps.user === undefined) {
         return {
             friendships: Object.values(state.entities.friendships) || [],
-            user: state.entities.users[ownProps.userId]
+            user: state.entities.users[ownProps.userId],
         }
     }
     return {

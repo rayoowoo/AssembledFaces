@@ -27,4 +27,8 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
 
     has_one_attached :photo
+
+    # users who like the post are called likers
+    has_many :likes, as: :likeable, dependent: :destroy
+    has_many :likers, through: :likes, source: :user
 end

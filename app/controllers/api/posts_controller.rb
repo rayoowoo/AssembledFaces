@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
     before_action :ensure_logged_in
     
     def index
-        @posts = User.find(params[:user_id]).timeline_posts.includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # this would be for the timeline, where only the timeline posts are needed. 
+        @posts = User.find(params[:user_id]).timeline_posts.includes(:likes, :likers, comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]) # this would be for the timeline, where only the timeline posts are needed. 
         # @posts = Post.where("user_id = #{params[:user_id]} AND (author_id in (SELECT 
         #                                     friendships.requested_id
         #                                 FROM 
@@ -87,7 +87,7 @@ class Api::PostsController < ApplicationController
                                             users.id = #{params[:id]} AND friendships.status = 'accepted'
                                 ) )
                                             " )
-                .includes(comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob])        
+                .includes(:likes, :likers, comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob])        
 
 
         render :index

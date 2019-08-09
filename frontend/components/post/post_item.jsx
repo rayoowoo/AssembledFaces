@@ -34,7 +34,7 @@ class PostItem extends React.Component {
 
     render() {
         const {date, time} = this.props.post.created_at;
-        const {post, author, user, currentUser, friendships = []} = this.props;
+        const {post, author, user, currentUser, friendships = [], likes = []} = this.props;
 
         // the delete button and the edit button
         let btns = null;
@@ -78,7 +78,11 @@ class PostItem extends React.Component {
             }
         })
 
-        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} currentUserId={currentUser.id} />) : null
+        const postLikes = likes.filter(like => {
+            return like.likeable_id === post.id && like.likeable_type === "Post"
+        })
+
+        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} likes={postLikes} currentUserId={currentUser.id} />) : null
 
         return (
             <section className="postitem">
@@ -124,7 +128,8 @@ const msp = (state, ownProps) => {
     return ({
         author: state.entities.users[ownProps.post.author_id] || {},
         currentUser : state.entities.users[state.session.id],
-        user: state.entities.users[ownProps.post.user_id] || {}
+        user: state.entities.users[ownProps.post.user_id] || {},
+        likes: Object.values(state.entities.likes) || []
     })
 }
 
