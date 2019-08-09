@@ -16,7 +16,7 @@ class UsersIndex extends React.Component {
 
 
         return (
-
+            <h1>USErS INDEX</h1>
         )
     }
 }
