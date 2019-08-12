@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
     def create 
-        @user = User.new(user_params)
+        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.new(user_params)
         if @user.save
             login!(@user)
             render :show
@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.includes(:requested_friends, :received_friends).find(params[:id])
+        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.includes(requested_friends: [profile_photo_attachment: [:blob]], received_friends: [profile_photo_attachment: [:blob]]).find(params[:id])
         render :show
     end
 
@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
 
     def search
         @users = User.with_attached_profile_photo.where("LOWER(users.first_name) LIKE LOWER('%#{params[:string]}%') OR LOWER(users.last_name) LIKE LOWER('%#{params[:string]}%')")
-        render :index
+        render :search
 
     end
 

@@ -1,6 +1,6 @@
 class Api::FriendshipsController < ApplicationController 
     def create
-        @friendship = Friendship.new(friendship_params)
+        @friendship = Friendship.includes(requester: [profile_photo_attachment: [:blob]], requested: [profile_photo_attachment: [:blob]]).new(friendship_params)
         if @friendship.save
             render :show
         else
@@ -9,7 +9,7 @@ class Api::FriendshipsController < ApplicationController
     end
 
     def update
-        @friendship = Friendship.find(params[:id])
+        @friendship = Friendship.includes(requester: [profile_photo_attachment: [:blob]], requested: [profile_photo_attachment: [:blob]]).find(params[:id])
         # if @friendship.update_attributes(friendship_params)
         if @friendship.update_attributes(friendship_params)
             render :show

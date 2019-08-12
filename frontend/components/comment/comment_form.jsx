@@ -45,7 +45,8 @@ class CommentForm extends React.Component {
 
     render() {
         let submit;
-        const photo = this.props.currentUser.photoUrl ? <img src={this.props.currentUser.photoUrl} alt="" /> : null
+        const { currentUser = {} } = this.props;
+        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
 
         if (this.state.body === "") {
             submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
@@ -78,8 +79,8 @@ class CommentForm extends React.Component {
     }
 }
 
-const msp = (state, ownProps) => ({
-    currentUser: state.entities.users[ownProps.currentUserId]
+const msp = state => ({
+    currentUser: state.entities.users[state.session.id]
 })
 
 const mdp = dispatch => ({
