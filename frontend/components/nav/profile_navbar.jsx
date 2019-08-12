@@ -2,7 +2,6 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logout} from '../../actions/session_actions'
-import {fetchUser, fetchAllUsers} from '../../actions/user_actions'
 import Search from './search'
 
 class ProfileNavBar extends React.Component {
@@ -35,8 +34,7 @@ class ProfileNavBar extends React.Component {
 
     logout(e) {
         e.preventDefault();
-        this.props.logout();
-        this.props.history.push("/");
+        this.props.logout().then(() => this.props.history.push('/') );
     }
 
     clearFocus(e) {
@@ -50,7 +48,7 @@ class ProfileNavBar extends React.Component {
     }
 
     render() {
-        const {currentUser = {}} = this.props;
+        const {currentUser = {} } = this.props;
         const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="" /> : null
 
         const navPic = <div className="comment-picture" id="nav-picture">
@@ -110,7 +108,6 @@ const msp = state => ({
 
 const mdp = dispatch => ({
     logout: () => dispatch(logout()),
-    fetchUser: userId => dispatch(fetchUser(userId)),
 })
 
 

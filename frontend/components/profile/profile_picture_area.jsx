@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createFriendship, approveFriendship, deleteFriendship} from '../../actions/friendship_actions'
 import {withRouter} from 'react-router-dom'
-import {fetchUser} from '../../actions/user_actions'
 import {merge} from 'lodash';
 
 class ProfilePictureArea extends React.Component {
@@ -128,8 +127,7 @@ const msp = (state, ownProps) => ({
 const mdp = dispatch => ({
     createFriendship: friendship => dispatch(createFriendship(friendship)),
     approveFriendship: friendship => dispatch(approveFriendship(friendship)),
-    deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId)),
-    fetchUser: userId => dispatch(fetchUser(userId))
+    deleteFriendship: friendshipId => dispatch(deleteFriendship(friendshipId))
 })
 
 export default withRouter(connect(msp, mdp)(ProfilePictureArea));
