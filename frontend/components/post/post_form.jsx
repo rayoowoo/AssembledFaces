@@ -168,8 +168,8 @@ class PostForm extends React.Component {
 
                         <section className="postinput-buttons-container">
                             <button onClick={this.upload.bind(this)} className="postinput-buttons"><i className="far fa-image"></i>Photo/Video</button>{/* some button to upload photos */}
-                            <button className="postinput-buttons"><i className="fas fa-user"></i>Tag Friends</button>
-                            <button className="postinput-buttons"><i className="far fa-smile"></i>Feeling/Activity</button>
+                            <button onClick={e => {e.preventDefault(); e.stopPropagation()}} className="postinput-buttons"><i className="fas fa-user"></i>Tag Friends</button>
+                            <button onClick={e => {e.preventDefault(); e.stopPropagation()}} className="postinput-buttons"><i className="far fa-smile"></i>Feeling/Activity</button>
                         </section>
 
                         <input ref="photoUpload" onChange={this.handleFile.bind(this)} className="photo-upload" type="file"/> 

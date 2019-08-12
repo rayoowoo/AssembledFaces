@@ -65,7 +65,7 @@ class CommentItem extends React.Component {
 
     openForm(e) {
         e.preventDefault();
-        this.refs.childForm.classList.toggle("comment-form-display")
+        this.refs.childForm.classList.add("comment-form-display")
     }
 
 

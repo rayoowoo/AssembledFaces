@@ -153,5 +153,3 @@ tony.photos.attach(io: photo7, filename:"ironman3.png")
 photo8 = open('https://s3.amazonaws.com/assembled-faces-seed/ironman4.jpg')
 tony.photos.attach(io: photo8, filename:"ironman4.jpg")
 # https://e3.365dm.com/19/04/768x432/skynews-avengers-endgame-marvel_4649149.jpg?20190424150753
-
-

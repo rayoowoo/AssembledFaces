@@ -1,7 +1,7 @@
 import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
 import {RECEIVE_USER, RECEIVE_ALL_USERS } from '../actions/user_actions'
 import { RECEIVE_TIMELINE_POSTS, RECEIVE_ALL_POSTS, RECEIVE_POST } from '../actions/post_actions'
-import { RECEIVE_FRIENDSHIP } from '../actions/friendship_actions'
+// import { RECEIVE_FRIENDSHIP } from '../actions/friendship_actions'
 import { LOGOUT_USER } from '../actions/session_actions'
 
 
@@ -21,8 +21,8 @@ export default (state = {}, action) => {
             return merge({}, state, newUser, friends);
         case RECEIVE_ALL_USERS:
             return merge({}, state, action.res.users);
-        case RECEIVE_FRIENDSHIP:
-            return merge({}, state, action.res.requested, action.res.requester)
+        // case RECEIVE_FRIENDSHIP:
+        //     return merge({}, state, action.res.requested, action.res.requester)
         case RECEIVE_TIMELINE_POSTS:
             return merge({}, state, action.res.authors)
         case RECEIVE_ALL_POSTS:

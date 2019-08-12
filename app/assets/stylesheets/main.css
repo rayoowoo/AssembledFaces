@@ -1,0 +1,15 @@
+.profile {
+    background-color: rgb(255, 235, 235);
+    padding: 1px 0 0 0;
+    min-height: 150vh;
+    height: 100%;
+    margin: 41px auto 0 auto;
+}
+
+.newsfeed {
+    background-color: rgb(255, 235, 235);
+    padding: 1px 0 0 0;
+    height: 100%;
+    min-height: 150vh;
+    margin-top: 41px;
+}

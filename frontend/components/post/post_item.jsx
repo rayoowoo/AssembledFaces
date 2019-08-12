@@ -70,10 +70,10 @@ class PostItem extends React.Component {
 
         // only show the response section if the current user is a friend of the post author
         const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
-            if (friendship.requester_id === this.props.author.id){
+            if (friendship.requester_id === this.props.user.id){
                 return friendship.requested_id;
             } 
-            if (friendship.requested_id === this.props.author.id) {
+            if (friendship.requested_id === this.props.user.id) {
                 return friendship.requester_id;
             }
         })
@@ -82,8 +82,7 @@ class PostItem extends React.Component {
             return like.likeable_id === post.id && like.likeable_type === "Post"
         })
 
-        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id ? (<PostResponse postId={post.id} likes={postLikes} currentUserId={currentUser.id} />) : null
-
+        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id || currentUser.id === user.id? (<PostResponse postId={post.id} likes={postLikes} currentUserId={currentUser.id} />) : null
         return (
             <section className="postitem">
                 

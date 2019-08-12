@@ -22,8 +22,8 @@ class Profile extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.fetchUser(this.props.match.params.userId)
+            window.scrollTo(0, 155);
         }
-        window.scrollTo(0, 155);
     }
 
     render() {
@@ -41,11 +41,10 @@ class Profile extends React.Component {
         
         const page = currentUser.id === userId || acceptedFriendships.includes(currentUser.id) ? (
             <>
- 
-                    <Switch>
-                        <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
-                        <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
-                    </Switch>
+                <Switch>
+                    <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
+                    <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
+                </Switch>
   
             </>
         ) : (
@@ -90,5 +89,3 @@ const mdp = dispatch => {
 }
 
 export default withRouter(connect(msp, mdp)(Profile));
-
-//  user={props.location.match.params.userId}
