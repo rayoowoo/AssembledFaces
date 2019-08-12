@@ -82,8 +82,7 @@ class PostItem extends React.Component {
             return like.likeable_id === post.id && like.likeable_type === "Post"
         })
 
-        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id || currentUser.id === user.id? (<PostResponse postId={post.id} likes={postLikes} />) : null
-        debugger
+        const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id || currentUser.id === user.id? (<PostResponse postId={post.id} likes={postLikes} currentUserId={currentUser.id} />) : null
         return (
             <section className="postitem">
                 
