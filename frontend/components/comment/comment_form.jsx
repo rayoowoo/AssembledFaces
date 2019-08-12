@@ -38,6 +38,7 @@ class CommentForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.createComment(this.props.postId, this.state);
+        e.target.parentNode.classList.remove("comment-form-display");
         this.setState({ body: "" })
     }
 
