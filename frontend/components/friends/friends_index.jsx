@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUser} from '../../actions/user_actions'
 import {withRouter} from 'react-router-dom'
 
 class FriendIndex extends React.Component {
@@ -49,8 +48,4 @@ const msp = (state, ownProps) => {
     
 }
 
-const mdp = dispatch => ({
-    fetchUser: id => dispatch(fetchUser(id))
-})
-
-export default withRouter(connect(msp, mdp)(FriendIndex));
+export default withRouter(connect(msp)(FriendIndex));
