@@ -3,9 +3,18 @@ import {connect} from 'react-redux'
 import {fetchAllPosts} from '../../actions/post_actions'
 import {withRouter} from 'react-router-dom'
 
-const msp = state => ({
-    posts: Object.values(state.entities.posts) || []
-})
+const msp = (state, ownProps) => {
+    let commonProps = {
+        posts: Object.values(state.entities.posts) || [],
+        friendships: Object.values(state.entities.friendships) || []
+    }
+ 
+    if (ownProps.user === undefined) {
+        Object.assign(commonProps, {user: state.entities.users[ownProps.userId]})
+    }
+    
+    return commonProps;
+}
 
 const mdp = dispatch => ({
     fetchPosts: (id) => dispatch(fetchAllPosts(id))

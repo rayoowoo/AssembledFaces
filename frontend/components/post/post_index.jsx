@@ -1,8 +1,6 @@
 import React from 'react'
 import PostItem from './post_item'
-import {connect} from 'react-redux'
 import PostItemSpecial from './post_item_special'
-import {withRouter} from 'react-router-dom'
 
 
 class PostIndex extends React.Component {
@@ -68,16 +66,4 @@ class PostIndex extends React.Component {
     }
 }
 
-const msp = (state, ownProps) => {
-    if (ownProps.user === undefined) {
-        return {
-            friendships: Object.values(state.entities.friendships) || [],
-            user: state.entities.users[ownProps.userId],
-        }
-    }
-    return {
-        friendships: Object.values(state.entities.friendships) || []
-    }
-}
-
-export default withRouter(connect(msp)(PostIndex));
+export default PostIndex;
