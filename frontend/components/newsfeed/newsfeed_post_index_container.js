@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
     }
  
     if (ownProps.user === undefined) {
-        Object.assign(commonProps, {user: state.entities.users[ownProps.userId]})
+        commonProps = Object.assign(commonProps, { user: state.entities.users[ownProps.userId] })
     }
     
     return commonProps;

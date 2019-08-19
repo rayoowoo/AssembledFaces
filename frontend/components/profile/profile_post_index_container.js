@@ -4,20 +4,12 @@ import {fetchTimelinePosts} from '../../actions/post_actions'
 import {withRouter} from 'react-router-dom'
 
 
-const msp = (state, ownProps) => {
-
-    let commonProps = {
-        posts: Object.values(state.entities.posts) || [],
-        userId: ownProps.match.params.userId,
-        friendships: Object.values(state.entities.friendships) || []
-    }
-
-    if (ownProps.user === undefined) {
-        Object.assign(commonProps, { user: state.entities.users[ownProps.userId] })
-    }
-    
-    return commonProps;
-}
+const msp = (state, ownProps) => ({
+    posts: Object.values(state.entities.posts) || [],
+    userId: ownProps.match.params.userId,
+    friendships: Object.values(state.entities.friendships) || [],
+    user: state.entities.users[ownProps.match.params.userId]
+})
 
 const mdp = dispatch => ({
     fetchPosts: (userId) => dispatch(fetchTimelinePosts(userId))

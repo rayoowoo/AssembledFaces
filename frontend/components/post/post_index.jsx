@@ -7,7 +7,7 @@ class PostIndex extends React.Component {
     
     componentDidMount() {
         if (this.props.user === undefined) {
-            this.props.fetchPosts(this.props.userId);
+            this.props.fetchPosts(this.props.user.id);
             return
         }
         this.props.fetchPosts(this.props.user.id);
@@ -15,7 +15,7 @@ class PostIndex extends React.Component {
 
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchPosts(this.props.userId);}
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {this.props.fetchPosts(this.props.user.id);}
     }
 
     render() {

@@ -15,7 +15,7 @@ class PostItemSpecial extends React.Component {
 
         if (Boolean(date)) {
             content = <p className="post-content-body post-special-content">Joined AssembledFaces on {date}.</p>
-        } else {
+        } else if (user.birth_date) {
             const fullDate = user.birth_date.split("-").map(el => parseInt(el))
             const year = fullDate[0]
             const month = ["January", "February", "March", "Aprl", "May", "June", "July", "August", "September", "October", "November", "December"][fullDate[1]];
