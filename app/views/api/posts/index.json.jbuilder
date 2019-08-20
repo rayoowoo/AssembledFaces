@@ -33,12 +33,25 @@ end
                 end
             end
         end
+        post.tagged_users.each do |user|
+            json.set! user.id do
+                json.extract! user, :id, :first_name, :last_name
+            end
+        end
     end
 
     json.likes do 
         post.likes.each do |like|
             json.set! like.id do
                 json.partial! 'api/likes/like', like: like
+            end
+        end
+    end
+    
+    json.tags do
+        post.tags.each do |tag|
+            json.set! tag.id do
+                json.partial! 'api/tags/tag', tag: tag
             end
         end
     end

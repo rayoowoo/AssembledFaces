@@ -72,6 +72,8 @@ class User < ApplicationRecord
     has_many :likes
     has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
     # has_many :liked_comments, through: :likes, source: :likeable, source_type: "Comment"
+    has_many :post_tags, foreign_key: :user_id, class_name: :Tag
+    has_many :tagged_posts, through: :post_tags, source: :tagged_post
 
     def friend_ids
         @friend_ids ||= Friendship.select('requester_id, requested_id').where("requested_id = ? OR requester_id = ? AND status = 'accepted'", self.id, self.id).map {|el|

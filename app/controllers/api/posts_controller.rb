@@ -14,7 +14,9 @@ class Api::PostsController < ApplicationController
 
         @posts = Post.where("user_id = #{params[:id]} OR author_id = #{params[:id]} OR (user_id IN (?) AND author_id IN (?))", ids, ids)
                 .includes(
-                        :likes, 
+                        :likes,
+                        :tags,
+                        :tagged_users,
                         comments: [author: [profile_photo_attachment: [:blob]]], 
                         author: [profile_photo_attachment: [:blob]], 
                         photo_attachment: [:blob]

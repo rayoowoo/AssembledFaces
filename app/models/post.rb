@@ -31,4 +31,9 @@ class Post < ApplicationRecord
     # users who like the post are called likers
     has_many :likes, as: :likeable, dependent: :destroy
     has_many :likers, through: :likes, source: :user
+    has_many :tags,
+        foreign_key: :post_id,
+        class_name: :Tag
+
+    has_many :tagged_users, through: :tags, source: :tagged_user
 end
