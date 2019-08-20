@@ -10,7 +10,8 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos.find(params[:id])
+        @user = User.with_attached_profile_photo.with_attached_cover_photo.with_attached_photos
+                    .includes(:sent_friend_requests, :received_friend_requests, :received_friends, :requested_friends).find(params[:id])
         render :show
     end
 

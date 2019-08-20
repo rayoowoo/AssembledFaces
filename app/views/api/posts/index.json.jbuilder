@@ -18,11 +18,19 @@ end
 
     json.authors do 
         json.set! post.author_id do
-            json.partial! 'api/users/user', user: post.author
+            json.extract! post.author, :id, :first_name, :last_name
+
+            if post.author.profile_photo.attached? 
+                    json.photoUrl url_for(post.author.profile_photo)
+                end
         end
         post.comments.each do |comment|
             json.set! comment.author_id do 
-                json.partial! 'api/users/user', user: comment.author
+                json.extract! comment.author, :id, :first_name, :last_name
+
+                if comment.author.profile_photo.attached? 
+                    json.photoUrl url_for(comment.author.profile_photo)
+                end
             end
         end
     end

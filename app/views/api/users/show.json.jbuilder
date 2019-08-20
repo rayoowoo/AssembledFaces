@@ -13,15 +13,15 @@ json.user do
 end
 
 json.friendships do 
-    @friend_requests.each do |request|
+    @user.friend_requests.each do |request|
         json.partial! 'api/friendships/friendship', friendship: request
     end
 end
 
 json.friends do 
-    @friends.each do |friend|
+    @user.friends.each do |friend|
         json.set! friend.id do
-            json.partial! 'api/users/user', user: friend
+            json.extract! friend, :id, :first_name, :last_name, :profile_photo
         end
     end
 end
