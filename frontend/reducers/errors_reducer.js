@@ -5,6 +5,7 @@ import userErrorsReducer from './user_errors_reducer'
 import commentErrorsReducer from './comment_errors_reducer'
 import friendshipErrorsReducer from './friendship_errors_reducer'
 import likeErrorsReducer from './like_errors_reducer'
+import tagErrorsReducer from './tag_errors_reducer'
 
 export default combineReducers({
     session: sessionErrorsReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     user: userErrorsReducer,
     comment: commentErrorsReducer,
     friendship: friendshipErrorsReducer,
-    like: likeErrorsReducer
+    like: likeErrorsReducer,
+    tag: tagErrorsReducer
 })
