@@ -6,6 +6,7 @@ import PostItemSpecial from './post_item_special'
 class PostIndex extends React.Component {
     
     componentDidMount() {
+        debugger
         if (this.props.user === undefined) {
             this.props.fetchPosts(this.props.user.id);
             return

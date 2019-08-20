@@ -73,12 +73,17 @@ class User < ApplicationRecord
     has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
     # has_many :liked_comments, through: :likes, source: :likeable, source_type: "Comment"
 
+    def friend_ids
+        @friend_ids ||= Friendship.select('requester_id, requested_id').where("requested_id = ? OR requester_id = ? AND status = 'accepted'", self.id, self.id).map {|el|
+            el.requester_id + el.requested_id - self.id }
+    end
+
     def friends 
-        self.requested_friends + self.received_friends
+        @friends ||= User.where('id IN (?)', self.friend_ids).includes(profile_photo_attachment: [:blob])
     end
 
     def friend_requests
-        self.sent_friend_requests + self.received_friend_requests
+        @friend_requests ||= Friendship.where("requested_id = ? OR requester_id = ?", self.id, self.id)
     end
 
     def self.find_by_credentials(email, password) 
