@@ -9,6 +9,8 @@ json.user do
         if @user.photos.attached?
             json.photoUrls @user.photos.map { |file| url_for(file) }
         end
+
+        json.friend_ids @user.friend_ids
     end
 end
 
