@@ -34,7 +34,7 @@ class PostItem extends React.Component {
 
     render() {
         const {date, time} = this.props.post.created_at;
-        const {post, author, user, currentUser, friendships = [], likes = []} = this.props;
+        const {post, author, user, currentUser, friendships = [], likes = [], tagged_users = [], post_tagged } = this.props;
 
         // the delete button and the edit button
         let btns = null;
@@ -52,6 +52,28 @@ class PostItem extends React.Component {
         // the photo of the actual post
         const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="" /> : null
 
+        // tagging
+        let tagged;
+        if (tagged_users.length > 0 && post_tagged) {
+            tagged = <span className="tag"> is with {tagged_users.map( (thisUser, i) => {
+                        let result = <Link to={`/user/${thisUser.id}`} >{thisUser.first_name} {thisUser.last_name}</Link>;
+                        const length = tagged_users.length;
+                        if (length === 2 && i === 0) {
+                            result = <>{result} and </>
+                        }
+                        if (length > 2) {
+                            if (i < length - 2) {
+                                result = <>{result}, </>
+                            }
+                            if (i === length - 2) {
+                                result = <>{result}, and </>
+                            }
+                        }
+                        return result;
+                    })
+                }.</span>
+        }
+
         // Steve Rogers ▶ Tony Stark
         const authoruser = post.author_id !== post.user_id  ? (
             <p className="post-content-author">
@@ -59,13 +81,14 @@ class PostItem extends React.Component {
                         {author.first_name} {author.last_name}
                     </Link><i className="fas fa-caret-right"></i><Link to={`/user/${user.id}`} user={user} >
                         {user.first_name} {user.last_name}
-                    </Link></p>
+                    </Link> 
+                    </p>
 
         ) : (
             <p className="post-content-author">
                 <Link to={`/user/${post.author_id}`} user={author} >
                     {author.first_name} {author.last_name}
-                </Link></p>
+                </Link>{tagged}</p>
         )
 
         // only show the response section if the current user is a friend of the post author
@@ -124,12 +147,17 @@ class PostItem extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    return ({
+    const tagged_ids = Object.values(state.entities.tags).filter(el => el.post_id === ownProps.post.id).map(el => el.user_id);
+    if (ownProps.post.id === 219) {
+    }
+    return {
         author: state.entities.users[ownProps.post.author_id] || {},
         currentUser : state.entities.users[state.session.id],
         user: state.entities.users[ownProps.post.user_id] || {},
-        likes: Object.values(state.entities.likes) || []
-    })
+        likes: Object.values(state.entities.likes) || [],
+        post_tagged: Object.values(state.entities.tags).map(tag => {return tag.post_id}).includes(ownProps.post.id),
+        tagged_users: Object.values(state.entities.users).filter(user => {return tagged_ids.includes(user.id)}) || []
+    }
 }
 
 const mdp = dispatch => ({

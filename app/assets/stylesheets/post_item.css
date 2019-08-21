@@ -169,3 +169,7 @@ p.post-display,
 form.post-display {
     display: block;
 }
+
+.tag {
+    font-weight: 500;
+}
