@@ -85,7 +85,7 @@ class PostItem extends React.Component {
                     </p>
 
         ) : (
-            <p className="post-content-author">
+            <p className="post-content-author post-content-author-with-tag">
                 <Link to={`/user/${post.author_id}`} user={author} >
                     {author.first_name} {author.last_name}
                 </Link>{tagged}</p>
@@ -105,6 +105,8 @@ class PostItem extends React.Component {
             return like.likeable_id === post.id && like.likeable_type === "Post"
         })
 
+        const pictureClass = tagged ? " post-picture-with-tag" : ""
+
         const response = acceptedFriendships.includes(this.props.currentUser.id) || currentUser.id === author.id || currentUser.id === user.id? (<PostResponse postId={post.id} likes={postLikes} currentUserId={currentUser.id} />) : null
         return (
             <section className="postitem">
@@ -112,7 +114,7 @@ class PostItem extends React.Component {
                     {btns}
                 <section className="postitem-top">
                     
-                    <div className="post-content-picture post-picture">
+                    <div className={`post-content-picture post-picture${pictureClass}`}>
                         <Link to={`/user/${author.id}`}>{photo}</Link>
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
