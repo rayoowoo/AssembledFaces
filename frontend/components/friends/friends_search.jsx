@@ -13,14 +13,12 @@ class FriendSearch extends React.Component {
     }
 
     search(e) {
-        debugger
         e.preventDefault();
         this.setState({ search: e.target.value });
         this.debounce(this.props.fetchUsers, 1000)(this.state.search, this.props.currentUserId)
     }
 
     delete(e){
-        debugger
         if(e.key === "Backspace" && e.target.value === "") {
             this.props.deleteTag()(e);
             return
@@ -55,7 +53,7 @@ class FriendSearch extends React.Component {
         const placeholder = this.props.tags > 0 ? "" : "Who are you with?"
         return (
             <>
-                <input id="search" type="text" className="search friend-search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} onKeyUp={this.delete.bind(this)} placeholder={placeholder} value={this.state.search} />
+                <input id="search" autocomplete="off" type="text" className="search friend-search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} onKeyUp={this.delete.bind(this)} placeholder={placeholder} value={this.state.search} />
                 <SearchResults addTag={this.props.addTag} type={this.props.type} users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search} />
             </>
         )

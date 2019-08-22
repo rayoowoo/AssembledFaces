@@ -143,9 +143,11 @@ class PostForm extends React.Component {
         return e => {
             e.preventDefault();
             const newTags = Object.assign(that.state.tags);
-            newTags.push(user);
-            that.setState({tags: newTags})
-            document.querySelector('#search').focus();
+            if (this.state.tags.includes(user) === false) {
+                newTags.push(user);
+                that.setState({tags: newTags})
+                document.querySelector('#search').focus();
+            }
         }
     }
 
@@ -153,12 +155,10 @@ class PostForm extends React.Component {
         const that = this;
         return e => {
             e.preventDefault();
-            debugger
             if (id) {
                 const newTags = that.state.tags.filter(user => user.id !== id);
                 that.setState({tags: newTags})
             } else {
-                debugger
                 const newerTags = that.state.tags;
                 newerTags.pop();
                 that.setState({tags: newerTags})

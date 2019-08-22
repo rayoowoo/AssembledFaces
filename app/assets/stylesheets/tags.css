@@ -3,6 +3,8 @@
     border-top: 1px dotted rgb(219, 219, 219);
     font-size: 12px;
     position: relative;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .tags-with {
@@ -15,11 +17,12 @@
 }
 
 .tag-display {
-    display: block;
+    display: flex;
 }
 
 .friend-search {
     padding: 5px;
+    flex: 1;
 }
 
 .friend-search .search-results-index {
