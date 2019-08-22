@@ -56,17 +56,17 @@ class PostItem extends React.Component {
         let tagged;
         if (tagged_users.length > 0 && post_tagged) {
             tagged = <span className="tag"> is with {tagged_users.map( (thisUser, i) => {
-                        let result = <Link to={`/user/${thisUser.id}`} >{thisUser.first_name} {thisUser.last_name}</Link>;
+                        let result = <Link to={`/user/${thisUser.id}`} key={`tagged-${thisUser.id}`}>{thisUser.first_name} {thisUser.last_name}</Link>;
                         const length = tagged_users.length;
                         if (length === 2 && i === 0) {
-                            result = <>{result} and </>
+                            result = <span key={`tagged-${thisUser.id}`}>{result} and </span>
                         }
                         if (length > 2) {
                             if (i < length - 2) {
-                                result = <>{result}, </>
+                                result = <span key={`tagged-${thisUser.id}`}>{result}, </span>
                             }
                             if (i === length - 2) {
-                                result = <>{result}, and </>
+                                result = <span key={`tagged-${thisUser.id}`}>{result}, and </span>
                             }
                         }
                         return result;

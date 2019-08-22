@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
+import FriendSearch from '../friends/friends_search'
+import fetchLastPost from '../../utils/post_utils'
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -18,7 +20,8 @@ class PostForm extends React.Component {
             user_id: id,
             author_id: currentUser.id,
             photo: null,
-            photoUrl: ""
+            photoUrl: "",
+            tags: []
         }
     }
 
@@ -60,6 +63,7 @@ class PostForm extends React.Component {
         if (this.state.photoUrl) {
             this.refs.photoPreview.classList.add("photo-display")
         }
+        if (this.state.tags.length > 0) this.refs.tags.classList.toggle("tag-display");
     }
 
     clearFocus(e) {
@@ -67,9 +71,9 @@ class PostForm extends React.Component {
         this.refs.postformText.classList.remove("focused");
         this.refs.x.classList.remove("focused");
         this.refs.fakemodal.classList.remove("display");
-        this.refs.photoPreview.classList.remove("photo-display")
+        this.refs.photoPreview.classList.remove("photo-display");
+        this.refs.tags.classList.remove("tag-display");
     }
-
 
     handleSubmit(e) {
         e.preventDefault();
@@ -79,15 +83,20 @@ class PostForm extends React.Component {
         formData.append('post[author_id]', this.state.author_id)
         formData.append('post[photo]', this.state.photo)
         this.props.createPost(this.state.user_id, formData);
-        this.setState({body: "", photo: null, photoUrl: ""})
+        
+        fetchLastPost().then( post => {
+            this.state.tags.forEach(tag => {
+                this.props.createTag({ user_id: tag.user_id, post_id: post.id});
+            })
+        })
+    
+        this.setState({body: "", photo: null, photoUrl: "", tags: []})
         this.refs.photoPreview.classList.remove("photo-display");
         this.clearFocus(e);
     }
 
-
     upload(e) {
         e.stopPropagation();
-        // this.refs.photoUpload.focus();
         this.refs.photoUpload.click();
         this.focusForm(e);
         this.refs.photoPreview.classList.add("photo-display");
@@ -119,6 +128,25 @@ class PostForm extends React.Component {
         }
     }
 
+    tag(e) {
+        e.preventDefault();
+        // some code to open up the div that has the list of tagged friends. 
+        this.focusForm(e);
+        this.refs.tags.classList.toggle("tag-display");
+        document.querySelector("#search").focus();
+    }
+
+    addTag(user) {
+        const that = this;
+        return e => {
+            e.preventDefault();
+            const newTags = Object.assign(that.state.tags);
+            newTags.push(user);
+            // const newTags = that.state.tags.push(user)
+            that.setState({tags: newTags})
+        }
+    }
+
     render() {
         let submit;
         // eventually this will account for is there's a picture attached
@@ -142,10 +170,31 @@ class PostForm extends React.Component {
 
         const placeholder = this.props.location.pathname === "/" ? `What's on your mind, ${currentUser.first_name}?` : "What's on your mind?";
 
+        // displaying the tagged people
+        let tagged;
+
+        if (this.state.tags.length > 0) {
+                tagged = <span className="post-tag">{this.state.tags.map((thisUser, i) => {
+                let result = <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.first_name} {thisUser.last_name} <span className="post-form-tags-delete">X</span></span>;
+                const length = this.state.tags.length;
+                if (length === 2 && i === 0) {
+                    result = <>{result} and </>
+                }
+                if (length > 2) {
+                    if (i < length - 2) {
+                        result = <>{result}, </>
+                    }
+                    if (i === length - 2) {
+                        result = <>{result}, and </>
+                    }
+                }
+                return result;
+            })
+            }</span>
+        }
 
         return (
             <>
-
 
             <section className="postform-container">
                 <section ref="postformText" className="postform">
@@ -164,13 +213,16 @@ class PostForm extends React.Component {
                             <textarea ref="postTextarea" onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={placeholder} value={this.state.body}></textarea>
                         </section>
 
-                            <div ref="photoPreview" className="postform-img-preview">{preview}</div>
+                        <section ref="tags" className="tags-index">With {tagged}<FriendSearch addTag={this.addTag.bind(this)}/></section>
+
+                        <div ref="photoPreview" className="postform-img-preview">{preview}</div>
 
                         <section className="postinput-buttons-container">
                             <button onClick={this.upload.bind(this)} className="postinput-buttons"><i className="far fa-image"></i>Photo/Video</button>{/* some button to upload photos */}
-                            <button onClick={e => {e.preventDefault(); e.stopPropagation()}} className="postinput-buttons"><i className="fas fa-user"></i>Tag Friends</button>
+                            <button onClick={this.tag.bind(this)} className="postinput-buttons"><i className="fas fa-user"></i>Tag Friends</button>
                             <button onClick={e => {e.preventDefault(); e.stopPropagation()}} className="postinput-buttons"><i className="far fa-smile"></i>Feeling/Activity</button>
                         </section>
+
 
                         <input ref="photoUpload" onChange={this.handleFile.bind(this)} className="photo-upload" type="file"/> 
 

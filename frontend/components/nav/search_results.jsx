@@ -6,10 +6,14 @@ class SearchResults extends React.Component {
         super(props)
     }
 
-    handleClick(id) {
+    handleClick(user) {
         return e => {
             e.preventDefault();
-            this.props.history.push(`/user/${id}`);
+            if (this.props.type === "users") {
+                this.props.history.push(`/user/${user.id}`);
+            } else {
+                this.props.addTag(user)(e);
+            }
             this.props.blur(e);
             this.props.clear(e);
         }
@@ -26,7 +30,7 @@ class SearchResults extends React.Component {
             })
             .map(user => {
                 return <div key={`result-${user.id}`}>
-                    <span onClick={this.handleClick(user.id).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
+                    <span onClick={this.handleClick(user).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
                 </div>
             })
         }

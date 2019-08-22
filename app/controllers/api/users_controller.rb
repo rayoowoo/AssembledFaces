@@ -32,7 +32,11 @@ class Api::UsersController < ApplicationController
     def search
         @users = User.with_attached_profile_photo.where("LOWER(users.first_name) LIKE LOWER('%#{params[:string]}%') OR LOWER(users.last_name) LIKE LOWER('%#{params[:string]}%')")
         render :index
+    end
 
+    def friends
+        @users = User.find(params[:user_id]).friends.with_attached_profile_photo.where("LOWER(first_name) LIKE LOWER('%#{params[:string]}%') OR LOWER(last_name) LIKE LOWER('%#{params[:string]}%')")
+        render :index
     end
 
     def user_params

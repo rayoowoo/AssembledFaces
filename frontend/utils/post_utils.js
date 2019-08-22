@@ -43,3 +43,10 @@ export const deletePost = post => {
         url: `api/posts/${post.id}`
     })
 }
+
+export const fetchLastPost = () => {
+    return $.ajax({
+        method: "GET",
+        url: `api/posts/last`
+    })
+}

@@ -9,14 +9,8 @@ export const receiveAllUsers = res => ({
     type: RECEIVE_ALL_USERS,
     res
 })
-
 export const receiveUser = res => ({
     type: RECEIVE_USER,
-    res
-})
-
-export const receiveFriends = res => ({
-    type: RECEIVE_FRIENDS,
     res
 })
 
@@ -29,6 +23,12 @@ export const fetchUsersIndex = () => dispatch => {
     return USERUtil.fetchUsersIndex()
                 .then(res => dispatch(receiveAllUsers(res))),
                 errors => dispatch(receiveUserErrors(errors))
+}
+
+export const fetchFriends = (string, id) => dispatch => {
+    return USERUtil.fetchFriends(string, id)
+                .then(res => dispatch(receiveAllUsers(res)),
+                errors => dispatch(receiveUserErrors(errors)))
 }
 
 export const fetchAllUsers = string => dispatch => {

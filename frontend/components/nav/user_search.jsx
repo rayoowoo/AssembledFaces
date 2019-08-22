@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import {fetchAllUsers} from '../../actions/user_actions'
 import SearchResults from './search_results'
+import { connect } from 'react-redux';
+import { fetchAllUsers } from '../../actions/user_actions'
 
 class Search extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Search extends React.Component {
     search(e) {
         e.preventDefault();
         this.setState({ search: e.target.value });
-        this.debounce(this.props.fetchAllUsers, 1000)(this.state.search)
+        this.debounce(this.props.fetchUsers, 1000)(this.state.search)
     }
 
     clear(e) {
@@ -45,18 +45,19 @@ class Search extends React.Component {
         return (
             <>
                 <input type="text" className="search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
-                <SearchResults users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search}/>
+                <SearchResults type={this.props.type} users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search}/>
             </>
         )
     }
 }
 
 const msp = state => ({
-    users: Object.values(state.entities.users)
+    users: Object.values(state.entities.users),
+    type: "users"
 })
 
 const mdp = dispatch => ({
-    fetchAllUsers: string => dispatch(fetchAllUsers(string))
+    fetchUsers: string => dispatch(fetchAllUsers(string))
 })
 
 export default connect(msp, mdp)(Search)

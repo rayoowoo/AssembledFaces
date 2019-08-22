@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {logout} from '../../actions/session_actions'
-import Search from './search'
+import UserSearch from './user_search'
 
 class ProfileNavBar extends React.Component {
     constructor(props) {
@@ -64,7 +64,7 @@ class ProfileNavBar extends React.Component {
                         {/* made using fontmeme.com/avengers-font */}
                         <div className="profile-search">
                             <form>
-                                <Search toggleSearchBtn={this.toggleSearchBtn.bind(this)}/>
+                                <UserSearch toggleSearchBtn={this.toggleSearchBtn.bind(this)}/>
                                 <button ref="search"><i className="fas fa-search"></i></button>
                             </form>
                         </div>

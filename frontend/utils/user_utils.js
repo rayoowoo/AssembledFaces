@@ -28,3 +28,10 @@ export const fetchUsersIndex = () => {
         url: "api/users/all"
     })
 }
+
+export const fetchFriends = (string, id) => {
+    return $.ajax({
+        method: "POST",
+        url: `/api/users/${id}/${string}`
+    })
+}
