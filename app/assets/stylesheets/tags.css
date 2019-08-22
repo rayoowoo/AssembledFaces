@@ -1,7 +1,52 @@
 .tags-index {
     display: none;
+    border-top: 1px dotted rgb(219, 219, 219);
+    font-size: 12px;
+    position: relative;
+}
+
+.tags-with {
+    padding: 10px;
+    background-color: #FFEBEB;
+    display: inline-block;
+    border-left: rgb(219, 219, 219) dotted 1px;
+    border-right: rgb(219, 219, 219) dotted 1px;
+    border-top: rgb(219, 219, 219) dotted 1px;
 }
 
 .tag-display {
     display: block;
+}
+
+.friend-search {
+    padding: 5px;
+}
+
+.friend-search .search-results-index {
+    top: 0px;
+
+}
+
+.post-tag {
+    margin-left: 5px;
+}
+
+.post-form-tags {
+    border: 1px solid rgb(224, 96, 96);
+    background-color: #FFEBEB;
+    padding: 2px;
+    border-radius: 2px;
+    margin-right: 2px;
+}
+
+.post-form-tags-delete {
+    color: rgb(224, 96, 96);
+    padding: 0px 2px;
+    font-size: 10px;
+}
+
+.post-form-tags-delete:hover {
+    background-color: rgb(224, 96, 96);
+    color: white;
+    cursor: pointer;
 }

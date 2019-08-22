@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import FriendSearch from '../friends/friends_search'
-import fetchLastPost from '../../utils/post_utils'
+import {fetchLastPost} from '../../utils/post_utils'
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -77,20 +77,22 @@ class PostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const that = this;
         const formData = new FormData();
         formData.append('post[body]', this.state.body)
         formData.append('post[user_id]', this.state.user_id)
         formData.append('post[author_id]', this.state.author_id)
         formData.append('post[photo]', this.state.photo)
-        this.props.createPost(this.state.user_id, formData);
-        
-        fetchLastPost().then( post => {
-            this.state.tags.forEach(tag => {
-                this.props.createTag({ user_id: tag.user_id, post_id: post.id});
+        this.props.createPost(this.state.user_id, formData)
+            .then(() => {
+                return fetchLastPost()})
+            .then( post => {
+                that.state.tags.forEach(taggedUser => {
+                    that.props.createTag({ user_id: taggedUser.id, post_id: post.id});
+                })
+                this.setState({ body: "", photo: null, photoUrl: "", tags: [] })
             })
-        })
     
-        this.setState({body: "", photo: null, photoUrl: "", tags: []})
         this.refs.photoPreview.classList.remove("photo-display");
         this.clearFocus(e);
     }
@@ -142,8 +144,25 @@ class PostForm extends React.Component {
             e.preventDefault();
             const newTags = Object.assign(that.state.tags);
             newTags.push(user);
-            // const newTags = that.state.tags.push(user)
             that.setState({tags: newTags})
+            document.querySelector('#search').focus();
+        }
+    }
+
+    deleteTag(id) {
+        const that = this;
+        return e => {
+            e.preventDefault();
+            debugger
+            if (id) {
+                const newTags = that.state.tags.filter(user => user.id !== id);
+                that.setState({tags: newTags})
+            } else {
+                debugger
+                const newerTags = that.state.tags;
+                newerTags.pop();
+                that.setState({tags: newerTags})
+            }
         }
     }
 
@@ -175,20 +194,7 @@ class PostForm extends React.Component {
 
         if (this.state.tags.length > 0) {
                 tagged = <span className="post-tag">{this.state.tags.map((thisUser, i) => {
-                let result = <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.first_name} {thisUser.last_name} <span className="post-form-tags-delete">X</span></span>;
-                const length = this.state.tags.length;
-                if (length === 2 && i === 0) {
-                    result = <>{result} and </>
-                }
-                if (length > 2) {
-                    if (i < length - 2) {
-                        result = <>{result}, </>
-                    }
-                    if (i === length - 2) {
-                        result = <>{result}, and </>
-                    }
-                }
-                return result;
+                    return <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.first_name} {thisUser.last_name} <span onClick={this.deleteTag(thisUser.id).bind(this)} className="post-form-tags-delete"><i class="fas fa-times"></i></span></span>;
             })
             }</span>
         }
@@ -213,7 +219,7 @@ class PostForm extends React.Component {
                             <textarea ref="postTextarea" onChange={this.handleChange} onFocus={this.focusForm} type="text" placeholder={placeholder} value={this.state.body}></textarea>
                         </section>
 
-                        <section ref="tags" className="tags-index">With {tagged}<FriendSearch addTag={this.addTag.bind(this)}/></section>
+                        <section ref="tags" className="tags-index"><span className="tags-with">With</span>{tagged}<FriendSearch addTag={this.addTag.bind(this)} tags={this.state.tags.length} deleteTag={this.deleteTag.bind(this)}/></section>
 
                         <div ref="photoPreview" className="postform-img-preview">{preview}</div>
 

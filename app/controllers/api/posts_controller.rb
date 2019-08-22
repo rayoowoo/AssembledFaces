@@ -28,7 +28,7 @@ class Api::PostsController < ApplicationController
 
     def last
         @post = Post.includes(:likes, comments: [author: [profile_photo_attachment: [:blob]]], author: [profile_photo_attachment: [:blob]], photo_attachment: [:blob]).last
-        render :show
+        render :last
     end
 
     def show

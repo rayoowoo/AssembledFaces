@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post '/api/posts/:id', to: 'api/posts#feed', defaults: {format: :json}
   post '/api/users/:string', to: 'api/users#search', defaults: {format: :json}
   post '/api/users/:user_id/:string', to: 'api/users#friends', defaults: {format: :json}
-  post '/api/posts/last', to: 'api/posts#last', defaults: {format: :json}
+  get '/api/posts/last', to: 'api/posts#last', defaults: {format: :json}
   # get 'api/users/all', to: 'api/users#all', defaults: {format: :json}
 
   root to: 'static_pages#root'

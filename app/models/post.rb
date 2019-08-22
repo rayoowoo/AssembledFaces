@@ -33,7 +33,8 @@ class Post < ApplicationRecord
     has_many :likers, through: :likes, source: :user
     has_many :tags,
         foreign_key: :post_id,
-        class_name: :Tag
+        class_name: :Tag,
+        dependent: :destroy
 
     has_many :tagged_users, through: :tags, source: :tagged_user
 end

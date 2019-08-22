@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Api::TagsController < ApplicationController
     def create
         @tag = Tag.new(tag_params)
         if @tag.save
