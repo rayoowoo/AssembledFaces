@@ -15,7 +15,7 @@ class FriendSearch extends React.Component {
     search(e) {
         e.preventDefault();
         this.setState({ search: e.target.value });
-        this.debounce(this.props.fetchUsers, 1000)(this.state.search, this.props.currentUserId)
+        this.debounce(this.props.fetchUsers, 500)(this.state.search, this.props.currentUser.id)
     }
 
     delete(e){
@@ -49,11 +49,11 @@ class FriendSearch extends React.Component {
     }
 
     render() {
-        const { users = [] } = this.props;
-        const placeholder = this.props.tags > 0 ? "" : "Who are you with?"
+        const placeholder = this.props.tags > 0 ? "" : "Who are you with?";
+        let users = this.props.users.filter(user => this.props.currentUser.friend_ids.includes(user.id))
         return (
             <>
-                <input id="search" autocomplete="off" type="text" className="search friend-search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} onKeyUp={this.delete.bind(this)} placeholder={placeholder} value={this.state.search} />
+                <input id="search" autoComplete="off" type="text" className="search friend-search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} onKeyUp={this.delete.bind(this)} placeholder={placeholder} value={this.state.search} />
                 <SearchResults addTag={this.props.addTag} type={this.props.type} users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search} />
             </>
         )
@@ -63,7 +63,7 @@ class FriendSearch extends React.Component {
 const msp = state => ({
     users: Object.values(state.entities.users),
     type: "friends",
-    currentUserId: state.session.id
+    currentUser: state.entities.users[state.session.id]
 })
 
 const mdp = dispatch => ({

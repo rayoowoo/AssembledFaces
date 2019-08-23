@@ -20,7 +20,7 @@ class SearchResults extends React.Component {
     }
 
     render() {
-        const { users = [], search = "" } = this.props;
+        const { users, search = "" } = this.props;
         let people;
         if (Boolean(users)) {
             people = users

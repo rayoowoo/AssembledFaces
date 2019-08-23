@@ -49,7 +49,10 @@
     font-size: 14px;
     font-weight: 600;
     margin: 3px 0px 0px 0px;
-    width: 88%;
+}
+
+.post-content-author-with-tag {
+    padding-right: 30px;
 }
 
 .post-picture-with-tag {
