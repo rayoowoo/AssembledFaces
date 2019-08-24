@@ -18,9 +18,9 @@ const Main = ({currentUserId}) => {
             </Switch>
         )
     return (
-        <>
+        <div className="main">
             {display}
-        </>
+        </div>
     )
 }
 

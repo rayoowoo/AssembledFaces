@@ -17,9 +17,9 @@ class Search extends React.Component {
         e.preventDefault();
         this.setState({ search: e.target.value });
         this.debounce(() => {
-            this.props.fetchUsers(e);
+            this.props.fetchUsers(this.state.search);
             this.ready = true;
-        }, 500)(this.state.search)
+        }, 500)()
     }
 
     clear(e) {

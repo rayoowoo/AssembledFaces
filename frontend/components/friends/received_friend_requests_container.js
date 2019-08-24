@@ -3,8 +3,10 @@ import {fetchUser} from '../../actions/user_actions'
 import FriendRequests from './friend_requests'
 
 const msp = state => {
+    const requests = Object.values(state.entities.friendships).filter(el => el.requested_id === state.session.id) || [];
+    const requestingUsers = requests.map( request => state.entities.users[request.requester_id]);
     return {
-        requests: Object.values(state.entities.friendships).filter(el => el.requester_id === state.session.id),
+        requests: requestingUsers,
         currentUserId: state.session.id
     }
 }
