@@ -32,7 +32,11 @@ class ProfileAbout extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.updateUser(this.state)
+        const formData = new FormData();
+        for (const key in this.state) {
+            formData.append(`user[${key}]`, this.state[key])
+        }
+        this.props.updateUser(this.props.currentUserId, formData);
     }
 
     update(field) {
@@ -114,7 +118,7 @@ const msp = state => ({
 })
 
 const mdp = dispatch => ({
-    updateUser: user => dispatch(updateUser(user))
+    updateUser: (id, formData) => dispatch(updateUser(id, formData))
 })
 
 export default connect(msp, mdp)(ProfileAbout)
