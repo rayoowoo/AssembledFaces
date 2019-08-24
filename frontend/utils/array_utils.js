@@ -16,3 +16,23 @@ export const arrayEqual = (arr1, arr2) => {
 
     return true;
 }
+
+export const arrayOverlap = (arr1, arr2) => {
+    const memo = {};
+    arr1.forEach( el => {
+        memo[el] = null;
+    })
+    arr2.forEach (el => {
+        if (memo[el] === null) {
+            memo[el] = true;
+        } else {
+            memo[el] = null;
+        }
+    })
+
+    let sum = 0;
+    for (let key in memo) {
+        if (memo[key] === true) sum++
+    }
+    return sum;
+}

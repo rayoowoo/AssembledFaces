@@ -80,12 +80,12 @@ class ProfileNavBar extends React.Component {
 
 
                         <div className="profile-nav-icons">
-                            <i className="fas fa-user-friends"></i>
-                            <i className="fas fa-comment"></i>
-                            <i className="fas fa-bell"></i>
+                            <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-user-friends"></i>
+                            <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-comment"></i>
+                            <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-bell"></i>
                         </div>
                     <div className="profile-nav-help">
-                            <i className="fas fa-question-circle"></i>
+                            <i onClick={e => { e.preventDefault(); alert("sorry, doesn't work yet") }} className="fas fa-question-circle"></i>
                             <i onClick={this.handleIconClick} className="fas fa-caret-down"></i>
                         <div ref="profilenavdropdown" className="profile-nav-dropdown">
                                 <div className="arrow-top"></div>

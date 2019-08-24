@@ -1,5 +1,110 @@
 .friend-request-index {
-    width: 850px;
-    margin: 0 auto;
+    width: 750px;
+    margin: 22px auto;
     font-family: Helvetica;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: white;
 }
+
+.friend-request-index-headers {
+    padding: 15px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.friend-request-index-headers h1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.friend-request-index-headers a {
+    font-size: 12px;
+}
+
+.friend-request-list {
+    padding: 0px 20px;
+}
+
+.friend-request-item {
+    padding: 10px 0px;
+    display: flex;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.friend-request-item:last-of-type {
+    border-bottom: 0px;
+}
+
+.friend-request-item-content,
+.friend-request-item-btns {
+    display: flex;
+}
+
+.friend-request-item-content {
+    flex-direction: column;
+    flex: 3;
+}
+
+.friend-request-item-picture {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.friend-request-item-picture img {
+    height: 100%;
+}
+
+.friend-request-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.friend-request-item-mutual i {
+    margin-right: 5px;
+}
+
+.friend-request-item-mutual {
+    color: rgb(114, 114, 114);
+    font-size: 14px;
+}
+
+
+.friend-request-item-btns {
+    flex: 2;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.friend-request-item-accept,
+.friend-request-item-reject {
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.friend-request-item-accept:hover,
+.friend-request-item-reject:hover {
+    cursor: pointer;
+}
+
+.friend-request-item-accept {
+    background-color: rgb(136, 54, 54);
+    color: white;
+}
+
+.friend-request-item-reject {
+    margin-left: 5px;
+    color: rgb(75, 75, 75);
+    border: 1px solid rgb(219, 219, 219);
+}
+
+.friend-request-item-accept:hover {
+    background-color: rgb(70, 0, 0);
+}
+
+.friend-request-item-reject:hover {
+    background-color: rgb(236, 236, 236);
+}
+

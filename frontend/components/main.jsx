@@ -6,6 +6,7 @@ import {Switch, Route} from 'react-router-dom'
 import Profile from './profile/profile'
 import { ProtectedRoute } from '../utils/route_utils'
 import ReceivedFriendRequests from './friends/received_friend_requests_container'
+import SentFriendRequests from './friends/sent_friend_requests_container'
 
 const Main = ({currentUserId}) => {
         const display = currentUserId === null ? (
@@ -14,6 +15,7 @@ const Main = ({currentUserId}) => {
             <Switch>
                 <ProtectedRoute exact path="/user/:userId" component={Profile} loggedIn={Boolean(currentUserId)}/>
                 <ProtectedRoute path="/user/:userId/received-requests" component={ReceivedFriendRequests} loggedIn={Boolean(currentUserId)}/>
+                <ProtectedRoute path="/user/:userId/sent-requests" component={SentFriendRequests} loggedIn={Boolean(currentUserId)}/>
                 <Route path="/" component={NewsFeed} />
             </Switch>
         )

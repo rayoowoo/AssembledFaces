@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import FriendRequestItem from './friend_request_item'
+import { Link } from 'react-router-dom'
 
 class FriendRequests extends React.Component {
     constructor(props) {
@@ -7,23 +8,46 @@ class FriendRequests extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.currentUserId)
+        this.props.fetchUser(this.props.currentUser.id)
     }
 
     render() {
         const {requests} = this.props;
         const count = requests.length;
 
-        const display = requests.map( request => {
-            const {id, first_name, last_name} = request;
-            return <li key={`request-${id}`}><Link to={`/user/${id}`}>{first_name} {last_name}</Link></li>
+        const search = this.props.type === "received" ? "requester_id" : "requested_id";
+        
+        let friendships = {};
+        this.props.friendships.forEach(el => {
+            const change = Object.assign({}, el);
+            const id = change[search];
+            friendships[id] = change;
         })
 
+        const display = requests.map( request => {
+            return <FriendRequestItem
+                        type={this.props.type}
+                        deleteFriendship={this.props.deleteFriendship}
+                        approveFriendship={this.props.approveFriendship}
+                        friendship={friendships[request.id]}
+                        key={`request-${request.id}`}
+                        currentUser={this.props.currentUser}
+                        user={request}
+                    />
+        })
+
+        const header = this.props.type === "sent" ? "Friend Requests Sent" : `Respond to Your ${count} Friend Requests`;
+
+        const link = this.props.type === "sent" ? "Received" : "Sent";
 
         return (
             <section className="friend-request-index">
-                <h1>Respond to Your {count} Friend Requests</h1>
-                <ul>
+                <div className="friend-request-index-headers">
+                    <h1>{header}</h1>
+                    <Link to={`/user/${this.props.currentUser.id}/${link.toLowerCase()}-requests`}>View {link} Requests</Link>
+                </div>
+                
+                <ul className="friend-request-list">
                     {display}
                 </ul>
             </section>

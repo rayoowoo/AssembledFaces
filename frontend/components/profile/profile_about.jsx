@@ -46,7 +46,7 @@ class ProfileAbout extends React.Component {
     }
 
     render() {
-        debugger
+        
         const {id, workplace, education, current_city, hometown, birth_date, created_at} = this.props.user;
 
         const fullDate = birth_date.split("-").map( el => parseInt(el))
