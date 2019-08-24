@@ -1,5 +1,6 @@
 import React from 'react'
 import FriendIndex from '../friends/friends_index'
+import {withRouter} from 'react-router-dom';
 
 class ProfileSideBar extends React.Component {
 
@@ -94,7 +95,7 @@ class ProfileSideBar extends React.Component {
                             </span> <a className="profile-sidebar-link">Friends</a>
                         </div>
 
-                        <a className="profile-sidebar-add">Find Friends</a>
+                        <p onClick={e => this.props.history.push(`/user/${this.props.user.id}/received-requests`)} className="profile-sidebar-add">Find Friends</p>
 
                     </div>
 
@@ -113,4 +114,4 @@ class ProfileSideBar extends React.Component {
     }
 }
 
-export default ProfileSideBar;
+export default withRouter(ProfileSideBar);

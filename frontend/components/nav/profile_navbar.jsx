@@ -80,7 +80,7 @@ class ProfileNavBar extends React.Component {
 
 
                         <div className="profile-nav-icons">
-                            <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-user-friends"></i>
+                            <i onClick={e => {e.preventDefault(); this.props.history.push(`/user/${currentUser.id}/received-requests`)}} className="fas fa-user-friends"></i>
                             <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-comment"></i>
                             <i onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} } className="fas fa-bell"></i>
                         </div>

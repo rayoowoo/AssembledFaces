@@ -9,6 +9,7 @@ class FriendRequests extends React.Component {
 
     componentDidMount() {
         this.props.fetchUser(this.props.currentUser.id)
+        window.scrollTo(0, 0);
     }
 
     render() {
