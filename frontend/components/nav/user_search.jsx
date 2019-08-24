@@ -10,12 +10,16 @@ class Search extends React.Component {
             search: ""
         }
         this.debounce = this.debounce.bind(this);
+        this.ready = false;
     }
 
     search(e) {
         e.preventDefault();
         this.setState({ search: e.target.value });
-        this.debounce(this.props.fetchUsers, 1000)(this.state.search)
+        this.debounce(() => {
+            this.props.fetchUsers(e);
+            this.ready = true;
+        }, 500)(this.state.search)
     }
 
     clear(e) {
@@ -37,15 +41,19 @@ class Search extends React.Component {
     }
 
     blur(e) {
-        e.target.classList.remove("search-focused")
+        e.target.classList.remove("search-focused");
+        this.ready = false;
     }
  
     render() {
         const { users = [] } = this.props;
+        const search = this.ready ? (
+            <SearchResults type={this.props.type} users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search} />
+        ) : null
         return (
             <>
                 <input type="text" className="search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} placeholder="Search" value={this.state.search} />
-                <SearchResults type={this.props.type} users={users} clear={this.clear.bind(this)} blur={this.blur.bind(this)} search={this.state.search}/>
+                {search}
             </>
         )
     }
