@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
         )
         if @user
             login!(@user)
-            render :logged
+            render :show
         else
             attempted_user = User.find_by(email: params[:user][:email])
             if attempted_user
