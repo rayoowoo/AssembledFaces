@@ -4,6 +4,7 @@ import ProfileNav from './profile_nav'
 import ProfileSideBar from './profile_side_bar'
 import ProfileTimeline from './profile_timeline'
 import ProfileAbout from './profile_about'
+import ProfileFriends from './profile_friends'
 import {connect} from 'react-redux'
 import {closeModal, openModal} from '../../actions/modal_actions'
 import {Switch, Route, withRouter} from 'react-router-dom'
@@ -43,6 +44,7 @@ class Profile extends React.Component {
             <>
                 <Switch>
                     <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
+                    <Route path="/user/:userId/friends" render={props => <ProfileFriends user={user} />} />
                     <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
                 </Switch>
   
@@ -60,7 +62,7 @@ class Profile extends React.Component {
                     <ProfilePictureArea closeModal={this.props.closeModal} openProfile={this.props.openProfile} openCover={this.props.openCover}/>
                     <ProfileNav user={user} currentUserId={this.props.currentUser.id}/>
                     <div className="profile-main">
-                        <Route exact path="/user/:userId" render={props => <ProfileSideBar closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
+                        <Route exact path="/user/:userId" render={props => <ProfileSideBar currentUserId={currentUser.id} closeModal={this.props.closeModal} openAdd={this.props.openAdd} user={user} />} />
                     {page}
                     </div>
                 </div>
