@@ -53,60 +53,24 @@ This would direct the request to a custom posts controller action ( a custom `#f
 3. The current user is neither the author nor the user, but both the author and the user of the post are friends of the current user.
 
 ```
-@posts = Post.where("
-                    user_id= #{params[:id]} OR author_id = #{params[:id]}
-                    OR (
-                        user_id in (
-                            SELECT 
-                                friendships.requested_id
-                            FROM 
-                                users 
-                            JOIN 
-                                friendships on users.id = friendships.requester_id
-                            WHERE 
-                                users.id = #{params[:id]} AND friendships.status = 'accepted'
-                            UNION
-                            SELECT 
-                                friendships.requester_id
-                            FROM 
-                                users 
-                            JOIN 
-                                friendships on users.id = friendships.requested_id 
-                            WHERE 
-                                users.id = #{params[:id]} AND friendships.status = 'accepted')
-                        AND 
-                        author_id in (
-                            SELECT 
-                                friendships.requested_id
-                            FROM 
-                                users 
-                            JOIN 
-                                friendships on users.id = friendships.requester_id
-                            WHERE 
-                                users.id = #{params[:id]} AND friendships.status = 'accepted'
-                            UNION
-                            SELECT 
-                                friendships.requester_id
-                            FROM 
-                                users 
-                            JOIN 
-                                friendships on users.id = friendships.requested_id 
-                            WHERE 
-                                users.id = #{params[:id]} AND friendships.status = 'accepted')
-                        )
-    ")
+friend_ids = Friendship.select('requester_id, requested_id').where("requested_id = ? OR requester_id = ? AND status = 'accepted'", self.id, self.id).map {|el|
+            el.requester_id + el.requested_id - self.id }
+
+ids = User.find(params[:id]).friend_ids
+
+posts = Post.where("user_id = #{params[:id]} OR author_id = #{params[:id]} OR (user_id IN (?) AND author_id IN (?))", ids, ids)
 ```
 
 ### Profile
 
 !["AssembledFaces-profile"](app/assets/images/profile.png)
 
-The profile page layout is generic across all users, but the information displayed in its various components are unique to each user. Profiles display the user's public information, including, but limited to, their profile picture, cover picture, other photos, friends, workplace, education, and posts. The most intricate part of this page, as well as on the newsfeed page, is the post itself. Posts incorporate all of the models that exist in the database all at once: users, posts, friends, comments, likes. 
+The profile page layout is generic across all users, but the information displayed in its various components are unique to each user. Profiles display the user's public information, including, but limited to, their profile picture, cover picture, other photos, friends, workplace, education, and posts. The most intricate part of this page, as well as on the newsfeed page, is the post itself. Posts incorporate all of the models that exist in the database all at once: users, posts, friends, comments, likes, tags. 
 
 !["AssembledFaces-post"](app/assets/images/post.png)
 
 From the top of the post:
-1. The post header displays the name and profile picture of the author, as well as the user to whom the post was directed, but only if that user is not that author themselves. Following that, the date and time of the post creation is indicated. 
+1. The post header displays the name and profile picture of the author, as well as the user to whom the post was directed, but only if that user is not that author themselves. If the author is the user, any other users that are tagged on the post are listed aftewards. Following that, the date and time of the post creation are indicated. 
 2. The body of the post follows the post header. This can be in the form of text only, picture only, or both. 
 3. Underneath the body of the post is the post response section. Only users who are friends of the author can see this section. Friends can choose to interact with this post in a number of different ways. They can like this post using the like button or comment on the post itself further down. They can even reply to a comment with another comment. 
 
