@@ -13,9 +13,9 @@ const Main = ({currentUserId}) => {
             <Route path="/" component={Splash} /> 
         ) : (
             <Switch>
-                <ProtectedRoute exact path="/user/:userId" component={Profile} loggedIn={Boolean(currentUserId)}/>
                 <ProtectedRoute path="/user/:userId/received-requests" component={ReceivedFriendRequests} loggedIn={Boolean(currentUserId)}/>
                 <ProtectedRoute path="/user/:userId/sent-requests" component={SentFriendRequests} loggedIn={Boolean(currentUserId)}/>
+                <ProtectedRoute path="/user/:userId" component={Profile} loggedIn={Boolean(currentUserId)}/>
                 <Route path="/" component={NewsFeed} />
             </Switch>
         )
