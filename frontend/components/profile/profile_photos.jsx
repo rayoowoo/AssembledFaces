@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux';
+import { closeModal, openModal } from '../../actions/modal_actions';
+
 
 class ProfilePhotos extends React.Component {
     constructor(props) {
@@ -18,7 +21,7 @@ class ProfilePhotos extends React.Component {
             })
 
         const btn = currentUserId === user.id ? (
-            <div className="profile-photos-btn">Add Photos</div>
+            <div onClick={e => this.props.openAdd()} className="profile-photos-btn">Add Photos</div>
         ) : null;
 
 
@@ -37,4 +40,9 @@ class ProfilePhotos extends React.Component {
     }
 }
 
-export default withRouter(ProfilePhotos);
+const mdp = dispatch => ({
+    openAdd: () => dispatch(openModal("addPicture")),
+    closeModal: () => dispatch(closeModal())
+})
+
+export default withRouter(connect(null, mdp)(ProfilePhotos));

@@ -40,7 +40,7 @@ class ProfileSideBar extends React.Component {
                                 })
 
         const findFriends = this.props.user.id === this.props.currentUserId ? <p onClick={e => this.props.history.push(`/user/${this.props.user.id}/received-requests`)} className="profile-sidebar-add">Find Friends</p> : null
-        const addPhoto = this.props.user.id === this.props.currentUserId ? <a onClick={this.handleFile} className="profile-sidebar-add">Add Photos</a> : null;
+        const addPhoto = this.props.user.id === this.props.currentUserId ? <a onClick={this.props.openAdd} className="profile-sidebar-add">Add Photos</a> : null;
 
         return (
             <aside className="profile-sidebar">
@@ -71,7 +71,7 @@ class ProfileSideBar extends React.Component {
                         <div>
                             <span className="profile-sidebar-icon">
                                 <i className="fas fa-image"></i>
-                            </span> <a className="profile-sidebar-link">Photos</a>
+                            </span> <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/photos`)} className="profile-sidebar-link">Photos</a>
                         </div>
 
                         {addPhoto}                       
@@ -91,7 +91,7 @@ class ProfileSideBar extends React.Component {
                         <div>
                             <span className="profile-sidebar-icon">
                                 <i className="fas fa-user-friends"></i>
-                            </span> <a onClick={e => this.props.history.push(`/user/${this.props.currentUserId}/friends`)} className="profile-sidebar-link">Friends</a>
+                            </span> <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/friends`)} className="profile-sidebar-link">Friends</a>
                         </div>
 
                         {findFriends}

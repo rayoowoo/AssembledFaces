@@ -47,6 +47,7 @@ button.picture-modal-display {
 .picture-modal section {
     display: none;
 }
+
 section.picture-modal-display {
     display: flex;
     justify-content: center;
@@ -58,4 +59,27 @@ section.picture-modal-display {
     display: block;
     height: 50px;
     margin: 5px;
+}
+
+.picture-modal-multiple {
+    max-width: 800px;
+}
+
+.picture-modal-multiple-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.upload-photos-item {
+    max-width: 195px;
+    height: 195px;
+    margin: 5px;
+    overflow: hidden;
+    display: block;
+}
+
+.upload-photos-item img {
+    margin: auto;
+    height: 100%;
 }

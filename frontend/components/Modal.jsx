@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
 import PicModal from './modals/picture_modal'
+import MultiplePicsModal from './modals/multiple_pictures_modal'
 
 function Modal({component, closeModal}) {
     if (!component) {
@@ -16,16 +17,22 @@ function Modal({component, closeModal}) {
             type= "Cover"
             break
         case 'addPicture':
-            type= "" 
+            type= "add" 
             break
         default:
             return null;
     }
 
+    const modal = type === "add" ? (
+        <MultiplePicsModal closeModal={closeModal} />
+    ) : (
+        <PicModal closeModal={closeModal} type={type} />
+    )
+
     return (
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
-                <PicModal closeModal={closeModal} type={type} />
+                {modal}
             </div>
         </div>
     )
