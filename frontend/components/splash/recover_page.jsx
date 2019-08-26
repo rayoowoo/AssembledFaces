@@ -32,7 +32,7 @@ class RecoverPage extends React.Component {
     
                     </span>
                     
-                    <button onClick={this.handleClick} className="demo recover-input-btn-1">Search</button>
+                    <button href={`https://www.youtube.com/watch?v=-qCNUex6rRc&start=36`} target="_blank" className="demo recover-input-btn-1">Search</button>
                     <button onClick={this.cancel} className="demo recover-input-btn-2">Cancel</button>
 
                 </form>

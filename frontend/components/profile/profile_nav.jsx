@@ -30,7 +30,7 @@ class ProfileNav extends React.Component {
                     <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/friends`)}>Friends <strong>{number}</strong></a>
                     <a onClick={e => alert("not implemented yet")}>Photos</a>
                     {archive}
-                    <a onClick={e => alert("not implemented yet")}>More <i className="fas fa-caret-down"></i></a>
+                    <a href={`https://www.youtube.com/watch?v=jHUnLSQVtrA&start=28`} target="_blank">More <i className="fas fa-caret-down"></i></a>
                     
                 </div>
                 <div className="profile-page-nav-space"></div>
