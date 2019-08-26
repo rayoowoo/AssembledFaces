@@ -27,7 +27,7 @@ class ProfileNav extends React.Component {
                 <div className="profile-page-nav-links">
                     <a onClick={e => this.props.history.push(`/user/${this.props.user.id}`)}>Timeline {caret}</a>
                     <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/about`)}>About</a>
-                    <a onClick={e => alert("not implemented yet")}>Friends <strong>{number}</strong></a>
+                    <a onClick={e => this.props.history.push(`/user/${this.props.user.id}/friends`)}>Friends <strong>{number}</strong></a>
                     <a onClick={e => alert("not implemented yet")}>Photos</a>
                     {archive}
                     <a onClick={e => alert("not implemented yet")}>More <i className="fas fa-caret-down"></i></a>

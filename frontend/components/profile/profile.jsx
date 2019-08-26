@@ -14,8 +14,6 @@ import { arrayEqual } from '../../utils/array_utils'
 
 
 class Profile extends React.Component {
-
-
     componentDidMount() {
         this.props.fetchUser(this.props.match.params.userId)
     }
@@ -44,7 +42,7 @@ class Profile extends React.Component {
             <>
                 <Switch>
                     <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
-                    <Route path="/user/:userId/friends" render={props => <ProfileFriends user={user} />} />
+                    <Route path="/user/:userId/friends" render={props => <ProfileFriends currentUserId={currentUser.id} user={user} />} />
                     <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
                 </Switch>
   

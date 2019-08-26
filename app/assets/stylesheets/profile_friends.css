@@ -1,0 +1,86 @@
+.profile-friends {
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profile-friends-header {
+    background-color: rgb(255, 245, 245);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-friends-header h1 {
+    font-size: 20px;
+    color: rgb(63, 63, 63);
+    font-weight: bold;
+}
+
+.profile-friends-header i {
+    color: rgb(114, 114, 114);
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.profile-friends-request-btn {
+    font-size: 12px;
+    color: rgb(70, 70, 70);
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profile-friends-request-btn:hover {
+    cursor: pointer;
+    background-color: rgb(252, 233, 233);
+}
+
+.profile-friends-index {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 7.5px;
+}
+
+.profile-friends-index-item {
+    width: 399.5px;
+    display: flex;
+    border: 1px solid rgb(228, 228, 228);
+    margin: 7.5px;
+    align-items: center;
+}
+
+.profile-friends-index-item-picture {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.profile-friends-index-item-picture img {
+    height: 100%;
+}
+
+.profile-friends-index-item-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+.profile-friends-index-item-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(136, 54, 54);
+}
+
+.profile-friends-index-item-name:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.profile-friends-index-item-count {
+    font-size: 12px;
+    color: rgb(114, 114, 114);
+    margin-top: 2px;
+}

@@ -34,9 +34,6 @@ class SearchResults extends React.Component {
                 </div>
             })
         }
- 
-       
-        
         const results = people.length === 0 || search === "" ? null : <div className="search-results">{people}</div>
 
         return (
