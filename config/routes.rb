@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   # get 'api/users/all', to: 'api/users#all', defaults: {format: :json}
 
   root to: 'static_pages#root'
- 
+  mount ActionCable.server, at: '/cable'
 end
