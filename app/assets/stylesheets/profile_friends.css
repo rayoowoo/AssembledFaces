@@ -27,7 +27,7 @@
     font-size: 12px;
     color: rgb(70, 70, 70);
     font-weight: bold;
-    padding: 5px;
+    padding: 5px 10px;
     border: 1px solid rgb(200, 200, 200);
 }
 
@@ -59,6 +59,10 @@
 
 .profile-friends-index-item-picture img {
     height: 100%;
+}
+
+.profile-friends-index-item-picture:hover {
+    cursor: pointer;
 }
 
 .profile-friends-index-item-label {

@@ -1,15 +1,16 @@
-import React from 'react'
-import ProfilePictureArea from './profile_picture_area'
-import ProfileNav from './profile_nav'
-import ProfileSideBar from './profile_side_bar'
-import ProfileTimeline from './profile_timeline'
-import ProfileAbout from './profile_about'
-import ProfileFriends from './profile_friends'
-import {connect} from 'react-redux'
-import {closeModal, openModal} from '../../actions/modal_actions'
-import {Switch, Route, withRouter} from 'react-router-dom'
-import {fetchUser} from '../../actions/user_actions'
-import { arrayEqual } from '../../utils/array_utils'
+import React from 'react';
+import ProfilePictureArea from './profile_picture_area';
+import ProfileNav from './profile_nav';
+import ProfileSideBar from './profile_side_bar';
+import ProfileTimeline from './profile_timeline';
+import ProfileAbout from './profile_about';
+import ProfileFriends from './profile_friends';
+import ProfilePhotos from './profile_photos';
+import {connect} from 'react-redux';
+import {closeModal, openModal} from '../../actions/modal_actions';
+import {Switch, Route, withRouter} from 'react-router-dom';
+import {fetchUser} from '../../actions/user_actions';
+import { arrayEqual } from '../../utils/array_utils';
 
 
 
@@ -43,6 +44,7 @@ class Profile extends React.Component {
                 <Switch>
                     <Route path="/user/:userId/about" render={props => <ProfileAbout user={user} />} />
                     <Route path="/user/:userId/friends" render={props => <ProfileFriends currentUserId={currentUser.id} user={user} />} />
+                    <Route path="/user/:userId/photos" render={props => <ProfilePhotos currentUserId={currentUser.id} user={user} />} />
                     <Route exact path="/user/:userId" render={props => <ProfileTimeline user={user} />} />
                 </Switch>
   

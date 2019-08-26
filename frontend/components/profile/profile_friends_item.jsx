@@ -15,7 +15,7 @@ class ProfileFriendItem extends React.Component {
         const {friend} = this.props;
         return (
             <div className="profile-friends-index-item">
-                <div className="profile-friends-index-item-picture">
+                <div onClick={e => this.props.history.push(`/user/${friend.id}`)} className="profile-friends-index-item-picture">
                     <img src={friend.photoUrl} alt="" />
                 </div>
                 <section>

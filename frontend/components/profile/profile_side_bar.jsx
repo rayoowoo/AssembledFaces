@@ -35,13 +35,12 @@ class ProfileSideBar extends React.Component {
             home = <li className="profile-sidebar-intro-filled"><i className="fa fa-map-marker-alt"></i><p>From <strong>{hometown}</strong></p></li>
         };
         const photos = photoUrls
-                                // .reverse()
                                 .slice(0, 9).map( (photourl, idx) => {
                                     return <div key={`photo-${idx}`} className="profile-sidebar-photos-index"><img src={photourl} alt=""/></div>
                                 })
 
         const findFriends = this.props.user.id === this.props.currentUserId ? <p onClick={e => this.props.history.push(`/user/${this.props.user.id}/received-requests`)} className="profile-sidebar-add">Find Friends</p> : null
-        const addPhoto = this.props.user.id === this.props.currentUserId ? <a onClick={this.handleFile} className="profile-sidebar-add">Add Photo</a> : null;
+        const addPhoto = this.props.user.id === this.props.currentUserId ? <a onClick={this.handleFile} className="profile-sidebar-add">Add Photos</a> : null;
 
         return (
             <aside className="profile-sidebar">

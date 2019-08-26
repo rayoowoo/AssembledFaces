@@ -1,0 +1,55 @@
+.profile-photos {
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profile-photos-header {
+    background-color: rgb(255, 245, 245);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-photos-header h1 {
+    font-size: 20px;
+    color: rgb(63, 63, 63);
+    font-weight: bold;
+}
+
+.profile-photos-header i {
+    color: rgb(114, 114, 114);
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.profile-photos-btn {
+    font-size: 12px;
+    color: rgb(70, 70, 70);
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.profile-photos-btn:hover {
+    cursor: pointer;
+    background-color: rgb(252, 233, 233);
+}
+
+.profile-photos-index {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2.5px;
+}
+
+.profile-photos-item {
+    width: 205.75px;
+    height: 205.75px;
+    overflow: hidden;
+    margin: 2.5px;
+}
+
+.profile-photos-item img {
+    height: 100%;
+}

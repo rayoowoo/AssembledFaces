@@ -1,6 +1,6 @@
 import React from 'react';
 import FriendRequestItem from './friend_request_item'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class FriendRequests extends React.Component {
     constructor(props) {
@@ -8,6 +8,10 @@ class FriendRequests extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.currentUser.id !== parseInt(this.props.match.params.userId)) {
+            this.props.history.push(`/user/${parseInt(this.props.match.params.userId)}`)
+            return;
+        }
         this.props.fetchUser(this.props.currentUser.id)
         window.scrollTo(0, 0);
     }
@@ -58,4 +62,4 @@ class FriendRequests extends React.Component {
 }
 
 
-export default FriendRequests;
+export default withRouter(FriendRequests);
