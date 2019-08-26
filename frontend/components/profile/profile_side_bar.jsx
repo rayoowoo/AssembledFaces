@@ -92,7 +92,7 @@ class ProfileSideBar extends React.Component {
                         <div>
                             <span className="profile-sidebar-icon">
                                 <i className="fas fa-user-friends"></i>
-                            </span> <a className="profile-sidebar-link">Friends</a>
+                            </span> <a onClick={e => this.props.history.push(`/user/${this.props.currentUserId}/friends`)} className="profile-sidebar-link">Friends</a>
                         </div>
 
                         {findFriends}
