@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post '/api/users/:user_id/:string', to: 'api/users#friends', defaults: {format: :json}
   get '/api/posts/last', to: 'api/posts#last', defaults: {format: :json}
   # get 'api/users/all', to: 'api/users#all', defaults: {format: :json}
-
+  mount ActionCable.server, at: '/cable'
   root to: 'static_pages#root'
  
 end
