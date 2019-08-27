@@ -75,6 +75,21 @@ class User < ApplicationRecord
     has_many :post_tags, foreign_key: :user_id, class_name: :Tag
     has_many :tagged_posts, through: :post_tags, source: :tagged_post
 
+    # from https://medium.com/@adnama.lin/live-messaging-with-rails-5-action-cable-7f009e0c1d8b
+    has_many :messages
+    has_many :subscriptions
+    has_many :chats, through: :subscriptions
+
+    def existing_chats_users
+        existing_chat_users = []
+        self.chats.each do |chat| 
+            existing_chat_users.concat(chat.subscriptions.where.not(user_id: self.id).map {|subscription| subscription.user})
+        end
+
+        existing_chat_users.uniq
+    end
+
+
     def friend_ids
         @friend_ids ||= Friendship.select('requester_id, requested_id').where("requested_id = ? OR requester_id = ? AND status = 'accepted'", self.id, self.id).map {|el|
             el.requester_id + el.requested_id - self.id }
