@@ -23,7 +23,7 @@ class FriendIndex extends React.Component {
                     .map(friend => {
                             return <div onClick={this.goToFriend(friend).bind(this)} 
                                         key={`friend-${friend.id}`} 
-                                        className="profile-sidebar-friends-index">
+                                        className="profile-sidebar-friends-index picture-default">
                                             <img src={friend.photoUrl} alt="" />
                                     </div>
         })

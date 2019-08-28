@@ -51,7 +51,7 @@ class FriendRequestItem extends React.Component {
 
         return (
             <li className="friend-request-item">
-                <div className="friend-request-item-picture">
+                <div className="friend-request-item-picture picture-default">
                     <img src={photo} alt=""/>
                 </div>
                 <div className="friend-request-item-content">
