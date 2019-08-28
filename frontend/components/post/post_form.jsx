@@ -17,8 +17,8 @@ class PostForm extends React.Component {
         else { id = parseInt(this.props.match.params.userId)  }
         this.state = {
             body: "",
-            user_id: id,
-            author_id: currentUser.id,
+            userId: id,
+            authorId: currentUser.id,
             photo: null,
             photoUrl: "",
             tags: []
@@ -27,10 +27,10 @@ class PostForm extends React.Component {
 
     componentDidMount() {
         if (this.props.location.pathname === "/") {
-            this.setState({user_id: this.props.currentUser.id})
+            this.setState({userId: this.props.currentUser.id})
             return
         }
-        this.setState({user_id: parseInt(this.props.match.params.userId)})
+        this.setState({userId: parseInt(this.props.match.params.userId)})
     }
 
     assignSelect(e) {
@@ -85,10 +85,10 @@ class PostForm extends React.Component {
         const that = this;
         const formData = new FormData();
         formData.append('post[body]', this.state.body)
-        formData.append('post[user_id]', this.state.user_id)
-        formData.append('post[author_id]', this.state.author_id)
+        formData.append('post[user_id]', this.state.userId)
+        formData.append('post[author_id]', this.state.authorId)
         formData.append('post[photo]', this.state.photo)
-        this.props.createPost(this.state.user_id, formData)
+        this.props.createPost(this.state.userId, formData)
             .then(() => {
                 return fetchLastPost()})
             .then( post => {
@@ -202,7 +202,7 @@ class PostForm extends React.Component {
 
         if (this.state.tags.length > 0) {
                 tagged = <span className="post-tag">{this.state.tags.map((thisUser, i) => {
-                    return <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.firstName} {thisUser.lastName} <span onClick={this.deleteTag(thisUser.id).bind(this)} className="post-form-tags-delete"><i class="fas fa-times"></i></span></span>;
+                    return <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.firstName} {thisUser.lastName} <span onClick={this.deleteTag(thisUser.id).bind(this)} className="post-form-tags-delete"><i className="fas fa-times"></i></span></span>;
             })
             }</span>
         }

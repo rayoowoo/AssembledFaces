@@ -12,9 +12,9 @@ class CommentForm extends React.Component {
         const parent = this.props.child ? this.props.commentId : null;
         this.state = {
             body: "",
-            post_id: this.props.postId,
-            author_id: this.props.currentUserId,
-            parent_comment_id: parent
+            postId: this.props.postId,
+            authorId: this.props.currentUserId,
+            parentCommentId: parent
         }
     }
 
@@ -37,7 +37,14 @@ class CommentForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createComment(this.props.postId, this.state);
+        const {body, postId, authorId, parentCommentId} = this.state;
+        const toSubmit = {
+            body,
+            post_id: postId,
+            author_id: authorId,
+            parent_comment_id: parentCommentId
+        }
+        this.props.createComment(this.props.postId, toSubmit);
         e.target.parentNode.classList.remove("comment-form-display");
         this.setState({ body: "" })
     }
@@ -63,7 +70,7 @@ class CommentForm extends React.Component {
                         {photo}
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
-                <textarea ref="commentforminput" onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
+                <textarea id="comment-form" ref="commentforminput" onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
 
                 <span className="commentinput-buttons-container" id="child-comment-input-btns">
                     <i className="far fa-smile"></i>

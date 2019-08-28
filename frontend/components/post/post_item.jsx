@@ -75,9 +75,9 @@ class PostItem extends React.Component {
         }
 
         // Steve Rogers ▶ Tony Stark
-        const authoruser = post.author_id !== post.user_id  ? (
+        const authoruser = post.authorId !== post.user_id  ? (
             <p className="post-content-author">
-                    <Link to={`/user/${post.author_id}`} user={author} >
+                    <Link to={`/user/${post.authorId}`} user={author} >
                         {author.firstName} {author.lastName}
                     </Link><i className="fas fa-caret-right"></i><Link to={`/user/${user.id}`} user={user} >
                         {user.firstName} {user.lastName}
@@ -86,7 +86,7 @@ class PostItem extends React.Component {
 
         ) : (
             <p className="post-content-author post-content-author-with-tag">
-                <Link to={`/user/${post.author_id}`} user={author} >
+                <Link to={`/user/${post.authorId}`} user={author} >
                     {author.firstName} {author.lastName}
                 </Link>{tagged}</p>
         )
@@ -153,7 +153,7 @@ const msp = (state, ownProps) => {
     if (ownProps.post.id === 219) {
     }
     return {
-        author: state.entities.users[ownProps.post.author_id] || {},
+        author: state.entities.users[ownProps.post.authorId] || {},
         currentUser : state.entities.users[state.session.id],
         user: state.entities.users[ownProps.post.user_id] || {},
         likes: Object.values(state.entities.likes) || [],

@@ -24,8 +24,8 @@ class CommentIndex extends React.Component {
     render() {
         const { comments = {} } = this.props;
         const allComments = comments.map( comment => {
-                if (comment.parent_comment_id === null) {
-                const childComments = comments.filter( child => child.parent_comment_id === comment.id)
+                if (comment.parentCommentId === null) {
+                const childComments = comments.filter( child => child.parentCommentId === comment.id)
                 return <CommentItem key={`comment-${comment.id}`} child={false} comment={comment} childComments={Object.values(childComments)} />
                 }
             }
@@ -40,7 +40,7 @@ class CommentIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    const comments = Object.values(state.entities.comments).filter( comment => comment.post_id === ownProps.postId) || []
+    const comments = Object.values(state.entities.comments).filter( comment => comment.postId === ownProps.postId) || []
     return {comments}
 }
 

@@ -65,7 +65,8 @@ class CommentItem extends React.Component {
 
     openForm(e) {
         e.preventDefault();
-        this.refs.childForm.classList.add("comment-form-display")
+        this.refs.childForm.classList.add("comment-form-display");
+        this.refs.childForm.querySelector("#comment-form").focus();
     }
 
 
@@ -73,7 +74,7 @@ class CommentItem extends React.Component {
         const {childComments, comment, author, currentUser, child} = this.props;
         const children = childComments.length > 0 ? <div className="child-comments"><CommentIndexChildren parentCommentId={comment.id} childComments={childComments} /></div> : null;
         const {comment: {body, created_at} } = this.props;
-        const reply = Boolean(comment.parent_comment_id) === false ? (<><p onClick={this.openForm.bind(this)} className="comment-response-links">Reply</p>
+        const reply = Boolean(comment.parentCommentId) === false ? (<><p onClick={this.openForm.bind(this)} className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
         const photo = author.photoUrl ? <img src={author.photoUrl} alt="" /> : null
@@ -87,7 +88,7 @@ class CommentItem extends React.Component {
                 </>
         }
 
-        const childForm = child ? null : <CommentForm child={true} postId={comment.post_id} commentId={comment.id} updateCount={this.updateCount} currentUserId={currentUser.id}/>;
+        const childForm = child ? null : <CommentForm child={true} postId={comment.postId} commentId={comment.id} updateCount={this.updateCount} currentUserId={currentUser.id}/>;
 
         const response = currentUser.friendIds.includes(author.id) || currentUser.id === author.id ? 
         (<section className="comment-response">
@@ -105,12 +106,12 @@ class CommentItem extends React.Component {
                 <div className="comment" >
                     <section className="comment-item">
                         <div className="comment-picture">
-                                <Link to={`/user/${comment.author_id}`}>{photo}</Link>
+                                <Link to={`/user/${comment.authorId}`}>{photo}</Link>
                             {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                         </div>
                         <section name="comment-body" className="comment-content" >
                             <div ref="commentBody" name="comment-body" className="comment-content-main comment-body comment-display">
-                                <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.firstName} {author.lastName}</Link></p>
+                                <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.authorId}`} user={author} >{author.firstName} {author.lastName}</Link></p>
                                 <p name="comment-body" >{body}</p>
                             </div>
 
@@ -137,7 +138,7 @@ class CommentItem extends React.Component {
 
 const msp = (state, ownProps) => {
     return {
-        author: state.entities.users[ownProps.comment.author_id] || {},
+        author: state.entities.users[ownProps.comment.authorId] || {},
         currentUser: state.entities.users[state.session.id]
     }
 }
