@@ -51,7 +51,7 @@ class ProfileNavBar extends React.Component {
         const {currentUser = {} } = this.props;
         const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="" /> : null
 
-        const navPic = <div className="comment-picture" id="nav-picture">
+        const navPic = <div className="comment-picture picture-default" id="nav-picture">
             {photo}
             {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
         </div>

@@ -29,7 +29,7 @@ class NewsFeed extends React.Component {
                     <aside className="newsfeed-aside">
 
                         <section onClick={this.profile.bind(this)}  className="newsfeed-aside-top">
-                            <div className="post-picture">
+                            <div className="post-picture picture-default">
                                 {photo}
                                 {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                             </div>

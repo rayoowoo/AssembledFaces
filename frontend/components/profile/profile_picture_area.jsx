@@ -104,7 +104,7 @@ class ProfilePictureArea extends React.Component {
                     
                     </div>
                     <div className="profile-main-picture" ref="main">
-                        <div>
+                        <div className="picture-default">
                             {profileUpdate}
                             {photo}
                         </div>
