@@ -12,5 +12,5 @@ if user.profile_photo.attached?
     json.photoUrl url_for(user.profile_photo)
 end
 
-json.created_at({date: user.created_at.strftime('%-B %-d, %Y'),
+json.createdAt({date: user.created_at.strftime('%-B %-d, %Y'),
         time: user.created_at.strftime('%-I:%M%p')})

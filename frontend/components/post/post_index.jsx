@@ -38,9 +38,9 @@ class PostIndex extends React.Component {
         }
 
         if (Object.keys(user).length !== 0) {
-            const { created_at = {} } = this.props.user;
-            date = created_at.date;
-            time = created_at.time;
+            const { createdAt = {} } = this.props.user;
+            date = createdAt.date;
+            time = createdAt.time;
         }
 
 

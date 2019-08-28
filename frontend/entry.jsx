@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.createTag = createTag;
-    window.test = {user_id: 155, post_id: 266 }
+    window.test = {userId: 155, postId: 266 }
 
      
     // TESTING

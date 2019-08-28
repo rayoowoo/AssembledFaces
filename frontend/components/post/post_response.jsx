@@ -79,7 +79,7 @@ class PostResponse extends React.Component {
 
         let component = <p ref="like" onClick={this.selectOption()}><i className="fas fa-thumbs-up"></i>Like</p>
 
-        const currentUserLike = likes.filter(like => like.user_id === this.props.currentUserId);
+        const currentUserLike = likes.filter(like => like.userId === this.props.currentUserId);
         if (currentUserLike.length > 0) {
             component = <p ref="like" onClick={this.selectOption(currentUserLike[0].id, "delete")} className="selected"><i className="fas fa-thumbs-up"></i>Like</p>
         }

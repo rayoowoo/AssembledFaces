@@ -33,8 +33,8 @@ class PostItem extends React.Component {
 
 
     render() {
-        const {date, time} = this.props.post.created_at;
-        const {post, author, user, currentUser, friendships = [], likes = [], tagged_users = [], post_tagged } = this.props;
+        const {date, time} = this.props.post.createdAt;
+        const {post, author, user, currentUser, friendships = [], likes = [], taggedUsers = [], postTagged } = this.props;
 
         // the delete button and the edit button
         let btns = null;
@@ -54,10 +54,10 @@ class PostItem extends React.Component {
 
         // tagging
         let tagged;
-        if (tagged_users.length > 0 && post_tagged) {
-            tagged = <span className="tag"> is with {tagged_users.map( (thisUser, i) => {
+        if (taggedUsers.length > 0 && postTagged) {
+            tagged = <span className="tag"> is with {taggedUsers.map( (thisUser, i) => {
                         let result = <Link to={`/user/${thisUser.id}`} key={`tagged-${thisUser.id}`}>{thisUser.firstName} {thisUser.lastName}</Link>;
-                        const length = tagged_users.length;
+                        const length = taggedUsers.length;
                         if (length === 2 && i === 0) {
                             result = <span key={`tagged-${thisUser.id}`}>{result} and </span>
                         }
@@ -75,7 +75,7 @@ class PostItem extends React.Component {
         }
 
         // Steve Rogers ▶ Tony Stark
-        const authoruser = post.authorId !== post.user_id  ? (
+        const authoruser = post.authorId !== post.userId  ? (
             <p className="post-content-author">
                     <Link to={`/user/${post.authorId}`} user={author} >
                         {author.firstName} {author.lastName}
@@ -93,16 +93,16 @@ class PostItem extends React.Component {
 
         // only show the response section if the current user is a friend of the post author
         const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
-            if (friendship.requester_id === this.props.user.id){
-                return friendship.requested_id;
+            if (friendship.requesterId === this.props.user.id){
+                return friendship.requestedId;
             } 
-            if (friendship.requested_id === this.props.user.id) {
-                return friendship.requester_id;
+            if (friendship.requestedId === this.props.user.id) {
+                return friendship.requesterId;
             }
         })
 
         const postLikes = likes.filter(like => {
-            return like.likeable_id === post.id && like.likeable_type === "Post"
+            return like.likeableId === post.id && like.likeableType === "Post"
         })
 
         const pictureClass = tagged ? " post-picture-with-tag" : ""
@@ -155,10 +155,10 @@ const msp = (state, ownProps) => {
     return {
         author: state.entities.users[ownProps.post.authorId] || {},
         currentUser : state.entities.users[state.session.id],
-        user: state.entities.users[ownProps.post.user_id] || {},
+        user: state.entities.users[ownProps.post.userId] || {},
         likes: Object.values(state.entities.likes) || [],
-        post_tagged: Object.values(state.entities.tags).map(tag => {return tag.postId}).includes(ownProps.post.id),
-        tagged_users: Object.values(state.entities.users).filter(user => {return taggedIds.includes(user.id)}) || []
+        postTagged: Object.values(state.entities.tags).map(tag => {return tag.postId}).includes(ownProps.post.id),
+        taggedUsers: Object.values(state.entities.users).filter(user => {return taggedIds.includes(user.id)}) || []
     }
 }
 

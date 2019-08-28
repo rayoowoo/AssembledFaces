@@ -20,7 +20,7 @@ class FriendRequests extends React.Component {
         const {requests} = this.props;
         const count = requests.length;
 
-        const search = this.props.type === "received" ? "requester_id" : "requested_id";
+        const search = this.props.type === "received" ? "requesterId" : "requestedId";
         
         let friendships = {};
         this.props.friendships.forEach(el => {

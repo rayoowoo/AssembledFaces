@@ -1,16 +1,18 @@
-json.extract! post, :id, :body, :author_id, :user_id
+json.extract! post, :id, :body
+json.authorId post.author_id
+json.userId post.user_id
 
 if post.created_at.strftime('%-B,%-d,%-Y') == (Time.now - 1.day).strftime('%-B,%-d,%-Y')
-    json.created_at({date: 'Yesterday',
+    json.createdAt({date: 'Yesterday',
         time: post.created_at.strftime('%-I:%M%p')})
 elsif post.created_at.strftime('%-B,%-d,%-Y') == Time.new.strftime('%-B,%-d,%-Y')
-    json.created_at({date: 'Today',
+    json.createdAt({date: 'Today',
         time: post.created_at.strftime('%-I:%M%p')})
 elsif post.created_at.strftime('%-Y') == Time.new.year.to_s
-    json.created_at({date: post.created_at.strftime('%-B %-d'),
+    json.createdAt({date: post.created_at.strftime('%-B %-d'),
         time: post.created_at.strftime('%-I:%M%p')})
 else
-    json.created_at({date: post.created_at.strftime('%-B %-d, %Y'),
+    json.createdAt({date: post.created_at.strftime('%-B %-d, %Y'),
         time: post.created_at.strftime('%-I:%M%p')})
 end
 

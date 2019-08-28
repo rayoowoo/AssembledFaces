@@ -1,3 +1,5 @@
 json.set! friendship.id do 
-    json.extract! friendship, :id, :requester_id, :requested_id, :status
+    json.extract! friendship, :id, :status
+    json.requesterId friendship.requester_id
+    json.requestedId friendship.requested_id
 end

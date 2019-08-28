@@ -12,18 +12,25 @@ class ProfilePictureArea extends React.Component {
     friendship(friendStatus, friendshipToSubmit) {
         return e => {
             e.preventDefault();
+            const {requesterId, requestedId, id} = friendshipToSubmit;
+            
             switch (friendStatus) {
                 case "Unfriend":
-                    this.props.deleteFriendship(friendshipToSubmit.id);
+                    this.props.deleteFriendship(id);
                     break
                 case "Reject Request":
-                    this.props.deleteFriendship(friendshipToSubmit.id);
+                    this.props.deleteFriendship(id);
                     break
                 case "Cancel Request":
-                    this.props.deleteFriendship(friendshipToSubmit.id);
+                    this.props.deleteFriendship(id);
                     break
                 case "Accept Request":
-                    this.props.approveFriendship(merge(friendshipToSubmit, {status: "accepted"}));
+                    const friendship = {
+                        requester_id: requesterId,
+                        requested_id: requestedId,
+                        id
+                    };
+                    this.props.approveFriendship(merge(friendship, {status: "accepted"}));
                     break
                 case "Add Friend":
                     this.props.createFriendship({ requester_id: this.props.currentUser.id, requested_id: this.props.user.id });
@@ -47,7 +54,7 @@ class ProfilePictureArea extends React.Component {
         
         // friendships are of the user whose profile page we are currently viewing. currentUser is the one logged in. 
         friendships.forEach(friendship => {
-            if (friendship.requester_id === currentUser.id || friendship.requested_id === currentUser.id) {
+            if (friendship.requesterId === currentUser.id || friendship.requestedId === currentUser.id) {
                 targetFriendship = friendship;
             }
         })
@@ -61,14 +68,14 @@ class ProfilePictureArea extends React.Component {
                     </div>
                 } else {
                 friendshipToSubmit = targetFriendship;
-                const { requester_id } = targetFriendship;
+                const { requesterId } = targetFriendship;
                 if (targetFriendship.status === "accepted") {
                     friendBtn = <div>
                         <button onClick={e => e.preventDefault()} className="profile-btn profile-btn-friend"><i className="fas fa-check"></i> Friend <i className="fas fa-caret-down"></i></button>{/* this button needs to display the next one upon click */}
                         <button onClick={this.friendship("Unfriend", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-dropdown"><i className="fas fa-remove"></i>Unfriend</button>
                     </div>
                         } else {
-                    if (requester_id === currentUser.id) {
+                    if (requesterId === currentUser.id) {
                         friendBtn =  <button onClick={this.friendship("Cancel Request", friendshipToSubmit).bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-remove"></i> Cancel Request</button>
                     } else {
                         friendBtn = (<div>

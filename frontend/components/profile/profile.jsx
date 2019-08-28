@@ -31,10 +31,10 @@ class Profile extends React.Component {
         const userId = parseInt(this.props.match.params.userId);
 
         const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {
-            if (friendship.requested_id === user.id) {
-                return friendship.requester_id;
-            } if (friendship.requester_id === user.id) {
-                return friendship.requested_id;
+            if (friendship.requestedId === user.id) {
+                return friendship.requesterId;
+            } if (friendship.requesterId === user.id) {
+                return friendship.requestedId;
             }
         })
 

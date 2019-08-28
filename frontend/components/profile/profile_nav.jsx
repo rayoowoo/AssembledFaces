@@ -17,7 +17,7 @@ class ProfileNav extends React.Component {
 
         const { friendships } = this.props;
         const number = friendships.filter( friendship => {
-            return (friendship.requested_id === this.props.user.id || friendship.requester_id === this.props.user.id) && friendship.status === "accepted"
+            return (friendship.requestedId === this.props.user.id || friendship.requesterId === this.props.user.id) && friendship.status === "accepted"
         }).length      
 
         return (

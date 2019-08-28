@@ -14,7 +14,7 @@ class FriendIndex extends React.Component {
     render() {
         const { friends, friendships = [] } = this.props; 
         const acceptedFriendships = friendships.filter ( friendship => friendship.status === "accepted").map( friendship => {
-            return friendship.requester_id === this.props.user.id ? friendship.requested_id : friendship.requester_id;
+            return friendship.requesterId === this.props.user.id ? friendship.requestedId : friendship.requesterId;
         })
         const allFriends = friends === undefined || friends.some(friend => friend === undefined) ? null : 
             friends.filter(friend => acceptedFriendships.includes(friend.id))

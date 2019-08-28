@@ -73,7 +73,7 @@ class CommentItem extends React.Component {
     render() {
         const {childComments, comment, author, currentUser, child} = this.props;
         const children = childComments.length > 0 ? <div className="child-comments"><CommentIndexChildren parentCommentId={comment.id} childComments={childComments} /></div> : null;
-        const {comment: {body, created_at} } = this.props;
+        const {comment: {body, createdAt} } = this.props;
         const reply = Boolean(comment.parentCommentId) === false ? (<><p onClick={this.openForm.bind(this)} className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
@@ -96,7 +96,7 @@ class CommentItem extends React.Component {
             {btns}
             <span className="dot">  ·  </span>
             {reply}
-            <p>{created_at.date}</p>
+            <p>{createdAt.date}</p>
         </section>
         ) : null
 

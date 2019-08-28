@@ -56,7 +56,7 @@ class ProfileAbout extends React.Component {
 
     render() {
         
-        const {id, workplace, education, currentCity, hometown, birthDate, created_at} = this.props.user;
+        const {id, workplace, education, currentCity, hometown, birthDate, createdAt} = this.props.user;
 
         const fullDate = birthDate.split("-").map( el => parseInt(el))
         const year = fullDate[0]
@@ -80,7 +80,7 @@ class ProfileAbout extends React.Component {
                     </ul>
                     <div className="profile-about-content">
                         <section ref="overview2" className="profile-about-overview profile-about-display">
-                            <p>Joined AssembledFaces on <strong>{created_at.date}</strong></p>
+                            <p>Joined AssembledFaces on <strong>{createdAt.date}</strong></p>
                             <p>Studied at <strong>{education}</strong></p>
                             <p>Lives in <strong>{currentCity}</strong></p>
                             <p>Born on <strong>{formattedBirthDate}</strong></p>

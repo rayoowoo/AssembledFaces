@@ -4,8 +4,8 @@ import FriendRequests from './friend_requests'
 import { deleteFriendship, approveFriendship } from '../../actions/friendship_actions'
 
 const msp = state => {
-    const requests = Object.values(state.entities.friendships).filter(el => el.requester_id === state.session.id && el.status === "pending") || [];
-    const requestedUsers = requests.map(request => state.entities.users[request.requested_id]);
+    const requests = Object.values(state.entities.friendships).filter(el => el.requesterId === state.session.id && el.status === "pending") || [];
+    const requestedUsers = requests.map(request => state.entities.users[request.requestedId]);
     return {
         requests: requestedUsers,
         friendships: requests,
