@@ -33,7 +33,7 @@ class NewsFeed extends React.Component {
                                 {photo}
                                 {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                             </div>
-                            <span>{currentUser.first_name} {currentUser.last_name}</span>
+                            <span>{currentUser.firstName} {currentUser.lastName}</span>
                         </section>
 
                         <section className="newsfeed-aside-links"><a href="https://github.com/rayoowoo/AssembledFaces"><i className="fab fa-github"></i><span>GITHUB</span></a></section>

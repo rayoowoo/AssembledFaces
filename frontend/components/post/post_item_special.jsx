@@ -15,8 +15,8 @@ class PostItemSpecial extends React.Component {
 
         if (Boolean(date)) {
             content = <p className="post-content-body post-special-content">Joined AssembledFaces on {date}.</p>
-        } else if (user.birth_date) {
-            const fullDate = user.birth_date.split("-").map(el => parseInt(el))
+        } else if (user.birthDate) {
+            const fullDate = user.birthDate.split("-").map(el => parseInt(el))
             const year = fullDate[0]
             const month = ["January", "February", "March", "Aprl", "May", "June", "July", "August", "September", "October", "November", "December"][fullDate[1]];
             const date = fullDate[2];
@@ -35,7 +35,7 @@ class PostItemSpecial extends React.Component {
                         {/* FROM 1000logos.net/iron-man-logo. All rights go to Marvel Studios. */}
                     </div>
                     <div className="post-content">
-                        <p className="post-content-author"><Link to={`/user/${user.id}`} user={user} >{user.first_name} {user.last_name}</Link></p>
+                        <p className="post-content-author"><Link to={`/user/${user.id}`} user={user} >{user.firstName} {user.lastName}</Link></p>
                         <p className="post-content-time"><i className="fa fa-clock"></i></p>
                     </div>
 

@@ -10,9 +10,9 @@ class SignupForm extends React.Component {
         this.state = {
             email: "",
             password: "",
-            birth_date: "1/1/1901",
-            first_name: "",
-            last_name: "",
+            birthDate: "1/1/1901",
+            firstName: "",
+            lastName: "",
             gender: ""
         }
         this.demo = this.demo.bind(this);
@@ -30,7 +30,7 @@ class SignupForm extends React.Component {
 
     updateBirthday({month, date, year}) {
         let birthday =  date + "/" + month + "/" + year;
-        this.setState({birth_date: birthday})
+        this.setState({birthDate: birthday})
     }
 
     handleClick(e) {
@@ -80,13 +80,21 @@ class SignupForm extends React.Component {
             return 
         }
         else {
-            this.props.signup(this.state).then(
+            const newUser = {
+                email: this.state.email,
+                password: this.state.password,
+                birth_date: this.state.birthDate,
+                first_name: this.state.firstName,
+                last_name: this.state.lastName,
+                gender: this.state.gender
+            };
+            this.props.signup(newUser).then(
                 this.setState({
                     email: "",
                     password: "",
-                    birth_date: "1/1/1901",
-                    first_name: "",
-                    last_name: "",
+                    birthDate: "1/1/1901",
+                    firstName: "",
+                    lastName: "",
                     gender: ""
                 }))
         }
@@ -123,8 +131,8 @@ class SignupForm extends React.Component {
                 <div>
                     <span className="signup-name"><input ref="input1" className="text-input" type="text" 
                         onClick={this.validate} 
-                        onChange={this.update("first_name")} 
-                        value={this.state.first_name} 
+                        onChange={this.update("firstName")} 
+                        value={this.state.firstName} 
                         required 
                         onInput={this.clear}
                         onClick={this.touch}
@@ -139,8 +147,8 @@ class SignupForm extends React.Component {
 
                     <span className="signup-name"><input ref="input2" className="text-input" type="text" 
                         onClick={this.validate} 
-                        onChange={this.update("last_name")}
-                        value={this.state.last_name}
+                        onChange={this.update("lastName")}
+                        value={this.state.lastName}
                         required 
                         onInput={this.clear}
                         onClick={this.touch}
@@ -183,7 +191,7 @@ class SignupForm extends React.Component {
                         </span>
                 </div>
                         
-                <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birth_date}/>
+                <BirthdayForm updateBirthday={this.updateBirthday} birthDate={this.state.birthDate}/>
                 <GenderForm ref="gender" update={this.update}/> 
 
                 <p id="disclaimer">

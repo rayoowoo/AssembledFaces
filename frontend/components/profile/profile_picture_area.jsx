@@ -56,7 +56,7 @@ class ProfilePictureArea extends React.Component {
         } else {
             if (targetFriendship === null) {
                 friendBtn = <div>
-                    <button disabled className="profile-btn profile-btn-dropdown" id="do-you-know">Do you know {user.first_name}?</button>
+                    <button disabled className="profile-btn profile-btn-dropdown" id="do-you-know">Do you know {user.firstName}?</button>
                     <button onClick={this.friendship("Add Friend").bind(this)} className="profile-btn profile-btn-friend"><i className="fas fa-user-plus"></i> Add Friend</button>;                    
                     </div>
                 } else {
@@ -109,7 +109,7 @@ class ProfilePictureArea extends React.Component {
                             {photo}
                         </div>
                     </div>
-                    <h1 className="profile-name">{user.first_name} {user.last_name}</h1>
+                    <h1 className="profile-name">{user.firstName} {user.lastName}</h1>
                     {friendBtn}
                 </section>
             </>

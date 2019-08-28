@@ -10,7 +10,7 @@ json.user do
             json.photoUrls @user.photos.map { |file| url_for(file) }
         end
 
-        json.friend_ids @user.friend_ids
+        json.friendIds @user.friend_ids
     end
 end
 
@@ -23,7 +23,10 @@ end
 json.friends do 
     @user.friends.each do |friend|
         json.set! friend.id do
-            json.extract! friend, :id, :first_name, :last_name, :friend_ids
+            json.extract! friend, :id
+            json.firstName friend.first_name
+            json.lastName friend.last_name
+            json.friendIds friend.friend_ids
             if friend.profile_photo.attached? 
                 json.photoUrl url_for(friend.profile_photo)
             end
@@ -31,7 +34,10 @@ json.friends do
     end
     @user.received_requests.each do |person|
         json.set! person.id do
-            json.extract! person, :id, :first_name, :last_name, :friend_ids
+            json.extract! person, :id
+            json.firstName person.first_name
+            json.lastName person.last_name
+            json.friendIds person.friend_ids
             if person.profile_photo.attached? 
                 json.photoUrl url_for(person.profile_photo)
             end

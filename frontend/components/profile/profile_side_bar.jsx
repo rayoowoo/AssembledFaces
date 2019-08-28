@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom';
 class ProfileSideBar extends React.Component {
 
     render() {
-        const { bio, current_city, workplace, education, hometown, photoUrls =[]} = this.props.user;
+        const { bio, currentCity, workplace, education, hometown, photoUrls =[]} = this.props.user;
 
         let biog = (
             <>
@@ -22,8 +22,8 @@ class ProfileSideBar extends React.Component {
         if (bio) {
             biog = <p id="profile-sidebar-intro-filled">{bio}</p>;
         }
-        if (current_city) {
-            city = <li className="profile-sidebar-intro-filled"><i className="fa fa-home"></i><p>Currently in <strong>{current_city}</strong></p></li>
+        if (currentCity) {
+            city = <li className="profile-sidebar-intro-filled"><i className="fa fa-home"></i><p>Currently in <strong>{currentCity}</strong></p></li>
             };
         if (workplace) {
             work = <li className="profile-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>Work at <strong>{workplace}</strong></p></li>

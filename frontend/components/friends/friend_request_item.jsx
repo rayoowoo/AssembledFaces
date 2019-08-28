@@ -28,12 +28,12 @@ class FriendRequestItem extends React.Component {
     }
 
     render() {
-        const { id, first_name, last_name, friend_ids, photoUrl} = this.props.user;
+        const { id, firstName, lastName, friendIds, photoUrl} = this.props.user;
         const {type, friendship} = this.props;
         let mutual, friendBtns;
 
-        if (friend_ids) {
-            mutual = arrayOverlap(friend_ids, this.props.currentUser.friend_ids);
+        if (friendIds) {
+            mutual = arrayOverlap(friendIds, this.props.currentUser.friendIds);
 
             if (type === "received") {
                 friendBtns = (<div className="friend-request-item-btns">
@@ -55,7 +55,7 @@ class FriendRequestItem extends React.Component {
                     <img src={photo} alt=""/>
                 </div>
                 <div className="friend-request-item-content">
-                    <span className="friend-request-item-name"><Link to={`/user/${id}`}>{first_name} {last_name}</Link></span>
+                    <span className="friend-request-item-name"><Link to={`/user/${id}`}>{firstName} {lastName}</Link></span>
                     <span className="friend-request-item-mutual"><i className="fas fa-user-friends"></i>{mutual} mutual friends.</span>
                 </div>
                 {friendBtns}

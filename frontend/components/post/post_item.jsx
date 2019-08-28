@@ -56,7 +56,7 @@ class PostItem extends React.Component {
         let tagged;
         if (tagged_users.length > 0 && post_tagged) {
             tagged = <span className="tag"> is with {tagged_users.map( (thisUser, i) => {
-                        let result = <Link to={`/user/${thisUser.id}`} key={`tagged-${thisUser.id}`}>{thisUser.first_name} {thisUser.last_name}</Link>;
+                        let result = <Link to={`/user/${thisUser.id}`} key={`tagged-${thisUser.id}`}>{thisUser.firstName} {thisUser.lastName}</Link>;
                         const length = tagged_users.length;
                         if (length === 2 && i === 0) {
                             result = <span key={`tagged-${thisUser.id}`}>{result} and </span>
@@ -78,16 +78,16 @@ class PostItem extends React.Component {
         const authoruser = post.author_id !== post.user_id  ? (
             <p className="post-content-author">
                     <Link to={`/user/${post.author_id}`} user={author} >
-                        {author.first_name} {author.last_name}
+                        {author.firstName} {author.lastName}
                     </Link><i className="fas fa-caret-right"></i><Link to={`/user/${user.id}`} user={user} >
-                        {user.first_name} {user.last_name}
+                        {user.firstName} {user.lastName}
                     </Link> 
                     </p>
 
         ) : (
             <p className="post-content-author post-content-author-with-tag">
                 <Link to={`/user/${post.author_id}`} user={author} >
-                    {author.first_name} {author.last_name}
+                    {author.firstName} {author.lastName}
                 </Link>{tagged}</p>
         )
 
@@ -122,7 +122,7 @@ class PostItem extends React.Component {
                         {authoruser}
                         <p className="post-content-time">{date} at {time}</p>
                         <span className="dot">  ·  </span>
-                        <p className="post-content-city">{this.props.author.current_city}</p>
+                        <p className="post-content-city">{this.props.author.currentCity}</p>
                     </div>
                 
                 </section>
@@ -149,7 +149,7 @@ class PostItem extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    const tagged_ids = Object.values(state.entities.tags).filter(el => el.post_id === ownProps.post.id).map(el => el.user_id);
+    const taggedIds = Object.values(state.entities.tags).filter(el => el.postId === ownProps.post.id).map(el => el.userId);
     if (ownProps.post.id === 219) {
     }
     return {
@@ -157,8 +157,8 @@ const msp = (state, ownProps) => {
         currentUser : state.entities.users[state.session.id],
         user: state.entities.users[ownProps.post.user_id] || {},
         likes: Object.values(state.entities.likes) || [],
-        post_tagged: Object.values(state.entities.tags).map(tag => {return tag.post_id}).includes(ownProps.post.id),
-        tagged_users: Object.values(state.entities.users).filter(user => {return tagged_ids.includes(user.id)}) || []
+        post_tagged: Object.values(state.entities.tags).map(tag => {return tag.postId}).includes(ownProps.post.id),
+        tagged_users: Object.values(state.entities.users).filter(user => {return taggedIds.includes(user.id)}) || []
     }
 }
 

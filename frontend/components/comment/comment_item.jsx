@@ -89,7 +89,7 @@ class CommentItem extends React.Component {
 
         const childForm = child ? null : <CommentForm child={true} postId={comment.post_id} commentId={comment.id} updateCount={this.updateCount} currentUserId={currentUser.id}/>;
 
-        const response = currentUser.friend_ids.includes(author.id) || currentUser.id === author.id ? 
+        const response = currentUser.friendIds.includes(author.id) || currentUser.id === author.id ? 
         (<section className="comment-response">
             <p className="comment-response-links">Like</p>
             {btns}
@@ -110,7 +110,7 @@ class CommentItem extends React.Component {
                         </div>
                         <section name="comment-body" className="comment-content" >
                             <div ref="commentBody" name="comment-body" className="comment-content-main comment-body comment-display">
-                                <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.first_name} {author.last_name}</Link></p>
+                                <p name="comment-body" className="comment-content-author"><Link to={`/user/${comment.author_id}`} user={author} >{author.firstName} {author.lastName}</Link></p>
                                 <p name="comment-body" >{body}</p>
                             </div>
 

@@ -26,11 +26,11 @@ class SearchResults extends React.Component {
             people = users
             .slice(0, 9)
             .filter(user => {
-                return user.first_name.toLowerCase().includes(search.toLowerCase()) || user.last_name.toLowerCase().includes(search.toLowerCase())
+                return user.firstName.toLowerCase().includes(search.toLowerCase()) || user.lastName.toLowerCase().includes(search.toLowerCase())
             })
             .map(user => {
                 return <div key={`result-${user.id}`}>
-                    <span onClick={this.handleClick(user).bind(this)}>{user.first_name.toLowerCase()} {user.last_name.toLowerCase()}</span>
+                    <span onClick={this.handleClick(user).bind(this)}>{user.firstName.toLowerCase()} {user.lastName.toLowerCase()}</span>
                 </div>
             })
         }

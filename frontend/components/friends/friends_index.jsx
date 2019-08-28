@@ -37,9 +37,9 @@ class FriendIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    if (ownProps.user.friend_ids !== undefined) {
+    if (ownProps.user.friendIds !== undefined) {
         return {
-            friends: ownProps.user.friend_ids.map(id => state.entities.users[id]),
+            friends: ownProps.user.friendIds.map(id => state.entities.users[id]),
             friendships: Object.values(state.entities.friendships)
         } 
     } else {

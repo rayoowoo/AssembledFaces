@@ -195,14 +195,14 @@ class PostForm extends React.Component {
             </>
         )
 
-        const placeholder = this.props.location.pathname === "/" ? `What's on your mind, ${currentUser.first_name}?` : "What's on your mind?";
+        const placeholder = this.props.location.pathname === "/" ? `What's on your mind, ${currentUser.firstName}?` : "What's on your mind?";
 
         // displaying the tagged people
         let tagged;
 
         if (this.state.tags.length > 0) {
                 tagged = <span className="post-tag">{this.state.tags.map((thisUser, i) => {
-                    return <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.first_name} {thisUser.last_name} <span onClick={this.deleteTag(thisUser.id).bind(this)} className="post-form-tags-delete"><i class="fas fa-times"></i></span></span>;
+                    return <span key={`friend-${thisUser.id}`} className="post-form-tags">{thisUser.firstName} {thisUser.lastName} <span onClick={this.deleteTag(thisUser.id).bind(this)} className="post-form-tags-delete"><i class="fas fa-times"></i></span></span>;
             })
             }</span>
         }

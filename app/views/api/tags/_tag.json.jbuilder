@@ -1,1 +1,3 @@
-json.extract! tag, :id, :user_id, :post_id
+json.extract! tag, :id
+json.userId tag.user_id
+json.postId tag.post_id

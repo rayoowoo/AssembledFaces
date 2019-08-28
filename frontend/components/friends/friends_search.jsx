@@ -50,7 +50,7 @@ class FriendSearch extends React.Component {
 
     render() {
         const placeholder = this.props.tags > 0 ? "" : "Who are you with?";
-        let users = this.props.users.filter(user => this.props.currentUser.friend_ids.includes(user.id))
+        let users = this.props.users.filter(user => this.props.currentUser.friendIds.includes(user.id))
         return (
             <>
                 <input id="search" autoComplete="off" type="text" className="search friend-search" onBlur={this.props.toggleSearchBtn} onFocus={this.focus.bind(this)} onChange={this.search.bind(this)} onKeyUp={this.delete.bind(this)} placeholder={placeholder} value={this.state.search} />

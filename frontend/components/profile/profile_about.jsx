@@ -33,7 +33,16 @@ class ProfileAbout extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        for (const key in this.state) {
+        for (let key in this.state) {
+            if (key === "firstName") {
+                key = "first_name";
+            } if (key === "lastName") {
+                key = "last_name";
+            } if (key === "currentCity") {
+                key = "current_city"
+            } if (key === "birthDate") {
+                key === "birth_date";
+            }
             formData.append(`user[${key}]`, this.state[key])
         }
         this.props.updateUser(this.props.currentUserId, formData);
@@ -47,13 +56,13 @@ class ProfileAbout extends React.Component {
 
     render() {
         
-        const {id, workplace, education, current_city, hometown, birth_date, created_at} = this.props.user;
+        const {id, workplace, education, currentCity, hometown, birthDate, created_at} = this.props.user;
 
-        const fullDate = birth_date.split("-").map( el => parseInt(el))
+        const fullDate = birthDate.split("-").map( el => parseInt(el))
         const year = fullDate[0]
         const month = ["January", "February", "March", "Aprl", "May", "June", "July", "August", "September", "October", "November", "December"][fullDate[1]];
         const date = fullDate[2];
-        const birthDate = month + " " + date.toString() + ", " + year.toString();
+        const formattedBirthDate = month + " " + date.toString() + ", " + year.toString();
 
         let editbtn = null;
         if (id === this.props.currentUserId) {
@@ -73,15 +82,15 @@ class ProfileAbout extends React.Component {
                         <section ref="overview2" className="profile-about-overview profile-about-display">
                             <p>Joined AssembledFaces on <strong>{created_at.date}</strong></p>
                             <p>Studied at <strong>{education}</strong></p>
-                            <p>Lives in <strong>{current_city}</strong></p>
-                            <p>Born on <strong>{birthDate}</strong></p>
+                            <p>Lives in <strong>{currentCity}</strong></p>
+                            <p>Born on <strong>{formattedBirthDate}</strong></p>
                         </section>
                         <section ref="work2">
                             <p>Currently works at <strong>{workplace}</strong></p>
                             <p>Studied at <strong>{education}</strong></p>
                         </section>
                         <section ref="places2">
-                            <p>Currently lives in <strong>{current_city}</strong></p>
+                            <p>Currently lives in <strong>{currentCity}</strong></p>
                             <p>From <strong>{hometown}</strong></p>
                         </section>
                         <section ref="edit2">
@@ -89,15 +98,15 @@ class ProfileAbout extends React.Component {
                                 <label>Email</label>
                                     <input onChange={this.update("email")} type="email" value={this.state.email}/>
                                 <label>First Name</label>
-                                    <input onChange={this.update("first_name")} type="text" value={this.state.first_name}/>
+                                    <input onChange={this.update("firstName")} type="text" value={this.state.firstName}/>
                                 <label>Last Name</label>
-                                    <input onChange={this.update("last_name")} type="text" value={this.state.last_name}/>
+                                    <input onChange={this.update("lastName")} type="text" value={this.state.lastName}/>
                                 <label>Workplace</label>
                                     <input onChange={this.update("workplace")} type="text" value={this.state.workplace}/>
                                 <label>Education</label>
                                     <input onChange={this.update("education")} type="text" value={this.state.education}/>
                                 <label>Current City</label>
-                                    <input onChange={this.update("current_city")} type="text" value={this.state.current_city}/>
+                                    <input onChange={this.update("currentCity")} type="text" value={this.state.currentCity}/>
                                 <label>Hometown</label>
                                     <input onChange={this.update("hometown")} type="text" value={this.state.hometown}/>
                                 <label>Bio</label>

@@ -20,8 +20,8 @@ class ProfileFriendItem extends React.Component {
                 </div>
                 <section>
                     <div className="profile-friends-index-item-label">
-                        <span className="profile-friends-index-item-name" onClick={this.goToFriend(friend).bind(this)}>{friend.first_name} {friend.last_name}</span>
-                        <span className="profile-friends-index-item-count">{friend.friend_ids.length} friends</span>
+                        <span className="profile-friends-index-item-name" onClick={this.goToFriend(friend).bind(this)}>{friend.firstName} {friend.lastName}</span>
+                        <span className="profile-friends-index-item-count">{friend.friendIds.length} friends</span>
                     </div>
                 </section>
             </div>

@@ -73,7 +73,7 @@ class ProfileNavBar extends React.Component {
                     <nav>
                         <div className="profile-nav-links">
                             
-                            <div id="profile-nav-name-btn"><a onClick={this.handleLinkClick("name")}> {navPic} <span>{this.props.currentUser.first_name}</span></a></div>
+                            <div id="profile-nav-name-btn"><a onClick={this.handleLinkClick("name")}> {navPic} <span>{this.props.currentUser.firstName}</span></a></div>
                             <section id="profile-nav-home"><a onClick={this.handleLinkClick("home")}>Home</a></section>
                             <section><a onClick={e => {e.preventDefault(); alert("sorry, doesn't work yet")} }>Create</a></section>
                         </div>
