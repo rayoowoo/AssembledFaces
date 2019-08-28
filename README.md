@@ -13,10 +13,12 @@
 * Redux
 * Amazon Web Services S3
 * Heroku
+* jQuery
+* Webpack
 
 ## Features
 
-AssembledFaces has many features, all of which you can explore by clicking the Demo Login button on the [splash page](http://assembled-faces.herokuapp.com). 
+AssembledFaces has many features, all of which you can explore by clicking the Demo Login button on the [splash page](http://assembled-faces.herokuapp.com).
 
 ### Signup Validation
 
@@ -29,13 +31,40 @@ While this may seem like a small part of the experience, directingthe user to th
 There are multiple layers of form validation taking place:
 1. Fields that the user has not had a chance to interact with do not have any alert, allowing the user to fill out the form first without
 being bothered. If the user has interacted with the field, but they are invalid, the alerts start appearing. 
-2. Invalid fields that are currently selected will not have the red icon, but rather have a helpful message helping the user determine what information
+2. Invalid fields that are currently selected will not have the red icon, but rather have a tooltip to help the user determine what information
 needs to be provided. 
-2. Invalid fields that are not curently selected by the user do have the red icon, alerting the user that these fields will need their attention after
+3. Invalid fields that are not curently selected by the user do have the red icon, alerting the user that these fields will need their attention after
 they are finished with their current field. 
-3. Should the user decide to try signing up without filling out the necessary information, the form will reject the attempt, and alert the user
+4. Should the user decide to try signing up without filling out the necessary information, the form will reject the attempt, and alert the user
 of all the fields that need their attention. 
 
+All of these behaviors relied upon various event listeners and corresponding callbacks:
+
+```
+<span className="signup-name">
+    <input ref="input1" className="text-input" type="text" 
+    onClick={this.validate} 
+    onChange={this.update("first_name")} 
+    value={this.state.first_name} 
+    required 
+    onInput={this.clear}
+    onClick={this.touch}
+    placeholder="First name" />
+
+    <div>
+        What's your name?
+        <div className="error-arrow-right"></div>    
+        <div className="error-arrow-right error-arrow-shadow"></div>    
+    </div>
+    <i className="fas fa-exclamation-circle"></i>
+</span>
+```
+
+`onClick` handles the initial validation of the field. If the field has not been clicked on before, a CSS class 'touched' will be added. If 'touched' is already assigned, an additional class called 'check' will be assigned. Invalid fields with 'touched' only will exhibit the third behavior as listed above. Invalid fields with the 'check' class will exhibit the second.
+`onChange` handles updating the input field when the user inputs text. 
+`onInput` handles clearing the CSS classes 'touched' and 'check,' as inputting text would validate the input field. 
+
+The `<div>` element is the red tooltip that pops up as a helpful message in second form validation behavior in the list above. 
 
 ### Newsfeed
 
@@ -65,7 +94,7 @@ posts = Post.where("user_id = #{params[:id]} OR author_id = #{params[:id]} OR (u
 
 !["AssembledFaces-profile"](app/assets/images/profile.png)
 
-The profile page layout is generic across all users, but the information displayed in its various components are unique to each user. Profiles display the user's public information, including, but limited to, their profile picture, cover picture, other photos, friends, workplace, education, and posts. The most intricate part of this page, as well as on the newsfeed page, is the post itself. Posts incorporate all of the models that exist in the database all at once: users, posts, friends, comments, likes, tags. 
+The profile page layout is generic across all users, but the information displayed in its various components are unique to each user. Profiles display the user's public information, including, but limited to, their profile picture, cover picture, other photos, friends, workplace, education, and posts. The most intricate part of this page, as well as on the newsfeed page, is the post itself. Posts incorporate all of the models that exist in the database all at once: users, posts, friends, comments, likes, tags, and photos from AWS. 
 
 !["AssembledFaces-post"](app/assets/images/post.png)
 
@@ -86,10 +115,14 @@ likes.filter(like => {
 ```
 currentUserLike = likes.filter(like => like.user_id === this.props.currentUserId)
 ```
+
+### Other Features
+* Friend Request Pages
+* Photos Page
+* Tagging users on posts
+
 ## Future Implementation
 * Comment Likes
-* Friend Request Page
-* Photos Page
 * Sharing posts
 * Searching posts
 * Saved search results
