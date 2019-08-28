@@ -63,7 +63,12 @@ class PostForm extends React.Component {
         if (this.state.photoUrl) {
             this.refs.photoPreview.classList.add("photo-display")
         }
-        if (this.state.tags.length > 0) this.refs.tags.classList.toggle("tag-display");
+        if (this.state.tags.length > 0) {
+            this.refs.tags.classList.add("tag-display");
+        } else {
+            this.refs.tags.classList.remove("tag-display");
+        }
+        
     }
 
     clearFocus(e) {
@@ -133,8 +138,12 @@ class PostForm extends React.Component {
     tag(e) {
         e.preventDefault();
         // some code to open up the div that has the list of tagged friends. 
-        this.focusForm(e);
-        this.refs.tags.classList.toggle("tag-display");
+        if (this.refs.postformText.classList.contains("focused")) {
+            this.refs.tags.classList.toggle("tag-display");
+        } else {
+            this.focusForm(e);
+            this.refs.tags.classList.toggle("tag-display");
+        }
         document.querySelector("#search").focus();
     }
 
@@ -168,7 +177,6 @@ class PostForm extends React.Component {
 
     render() {
         let submit;
-        // eventually this will account for is there's a picture attached
         if (this.state.body === "" && this.state.photoUrl === "") {
             submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />
         } else {
