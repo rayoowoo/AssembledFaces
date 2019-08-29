@@ -11,7 +11,7 @@ class ProfileNav extends React.Component {
             
         if (this.props.currentUserId === parseInt(this.props.match.params.userId)) {
             caret = <i className="fas fa-caret-down"></i>
-            archive = <a onClick={e => alert("not implemented yet")}><i className="fas fa-lock"></i>Archive</a>
+            archive = <a href={`https://www.youtube.com/watch?v=_AUs3J995Fc&start=129`} target="_blank"><i className="fas fa-lock"></i>Archive</a>
             filler = <><div className="profile-page-nav-space"></div><div className="profile-page-nav-space"></div></>
         }
 
