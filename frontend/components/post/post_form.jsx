@@ -38,7 +38,7 @@ class PostForm extends React.Component {
         Object.values(this.refs).forEach( ref => {
             ref.classList.remove("postform-selected");
         })
-        e.currentTarget.classList.add("postform-selected")
+        e.currentTarget.classList.add("postform-selected");
     }
 
     assignPhotoSelect(e) {
@@ -190,8 +190,8 @@ class PostForm extends React.Component {
         const otherHeaders = this.props.location.pathname === "/" ? null : (
             <>
                 <li ref="header2" onClick={this.assignPhotoSelect.bind(this)}><span><i className="fa fa-camera"></i>Photo/Video</span></li>
-                <li ref="header3" onClick={this.assignSelect} ><span><i className="fa fa-video"></i>Live Video</span></li>
-                <li ref="header4" onClick={this.assignSelect} ><span ><i className="fa fa-flag"></i>Life Event</span></li>
+                <li ref="header3" onClick={e => {this.assignSelect(e); alert("sorry, not implemented yet.")}} ><span><i className="fa fa-video"></i>Live Video</span></li>
+                <li ref="header4" onClick={e => {this.assignSelect(e); alert("sorry, not implemented yet.")}} ><span ><i className="fa fa-flag"></i>Life Event</span></li>
             </>
         )
 
@@ -234,7 +234,7 @@ class PostForm extends React.Component {
                         <section className="postinput-buttons-container">
                             <button onClick={this.upload.bind(this)} className="postinput-buttons"><i className="far fa-image"></i>Photo/Video</button>{/* some button to upload photos */}
                             <button onClick={this.tag.bind(this)} className="postinput-buttons"><i className="fas fa-user"></i>Tag Friends</button>
-                            <button onClick={e => {e.preventDefault(); e.stopPropagation()}} className="postinput-buttons"><i className="far fa-smile"></i>Feeling/Activity</button>
+                            <button onClick={e => {e.preventDefault(); e.stopPropagation(); alert("sorry, not implemented yet")}} className="postinput-buttons"><i className="far fa-smile"></i>Feeling/Activity</button>
                         </section>
 
 

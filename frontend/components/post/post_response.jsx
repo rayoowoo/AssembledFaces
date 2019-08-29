@@ -93,7 +93,7 @@ class PostResponse extends React.Component {
                 <div className="post-icons">
                     {component}
                     <p onClick={this.clickComment.bind(this)}><i className="fas fa-comment"></i>Comment</p>
-                    <p><i className="fas fa-share"></i>Share</p>
+                    <p onClick={e => alert("sorry, not implemented yet.")}><i className="fas fa-share"></i>Share</p>
                 </div>
                 <div className="post-comments">
                     <CommentIndex postId={this.props.postId} updateCount={this.updateCount} currentUserId={this.props.currentUserId}/>

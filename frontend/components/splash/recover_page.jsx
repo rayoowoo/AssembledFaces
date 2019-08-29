@@ -7,13 +7,7 @@ class RecoverPage extends React.Component {
         this.state = {
             email: ""
         }
-        this.handleClick = this.handleClick.bind(this)
         this.cancel = this.cancel.bind(this);
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-        alert("sorry, not working yet")
     }
 
     cancel(e) {
@@ -32,7 +26,7 @@ class RecoverPage extends React.Component {
     
                     </span>
                     
-                    <button href={`https://www.youtube.com/watch?v=-qCNUex6rRc&start=36`} target="_blank" className="demo recover-input-btn-1">Search</button>
+                    <button onClick={e => window.open(`https://www.youtube.com/watch?v=-qCNUex6rRc&start=41`, '_blank')} target="_blank" className="demo recover-input-btn-1">Search</button>
                     <button onClick={this.cancel} className="demo recover-input-btn-2">Cancel</button>
 
                 </form>

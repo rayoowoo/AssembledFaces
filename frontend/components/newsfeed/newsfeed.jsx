@@ -36,10 +36,10 @@ class NewsFeed extends React.Component {
                             <span>{currentUser.firstName} {currentUser.lastName}</span>
                         </section>
 
-                        <section className="newsfeed-aside-links"><a href="https://github.com/rayoowoo/AssembledFaces"><i className="fab fa-github"></i><span>GITHUB</span></a></section>
-                        <section className="newsfeed-aside-links"><a href="https://www.linkedin.com/in/ruiyu-wu-173604134/"><i className="fab fa-linkedin-in"></i><span>LINKEDIN</span></a></section>
-                        <section className="newsfeed-aside-links"><a href="https://angel.co/ruiyu-wu" target="_blank"><i className="fab fa-angellist"></i><span>ANGELLIST</span></a></section>
-                        <section className="newsfeed-aside-links"><a href="https://rayoowoo.github.io/rayoowoo" target="_blank"><i className="fa fa-briefcase"></i><span>PORTFOLIO</span></a></section>
+                        <section className="newsfeed-aside-links"><a target="_blank" href="https://github.com/rayoowoo/AssembledFaces"><i className="fab fa-github"></i><span>GITHUB</span></a></section>
+                        <section className="newsfeed-aside-links"><a target="_blank" href="https://www.linkedin.com/in/ruiyu-wu-173604134/"><i className="fab fa-linkedin-in"></i><span>LINKEDIN</span></a></section>
+                        <section className="newsfeed-aside-links"><a target="_blank" href="https://angel.co/ruiyu-wu"><i className="fab fa-angellist"></i><span>ANGELLIST</span></a></section>
+                        <section className="newsfeed-aside-links"><a target="_blank" href="https://rayoowoo.github.io/rayoowoo"><i className="fa fa-briefcase"></i><span>PORTFOLIO</span></a></section>
                         <section className="newsfeed-aside-links newsfeed-email"><i className="fa fa-envelope"></i><span>EMAIL</span><p>ruiyuwu1998@gmail.com</p></section>
                     </aside>
                     <section className="newsfeed-main">

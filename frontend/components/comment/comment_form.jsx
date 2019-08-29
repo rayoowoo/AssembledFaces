@@ -73,10 +73,10 @@ class CommentForm extends React.Component {
                 <textarea id="comment-form" ref="commentforminput" onChange={this.handleChange} type="text" placeholder={`Write a comment...`} value={this.state.body}></textarea>
 
                 <span className="commentinput-buttons-container" id="child-comment-input-btns">
-                    <i className="far fa-smile"></i>
-                    <i className="fas fa-camera"></i>
-                    <i className="far fa-file-video"></i>
-                    <i className="far fa-sticky-note"></i>
+                    <i onClick={e => alert("sorry, not implemented yet.")} className="far fa-smile"></i>
+                    <i onClick={e => alert("sorry, not implemented yet.")} className="fas fa-camera"></i>
+                    <i onClick={e => alert("sorry, not implemented yet.")} className="far fa-file-video"></i>
+                    <i onClick={e => alert("sorry, not implemented yet.")} className="far fa-sticky-note"></i>
                 </span>
                 
                 <div className="postform-submit-container" id="comment-submit-container">
