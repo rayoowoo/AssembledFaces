@@ -1,6 +1,7 @@
-import React from 'react'
-import {updateUser} from '../../actions/user_actions'
-import {connect} from 'react-redux'
+import React from 'react';
+import {updateUser} from '../../actions/user_actions';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom'
 
 class ProfileAbout extends React.Component {
     constructor(props) {
@@ -33,7 +34,9 @@ class ProfileAbout extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
+        let newKey;
         for (let key in this.state) {
+            newKey = key;
             if (key === "firstName") {
                 key = "first_name";
             } if (key === "lastName") {
@@ -43,9 +46,11 @@ class ProfileAbout extends React.Component {
             } if (key === "birthDate") {
                 key === "birth_date";
             }
-            formData.append(`user[${key}]`, this.state[key])
+            formData.append(`user[${key}]`, this.state[newKey])
         }
-        this.props.updateUser(this.props.currentUserId, formData);
+        this.props.updateUser(this.props.currentUserId, formData).then(() => {
+            this.props.history.push(`/user/${this.props.currentUserId}`)
+        })
     }
 
     update(field) {
@@ -131,4 +136,4 @@ const mdp = dispatch => ({
     updateUser: (id, formData) => dispatch(updateUser(id, formData))
 })
 
-export default connect(msp, mdp)(ProfileAbout)
+export default withRouter(connect(msp, mdp)(ProfileAbout))

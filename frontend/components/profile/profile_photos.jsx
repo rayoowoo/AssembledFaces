@@ -9,6 +9,10 @@ class ProfilePhotos extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 365);
+    }
+
     render() {
 
         const {photoUrls = []} = this.props.user;

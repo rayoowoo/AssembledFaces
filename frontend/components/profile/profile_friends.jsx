@@ -8,6 +8,10 @@ class ProfileFriends extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 155);
+    }
+
     render() {
         const { user, currentUserId, friends, friendships = [] } = this.props;
         const acceptedFriendships = friendships.filter(friendship => friendship.status === "accepted").map(friendship => {

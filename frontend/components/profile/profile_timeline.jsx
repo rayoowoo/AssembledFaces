@@ -5,6 +5,10 @@ import {Route} from 'react-router-dom'
 
 class ProfileTimeline extends React.Component {
 
+    componentDidMount() {
+        window.scrollTo(0, 155);
+    }
+
     render() {
         return (
             <div className="profile-timeline">
