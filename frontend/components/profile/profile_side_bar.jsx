@@ -3,6 +3,17 @@ import FriendIndex from '../friends/friends_index'
 import {withRouter} from 'react-router-dom';
 
 class ProfileSideBar extends React.Component {
+    goToUpdate(field) {
+        return e => {
+            e.preventDefault();
+            this.props.history.push({
+                pathname: `/user/${this.props.user.id}/about`,
+                source: {
+                    from: field
+                }
+            });
+        }
+    }
 
     render() {
         const { bio, currentCity, workplace, education, hometown, photoUrls =[]} = this.props.user;
@@ -11,13 +22,13 @@ class ProfileSideBar extends React.Component {
             <>
                 <i className="fa fa-comment-alt"></i>
                 <p>Add a short bio to tell people more about yourself.</p>
-                <a onClick={e => alert("not yet implemented")}>Add Bio</a>
+                <a onClick={this.goToUpdate("bio").bind(this)}>Add Bio</a>
             </>
         )
-        let city = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-home"></i><span>Current City</span></a></li>
-        let work = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-briefcase"></i><span>Workplace</span></a></li>
-        let school = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-graduation-cap"></i><span>School</span></a></li>
-        let home = <li><a onClick={e => alert("not yet implemented")}><i className="fa fa-map-marker-alt"></i><span>Hometown</span></a></li>
+        let city = <li><a onClick={this.goToUpdate("currentCity").bind(this)}><i className="fa fa-home"></i><span>Current City</span></a></li>
+        let work = <li><a onClick={this.goToUpdate("workplace").bind(this)}><i className="fa fa-briefcase"></i><span>Workplace</span></a></li>
+        let school = <li><a onClick={this.goToUpdate("education").bind(this)}><i className="fa fa-graduation-cap"></i><span>School</span></a></li>
+        let home = <li><a onClick={this.goToUpdate("hometown").bind(this)}><i className="fa fa-map-marker-alt"></i><span>Hometown</span></a></li>
 
         if (bio) {
             biog = <p id="profile-sidebar-intro-filled">{bio}</p>;
@@ -28,7 +39,7 @@ class ProfileSideBar extends React.Component {
         if (workplace) {
             work = <li className="profile-sidebar-intro-filled"><i className="fa fa-briefcase"></i><p>Work at <strong>{workplace}</strong></p></li>
             };
-        if (school) {
+        if (education) {
             school = <li className="profile-sidebar-intro-filled"><i className="fa fa-graduation-cap"></i><p>Went to <strong>{education}</strong></p></li>
             };
         if (hometown) {

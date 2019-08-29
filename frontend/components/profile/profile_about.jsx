@@ -10,6 +10,16 @@ class ProfileAbout extends React.Component {
         this.update = this.update.bind(this);
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 365);
+        if (this.props.location.source !== undefined) {
+            this.refs.edit.click();
+            if (this.props.location.source.from !== "profile") {
+                this.refs[this.props.location.source.from].focus();
+            }
+        }
+    }
+
     assignSelect(e) {
         Object.values(this.refs).forEach (ref => ref.classList.remove("profile-about-selected", "profile-about-display"))
         e.target.classList.add("profile-about-selected")
@@ -107,15 +117,15 @@ class ProfileAbout extends React.Component {
                                 <label>Last Name</label>
                                     <input onChange={this.update("lastName")} type="text" value={this.state.lastName}/>
                                 <label>Workplace</label>
-                                    <input onChange={this.update("workplace")} type="text" value={this.state.workplace}/>
+                                    <input onChange={this.update("workplace")} ref="workplace" type="text" value={this.state.workplace}/>
                                 <label>Education</label>
-                                    <input onChange={this.update("education")} type="text" value={this.state.education}/>
+                                    <input onChange={this.update("education")} ref="education" type="text" value={this.state.education}/>
                                 <label>Current City</label>
-                                    <input onChange={this.update("currentCity")} type="text" value={this.state.currentCity}/>
+                                    <input onChange={this.update("currentCity")} ref="currentCity" type="text" value={this.state.currentCity}/>
                                 <label>Hometown</label>
-                                    <input onChange={this.update("hometown")} type="text" value={this.state.hometown}/>
+                                    <input onChange={this.update("hometown")} ref="hometown" type="text" value={this.state.hometown}/>
                                 <label>Bio</label>
-                                    <textarea onChange={this.update("bio")} value={this.state.bio}></textarea>
+                                    <textarea onChange={this.update("bio")} ref="bio" value={this.state.bio}></textarea>
                                 <button className="signup-submit-btn">Update User Information</button>
                             </form>
                         </section>

@@ -43,7 +43,12 @@ class ProfilePictureArea extends React.Component {
 
     goToUpdate(e) {
         e.preventDefault();
-        this.props.history.push(`/user/${this.props.user.id}/about`)
+        this.props.history.push({
+            pathname: `/user/${this.props.user.id}/about`,
+                source: {
+                from: "profile"
+            }
+        });        
     }
 
     render() {
