@@ -10,5 +10,5 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 export default (preloadedState = {}) => {
-    return createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger))
+    return createStore(rootReducer, preloadedState, applyMiddleware(...middlewares))
 }
