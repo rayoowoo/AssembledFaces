@@ -82,7 +82,7 @@ class ProfileNavBar extends React.Component {
                         <div className="profile-nav-icons">
                             <i onClick={e => {e.preventDefault(); this.props.history.push(`/user/${currentUser.id}/received-requests`)}} className="fas fa-user-friends"></i>
                             <i onClick={e => { window.open(`https://www.youtube.com/watch?v=hA6hldpSTF8&start=134`, '_blank') }}  className="fas fa-comment"></i>
-                            <i onClick={e => { window.open(`https://www.youtube.com/watch?v=ah9xBJHXttw`, '_blank') }}  className="fas fa-bell"></i>
+                            <i onClick={e => { window.open(`https://www.youtube.com/watch?v=ah9xBJHXttw&start=43`, '_blank') }}  className="fas fa-bell"></i>
                         </div>
                     <div className="profile-nav-help">
                             <i onClick={e => { window.open(`https://www.youtube.com/watch?v=CpZakOJlRoY&start=44`, '_blank') }} className="fas fa-question-circle"></i>
