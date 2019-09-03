@@ -24,7 +24,7 @@ class PostItemSpecial extends React.Component {
             content = <p className="post-content-body post-special-content">Born on {birthDate}.</p>
         }
 
-        const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
+        const photo = user.photoUrl ? <img src={user.photoUrl} alt="author-profile" /> : null
 
         return (
             <section className="postitem">

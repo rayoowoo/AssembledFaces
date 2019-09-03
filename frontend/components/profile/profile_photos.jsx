@@ -21,7 +21,7 @@ class ProfilePhotos extends React.Component {
 
         const photos = photoUrls
             .map((photourl, idx) => {
-                return <div key={`photo-${idx}`} className="profile-photos-item"><img src={photourl} alt="" /></div>
+                return <div key={`photo-${idx}`} className="profile-photos-item"><img src={photourl} alt="user-photos" /></div>
             })
 
         const btn = currentUserId === user.id ? (

@@ -47,10 +47,10 @@ class PostItem extends React.Component {
         }
 
         // the icon of the profile picture of the post author
-        const photo = author.photoUrl ? <img src={author.photoUrl} alt="" /> : null
+        const photo = author.photoUrl ? <img src={author.photoUrl} alt="author-profile" /> : null
 
         // the photo of the actual post
-        const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="" /> : null
+        const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="post-picture" /> : null
 
         // tagging
         let tagged;

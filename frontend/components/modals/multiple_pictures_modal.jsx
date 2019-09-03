@@ -62,7 +62,7 @@ class MultiplePicsModal extends React.Component {
 
     render() {
         const images = this.state.urls.map( (url, idx) => {
-            return <div key={`pic-${idx}`} className="upload-photos-item"><img src={url} alt="" /></div>
+            return <div key={`pic-${idx}`} className="upload-photos-item"><img src={url} alt="upload-preview" /></div>
         });
 
         return (

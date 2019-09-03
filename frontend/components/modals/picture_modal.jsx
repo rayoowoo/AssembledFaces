@@ -76,7 +76,7 @@ class PicModal extends React.Component {
             <div className="picture-modal">
                 <h1>Update{type}Picture</h1>
                 <button ref="button" className="picture-modal-display" onClick={this.upload.bind(this)}>+ Upload Photo</button>
-                <img src={this.state.url} alt=""/>
+                <img src={this.state.url} alt="upload-preview"/>
                 <input ref="photoUpload" onChange={this.handleFile.bind(this)} className="photo-upload" type="file" />
                 <section ref="buttons">
                     <button onClick={this.submit.bind(this)}>Submit</button>

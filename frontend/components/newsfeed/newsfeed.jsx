@@ -21,7 +21,7 @@ class NewsFeed extends React.Component {
 
     render() {
         const {currentUser = {} } = this.props;
-        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
+        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="user-profile" /> : null
         
         return (
             <div className="newsfeed">

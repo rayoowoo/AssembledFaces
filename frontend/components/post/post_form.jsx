@@ -183,9 +183,9 @@ class PostForm extends React.Component {
             submit = <input className="postform-submit" type="submit" value="Post" />
         }
         const { currentUser = {} } = this.props;
-        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
+        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="user-profile" /> : null
 
-        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt=""/> : null
+        const preview = this.state.photoUrl ? <img src={this.state.photoUrl} alt="tagged-profile"/> : null
 
         const otherHeaders = this.props.location.pathname === "/" ? null : (
             <>

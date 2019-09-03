@@ -49,7 +49,7 @@ class ProfileNavBar extends React.Component {
 
     render() {
         const {currentUser = {} } = this.props;
-        const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="" /> : null
+        const photo = Boolean(currentUser.photoUrl) ? <img src={currentUser.photoUrl} alt="user-profile" /> : null
 
         const navPic = <div className="comment-picture picture-default" id="nav-picture">
             {photo}

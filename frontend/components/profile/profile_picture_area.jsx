@@ -94,8 +94,8 @@ class ProfilePictureArea extends React.Component {
 
 
 
-        const photo = user.photoUrl ? <img src={user.photoUrl} alt="" /> : null
-        const cover = user.coverUrl ? <img src={user.coverUrl} alt="" /> : null
+        const photo = user.photoUrl ? <img src={user.photoUrl} alt="user-profile" /> : null
+        const cover = user.coverUrl ? <img src={user.coverUrl} alt="user-cover" /> : null
 
         let coverUpdate, profileUpdate;
         if (user.id === this.props.currentUser.id) {

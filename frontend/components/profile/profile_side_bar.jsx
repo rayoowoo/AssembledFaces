@@ -47,7 +47,7 @@ class ProfileSideBar extends React.Component {
         };
         const photos = photoUrls
                                 .slice(0, 9).map( (photourl, idx) => {
-                                    return <div key={`photo-${idx}`} className="profile-sidebar-photos-index"><img src={photourl} alt=""/></div>
+                                    return <div key={`photo-${idx}`} className="profile-sidebar-photos-index"><img src={photourl} alt="user-photos"/></div>
                                 })
 
         const findFriends = this.props.user.id === this.props.currentUserId ? <p onClick={e => this.props.history.push(`/user/${this.props.user.id}/received-requests`)} className="profile-sidebar-add">Find Friends</p> : null

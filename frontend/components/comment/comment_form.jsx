@@ -54,7 +54,7 @@ class CommentForm extends React.Component {
     render() {
         let submit;
         const { currentUser = {} } = this.props;
-        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="" /> : null
+        const photo = currentUser.photoUrl ? <img src={currentUser.photoUrl} alt="user-profile" /> : null
 
         if (this.state.body === "") {
             submit = <input className="postform-submit disabled-btn" disabled type="submit" value="Post" />

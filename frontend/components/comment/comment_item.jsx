@@ -77,7 +77,7 @@ class CommentItem extends React.Component {
         const reply = Boolean(comment.parentCommentId) === false ? (<><p onClick={this.openForm.bind(this)} className="comment-response-links">Reply</p>
             <span className="dot">  ·  </span></>) : null
 
-        const photo = author.photoUrl ? <img src={author.photoUrl} alt="" /> : null
+        const photo = author.photoUrl ? <img src={author.photoUrl} alt="author-profile" /> : null
 
         let btns = null;
         if (author.id === currentUser.id) {
