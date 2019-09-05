@@ -29,7 +29,7 @@
     position: absolute;
     font-size: 20px;
     color: rgb(224, 96, 96);
-    top: -42px;
+    top: 8px;
     left: 330px;
 }
 
@@ -83,7 +83,7 @@
 }
 
 #login-email-invalid, #login-password-invalid {
-    top: -55px;
+    top: -2px;
     left: 385px;
     width: 280px;
     text-align: left;

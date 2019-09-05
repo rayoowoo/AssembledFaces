@@ -112,6 +112,7 @@
 
 .signup-email-password {
     position: relative;
+    display: block;
 }
 
 .text-input {
@@ -225,7 +226,7 @@
 }
 
 .signup-email-password i {
-    top: -0.5px;
+    top: 25%;
     left: 93%;
 }
 
